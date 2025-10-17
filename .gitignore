@@ -53,5 +53,5 @@ yarn-error.log*
 .vite
 
 # temp
-.temp/
+.temp
 .temp/*
