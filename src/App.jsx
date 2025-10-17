@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
+import ConstantSparkles from './components/ConstantSparkles';
 import Home from './pages/Home';
 import MessagesPage from './pages/MessagesPage';
 import ThingsWeLove from './pages/ThingsWeLove';
@@ -13,7 +14,8 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Navigation />
+        <ConstantSparkles/>
+        <Navigation/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/messages" element={<MessagesPage />} />
