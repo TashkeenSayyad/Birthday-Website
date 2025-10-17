@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import Gallery from './components/Gallery';
+import StarryBackground from './components/StarryBackground';
+import PawButton from './components/PawButton';
+import Confetti from './components/Confetti';
+import messagesData from './data/messages.json';
+import 'bulma/css/bulma.min.css';
+import './styles/App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    setMessages(messagesData);
+  }, []);
+
+  const triggerConfetti = () => {
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 4000);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <StarryBackground />
+      
+      <div className="app-content">
+        <header className="app-header">
+          <div className="header-decoration">🎂</div>
+          <h1 className="app-title">Happy Birthday!</h1>
+          <p className="app-tagline">Your friends have something special to say...</p>
+          <div className="header-decoration">🎉</div>
+        </header>
+
+        {messages.length > 0 && <Gallery messages={messages} />}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <PawButton onClick={triggerConfetti} />
+      <Confetti active={showConfetti} />
+    </div>
+  );
 }
 
-export default App
+export default App;
