@@ -1,41 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import Gallery from '../components/Gallery';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import FloatingParticles from '../components/FloatingParticles';
-import HeartButton from '../components/HeartButton';
-import Sparkles from '../components/Sparkles';
-import messagesData from '../data/messages.json';
+import '../styles/Home.css';
 
 const Home = () => {
-  const [showSparkles, setShowSparkles] = useState(false);
-  const [messages, setMessages] = useState([]);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    setMessages(messagesData);
-  }, []);
-
-  const triggerSparkles = () => {
-    setShowSparkles(true);
-    setTimeout(() => setShowSparkles(false), 3000);
-  };
+  const menuItems = [
+    {
+      id: 1,
+      title: 'Birthday Messages',
+      subtitle: 'From your loved ones',
+      icon: '💌',
+      path: '/messages',
+      color: '#d4a5d8'
+    },
+    {
+      id: 2,
+      title: 'Things We Love',
+      subtitle: 'About you',
+      icon: '💜',
+      path: '/things-we-love',
+      color: '#b89dd8'
+    },
+    {
+      id: 3,
+      title: 'Favorite Memories',
+      subtitle: 'Special moments together',
+      icon: '📸',
+      path: '/memories',
+      color: '#9b7ed8'
+    },
+    {
+      id: 4,
+      title: 'Personal Notes',
+      subtitle: 'Letters just for you',
+      icon: '💝',
+      path: '/note/aqsa',
+      color: '#c8b3e8'
+    }
+  ];
 
   return (
     <>
       <FloatingParticles />
-      <div className="app-content">
-        <header className="app-header">
+      
+      <div className="home-page">
+        <header className="home-header">
           <div className="header-content">
-            <h1 className="main-title">Happy Birthday</h1>
+            <h1 className="home-title">Happy Birthday</h1>
             <div className="title-decoration"></div>
-            <p className="subtitle-text">Twenty-four years of grace, beauty, and light</p>
+            <p className="home-subtitle">Twenty-four years of grace, beauty, and light</p>
           </div>
         </header>
-        {messages.length > 0 && <Gallery messages={messages} />}
-        <footer className="app-footer">
+
+        <div className="menu-grid">
+          {menuItems.map((item, index) => (
+            <div
+              key={item.id}
+              className="menu-card"
+              onClick={() => navigate(item.path)}
+              style={{
+                animationDelay: `${index * 0.15}s`,
+                borderColor: `${item.color}40`
+              }}
+            >
+              <div className="menu-card-content">
+                <span className="menu-icon">{item.icon}</span>
+                <h2 className="menu-title">{item.title}</h2>
+                <p className="menu-subtitle">{item.subtitle}</p>
+                <div className="menu-arrow">→</div>
+              </div>
+              <div 
+                className="menu-card-glow" 
+                style={{ background: `radial-gradient(circle at center, ${item.color}20, transparent)` }}
+              ></div>
+            </div>
+          ))}
+        </div>
+
+        <footer className="home-footer">
           <p className="footer-text">With all my love, today and always</p>
         </footer>
       </div>
-      <HeartButton onClick={triggerSparkles} />
-      <Sparkles active={showSparkles} />
     </>
   );
 };
