@@ -1,0 +1,69 @@
+.sparkles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #d4a5d8 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkleEffect ease-out forwards;
+}
+
+.sparkle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4a5d8, transparent);
+}
+
+.sparkle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d4a5d8, transparent);
+}
+
+@keyframes sparkleEffect {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(360deg);
+  }
+}
+
+.sparkle:nth-child(3n) {
+  width: 12px;
+  height: 12px;
+  animation-duration: 2.5s;
+}
+
+.sparkle:nth-child(5n) {
+  width: 6px;
+  height: 6px;
+  animation-duration: 3.5s;
+}

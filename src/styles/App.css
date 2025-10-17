@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,14 +7,21 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
-  background: #0f0c29;
+  background: #0a0a0a;
+  color: #e8e8e8;
 }
 
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: linear-gradient(to bottom, 
+    #0a0a0a 0%, 
+    #1a1025 25%,
+    #2a1835 50%,
+    #1a1025 75%,
+    #0a0a0a 100%
+  );
   position: relative;
   overflow-x: hidden;
 }
@@ -20,47 +29,71 @@ body {
 .app-content {
   position: relative;
   z-index: 1;
-  padding: 2rem 1rem;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 4rem 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .app-header {
   text-align: center;
-  margin-bottom: 3rem;
-  animation: fadeInDown 1s ease-out;
+  margin-bottom: 5rem;
+  animation: fadeInDown 1.5s ease-out;
 }
 
-.header-decoration {
-  font-size: 3rem;
-  animation: bounce 2s infinite;
+.header-content {
   display: inline-block;
-  margin: 0 1rem;
 }
 
-.app-title {
-  font-size: 4rem;
-  font-weight: bold;
-  background: linear-gradient(135deg, #9b59b6, #e74c3c, #f39c12);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 1rem 0;
-  text-shadow: 0 0 30px rgba(155, 89, 182, 0.5);
+.main-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  font-weight: 300;
+  color: #d4a5d8;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 40px rgba(212, 165, 216, 0.4);
 }
 
-.app-tagline {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.3rem;
+.title-decoration {
+  width: 300px;
+  height: 1px;
+  background: linear-gradient(to right, 
+    transparent, 
+    #d4a5d8, 
+    transparent
+  );
+  margin: 1.5rem auto;
+}
+
+.subtitle-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(212, 165, 216, 0.7);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.app-footer {
+  text-align: center;
+  margin-top: 5rem;
+  padding: 3rem 0;
+  animation: fadeIn 2s ease-out 1s both;
+}
+
+.footer-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: rgba(212, 165, 216, 0.6);
   font-style: italic;
+  letter-spacing: 0.05em;
 }
 
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(-40px);
   }
   to {
     opacity: 1;
@@ -68,25 +101,43 @@ body {
   }
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  50% {
-    transform: translateY(-20px);
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main-title {
+    font-size: 3.5rem;
+  }
+  
+  .subtitle-text {
+    font-size: 0.9rem;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .app-title {
+  .app-content {
+    padding: 2rem 1rem;
+  }
+  
+  .main-title {
     font-size: 2.5rem;
   }
   
-  .app-tagline {
-    font-size: 1rem;
+  .title-decoration {
+    width: 200px;
   }
   
-  .header-decoration {
-    font-size: 2rem;
+  .subtitle-text {
+    font-size: 0.75rem;
+  }
+  
+  .footer-text {
+    font-size: 1.1rem;
   }
 }

@@ -1,42 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import Gallery from './components/Gallery';
-import StarryBackground from './components/StarryBackground';
-import PawButton from './components/PawButton';
-import Confetti from './components/Confetti';
+import FloatingParticles from './components/FloatingParticles';
+import HeartButton from './components/HeartButton';
+import Sparkles from './components/Sparkles';
 import messagesData from './data/messages.json';
 import 'bulma/css/bulma.min.css';
 import './styles/App.css';
 
 function App() {
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [showSparkles, setShowSparkles] = useState(false);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     setMessages(messagesData);
   }, []);
 
-  const triggerConfetti = () => {
-    setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 4000);
+  const triggerSparkles = () => {
+    setShowSparkles(true);
+    setTimeout(() => setShowSparkles(false), 3000);
   };
 
   return (
     <div className="app">
-      <StarryBackground />
+      <FloatingParticles />
       
       <div className="app-content">
         <header className="app-header">
-          <div className="header-decoration">🎂</div>
-          <h1 className="app-title">Happy Birthday!</h1>
-          <p className="app-tagline">Your friends have something special to say...</p>
-          <div className="header-decoration">🎉</div>
+          <div className="header-content">
+            <h1 className="main-title">Happy Birthday</h1>
+            <div className="title-decoration"></div>
+            <p className="subtitle-text">Twenty-four years of grace, beauty, and light</p>
+          </div>
         </header>
 
         {messages.length > 0 && <Gallery messages={messages} />}
+
+        <footer className="app-footer">
+          <p className="footer-text">With all my love, today and always</p>
+        </footer>
       </div>
 
-      <PawButton onClick={triggerConfetti} />
-      <Confetti active={showConfetti} />
+      <HeartButton onClick={triggerSparkles} />
+      <Sparkles active={showSparkles} />
     </div>
   );
 }
