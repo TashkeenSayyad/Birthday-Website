@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(135deg, #ffeef8 0%, #fff5e6 50%, #f0f9ff 100%);
 }
 
 .home-header {
@@ -16,25 +17,28 @@
 .home-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 4rem;
-  font-weight: 300;
-  color: #d4a5d8;
-  letter-spacing: 0.1em;
+  font-weight: 400;
+  background: linear-gradient(135deg, #ff6b9d 0%, #c98bdb 50%, #ffd93d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.08em;
   margin-bottom: 1rem;
-  text-shadow: 0 0 40px rgba(212, 165, 216, 0.4);
 }
 
 .title-decoration {
   width: 250px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, #d4a5d8, transparent);
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ff6b9d, #ffd93d, transparent);
   margin: 1.5rem auto;
+  border-radius: 2px;
 }
 
 .home-subtitle {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
-  font-weight: 300;
-  color: rgba(212, 165, 216, 0.7);
+  font-weight: 400;
+  color: #8b6b8f;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -51,25 +55,26 @@
 
 .menu-card {
   position: relative;
-  background: rgba(26, 16, 37, 0.6);
-  border: 1px solid rgba(212, 165, 216, 0.2);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
   padding: 2.5rem 1.5rem;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
   overflow: hidden;
   min-height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: fadeInUp 0.8s ease-out both;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
 .menu-card:hover {
   transform: translateY(-10px) scale(1.02);
-  border-color: rgba(212, 165, 216, 0.5);
-  box-shadow: 0 20px 60px rgba(212, 165, 216, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .menu-card:active {
@@ -91,7 +96,7 @@
   display: block;
   margin-bottom: 0.5rem;
   animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
 }
 
 .menu-card:nth-child(2) .menu-icon {
@@ -109,46 +114,46 @@
 .menu-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
-  font-weight: 400;
-  color: #d4a5d8;
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  color: #2d2d2d;
+  letter-spacing: 0.03em;
   margin: 0;
 }
 
 .menu-subtitle {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
-  color: rgba(232, 232, 232, 0.6);
+  color: #666;
   letter-spacing: 0.05em;
   margin: 0;
 }
 
 .menu-arrow {
   font-size: 1.5rem;
-  color: rgba(212, 165, 216, 0.5);
+  color: #999;
   margin-top: 0.5rem;
   transition: all 0.3s ease;
 }
 
 .menu-card:hover .menu-arrow {
   transform: translateX(8px);
-  color: #d4a5d8;
 }
 
 .menu-card-glow {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
+  filter: blur(40px);
 }
 
 .menu-card:hover .menu-card-glow {
-  opacity: 1;
+  opacity: 0.6;
 }
 
 .home-footer {
@@ -161,7 +166,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.3rem;
   font-weight: 300;
-  color: rgba(212, 165, 216, 0.5);
+  color: #8b6b8f;
   font-style: italic;
   letter-spacing: 0.05em;
 }
@@ -206,7 +211,6 @@
   }
 }
 
-/* Mobile responsive */
 @media screen and (max-width: 768px) {
   .home-title {
     font-size: 2.8rem;
