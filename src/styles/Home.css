@@ -8,6 +8,12 @@
   background: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
 }
 
+.home-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeInDown 1.2s ease-out;
+}
+
 .home-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 4rem;
@@ -37,6 +43,127 @@
   text-transform: uppercase;
 }
 
+.menu-grid {
+  max-width: 900px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+.menu-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid rgba(155, 89, 182, 0.2);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease-out both;
+  box-shadow: 0 8px 32px rgba(155, 89, 182, 0.1);
+}
+
+.menu-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(155, 89, 182, 0.25);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(155, 89, 182, 0.4);
+}
+
+.menu-card:active {
+  transform: translateY(-5px) scale(1.01);
+}
+
+.menu-card-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.menu-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 12px rgba(155, 89, 182, 0.2));
+}
+
+.menu-card:nth-child(2) .menu-icon {
+  animation-delay: 0.5s;
+}
+
+.menu-card:nth-child(3) .menu-icon {
+  animation-delay: 1s;
+}
+
+.menu-card:nth-child(4) .menu-icon {
+  animation-delay: 1.5s;
+}
+
+.menu-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #2d2d2d;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.menu-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.menu-arrow {
+  font-size: 1.5rem;
+  color: #9b59b6;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.menu-card:hover .menu-arrow {
+  transform: translateX(8px);
+  color: #e91e8c;
+}
+
+.menu-card-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+.menu-card:hover .menu-card-glow {
+  opacity: 0.6;
+}
+
+.home-footer {
+  text-align: center;
+  margin-top: 2rem;
+  animation: fadeIn 2s ease-out 1.5s both;
+}
+
 .footer-text {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.3rem;
@@ -44,4 +171,103 @@
   color: #9b59b6;
   font-style: italic;
   letter-spacing: 0.05em;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-title {
+    font-size: 2.8rem;
+  }
+
+  .home-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .menu-grid {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .menu-card {
+    padding: 2rem 1rem;
+    min-height: 200px;
+  }
+
+  .menu-icon {
+    font-size: 3rem;
+  }
+
+  .menu-title {
+    font-size: 1.5rem;
+  }
+
+  .menu-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .footer-text {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-title {
+    font-size: 2.2rem;
+  }
+
+  .title-decoration {
+    width: 180px;
+  }
+
+  .menu-card {
+    min-height: 180px;
+  }
+
+  .menu-icon {
+    font-size: 2.5rem;
+  }
+
+  .menu-title {
+    font-size: 1.3rem;
+  }
 }

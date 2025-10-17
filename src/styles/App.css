@@ -9,8 +9,8 @@
 body {
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
-  background: #0a0a0a;
-  color: #e8e8e8;
+  background: #f5e6f0;
+  color: #2d2d2d;
 }
 
 .app {
@@ -23,12 +23,11 @@ body {
 .app-content {
   position: relative;
   z-index: 1;
-  padding: 2rem 1rem;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 4rem 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
   background: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
+  min-height: 100vh;
 }
 
 .app-header {
@@ -55,20 +54,16 @@ body {
 
 .title-decoration {
   width: 300px;
-  height: 1px;
-  background: linear-gradient(to right, 
-    transparent, 
-    #d4a5d8, 
-    transparent
-  );
+  height: 2px;
+  background: linear-gradient(to right, transparent, #9b59b6, #e91e8c, transparent);
   margin: 1.5rem auto;
 }
 
 .subtitle-text {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
-  font-weight: 300;
-  color: rgba(212, 165, 216, 0.7);
+  font-weight: 400;
+  color: #7d5a8f;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -81,7 +76,12 @@ body {
 }
 
 .footer-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
   color: #9b59b6;
+  font-style: italic;
+  letter-spacing: 0.05em;
 }
 
 @keyframes fadeInDown {
@@ -106,24 +106,11 @@ body {
 
 @media screen and (max-width: 1024px) {
   .main-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem;
-    font-weight: 400;
-    background: linear-gradient(135deg, #e91e8c, #9b59b6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
   }
-
+  
   .subtitle-text {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: #7d5a8f;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    font-size: 0.9rem;
   }
 }
 
@@ -145,6 +132,6 @@ body {
   }
   
   .footer-text {
-    color: #9b59b6;
+    font-size: 1.1rem;
   }
 }
