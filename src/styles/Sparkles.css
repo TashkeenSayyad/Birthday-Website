@@ -13,7 +13,7 @@
   position: absolute;
   width: 8px;
   height: 8px;
-  background: radial-gradient(circle, #d4a5d8 0%, transparent 70%);
+  background: radial-gradient(circle, #9b59b6 0%, transparent 70%);
   border-radius: 50%;
   opacity: 0;
   animation: sparkleEffect ease-out forwards;
@@ -27,7 +27,7 @@
   transform: translate(-50%, -50%);
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #d4a5d8, transparent);
+  background: linear-gradient(90deg, transparent, #9b59b6, transparent);
 }
 
 .sparkle::after {
@@ -38,7 +38,7 @@
   transform: translate(-50%, -50%) rotate(90deg);
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #d4a5d8, transparent);
+  background: linear-gradient(90deg, transparent, #9b59b6, transparent);
 }
 
 @keyframes sparkleEffect {
@@ -60,6 +60,12 @@
   width: 12px;
   height: 12px;
   animation-duration: 2.5s;
+  background: radial-gradient(circle, #e91e8c 0%, transparent 70%);
+}
+
+.sparkle:nth-child(3n)::before,
+.sparkle:nth-child(3n)::after {
+  background: linear-gradient(90deg, transparent, #e91e8c, transparent);
 }
 
 .sparkle:nth-child(5n) {

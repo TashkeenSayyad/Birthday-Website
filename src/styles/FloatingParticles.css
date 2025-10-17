@@ -13,7 +13,7 @@
   position: absolute;
   width: 3px;
   height: 3px;
-  background: radial-gradient(circle, #d4a5d8 0%, transparent 70%);
+  background: radial-gradient(circle, #9b59b6 0%, transparent 70%);
   border-radius: 50%;
   opacity: 0;
   animation: floatAndFade infinite ease-in-out;
@@ -48,5 +48,5 @@
 .particle:nth-child(5n) {
   width: 4px;
   height: 4px;
-  background: radial-gradient(circle, rgba(212, 165, 216, 0.8) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(233, 30, 140, 0.8) 0%, transparent 60%);
 }

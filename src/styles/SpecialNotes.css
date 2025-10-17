@@ -1,36 +1,42 @@
 .personal-note-page {
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(to bottom, #0a0a0a 0%, #1a1025 50%, #0a0a0a 100%);
+  background: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
 }
 
 .back-button {
   position: fixed;
   top: 2rem;
   left: 2rem;
-  background: rgba(212, 165, 216, 0.1);
-  border: 1px solid rgba(212, 165, 216, 0.3);
-  color: #d4a5d8;
+  background: rgba(155, 89, 182, 0.15);
+  border: 2px solid rgba(155, 89, 182, 0.3);
+  color: #9b59b6;
   padding: 0.8rem 1.5rem;
   border-radius: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   z-index: 100;
+  font-weight: 500;
 }
 
 .back-button:hover {
-  background: rgba(212, 165, 216, 0.2);
+  background: rgba(155, 89, 182, 0.25);
+  border-color: #9b59b6;
   transform: translateX(-5px);
 }
 
 .note-container {
   max-width: 900px;
   margin: 4rem auto;
-  background: rgba(26, 16, 37, 0.6);
-  border: 1px solid rgba(212, 165, 216, 0.2);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(155, 89, 182, 0.2);
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 20px 60px rgba(155, 89, 182, 0.2);
+  animation: fadeInUp 1s ease-out;
 }
 
 .note-header img {
@@ -41,15 +47,22 @@
 
 .note-from {
   font-size: 0.9rem;
-  color: rgba(212, 165, 216, 0.7);
+  color: #9b59b6;
   padding: 2rem 2.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
 }
 
 .note-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.5rem;
-  color: #d4a5d8;
+  background: linear-gradient(135deg, #9b59b6, #e91e8c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   padding: 0 2.5rem 2rem;
+  font-weight: 500;
 }
 
 .note-content {
@@ -57,10 +70,11 @@
 }
 
 .note-content p {
-  color: rgba(232, 232, 232, 0.85);
+  color: #2d2d2d;
   line-height: 1.9;
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
+  font-weight: 300;
 }
 
 .note-gallery {
@@ -68,17 +82,28 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
   padding: 2rem;
-  border-top: 1px solid rgba(212, 165, 216, 0.2);
+  border-top: 1px solid rgba(155, 89, 182, 0.2);
 }
 
 .note-gallery img {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+.note-gallery img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
   .note-container {
     margin: 2rem auto;
   }
@@ -103,5 +128,7 @@
   .back-button {
     top: 1rem;
     left: 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
   }
 }

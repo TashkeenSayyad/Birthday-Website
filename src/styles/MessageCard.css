@@ -20,19 +20,19 @@
 .message-card {
   width: 100%;
   height: 100%;
-  background: rgba(26, 16, 37, 0.6);
-  border: 1px solid rgba(212, 165, 216, 0.2);
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(155, 89, 182, 0.2);
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   backdrop-filter: blur(20px);
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 80px rgba(155, 89, 182, 0.2);
   transition: all 0.4s ease;
 }
 
 .message-card:hover {
-  border-color: rgba(212, 165, 216, 0.4);
-  box-shadow: 0 30px 100px rgba(212, 165, 216, 0.2);
+  border-color: rgba(155, 89, 182, 0.4);
+  box-shadow: 0 30px 100px rgba(155, 89, 182, 0.3);
 }
 
 .card-image-side {
@@ -58,7 +58,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 10, 0.2);
+  background: rgba(10, 10, 10, 0.1);
   z-index: 1;
 }
 
@@ -68,7 +68,7 @@
   left: 0;
   right: 0;
   height: 50%;
-  background: linear-gradient(to top, rgba(26, 16, 37, 0.9), transparent);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.5), transparent);
   z-index: 2;
 }
 
@@ -78,10 +78,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(135deg, 
-    rgba(26, 16, 37, 0.8), 
-    rgba(42, 24, 53, 0.8)
-  );
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .content-wrapper {
@@ -99,8 +96,11 @@
 .sender-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.8rem;
-  font-weight: 400;
-  color: #d4a5d8;
+  font-weight: 500;
+  background: linear-gradient(135deg, #9b59b6, #e91e8c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 0.5rem;
   letter-spacing: 0.05em;
 }
@@ -108,15 +108,16 @@
 .relationship {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.85rem;
-  color: rgba(212, 165, 216, 0.5);
+  color: rgba(155, 89, 182, 0.7);
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .divider {
   width: 60px;
-  height: 1px;
-  background: linear-gradient(to right, #d4a5d8, transparent);
+  height: 2px;
+  background: linear-gradient(to right, #9b59b6, transparent);
 }
 
 .message-content {
@@ -129,14 +130,48 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   line-height: 1.9;
-  color: rgba(232, 232, 232, 0.85);
+  color: #2d2d2d;
   font-weight: 300;
   letter-spacing: 0.02em;
 }
 
 .message-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.special-note-button {
+  background: rgba(155, 89, 182, 0.15);
+  border: 2px solid rgba(155, 89, 182, 0.3);
+  color: #9b59b6;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.special-note-button:hover {
+  background: rgba(155, 89, 182, 0.25);
+  border-color: #9b59b6;
+  transform: translateX(5px);
+}
+
+.button-arrow {
+  transition: transform 0.3s ease;
+}
+
+.special-note-button:hover .button-arrow {
+  transform: translateX(5px);
 }
 
 .decorative-element {
@@ -146,7 +181,7 @@
 
 .heart-symbol {
   font-size: 1.5rem;
-  color: #d4a5d8;
+  color: #9b59b6;
   opacity: 0.6;
   animation: gentlePulse 3s ease-in-out infinite;
 }
@@ -182,6 +217,11 @@
   .message-text {
     font-size: 1rem;
   }
+  
+  .message-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -204,74 +244,6 @@
   
   .content-wrapper {
     gap: 1.5rem;
-  }
-}
-
-.special-note-button {
-  background: rgba(212, 165, 216, 0.1);
-  border: 1px solid rgba(212, 165, 216, 0.3);
-  color: #d4a5d8;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.special-note-button:hover {
-  background: rgba(212, 165, 216, 0.2);
-  transform: translateX(5px);
-}
-
-.message-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.special-note-button {
-  background: rgba(212, 165, 216, 0.1);
-  border: 1px solid rgba(212, 165, 216, 0.3);
-  color: #d4a5d8;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.special-note-button:hover {
-  background: rgba(212, 165, 216, 0.2);
-  border-color: rgba(212, 165, 216, 0.5);
-  transform: translateX(5px);
-}
-
-.button-arrow {
-  transition: transform 0.3s ease;
-}
-
-.special-note-button:hover .button-arrow {
-  transform: translateX(5px);
-}
-
-.message-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-@media screen and (max-width: 768px) {
-  .message-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
   }
   
   .special-note-button {
