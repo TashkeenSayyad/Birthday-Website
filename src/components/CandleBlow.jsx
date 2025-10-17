@@ -11,8 +11,8 @@ const CandleBlow = ({ onComplete }) => {
   const lastBlowTimeRef = useRef(0);
 
   const totalCandles = 24;
-  const BLOW_COOLDOWN = 200; // Milliseconds between blows (slower)
-  const BLOW_THRESHOLD = 50; // Higher threshold = harder to blow
+  const BLOW_COOLDOWN = 200;
+  const BLOW_THRESHOLD = 50;
 
   useEffect(() => {
     const hasBlown = sessionStorage.getItem('candlesBlown');
@@ -20,12 +20,8 @@ const CandleBlow = ({ onComplete }) => {
       onComplete();
       return;
     }
-
     startMicrophone();
-
-    return () => {
-      stopMicrophone();
-    };
+    return () => stopMicrophone();
   }, [onComplete]);
 
   const startMicrophone = async () => {
@@ -71,23 +67,16 @@ const CandleBlow = ({ onComplete }) => {
       if (!analyserRef.current) return;
 
       analyserRef.current.getByteFrequencyData(dataArray);
-
-      // Focus on lower frequencies (where breath/wind noise is)
       const lowFreqData = dataArray.slice(0, 50);
-      const average = lowFreqData.reduce((sum, value) => sum + value, 0) / lowFreqData.length;
-
+      const average = lowFreqData.reduce((sum, v) => sum + v, 0) / lowFreqData.length;
       const now = Date.now();
-      const timeSinceLastBlow = now - lastBlowTimeRef.current;
 
-      if (average > BLOW_THRESHOLD && timeSinceLastBlow > BLOW_COOLDOWN) {
-        console.log('Blow detected! Volume:', average);
+      if (average > BLOW_THRESHOLD && now - lastBlowTimeRef.current > BLOW_COOLDOWN) {
         lastBlowTimeRef.current = now;
         blowCandle();
       }
 
-      if (blownCandles.length < totalCandles) {
-        requestAnimationFrame(checkAudio);
-      }
+      if (blownCandles.length < totalCandles) requestAnimationFrame(checkAudio);
     };
 
     checkAudio();
@@ -96,9 +85,8 @@ const CandleBlow = ({ onComplete }) => {
   const blowCandle = () => {
     setBlownCandles(prev => {
       if (prev.length >= totalCandles) return prev;
-      
       const newBlown = [...prev, prev.length];
-      
+
       if (newBlown.length === totalCandles) {
         setTimeout(() => {
           sessionStorage.setItem('candlesBlown', 'true');
@@ -106,7 +94,6 @@ const CandleBlow = ({ onComplete }) => {
           onComplete();
         }, 2000);
       }
-      
       return newBlown;
     });
   };
@@ -129,25 +116,16 @@ const CandleBlow = ({ onComplete }) => {
 
   const getCandlePositions = () => {
     const positions = [];
-    
-    for (let i = 0; i < 12; i++) {
-      positions.push({
-        index: i,
-        left: 15 + (i * 6),
-        top: -70,
-        layer: 'top'
-      });
+    const count = 24;
+    const radius = 28; // tighter around the cake edge
+    const offsetY = -5; // move slightly up to rest on the icing
+
+    for (let i = 0; i < count; i++) {
+      const angle = (i / count) * 2 * Math.PI - Math.PI / 2;
+      const x = 50 + radius * Math.cos(angle);
+      const y = 50 + radius * Math.sin(angle) * 0.75 + offsetY;
+      positions.push({ index: i, left: `${x}%`, top: `${y}%` });
     }
-    
-    for (let i = 0; i < 12; i++) {
-      positions.push({
-        index: i + 12,
-        left: 10 + (i * 6.5),
-        top: 130,
-        layer: 'bottom'
-      });
-    }
-    
     return positions;
   };
 
@@ -155,7 +133,6 @@ const CandleBlow = ({ onComplete }) => {
 
   return (
     <div className="candle-blow-screen" onClick={handleManualBlow}>
-      {/* Back button - shows after all candles are blown */}
       {blownCandles.length >= totalCandles && (
         <button className="candle-back-button" onClick={handleBlowAgain}>
           ← Blow Again
@@ -164,30 +141,28 @@ const CandleBlow = ({ onComplete }) => {
       <div className="candle-content">
         <h1 className="candle-title">Make a Wish</h1>
         <p className="candle-instruction">
-          {micError ? 'Click to blow out the candles (microphone not available)' :
-           blownCandles.length === 0 ? 'Blow into your microphone to blow out the candles 🎤' : 
-           blownCandles.length < totalCandles ? `Keep blowing! ${totalCandles - blownCandles.length} left 💨` : 
-           'Happy Birthday! 🎉'}
+          {micError
+            ? 'Click to blow out the candles (microphone not available)'
+            : blownCandles.length === 0
+            ? 'Blow into your microphone to blow out the candles 🎤'
+            : blownCandles.length < totalCandles
+            ? `Keep blowing! ${totalCandles - blownCandles.length} left 💨`
+            : 'Happy Birthday! 🎉'}
         </p>
 
         <div className="cake-container">
           <div className="cake-image-wrapper">
-            {/*Image of Cake*/}
-            <img 
-              src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=600&h=500&fit=crop&q=80"
-              alt="Birthday Cake" 
-              className="cake-image"
-            />
-            
+            <img src="src/assets/cake.png" alt="Birthday Cake" className="cake-image" />
             <div className="candles-overlay">
               {candlePositions.map((pos) => (
                 <div
                   key={pos.index}
                   className={`candle ${blownCandles.includes(pos.index) ? 'blown' : ''}`}
                   style={{
-                    left: `${pos.left}%`,
-                    top: `${pos.top}px`,
-                    animationDelay: `${pos.index * 0.05}s`
+                    left: pos.left,
+                    top: pos.top,
+                    transform: 'translate(-50%, -100%)',
+                    animationDelay: `${pos.index * 0.05}s`,
                   }}
                 >
                   <div className="flame">
@@ -209,25 +184,6 @@ const CandleBlow = ({ onComplete }) => {
           <div className="mic-indicator">
             <div className="mic-wave"></div>
             <span>🎤 Listening... (Blow steadily)</span>
-          </div>
-        )}
-
-        {blownCandles.length > 0 && blownCandles.length < totalCandles && (
-          <div className="smoke-effects">
-            {blownCandles.slice(-2).map((candleIdx, i) => {
-              const pos = candlePositions[candleIdx];
-              return (
-                <div 
-                  key={`smoke-${candleIdx}`} 
-                  className="smoke" 
-                  style={{ 
-                    left: `${35 + (pos.left / 2)}%`,
-                    top: `${40 + (pos.top / 10)}%`,
-                    animationDelay: `${i * 0.3}s`
-                  }} 
-                />
-              );
-            })}
           </div>
         )}
       </div>
