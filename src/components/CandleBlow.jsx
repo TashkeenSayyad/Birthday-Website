@@ -79,7 +79,6 @@ const CandleBlow = ({ onComplete }) => {
       const now = Date.now();
       const timeSinceLastBlow = now - lastBlowTimeRef.current;
 
-      // Detect blow with cooldown
       if (average > BLOW_THRESHOLD && timeSinceLastBlow > BLOW_COOLDOWN) {
         console.log('Blow detected! Volume:', average);
         lastBlowTimeRef.current = now;
@@ -122,25 +121,28 @@ const CandleBlow = ({ onComplete }) => {
     }
   };
 
-  // Calculate candle positions for proper distribution
+  const handleBlowAgain = (e) => {
+    e.stopPropagation();
+    sessionStorage.removeItem('candlesBlown');
+    window.location.reload();
+  };
+
   const getCandlePositions = () => {
     const positions = [];
     
-    // Top row - 12 candles spread across cake top
     for (let i = 0; i < 12; i++) {
       positions.push({
         index: i,
-        left: 15 + (i * 6), // Spread across top layer
+        left: 15 + (i * 6),
         top: -70,
         layer: 'top'
       });
     }
     
-    // Bottom row - 12 candles spread across cake bottom
     for (let i = 0; i < 12; i++) {
       positions.push({
         index: i + 12,
-        left: 10 + (i * 6.5), // Spread across bottom layer
+        left: 10 + (i * 6.5),
         top: 130,
         layer: 'bottom'
       });
@@ -153,6 +155,12 @@ const CandleBlow = ({ onComplete }) => {
 
   return (
     <div className="candle-blow-screen" onClick={handleManualBlow}>
+      {/* Back button - shows after all candles are blown */}
+      {blownCandles.length >= totalCandles && (
+        <button className="candle-back-button" onClick={handleBlowAgain}>
+          ← Blow Again
+        </button>
+      )}
       <div className="candle-content">
         <h1 className="candle-title">Make a Wish</h1>
         <p className="candle-instruction">
@@ -163,16 +171,14 @@ const CandleBlow = ({ onComplete }) => {
         </p>
 
         <div className="cake-container">
-          {/* Use PNG/SVG cake image instead */}
           <div className="cake-image-wrapper">
-            {/* You can replace this with an actual image */}
+            {/*Image of Cake*/}
             <img 
-              src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=500&h=400&fit=crop" 
+              src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=600&h=500&fit=crop&q=80"
               alt="Birthday Cake" 
               className="cake-image"
             />
             
-            {/* Candles overlay on top of image */}
             <div className="candles-overlay">
               {candlePositions.map((pos) => (
                 <div
