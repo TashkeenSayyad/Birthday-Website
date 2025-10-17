@@ -1,0 +1,158 @@
+.things-page {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, #0a0a0a 0%, #1a1025 50%, #0a0a0a 100%);
+}
+
+.page-header { text-align: center; margin-bottom: 4rem; }
+
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  color: #d4a5d8;
+  margin-bottom: 1rem;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: rgba(212, 165, 216, 0.6);
+}
+
+.things-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.thing-card {
+  background: rgba(26, 16, 37, 0.6);
+  border: 1px solid rgba(212, 165, 216, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.thing-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 165, 216, 0.4);
+  box-shadow: 0 20px 60px rgba(212, 165, 216, 0.2);
+}
+
+.thing-image {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.thing-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.thing-card:hover img { transform: scale(1.1); }
+
+.from-label {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(212, 165, 216, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #d4a5d8;
+  backdrop-filter: blur(10px);
+}
+
+.thing-content { padding: 1.5rem; }
+
+.thing-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: #d4a5d8;
+  margin-bottom: 0.8rem;
+}
+
+.thing-content p {
+  color: rgba(232, 232, 232, 0.7);
+  line-height: 1.6;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  background: rgba(26, 16, 37, 0.95);
+  border: 1px solid rgba(212, 165, 216, 0.3);
+  border-radius: 16px;
+  max-width: 800px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(212, 165, 216, 0.1);
+  border: 1px solid rgba(212, 165, 216, 0.3);
+  border-radius: 50%;
+  color: #d4a5d8;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.modal-content img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.modal-content > p, .modal-content > h2 {
+  padding: 0 2.5rem;
+}
+
+.modal-from {
+  font-size: 0.9rem;
+  color: rgba(212, 165, 216, 0.7);
+  margin-top: 2rem;
+}
+
+.modal-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  color: #d4a5d8;
+  margin: 1rem 0;
+}
+
+.modal-content > p:last-child {
+  color: rgba(232, 232, 232, 0.85);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -3,6 +3,8 @@
     "id": 1,
     "name": "Tashkeen",
     "message": "Happy Birthday! 🎉  I'm so grateful to have you in my life.",
-    "image": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&h=800&fit=crop"
+    "image": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&h=800&fit=crop",
+    "hasSpecialNote": true,
+    "specialNotePath": "/note/Tashkeen"
   }
 ]
