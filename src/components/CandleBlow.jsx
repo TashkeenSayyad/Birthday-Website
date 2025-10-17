@@ -12,7 +12,7 @@ const CandleBlow = ({ onComplete }) => {
 
   const totalCandles = 24;
   const BLOW_COOLDOWN = 200; // Milliseconds between blows (slower)
-  const BLOW_THRESHOLD = 30; // Higher threshold = harder to blow
+  const BLOW_THRESHOLD = 50; // Higher threshold = harder to blow
 
   useEffect(() => {
     const hasBlown = sessionStorage.getItem('candlesBlown');
