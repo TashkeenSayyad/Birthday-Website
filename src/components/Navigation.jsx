@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/Navigation.css';
 
-const Navigation = () => {
+const Navigation = ({ onBackToCandles }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -12,11 +12,18 @@ const Navigation = () => {
     { path: '/things-we-love', label: 'Things We Love', icon: '💜' },
     { path: '/memories', label: 'Favorite Memories', icon: '📸' },
   ];
+
+  const handleBackToCandles = () => {
+    setIsOpen(false);
+    onBackToCandles();
+  };
+
   return (
     <>
       <button 
         className={`nav-toggle ${isOpen ? 'open' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Toggle navigation"
       >
         <span></span>
         <span></span>
@@ -39,6 +46,20 @@ const Navigation = () => {
                 </Link>
               </li>
             ))}
+            
+            {/* Divider */}
+            <li className="nav-divider"></li>
+            
+            {/* Back to Candles Button */}
+            <li>
+              <button
+                className="nav-link nav-link-special"
+                onClick={handleBackToCandles}
+              >
+                <span className="nav-icon">🎂</span>
+                <span className="nav-label">Blow Candles Again</span>
+              </button>
+            </li>
           </ul>
         </div>
       </nav>

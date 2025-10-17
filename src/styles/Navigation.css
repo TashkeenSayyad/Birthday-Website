@@ -97,6 +97,11 @@
   transition: all 0.3s ease;
   border: 2px solid transparent;
   font-weight: 400;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .nav-link:hover,
@@ -104,6 +109,25 @@
   background: rgba(155, 89, 182, 0.1);
   color: #9b59b6;
   border-color: rgba(155, 89, 182, 0.3);
+}
+
+.nav-link-special {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
+  border-color: rgba(255, 215, 0, 0.3);
+  color: #d4a000;
+}
+
+.nav-link-special:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+  border-color: rgba(255, 215, 0, 0.5);
+  color: #ffa500;
+  transform: translateX(5px);
+}
+
+.nav-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(155, 89, 182, 0.3), transparent);
+  margin: 1rem 0;
 }
 
 .nav-icon {
@@ -146,5 +170,14 @@
   .nav-toggle {
     top: 1.5rem;
     left: 1.5rem;
+  }
+
+  .nav-link {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .nav-icon {
+    font-size: 1.3rem;
   }
 }
