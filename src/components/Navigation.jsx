@@ -7,11 +7,11 @@ const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: '/', label: 'Birthday Messages', icon: '💌' },
+    { path: '/', label: 'Home', icon: '🏠' },
+    { path: '/messages', label: 'Birthday Messages', icon: '💌' },
     { path: '/things-we-love', label: 'Things We Love', icon: '💜' },
     { path: '/memories', label: 'Favorite Memories', icon: '📸' },
   ];
-
   return (
     <>
       <button 
