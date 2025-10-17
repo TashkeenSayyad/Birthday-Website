@@ -2,11 +2,11 @@
   {
     "id": 1,
     "name": "Laraib",
-    "message": "Happy 24th birthday, my dearest friend...",
+    "message": "Happy 24th birthday, my dearest friend. Watching you grow into the incredible woman you are today has been one of life's greatest privileges. Your strength, grace, and unwavering kindness inspire everyone around you.",
     "image": "https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=1200&h=1200&fit=crop",
     "relationship": "Best Friend",
     "hasSpecialNote": true,
-    "specialNotePath": "/note/tashkeen"
+    "specialNotePath": "/note/laraib"
   },
   {
     "id": 2,

@@ -256,3 +256,18 @@
     font-size: 1.5rem;
   }
 }
+
+.modal-description {
+  color: #2d2d2d;
+  line-height: 1.8;
+  margin: 0 2.5rem 2.5rem;
+  font-size: 1.15rem;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 768px) {
+  .modal-description {
+    margin: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+  }
+}

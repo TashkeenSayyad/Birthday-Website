@@ -10,6 +10,14 @@ const ThingsWeLove = () => {
     setItems(thingsWeLoveData);
   }, []);
 
+  const handleCardClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedItem(null);
+  };
+
   return (
     <div className="things-page">
       <div className="page-header">
@@ -19,27 +27,32 @@ const ThingsWeLove = () => {
 
       <div className="things-grid">
         {items.map((item, index) => (
-          <div key={item.id} className="thing-card" style={{ animationDelay: `${index * 0.1}s` }} onClick={() => setSelectedItem(item)}>
+          <div
+            key={item.id}
+            className="thing-card"
+            style={{ animationDelay: `${index * 0.1}s` }}
+            onClick={() => handleCardClick(item)}
+          >
             <div className="thing-image">
               <img src={item.image} alt={item.title} />
               <span className="from-label">From: {item.from}</span>
             </div>
             <div className="thing-content">
               <h3>{item.title}</h3>
-              <p>{item.description.substring(0, 80)}...</p>
+              <p>{item.description.substring(0, 100)}...</p>
             </div>
           </div>
         ))}
       </div>
 
       {selectedItem && (
-        <div className="modal" onClick={() => setSelectedItem(null)}>
+        <div className="modal" onClick={handleCloseModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setSelectedItem(null)}>×</button>
+            <button className="modal-close" onClick={handleCloseModal}>×</button>
             <img src={selectedItem.image} alt={selectedItem.title} />
             <p className="modal-from">From: {selectedItem.from}</p>
             <h2>{selectedItem.title}</h2>
-            <p>{selectedItem.description}</p>
+            <p className="modal-description">{selectedItem.description}</p>
           </div>
         </div>
       )}

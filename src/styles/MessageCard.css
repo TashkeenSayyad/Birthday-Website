@@ -124,6 +124,9 @@
   flex: 1;
   display: flex;
   align-items: center;
+  overflow-y: auto;
+  max-height: 400px;
+  padding-right: 1rem;
 }
 
 .message-text {
@@ -133,6 +136,8 @@
   color: #2d2d2d;
   font-weight: 300;
   letter-spacing: 0.02em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .message-footer {
