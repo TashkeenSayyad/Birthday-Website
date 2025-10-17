@@ -12,7 +12,7 @@ const CandleBlow = ({ onComplete }) => {
 
   const totalCandles = 24;
   const BLOW_COOLDOWN = 200;
-  const BLOW_THRESHOLD = 50;
+  const BLOW_THRESHOLD = 40;
 
   useEffect(() => {
     const hasBlown = sessionStorage.getItem('candlesBlown');
@@ -117,14 +117,30 @@ const CandleBlow = ({ onComplete }) => {
   const getCandlePositions = () => {
     const positions = [];
     const count = 24;
-    const radius = 28; // tighter around the cake edge
-    const offsetY = -5; // move slightly up to rest on the icing
-
+    const baseRadius = 34
+    const offsetY = -7; // Move candles UP slightly
+    
     for (let i = 0; i < count; i++) {
       const angle = (i / count) * 2 * Math.PI - Math.PI / 2;
-      const x = 50 + radius * Math.cos(angle);
-      const y = 50 + radius * Math.sin(angle) * 0.75 + offsetY;
-      positions.push({ index: i, left: `${x}%`, top: `${y}%` });
+      
+      // Minimal variation to keep candles safely inside
+      const radiusVariation = (Math.sin(i * 2.3) * 0.8) + (Math.cos(i * 3.7) * 0.5);
+      const radius = baseRadius + radiusVariation;
+      
+      // Slight angle variation
+      const angleVariation = (Math.sin(i * 1.2) * 0.06);
+      const finalAngle = angle + angleVariation;
+      
+      // Calculate position with ellipse compression
+      const x = 50 + radius * Math.cos(finalAngle);
+      const y = 50 + (radius * Math.sin(finalAngle) * 0.85) + offsetY;
+      
+      positions.push({ 
+        index: i, 
+        left: `${x}%`, 
+        top: `${y}%`,
+        rotation: (Math.random() - 0.5) * 5
+      });
     }
     return positions;
   };
@@ -155,22 +171,22 @@ const CandleBlow = ({ onComplete }) => {
             <img src="src/assets/cake.png" alt="Birthday Cake" className="cake-image" />
             <div className="candles-overlay">
               {candlePositions.map((pos) => (
-                <div
-                  key={pos.index}
-                  className={`candle ${blownCandles.includes(pos.index) ? 'blown' : ''}`}
-                  style={{
-                    left: pos.left,
-                    top: pos.top,
-                    transform: 'translate(-50%, -100%)',
-                    animationDelay: `${pos.index * 0.05}s`,
-                  }}
-                >
-                  <div className="flame">
-                    <div className="flame-inner"></div>
-                  </div>
-                  <div className="wick"></div>
-                  <div className="candle-stick"></div>
+              <div
+                key={pos.index}
+                className={`candle ${blownCandles.includes(pos.index) ? 'blown' : ''}`}
+                style={{
+                  left: pos.left,
+                  top: pos.top,
+                  transform: `translate(-50%, -100%) rotate(${pos.rotation}deg)`,
+                  animationDelay: `${pos.index * 0.05}s`,
+                }}
+              >
+                <div className="flame">
+                  <div className="flame-inner"></div>
                 </div>
+                <div className="wick"></div>
+                <div className="candle-stick"></div>
+              </div>
               ))}
             </div>
           </div>
