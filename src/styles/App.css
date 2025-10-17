@@ -15,13 +15,7 @@ body {
 
 .app {
   min-height: 100vh;
-  background: linear-gradient(to bottom, 
-    #0a0a0a 0%, 
-    #1a1025 25%,
-    #2a1835 50%,
-    #1a1025 75%,
-    #0a0a0a 100%
-  );
+  background: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
   position: relative;
   overflow-x: hidden;
 }
@@ -29,9 +23,12 @@ body {
 .app-content {
   position: relative;
   z-index: 1;
-  padding: 4rem 2rem;
-  max-width: 1600px;
-  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
 }
 
 .app-header {
@@ -47,11 +44,13 @@ body {
 .main-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 5rem;
-  font-weight: 300;
-  color: #d4a5d8;
+  font-weight: 400;
+  background: linear-gradient(135deg, #e91e8c, #9b59b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
-  text-shadow: 0 0 40px rgba(212, 165, 216, 0.4);
 }
 
 .title-decoration {
@@ -82,12 +81,7 @@ body {
 }
 
 .footer-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: rgba(212, 165, 216, 0.6);
-  font-style: italic;
-  letter-spacing: 0.05em;
+  color: #9b59b6;
 }
 
 @keyframes fadeInDown {
@@ -112,11 +106,24 @@ body {
 
 @media screen and (max-width: 1024px) {
   .main-title {
-    font-size: 3.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 400;
+    background: linear-gradient(135deg, #e91e8c, #9b59b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
   }
-  
+
   .subtitle-text {
-    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #7d5a8f;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
   }
 }
 
@@ -138,6 +145,6 @@ body {
   }
   
   .footer-text {
-    font-size: 1.1rem;
+    color: #9b59b6;
   }
 }

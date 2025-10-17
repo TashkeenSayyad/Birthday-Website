@@ -1,0 +1,31 @@
+/* Global color variables and theme */
+:root {
+  --primary-purple: #9b59b6;
+  --light-purple: #d4a5d8;
+  --pink: #e91e8c;
+  --blue: #3498db;
+  --text-dark: #2d2d2d;
+  --text-medium: #666;
+  --text-light: #7d5a8f;
+  --bg-gradient: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
+}
+
+/* Apply to all pages */
+.things-page,
+.memories-page,
+.personal-note-page,
+.app-content {
+  background: var(--bg-gradient);
+}
+
+/* Update all purple elements */
+.page-title {
+  background: linear-gradient(135deg, #e91e8c 0%, #9b59b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-subtitle {
+  color: var(--text-light);
+}

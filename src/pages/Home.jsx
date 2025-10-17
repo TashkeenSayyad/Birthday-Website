@@ -13,15 +13,15 @@ const Home = () => {
       subtitle: 'From your loved ones',
       icon: '💌',
       path: '/messages',
-      color: '#d4a5d8'
+      color: '#e91e8c'
     },
     {
       id: 2,
       title: 'Things We Love',
       subtitle: 'About you',
-      icon: '💜',
+      icon: '✨',
       path: '/things-we-love',
-      color: '#b89dd8'
+      color: '#9b59b6'
     },
     {
       id: 3,
@@ -29,7 +29,7 @@ const Home = () => {
       subtitle: 'Special moments together',
       icon: '📸',
       path: '/memories',
-      color: '#9b7ed8'
+      color: '#3498db'
     },
     {
       id: 4,
@@ -37,7 +37,7 @@ const Home = () => {
       subtitle: 'Letters just for you',
       icon: '💝',
       path: '/note/aqsa',
-      color: '#c8b3e8'
+      color: '#d4a5d8'
     }
   ];
 
