@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/MessageCard.css';
 
-const MessageCard = ({ name, message, image, relationship, isActive }) => {
+const MessageCard = ({ name, message, image, relationship, isActive, hasSpecialNote, specialNotePath }) => {
+  const navigate = useNavigate();
+
   return (
     <div className={`message-card-container ${isActive ? 'active' : ''}`}>
       <div className="message-card">
@@ -25,6 +28,15 @@ const MessageCard = ({ name, message, image, relationship, isActive }) => {
             </div>
             
             <div className="message-footer">
+              {hasSpecialNote && (
+                <button 
+                  className="special-note-button"
+                  onClick={() => navigate(specialNotePath)}
+                >
+                  Read Full Letter
+                  <span className="button-arrow">→</span>
+                </button>
+              )}
               <div className="decorative-element">
                 <span className="heart-symbol">♥</span>
               </div>

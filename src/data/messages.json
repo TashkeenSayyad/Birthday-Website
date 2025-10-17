@@ -1,10 +1,20 @@
 [
   {
     "id": 1,
-    "name": "Tashkeen",
-    "message": "Happy Birthday! 🎉  I'm so grateful to have you in my life.",
-    "image": "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&h=800&fit=crop",
+    "name": "Laraib",
+    "message": "Happy 24th birthday, my dearest friend...",
+    "image": "https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=1200&h=1200&fit=crop",
+    "relationship": "Best Friend",
     "hasSpecialNote": true,
-    "specialNotePath": "/note/Tashkeen"
+    "specialNotePath": "/note/tashkeen"
+  },
+  {
+    "id": 2,
+    "name": "Tashkeen",
+    "message": "To my beloved, happy birthday...",
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&h=1200&fit=crop",
+    "relationship": "Your Love",
+    "hasSpecialNote": true,
+    "specialNotePath": "/note/laraib"
   }
 ]

@@ -49,13 +49,15 @@ const Gallery = ({ messages }) => {
         <div className={`cards-container direction-${direction}`}>
           {messages.map((msg, index) => (
             <MessageCard
-              key={msg.id}
-              name={msg.name}
-              message={msg.message}
-              image={msg.image}
-              relationship={msg.relationship}
-              isActive={index === currentIndex}
-            />
+            key={msg.id}
+            name={msg.name}
+            message={msg.message}
+            image={msg.image}
+            relationship={msg.relationship}
+            isActive={index === currentIndex}
+            hasSpecialNote={msg.hasSpecialNote}
+            specialNotePath={msg.specialNotePath}
+          />
           ))}
         </div>
 

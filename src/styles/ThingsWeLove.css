@@ -55,7 +55,7 @@
   transition: transform 0.5s ease;
 }
 
-.thing-card:hover img { transform: scale(1.1); }
+.thing-card:hover .thing-image img { transform: scale(1.1); }
 
 .from-label {
   position: absolute;
@@ -67,6 +67,8 @@
   font-size: 0.85rem;
   color: #d4a5d8;
   backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .thing-content { padding: 1.5rem; }
@@ -83,76 +85,143 @@
   line-height: 1.6;
 }
 
+/* Modal styles */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   backdrop-filter: blur(10px);
+  animation: fadeIn 0.3s ease;
 }
 
 .modal-content {
-  background: rgba(26, 16, 37, 0.95);
+  background: rgba(26, 16, 37, 0.98);
   border: 1px solid rgba(212, 165, 216, 0.3);
   border-radius: 16px;
   max-width: 800px;
   width: 100%;
-  overflow: hidden;
+  max-height: 90vh;
+  overflow-y: auto;
   position: relative;
+  animation: slideUp 0.4s ease-out;
 }
 
 .modal-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 40px;
-  height: 40px;
-  background: rgba(212, 165, 216, 0.1);
-  border: 1px solid rgba(212, 165, 216, 0.3);
+  width: 50px;
+  height: 50px;
+  background: rgba(212, 165, 216, 0.2);
+  border: 1px solid rgba(212, 165, 216, 0.4);
   border-radius: 50%;
   color: #d4a5d8;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.modal-close:hover {
+  background: rgba(212, 165, 216, 0.3);
+  transform: rotate(90deg);
 }
 
 .modal-content img {
   width: 100%;
   height: 400px;
   object-fit: cover;
-}
-
-.modal-content > p, .modal-content > h2 {
-  padding: 0 2.5rem;
+  display: block;
 }
 
 .modal-from {
   font-size: 0.9rem;
-  color: rgba(212, 165, 216, 0.7);
-  margin-top: 2rem;
+  color: rgba(212, 165, 216, 0.8);
+  margin: 2rem 2.5rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
 }
 
 .modal-content h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.5rem;
   color: #d4a5d8;
-  margin: 1rem 0;
+  margin: 0 2.5rem 1.5rem;
+  font-weight: 400;
 }
 
 .modal-content > p:last-child {
-  color: rgba(232, 232, 232, 0.85);
+  color: rgba(232, 232, 232, 0.9);
   line-height: 1.8;
-  margin-bottom: 2.5rem;
+  margin: 0 2.5rem 2.5rem;
+  font-size: 1.15rem;
+  font-weight: 300;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media screen and (max-width: 768px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .things-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .modal {
+    padding: 1rem;
+  }
+  
+  .modal-content img {
+    height: 250px;
+  }
+  
+  .modal-from,
+  .modal-content h2,
+  .modal-content > p:last-child {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  
+  .modal-content h2 {
+    font-size: 2rem;
+  }
+  
+  .modal-content > p:last-child {
+    font-size: 1rem;
+  }
+  
+  .modal-close {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
 }

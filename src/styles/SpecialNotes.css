@@ -77,3 +77,31 @@
   object-fit: cover;
   border-radius: 8px;
 }
+
+@media screen and (max-width: 768px) {
+  .note-container {
+    margin: 2rem auto;
+  }
+  
+  .note-header img {
+    height: 300px;
+  }
+  
+  .note-from, .note-title, .note-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .note-title {
+    font-size: 2rem;
+  }
+  
+  .note-content p {
+    font-size: 1rem;
+  }
+  
+  .back-button {
+    top: 1rem;
+    left: 1rem;
+  }
+}
