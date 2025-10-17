@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  background: #0f0c29;
+}
+
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.app-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 1s ease-out;
+}
+
+.header-decoration {
+  font-size: 3rem;
+  animation: bounce 2s infinite;
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.app-title {
+  font-size: 4rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #9b59b6, #e74c3c, #f39c12);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 1rem 0;
+  text-shadow: 0 0 30px rgba(155, 89, 182, 0.5);
+}
+
+.app-tagline {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app-title {
+    font-size: 2.5rem;
+  }
+  
+  .app-tagline {
+    font-size: 1rem;
+  }
+  
+  .header-decoration {
+    font-size: 2rem;
+  }
+}
