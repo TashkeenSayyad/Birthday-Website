@@ -49,9 +49,11 @@ const ThingsWeLove = () => {
         <div className="modal" onClick={handleCloseModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={handleCloseModal}>×</button>
-            <img src={selectedItem.image} alt={selectedItem.title} />
+            <div className="modal-image">
+              <img src={selectedItem.image} alt={selectedItem.title} />
+            </div>
             <p className="modal-from">From: {selectedItem.from}</p>
-            <h2>{selectedItem.title}</h2>
+            <h2 className="modal-title">{selectedItem.title}</h2>
             <p className="modal-description">{selectedItem.description}</p>
           </div>
         </div>
