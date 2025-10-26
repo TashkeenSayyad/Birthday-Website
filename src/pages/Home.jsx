@@ -43,17 +43,9 @@ const Home = () => {
     {
       id: 5,
       title: 'Personal Letters',
-      subtitle: 'Private messages',
+      subtitle: 'Private messages just for you',
       icon: '💝',
-      path: '/note/',
-      color: '#d4a5d8'
-    },
-    {
-      id: 5,
-      title: 'Open when...',
-      subtitle: 'Open when you are feeling sad, lonely, happy...',
-      icon: '🌍',
-      path: '/note/',
+      path: '/notes',
       color: '#d4a5d8'
     }
   ];
