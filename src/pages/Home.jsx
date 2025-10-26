@@ -26,15 +26,23 @@ const Home = () => {
     {
       id: 3,
       title: 'Favorite Memories',
-      subtitle: 'Special moments together',
+      subtitle: 'Pictures worth a thousand words',
       icon: '📸',
       path: '/memories',
       color: '#3498db'
     },
     {
       id: 4,
-      title: 'Personal Notes',
-      subtitle: 'Letters just for you',
+      title: 'Special Notes',
+      subtitle: 'Heartfelt words for you',
+      icon: '📝',
+      path: '/special-notes',
+      color: '#f39c12'
+    },
+    {
+      id: 5,
+      title: 'Personal Letters',
+      subtitle: 'Private messages',
       icon: '💝',
       path: '/note/aqsa',
       color: '#d4a5d8'

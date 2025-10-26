@@ -14,20 +14,24 @@ const FavoriteMemories = () => {
     <div className="memories-page">
       <div className="page-header">
         <h1 className="page-title">Our Favorite Memories</h1>
-        <p className="page-subtitle">Moments we'll cherish forever</p>
+        <p className="page-subtitle">Moments captured in time</p>
       </div>
 
-      <div className="memories-timeline">
+      <div className="memories-gallery">
         {memories.map((memory, index) => (
-          <div key={memory.id} className={`memory-item ${index === activeMemory ? 'active' : ''}`} onClick={() => setActiveMemory(index)}>
-            <div className="memory-image">
+          <div
+            key={memory.id}
+            className={`memory-card ${index === activeMemory ? 'active' : ''}`}
+            onClick={() => setActiveMemory(index)}
+          >
+            <div className="memory-image-main">
               <img src={memory.image} alt={memory.title} />
-              <span className="memory-date">{memory.date}</span>
-            </div>
-            <div className="memory-content">
-              <h3>{memory.title}</h3>
-              <p>{memory.description}</p>
-              <p className="memory-from">— {memory.from}</p>
+              <div className="memory-overlay">
+                <span className="memory-date">{memory.date}</span>
+                <h3 className="memory-title">{memory.title}</h3>
+                <p className="memory-description">{memory.description}</p>
+                <p className="memory-from">— {memory.from}</p>
+              </div>
             </div>
           </div>
         ))}
