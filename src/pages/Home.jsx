@@ -36,7 +36,15 @@ const Home = () => {
       title: 'Personal Notes',
       subtitle: 'Letters just for you',
       icon: '💝',
-      path: '/note/aqsa',
+      path: '/note/',
+      color: '#d4a5d8'
+    },
+    {
+      id: 5,
+      title: 'Open when...',
+      subtitle: 'Open when you are feeling sad, lonely, happy...',
+      icon: '🌍',
+      path: '/note/',
       color: '#d4a5d8'
     }
   ];
