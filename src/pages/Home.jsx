@@ -17,8 +17,8 @@ const Home = () => {
     },
     {
       id: 2,
-      title: 'Things We Love',
-      subtitle: 'About you',
+      title: 'Things We Love About You',
+      subtitle: 'Everything that makes you, you',
       icon: '✨',
       path: '/things-we-love',
       color: '#9b59b6'
