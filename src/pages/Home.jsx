@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import FloatingParticles from '../components/FloatingParticles';
+import FloatingHearts from '../components/FloatingHearts';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -60,7 +61,8 @@ const Home = () => {
   return (
     <>
       <FloatingParticles />
-      
+      <FloatingHearts />
+
       <div className="home-page">
         <header className="home-header">
           <div className="header-content">
