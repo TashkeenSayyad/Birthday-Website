@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import FloatingParticles from '../components/FloatingParticles';
+import FloatingHearts from '../components/FloatingHearts';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -42,17 +43,9 @@ const Home = () => {
     {
       id: 5,
       title: 'Personal Letters',
-      subtitle: 'Private messages',
+      subtitle: 'Private messages just for you',
       icon: '💝',
-      path: '/note/',
-      color: '#d4a5d8'
-    },
-    {
-      id: 5,
-      title: 'Open when...',
-      subtitle: 'Open when you are feeling sad, lonely, happy...',
-      icon: '🌍',
-      path: '/note/',
+      path: '/notes',
       color: '#d4a5d8'
     }
   ];
@@ -60,7 +53,8 @@ const Home = () => {
   return (
     <>
       <FloatingParticles />
-      
+      <FloatingHearts />
+
       <div className="home-page">
         <header className="home-header">
           <div className="header-content">
