@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/CandleBlow.css';
+import cakeImage from '../assets/cake.png';
 
 const CandleBlow = ({ onComplete }) => {
   const [blownCandles, setBlownCandles] = useState([]);
@@ -149,6 +150,22 @@ const CandleBlow = ({ onComplete }) => {
 
   return (
     <div className="candle-blow-screen" onClick={handleManualBlow}>
+      {/* Floating Sparkles */}
+      <div className="sparkles-container">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="sparkle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${3 + Math.random() * 2}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {blownCandles.length >= totalCandles && (
         <button className="candle-back-button" onClick={handleBlowAgain}>
           ← Blow Again
@@ -168,7 +185,7 @@ const CandleBlow = ({ onComplete }) => {
 
         <div className="cake-container">
           <div className="cake-image-wrapper">
-            <img src="src/assets/cake.png" alt="Birthday Cake" className="cake-image" />
+            <img src={cakeImage} alt="Birthday Cake" className="cake-image" />
             <div className="candles-overlay">
               {candlePositions.map((pos) => (
               <div

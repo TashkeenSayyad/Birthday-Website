@@ -8,7 +8,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a0a 100%);
+  background: linear-gradient(135deg, #0a0520 0%, #1a0f2e 25%, #2d1b4e 50%, #1a0f2e 75%, #0a0520 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,10 +16,63 @@
   overflow: hidden;
 }
 
+.candle-blow-screen::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at 30% 40%,
+    rgba(139, 92, 246, 0.15) 0%,
+    transparent 40%
+  ),
+  radial-gradient(
+    circle at 70% 60%,
+    rgba(233, 30, 140, 0.12) 0%,
+    transparent 40%
+  );
+  animation: atmosphericShift 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.candle-blow-screen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@keyframes atmosphericShift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-5%, 5%) scale(1.05);
+  }
+  66% {
+    transform: translate(5%, -5%) scale(0.95);
+  }
+}
+
 .candle-content {
   text-align: center;
-  max-width: 900px;
+  max-width: 950px;
   width: 90%;
+  position: relative;
+  z-index: 10;
+  padding: 2rem 1rem;
 }
 
 
@@ -29,22 +82,46 @@
 
 .candle-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 4rem;
-  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  font-size: 5rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffe082 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 1rem;
-  animation: titleGlow 2s ease-in-out infinite;
+  margin-bottom: 1.5rem;
+  animation: titleGlow 3s ease-in-out infinite;
+  letter-spacing: 0.05em;
+  position: relative;
+  text-shadow: none;
+}
+
+.candle-title::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffe082 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(20px);
+  opacity: 0.5;
 }
 
 .candle-instruction {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 3rem;
-  letter-spacing: 0.05em;
-  min-height: 30px;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3.5rem;
+  letter-spacing: 0.08em;
+  min-height: 32px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  line-height: 1.6;
+  padding: 0 2rem;
 }
 
 @keyframes titleGlow {
@@ -68,6 +145,38 @@
   align-items: center;
   margin-bottom: 2rem;
   min-height: 500px;
+  position: relative;
+}
+
+.cake-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 0, 0.15) 0%,
+    rgba(255, 152, 0, 0.08) 30%,
+    transparent 60%
+  );
+  border-radius: 50%;
+  animation: cakeGlow 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes cakeGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
 }
 
 .cake-image-wrapper {
@@ -77,13 +186,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .cake-image {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.6))
+          drop-shadow(0 0 30px rgba(255, 215, 0, 0.2));
+  animation: subtleFloat 6s ease-in-out infinite;
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 
@@ -249,12 +370,53 @@
 
 .candles-counter {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: #ffd700;
   font-weight: 600;
-  margin-top: 2rem;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-  letter-spacing: 0.05em;
+  margin-top: 2.5rem;
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  display: inline-block;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(255, 215, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.candles-counter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 0, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.candles-counter:hover::before {
+  left: 100%;
+}
+
+.candles-counter:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 40px rgba(255, 215, 0, 0.4);
+  border-color: rgba(255, 215, 0, 0.5);
 }
 
 
@@ -266,32 +428,72 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.95rem;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   animation: fadeIn 0.5s ease-in;
+  background: rgba(155, 89, 182, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(155, 89, 182, 0.3);
+  border-radius: 40px;
+  padding: 0.9rem 2rem;
+  box-shadow:
+    0 4px 20px rgba(155, 89, 182, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .mic-wave {
-  width: 50px;
-  height: 25px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    #9b59b6 50%, 
+  width: 60px;
+  height: 28px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(155, 89, 182, 0.8) 30%,
+    rgba(139, 92, 246, 1) 50%,
+    rgba(155, 89, 182, 0.8) 70%,
     transparent 100%);
   animation: micPulse 1.2s ease-in-out infinite;
-  border-radius: 12px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.mic-wave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s linear infinite;
 }
 
 @keyframes micPulse {
   0%, 100% {
-    opacity: 0.3;
-    transform: scaleX(0.7);
+    opacity: 0.4;
+    transform: scaleX(0.75) scaleY(0.8);
   }
   50% {
     opacity: 1;
-    transform: scaleX(1.3);
+    transform: scaleX(1.25) scaleY(1.1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
 
@@ -369,6 +571,74 @@
 
 
 /* ============================================
+   SPARKLES EFFECT
+   ============================================ */
+
+.sparkles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 215, 0, 0.8) 50%, transparent 100%);
+  border-radius: 50%;
+  animation: sparkleFloat linear infinite;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.sparkle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+
+.sparkle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+
+@keyframes sparkleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(-200px) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-220px) scale(0);
+  }
+}
+
+
+/* ============================================
    UTILITY ANIMATIONS
    ============================================ */
 
@@ -388,12 +658,17 @@
 
 @media screen and (max-width: 768px) {
   .candle-title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
   }
 
   .candle-instruction {
-    font-size: 1rem;
-    padding: 0 1rem;
+    font-size: 1.1rem;
+    padding: 0 1.5rem;
+  }
+
+  .cake-container::before {
+    width: 450px;
+    height: 450px;
   }
 
   .cake-image-wrapper {
@@ -402,7 +677,19 @@
   }
 
   .candles-counter {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    padding: 0.8rem 2rem;
+  }
+
+  .mic-indicator {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .mic-wave {
+    width: 50px;
+    height: 24px;
   }
 
   .candle-stick {
@@ -420,5 +707,47 @@
     left: 1rem;
     padding: 0.6rem 1.2rem;
     font-size: 0.85rem;
+  }
+
+  .sparkle {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .candle-title {
+    font-size: 2.8rem;
+  }
+
+  .candle-instruction {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .cake-container::before {
+    width: 350px;
+    height: 350px;
+  }
+
+  .cake-image-wrapper {
+    width: 320px;
+    height: 320px;
+  }
+
+  .candles-counter {
+    font-size: 1.2rem;
+    padding: 0.7rem 1.5rem;
+  }
+
+  .mic-indicator {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+    gap: 0.8rem;
+  }
+
+  .mic-wave {
+    width: 40px;
+    height: 20px;
   }
 }
