@@ -225,17 +225,27 @@
   position: absolute;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  transform-origin: bottom center;
 }
 
 .candle.blown {
-  opacity: 0.2;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  opacity: 0.3;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) grayscale(0.5);
 }
 
 .candle.blown .flame {
   opacity: 0;
-  transform: scale(0) translateY(-15px);
+  transform: scale(0) translateY(-20px);
+}
+
+.candle.blown .candle-stick {
+  background: linear-gradient(135deg,
+    #d4d4d4 0%,
+    #a0a0a0 20%,
+    #8a8a8a 50%,
+    #707070 80%,
+    #5a5a5a 100%);
 }
 
 
@@ -244,35 +254,64 @@
    ============================================ */
 
 .candle-stick {
-  width: 7px;
-  height: 45px;
-  background: linear-gradient(135deg, 
-    #fff9e6 0%, 
-    #ffd700 20%,
-    #ffed4e 50%,
-    #ffd700 80%,
-    #e6c200 100%);
-  border-radius: 3px;
+  width: 12px;
+  height: 55px;
+  background: linear-gradient(135deg,
+    #fffef7 0%,
+    #fff5d6 10%,
+    #ffe9a8 25%,
+    #ffd966 50%,
+    #ffc933 75%,
+    #e6b800 90%,
+    #cc9900 100%);
+  border-radius: 6px 6px 2px 2px;
   margin: 0 auto;
-  box-shadow: 
-    inset -1px 0 2px rgba(0, 0, 0, 0.2),
-    inset 1px 0 1px rgba(255, 255, 255, 0.4),
-    0 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    inset -2px 0 4px rgba(0, 0, 0, 0.25),
+    inset 2px 0 3px rgba(255, 255, 255, 0.6),
+    inset 0 -3px 4px rgba(204, 153, 0, 0.4),
+    0 3px 10px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(255, 215, 0, 0.3);
   position: relative;
+  transition: all 0.3s ease;
 }
 
+/* Wax highlight */
 .candle-stick::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 1px;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, 
-    rgba(255, 255, 255, 0.6) 0%,
+  top: 3px;
+  left: 2px;
+  width: 3px;
+  height: 80%;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.5) 20%,
     rgba(255, 255, 255, 0.2) 50%,
-    transparent 100%);
-  border-radius: 2px;
+    transparent 80%);
+  border-radius: 3px;
+  filter: blur(0.5px);
+}
+
+/* Wax drip effect */
+.candle-stick::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(ellipse at top,
+    #ffe9a8 0%,
+    #ffd966 40%,
+    #ffc933 70%,
+    #e6b800 100%);
+  border-radius: 0 0 50% 50%;
+  box-shadow:
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
 }
 
 
@@ -281,13 +320,33 @@
    ============================================ */
 
 .wick {
-  width: 2px;
-  height: 6px;
-  background: linear-gradient(180deg, #1a1a1a 0%, #4a4a4a 100%);
+  width: 3px;
+  height: 10px;
+  background: linear-gradient(180deg,
+    #0d0d0d 0%,
+    #1a1a1a 30%,
+    #2d2d2d 60%,
+    #4a4a4a 100%);
   margin: 0 auto;
-  border-radius: 1px 1px 0 0;
+  border-radius: 1.5px 1.5px 0 0;
   position: relative;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.6),
+    inset 0 -2px 2px rgba(0, 0, 0, 0.8);
+}
+
+.wick::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(180deg,
+    rgba(255, 100, 50, 0.3) 0%,
+    transparent 100%);
+  filter: blur(0.5px);
 }
 
 
@@ -296,48 +355,75 @@
    ============================================ */
 
 .flame {
-  width: 16px;
-  height: 26px;
-  margin: 0 auto 2px;
+  width: 22px;
+  height: 36px;
+  margin: 0 auto 3px;
   position: relative;
-  animation: flameFlicker 0.2s ease-in-out infinite;
+  animation: flameFlicker 0.15s ease-in-out infinite, flameSway 2s ease-in-out infinite;
   transform-origin: bottom center;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Outer flame layer */
 .flame::before {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
-  background: radial-gradient(ellipse at center bottom, 
+  background: radial-gradient(ellipse at center bottom,
     #ffffff 0%,
-    #ffeb3b 15%,
-    #ff9800 30%,
-    #ff5722 50%, 
-    #d32f2f 70%,
+    #fffacd 8%,
+    #ffeb3b 18%,
+    #ffa500 32%,
+    #ff6b00 48%,
+    #ff4500 62%,
+    #cc2200 78%,
+    rgba(139, 0, 0, 0.8) 88%,
     transparent 100%);
   border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
-  filter: blur(1.5px);
-  box-shadow: 
-    0 0 10px rgba(255, 235, 59, 0.8),
-    0 0 20px rgba(255, 152, 0, 0.6),
-    0 0 30px rgba(255, 87, 34, 0.4);
+  filter: blur(2px);
+  box-shadow:
+    0 0 12px rgba(255, 255, 205, 0.9),
+    0 0 20px rgba(255, 235, 59, 0.8),
+    0 0 30px rgba(255, 152, 0, 0.7),
+    0 0 40px rgba(255, 87, 34, 0.5),
+    0 -5px 15px rgba(255, 255, 255, 0.4);
 }
 
+/* Middle flame layer - orange glow */
+.flame::after {
+  content: '';
+  position: absolute;
+  width: 85%;
+  height: 90%;
+  left: 7.5%;
+  top: 8%;
+  background: radial-gradient(ellipse at center bottom,
+    #ffffff 0%,
+    #ffeb3b 20%,
+    #ff9800 45%,
+    #ff5722 70%,
+    transparent 100%);
+  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+  filter: blur(1px);
+}
+
+/* Inner flame core - bright white-yellow center */
 .flame-inner {
   position: absolute;
-  width: 40%;
-  height: 50%;
-  left: 30%;
-  top: 30%;
-  background: radial-gradient(ellipse at center, 
-    #ffffff 0%, 
-    #ffeb3b 30%,
-    #ffa726 60%,
+  width: 45%;
+  height: 55%;
+  left: 27.5%;
+  top: 25%;
+  background: radial-gradient(ellipse at center,
+    #ffffff 0%,
+    #fffef7 15%,
+    #ffeb3b 35%,
+    #ffa726 65%,
     transparent 100%);
   border-radius: 50%;
-  filter: blur(1px);
+  filter: blur(0.5px);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
 }
 
 @keyframes flameFlicker {
@@ -345,21 +431,40 @@
     transform: scale(1, 1) translateY(0) skewX(-1deg);
     opacity: 1;
   }
-  25% {
-    transform: scale(1.02, 0.98) translateY(-1px) skewX(0.5deg);
-    opacity: 0.95;
-  }
-  50% {
-    transform: scale(0.98, 1.03) translateY(0px) skewX(-0.5deg);
-    opacity: 0.98;
-  }
-  75% {
-    transform: scale(1.01, 0.99) translateY(-1px) skewX(1deg);
+  20% {
+    transform: scale(1.03, 0.97) translateY(-1px) skewX(0.8deg);
     opacity: 0.96;
+  }
+  40% {
+    transform: scale(0.97, 1.04) translateY(0.5px) skewX(-0.6deg);
+    opacity: 0.99;
+  }
+  60% {
+    transform: scale(1.02, 0.98) translateY(-0.5px) skewX(0.4deg);
+    opacity: 0.97;
+  }
+  80% {
+    transform: scale(0.98, 1.02) translateY(0px) skewX(-1.2deg);
+    opacity: 0.98;
   }
   100% {
     transform: scale(1, 1) translateY(0) skewX(-1deg);
     opacity: 1;
+  }
+}
+
+@keyframes flameSway {
+  0%, 100% {
+    transform: skewX(-2deg);
+  }
+  25% {
+    transform: skewX(1deg);
+  }
+  50% {
+    transform: skewX(2deg);
+  }
+  75% {
+    transform: skewX(-1deg);
   }
 }
 
@@ -693,13 +798,18 @@
   }
 
   .candle-stick {
-    width: 6px;
-    height: 38px;
+    width: 10px;
+    height: 48px;
   }
 
   .flame {
-    width: 14px;
-    height: 22px;
+    width: 20px;
+    height: 32px;
+  }
+
+  .wick {
+    width: 2.5px;
+    height: 8px;
   }
 
   .candle-back-button {
@@ -749,5 +859,20 @@
   .mic-wave {
     width: 40px;
     height: 20px;
+  }
+
+  .candle-stick {
+    width: 9px;
+    height: 42px;
+  }
+
+  .flame {
+    width: 18px;
+    height: 28px;
+  }
+
+  .wick {
+    width: 2px;
+    height: 7px;
   }
 }
