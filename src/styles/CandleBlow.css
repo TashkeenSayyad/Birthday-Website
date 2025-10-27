@@ -643,38 +643,6 @@
   }
 }
 
-
-/* ============================================
-   BACK BUTTON
-   ============================================ */
-
-.candle-back-button {
-  position: fixed;
-  top: 2rem;
-  left: 2rem;
-  padding: 0.8rem 1.5rem;
-  background: rgba(255, 215, 0, 0.15);
-  border: 2px solid rgba(255, 215, 0, 0.4);
-  color: #ffd700;
-  border-radius: 25px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  z-index: 1000000;
-  font-weight: 500;
-  animation: fadeIn 0.5s ease-in;
-}
-
-.candle-back-button:hover {
-  background: rgba(255, 215, 0, 0.25);
-  border-color: rgba(255, 215, 0, 0.6);
-  transform: translateX(-5px);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-}
-
-
 /* ============================================
    SPARKLES EFFECT
    ============================================ */
@@ -810,13 +778,6 @@
   .wick {
     width: 2.5px;
     height: 8px;
-  }
-
-  .candle-back-button {
-    top: 1rem;
-    left: 1rem;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
   }
 
   .sparkle {

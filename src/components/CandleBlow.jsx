@@ -109,12 +109,6 @@ const CandleBlow = ({ onComplete }) => {
     }
   };
 
-  const handleBlowAgain = (e) => {
-    e.stopPropagation();
-    sessionStorage.removeItem('candlesBlown');
-    window.location.reload();
-  };
-
   const getCandlePositions = () => {
     const positions = [];
     const count = 24;
@@ -166,11 +160,6 @@ const CandleBlow = ({ onComplete }) => {
         ))}
       </div>
 
-      {blownCandles.length >= totalCandles && (
-        <button className="candle-back-button" onClick={handleBlowAgain}>
-          ← Blow Again
-        </button>
-      )}
       <div className="candle-content">
         <h1 className="candle-title">Make a Wish</h1>
         <p className="candle-instruction">
