@@ -49,7 +49,8 @@
   font-family: var(--font-serif);
   font-size: 4.5rem;
   font-weight: 600;
-  background: var(--gradient-text);
+  color: #e91e8c; /* Fallback solid color */
+  background: linear-gradient(135deg, #e91e8c 0%, #9b59b6 50%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -242,10 +243,7 @@
 }
 
 .menu-card:hover .menu-title {
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #e91e8c; /* Keep solid color on hover instead of transparent gradient */
   transform: scale(1.05);
 }
 
@@ -314,7 +312,8 @@
   font-family: var(--font-script);
   font-size: 1.6rem;
   font-weight: 500;
-  background: var(--gradient-text);
+  color: #9b59b6; /* Fallback solid color */
+  background: linear-gradient(135deg, #e91e8c 0%, #9b59b6 50%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
