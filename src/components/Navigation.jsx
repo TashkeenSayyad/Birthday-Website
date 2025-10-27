@@ -11,6 +11,8 @@ const Navigation = ({ onBackToCandles }) => {
     { path: '/messages', label: 'Birthday Messages', icon: '💌' },
     { path: '/things-we-love', label: 'Things We Love', icon: '💜' },
     { path: '/memories', label: 'Favorite Memories', icon: '📸' },
+    { path: '/special-notes', label: 'Special Notes', icon: '✨' },
+    { path: '/notes', label: 'Personal Notes', icon: '📝' },
   ];
 
   const handleBackToCandles = () => {
