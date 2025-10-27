@@ -125,49 +125,6 @@ const Gallery = ({ messages }) => {
           </svg>
         </button>
       </div>
-
-      <div className="gallery-progress">
-        <div className="progress-info">
-          <span className="progress-text">
-            Message {currentIndex + 1} of {messages.length}
-          </span>
-          <div className="keyboard-hint">
-            Use ← → arrow keys or swipe to navigate
-          </div>
-        </div>
-
-        <div className="progress-controls">
-          <div className="progress-dots">
-            {messages.map((_, index) => (
-              <button
-                key={index}
-                className={`progress-dot ${index === currentIndex ? 'active' : ''}`}
-                onClick={() => goToIndex(index)}
-                aria-label={`Go to message ${index + 1}`}
-                title={`Jump to message ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            className="pause-button"
-            onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-            title={isAutoPlaying ? 'Pause auto-play (Spacebar)' : 'Resume auto-play (Spacebar)'}
-            aria-label={isAutoPlaying ? 'Pause auto-play' : 'Resume auto-play'}
-          >
-            {isAutoPlaying ? (
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <rect x="6" y="4" width="4" height="16" rx="1"/>
-                <rect x="14" y="4" width="4" height="16" rx="1"/>
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            )}
-          </button>
-        </div>
-      </div>
     </div>
   );
 };
