@@ -7,7 +7,6 @@ import Home from './pages/Home';
 import MessagesPage from './pages/MessagesPage';
 import ThingsWeLove from './pages/ThingsWeLove';
 import FavoriteMemories from './pages/FavoriteMemories';
-import SpecialNotes from './pages/SpecialNotes';
 import PersonalNotesPage from './pages/PersonalNotesPage';
 import PersonalNote from './components/PersonalNote';
 import 'bulma/css/bulma.min.css';
@@ -54,7 +53,6 @@ function App() {
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/things-we-love" element={<ThingsWeLove />} />
           <Route path="/memories" element={<FavoriteMemories />} />
-          <Route path="/special-notes" element={<SpecialNotes />} />
           <Route path="/notes" element={<PersonalNotesPage />} />
           <Route path="/note/:person" element={<PersonalNote />} />
         </Routes>

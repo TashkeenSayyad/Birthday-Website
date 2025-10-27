@@ -34,14 +34,6 @@ const Home = () => {
     },
     {
       id: 4,
-      title: 'Special Notes',
-      subtitle: 'Heartfelt words for you',
-      icon: '📝',
-      path: '/special-notes',
-      color: '#f39c12'
-    },
-    {
-      id: 5,
       title: 'Personal Letters',
       subtitle: 'Private messages just for you',
       icon: '💝',

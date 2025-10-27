@@ -5,10 +5,22 @@ import '../styles/FavoriteMemories.css';
 const FavoriteMemories = () => {
   const [memories, setMemories] = useState([]);
   const [activeMemory, setActiveMemory] = useState(0);
+  const [selectedMemory, setSelectedMemory] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setMemories(memoriesData);
   }, []);
+
+  const openModal = (memory) => {
+    setSelectedMemory(memory);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedMemory(null), 300);
+  };
 
   return (
     <div className="memories-page">
@@ -22,7 +34,8 @@ const FavoriteMemories = () => {
           <div
             key={memory.id}
             className={`memory-card ${index === activeMemory ? 'active' : ''}`}
-            onClick={() => setActiveMemory(index)}
+            onClick={() => openModal(memory)}
+            onMouseEnter={() => setActiveMemory(index)}
           >
             <div className="memory-image-main">
               <img src={memory.image} alt={memory.title} />
@@ -36,6 +49,23 @@ const FavoriteMemories = () => {
           </div>
         ))}
       </div>
+
+      {isModalOpen && selectedMemory && (
+        <div className={`memory-modal ${isModalOpen ? 'open' : ''}`} onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>×</button>
+            <div className="modal-image-container">
+              <img src={selectedMemory.image} alt={selectedMemory.title} />
+            </div>
+            <div className="modal-details">
+              <span className="modal-date">{selectedMemory.date}</span>
+              <h2 className="modal-title">{selectedMemory.title}</h2>
+              <p className="modal-description">{selectedMemory.description}</p>
+              <p className="modal-from">— {selectedMemory.from}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
