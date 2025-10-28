@@ -156,6 +156,7 @@
 .cake:before {
   background: linear-gradient(135deg, #d4a5d8 0%, #c49bcc 100%);
   top: 130px;
+  left: 0;
 }
 
 .cake:after {
@@ -163,12 +164,14 @@
   width: 350px;
   height: 30px;
   top: 50px;
+  left: 0;
 }
 
 .middle {
   position: absolute;
   background: linear-gradient(135deg, #b892c0 0%, #9b7aae 100%);
   top: 80px;
+  left: 0;
   z-index: 1;
 }
 
@@ -177,6 +180,7 @@
   position: absolute;
   background: linear-gradient(135deg, #d4a5d8 0%, #c49bcc 100%);
   top: -35px;
+  left: 0;
 }
 
 .top {
@@ -187,6 +191,7 @@
   border-radius: 50%;
   z-index: 2;
   top: -45px;
+  left: 0;
   box-shadow: inset -5px -1px rgba(255, 255, 255, 0.3),
     inset -70px 2px rgba(255, 255, 255, 0.1);
 }
@@ -197,6 +202,7 @@
   height: 50px;
   background: linear-gradient(135deg, #e91e8c 0%, #d81b7f 100%);
   top: 0;
+  left: 0;
   z-index: 1;
   border-radius: 50% 50% 50% 50% / 0% 0% 100% 100%;
   box-shadow:
