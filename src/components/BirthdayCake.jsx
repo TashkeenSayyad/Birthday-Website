@@ -158,7 +158,6 @@ const BirthdayCake = ({ onComplete }) => {
             <div className={`flame flame1 ${candlesBlown[0] ? 'blown' : ''}`}></div>
             <div className={`flame flame2 ${candlesBlown[1] ? 'blown' : ''}`}></div>
             <div className={`flame flame3 ${candlesBlown[2] ? 'blown' : ''}`}></div>
-            <div className={`text ${showMessage ? 'show' : ''}`}>Happy Birthday!</div>
             <div className="shadows"></div>
           </div>
         </div>
@@ -174,6 +173,9 @@ const BirthdayCake = ({ onComplete }) => {
           </div>
         )}
       </div>
+
+      {/* Happy Birthday Text - positioned outside cake for proper z-index layering */}
+      <div className={`birthday-text ${showMessage ? 'show' : ''}`}>Happy Birthday!</div>
     </div>
   );
 };

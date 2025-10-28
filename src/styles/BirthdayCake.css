@@ -438,8 +438,8 @@
    HAPPY BIRTHDAY TEXT
    ============================================ */
 
-.text {
-  position: absolute;
+.birthday-text {
+  position: fixed;
   color: white;
   font-family: 'Cormorant Garamond', serif;
   text-align: center;
@@ -449,7 +449,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) scale(0);
-  z-index: 999;
+  z-index: 1000;
   transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   opacity: 0;
   font-weight: 700;
@@ -457,16 +457,16 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6))
-          drop-shadow(0 0 40px rgba(233, 30, 140, 0.4))
-          drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8))
+          drop-shadow(0 0 50px rgba(233, 30, 140, 0.6))
+          drop-shadow(0 3px 10px rgba(0, 0, 0, 0.8));
   pointer-events: none;
   letter-spacing: 0.05em;
   white-space: nowrap;
 }
 
-.text.show {
-  top: 120%;
+.birthday-text.show {
+  top: 60%;
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
   animation: textCelebration 2s ease-in-out infinite;
@@ -684,7 +684,7 @@
     height: 105px;
   }
 
-  .text {
+  .birthday-text {
     font-size: 45px;
     min-width: 450px;
   }
@@ -733,7 +733,7 @@
     height: 90px;
   }
 
-  .text {
+  .birthday-text {
     font-size: 36px;
     min-width: 350px;
   }
