@@ -132,6 +132,171 @@
   margin-bottom: 2rem;
 }
 
+/* Audio Player Styles */
+.audio-player {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(231, 76, 60, 0.3);
+  border-radius: 25px;
+  padding: 2rem;
+  margin: 0 1rem 2rem 1rem;
+  box-shadow:
+    0 12px 40px rgba(231, 76, 60, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.player-info {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.now-playing-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+}
+
+.player-song-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #e74c3c;
+  margin: 0 0 0.3rem 0;
+  letter-spacing: 0.02em;
+}
+
+.player-artist {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  margin: 0 0 0.5rem 0;
+}
+
+.player-description {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin: 0;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.control-btn {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #e74c3c, #ff6b9d);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--transition-smooth);
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+}
+
+.control-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+}
+
+.control-btn:active {
+  transform: scale(1.05);
+}
+
+.lyrics-toggle-btn {
+  padding: 0.8rem 1.5rem;
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  border: 2px solid #e74c3c;
+  border-radius: 25px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.lyrics-toggle-btn:hover {
+  background: #e74c3c;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.player-progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.time-current,
+.time-duration {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  min-width: 40px;
+  text-align: center;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(231, 76, 60, 0.2);
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #e74c3c, #ff6b9d);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+  transition: all 0.2s ease;
+}
+
+.progress-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 3px 12px rgba(231, 76, 60, 0.5);
+}
+
+.progress-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #e74c3c, #ff6b9d);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+  transition: all 0.2s ease;
+}
+
+.progress-bar::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 3px 12px rgba(231, 76, 60, 0.5);
+}
+
 .songs-list {
   display: flex;
   flex-direction: column;
@@ -233,8 +398,17 @@
   font-family: var(--font-sans);
   font-size: 1rem;
   color: var(--text-medium);
-  margin: 0;
+  margin: 0 0 0.3rem 0;
   letter-spacing: 0.03em;
+}
+
+.song-description {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin: 0;
+  font-style: italic;
+  letter-spacing: 0.02em;
 }
 
 .song-actions {
@@ -423,8 +597,17 @@
   font-size: 1.1rem;
   color: var(--text-medium);
   text-align: center;
-  margin: 0 0 2rem 0;
+  margin: 0 0 0.5rem 0;
   letter-spacing: 0.05em;
+}
+
+.lyrics-description {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-style: italic;
+  text-align: center;
+  margin: 0 0 2rem 0;
 }
 
 .lyrics-text {
@@ -494,6 +677,25 @@
   font-weight: 500;
 }
 
+.instruction-note {
+  font-size: 0.85rem !important;
+  color: var(--text-medium) !important;
+  background: rgba(231, 76, 60, 0.05);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(231, 76, 60, 0.2);
+  margin-top: 1rem !important;
+}
+
+.instruction-note code {
+  background: rgba(231, 76, 60, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #e74c3c;
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   .music-title {
@@ -508,6 +710,34 @@
   .music-subtitle {
     font-size: 1rem;
     padding: 0 1rem;
+  }
+
+  .audio-player {
+    padding: 1.5rem;
+    margin: 0 0.5rem 1.5rem 0.5rem;
+  }
+
+  .player-song-title {
+    font-size: 1.5rem;
+  }
+
+  .player-artist {
+    font-size: 1rem;
+  }
+
+  .player-description {
+    font-size: 0.85rem;
+  }
+
+  .control-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .lyrics-toggle-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
   }
 
   .songs-list {
@@ -536,6 +766,10 @@
     font-size: 0.9rem;
   }
 
+  .song-description {
+    font-size: 0.8rem;
+  }
+
   .listen-text {
     font-size: 0.8rem;
   }
@@ -553,6 +787,10 @@
     font-size: 1rem;
   }
 
+  .lyrics-description {
+    font-size: 0.85rem;
+  }
+
   .lyrics-text {
     font-size: 0.95rem;
   }
@@ -565,6 +803,24 @@
 
   .music-subtitle {
     font-size: 0.9rem;
+  }
+
+  .audio-player {
+    padding: 1.2rem;
+  }
+
+  .player-song-title {
+    font-size: 1.3rem;
+  }
+
+  .player-controls {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .control-btn {
+    width: 55px;
+    height: 55px;
   }
 
   .song-card-content {
