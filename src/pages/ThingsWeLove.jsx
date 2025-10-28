@@ -14,16 +14,16 @@ const ThingsWeLove = () => {
     setFlippedId(flippedId === id ? null : id);
   };
 
-  // Array of pastel colors for sticky notes
+  // Array of pink/purple themed colors for sticky notes
   const colors = [
-    '#FFF9A5', // Yellow
-    '#FFB3E6', // Pink
-    '#B4E7CE', // Mint green
-    '#B3D9FF', // Light blue
-    '#FFD9B3', // Peach
-    '#E6B3FF', // Lavender
-    '#B3FFB3', // Light green
-    '#FFCCCC', // Light coral
+    '#FFE0F0', // Pale pink
+    '#F0D0FF', // Light lavender
+    '#FFD0E8', // Light rose
+    '#E8D0FF', // Soft purple
+    '#FFDDF4', // Blush pink
+    '#D8C0E8', // Light mauve
+    '#FFE8F5', // Baby pink
+    '#E0C8F0', // Pale purple
   ];
 
   // Array of random rotations for natural sticky note look
