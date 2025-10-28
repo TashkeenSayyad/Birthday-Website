@@ -105,9 +105,9 @@
 
 #birthday-cake {
   position: relative;
-  top: 50px;
-  left: 0;
   display: inline-block;
+  width: 400px;
+  height: 400px;
   margin: 0 auto;
 }
 
@@ -119,8 +119,8 @@
   height: 140px;
   border-radius: 50%;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -10%);
+  top: 65%;
+  transform: translate(-50%, -50%);
   box-shadow: inset -2px -5px rgba(212, 165, 216, 0.6);
 }
 
@@ -129,7 +129,9 @@
   background: linear-gradient(135deg, #d4a5d8 0%, #c49bcc 50%, #b892c0 100%);
   width: 350px;
   height: 130px;
-  transform: translate(-50%, -60%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 2px;
 }
 
@@ -229,8 +231,9 @@
   width: 30px;
   height: 80px;
   background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-  top: -160px;
-  left: 160px;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 3px;
   box-shadow:
     50px 20px 0 0 #3498db,
@@ -320,7 +323,6 @@
   cursor: pointer;
   width: 30px;
   height: 30px;
-  transform: rotate(-45deg);
   z-index: 4;
   background: radial-gradient(
     ellipse at center bottom,
@@ -330,24 +332,29 @@
     rgba(255, 87, 34, 0.8) 60%,
     transparent 100%
   );
+  border-radius: 80% 15% 55% 50% / 55% 15% 80% 50%;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   animation: flameFlicker 0.15s ease-in-out infinite, flameSway 2s ease-in-out infinite;
   filter: drop-shadow(0 0 15px rgba(255, 152, 0, 0.8));
+  transform-origin: center center;
 }
 
 .flame1 {
   top: -40px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .flame2 {
   top: -20px;
-  left: -50px;
+  left: calc(50% - 50px);
+  transform: translateX(-50%);
 }
 
 .flame3 {
   top: -20px;
-  left: 50px;
+  left: calc(50% + 50px);
+  transform: translateX(-50%);
 }
 
 .flame1:before,
@@ -371,25 +378,25 @@
 .flame2.blown,
 .flame3.blown {
   opacity: 0;
-  transform: scale(0) translateY(-20px) rotate(-45deg);
+  transform: translateX(-50%) scale(0) translateY(-20px);
   filter: drop-shadow(0 0 0 transparent);
 }
 
 @keyframes flameFlicker {
   0%, 100% {
-    transform: scaleY(1) rotate(-45deg);
+    transform: translateX(-50%) scaleY(1);
   }
   50% {
-    transform: scaleY(1.1) rotate(-45deg);
+    transform: translateX(-50%) scaleY(1.1);
   }
 }
 
 @keyframes flameSway {
   0%, 100% {
-    transform: skewX(-2deg) rotate(-45deg);
+    transform: translateX(-50%) skewX(-2deg);
   }
   50% {
-    transform: skewX(2deg) rotate(-45deg);
+    transform: translateX(-50%) skewX(2deg);
   }
 }
 
@@ -402,25 +409,25 @@
   color: white;
   font-family: 'Cormorant Garamond', serif;
   text-align: center;
-  width: 350px;
+  width: 100%;
   font-size: 50px;
-  left: -160px;
-  top: 100px;
-  z-index: -1;
+  left: 50%;
+  top: 90%;
+  transform: translate(-50%, 0);
+  z-index: 3;
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
-  transform: translateY(20px);
   font-weight: 600;
   text-shadow:
     0 0 20px rgba(255, 215, 0, 0.8),
     0 0 40px rgba(255, 152, 0, 0.6),
     0 2px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
 }
 
 .text.show {
-  top: -90px;
+  top: -15%;
   opacity: 1;
-  transform: translateY(0);
   animation: textGlow 2s ease-in-out infinite;
 }
 
@@ -614,6 +621,11 @@
     padding: 0 1.5rem;
   }
 
+  #birthday-cake {
+    width: 320px;
+    height: 320px;
+  }
+
   #birthday-cake:before {
     width: 320px;
     height: 110px;
@@ -633,9 +645,7 @@
   }
 
   .text {
-    width: 280px;
     font-size: 40px;
-    left: -125px;
   }
 
   .candles-counter {
@@ -659,6 +669,11 @@
     padding: 0 1rem;
   }
 
+  #birthday-cake {
+    width: 280px;
+    height: 280px;
+  }
+
   #birthday-cake:before {
     width: 280px;
     height: 95px;
@@ -678,9 +693,7 @@
   }
 
   .text {
-    width: 240px;
     font-size: 32px;
-    left: -105px;
   }
 
   .candles-counter {
