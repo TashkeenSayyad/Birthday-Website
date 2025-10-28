@@ -99,10 +99,12 @@
   transition: transform 0.3s ease;
   height: 320px;
   position: relative;
+  /* Apply playful rotation to the container, not the flip element */
+  transform: rotate(var(--note-rotation, 0deg));
 }
 
 .sticky-note:hover:not(.flipped) {
-  transform: rotate(0deg) scale(1.05);
+  transform: rotate(var(--note-rotation, 0deg)) scale(1.05);
   z-index: 10;
   animation: wiggle 0.5s ease-in-out;
 }
@@ -110,23 +112,24 @@
 /* Keep flipped notes stable and above others */
 .sticky-note.flipped {
   z-index: 15;
-  transform: none;
+  /* Maintain the rotation even when flipped */
+  transform: rotate(var(--note-rotation, 0deg));
 }
 
-/* 3D flip container */
+/* 3D flip container - ONLY handles flip, no rotation */
 .note-inner {
   position: relative;
   width: 100%;
   height: 100%;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-  transform: rotateY(0deg) rotate(var(--note-rotation, 0deg));
+  transform: rotateY(0deg);
   will-change: transform;
   backface-visibility: hidden;
 }
 
 .sticky-note.flipped .note-inner {
-  transform: rotate(0deg) rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 /* Front and back faces */
@@ -409,7 +412,7 @@
   }
 
   .sticky-note:hover:not(.flipped) {
-    transform: translateY(-5px) scale(1.02);
+    transform: rotate(var(--note-rotation, 0deg)) translateY(-5px) scale(1.02);
   }
 
   .note-front,
@@ -476,19 +479,26 @@
   .sticky-note {
     height: 380px;
     max-width: 100%;
+    /* Less rotation on mobile for easier reading */
+    transform: rotate(calc(var(--note-rotation, 0deg) * 0.5));
   }
 
   .sticky-note:hover:not(.flipped) {
-    transform: translateY(-5px) scale(1.01);
+    transform: rotate(calc(var(--note-rotation, 0deg) * 0.5)) translateY(-5px) scale(1.01);
   }
 
-  /* Less rotation on mobile for easier reading */
+  .sticky-note.flipped {
+    /* Maintain the reduced rotation even when flipped */
+    transform: rotate(calc(var(--note-rotation, 0deg) * 0.5));
+  }
+
+  /* Flip only - no rotation on inner element */
   .note-inner {
-    transform: rotateY(0deg) rotate(calc(var(--note-rotation, 0deg) * 0.5));
+    transform: rotateY(0deg);
   }
 
   .sticky-note.flipped .note-inner {
-    transform: rotate(0deg) rotateY(180deg);
+    transform: rotateY(180deg);
   }
 
   .note-front,
