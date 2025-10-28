@@ -4,64 +4,83 @@ import '../styles/ThingsWeLove.css';
 
 const ThingsWeLove = () => {
   const [items, setItems] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [flippedId, setFlippedId] = useState(null);
 
   useEffect(() => {
     setItems(thingsWeLoveData);
   }, []);
 
-  const handleCardClick = (item) => {
-    setSelectedItem(item);
+  const handleNoteClick = (id) => {
+    setFlippedId(flippedId === id ? null : id);
   };
 
-  const handleCloseModal = () => {
-    setSelectedItem(null);
-  };
+  // Array of pastel colors for sticky notes
+  const colors = [
+    '#FFF9A5', // Yellow
+    '#FFB3E6', // Pink
+    '#B4E7CE', // Mint green
+    '#B3D9FF', // Light blue
+    '#FFD9B3', // Peach
+    '#E6B3FF', // Lavender
+    '#B3FFB3', // Light green
+    '#FFCCCC', // Light coral
+  ];
+
+  // Array of random rotations for natural sticky note look
+  const rotations = [2, -3, 1, -2, 3, -1, 2, -3, 1, -2];
 
   return (
-    <div className="things-page">
+    <div className="sticky-notes-page">
       <div className="page-header">
         <h1 className="page-title">Things We Love About You</h1>
-        <p className="page-subtitle">Every quality makes you extraordinary</p>
+        <p className="page-subtitle">Pull a note to see why you're amazing!</p>
       </div>
 
-      <div className="things-grid">
+      <div className="notes-board">
         {items.length === 0 ? (
           <p style={{ color: 'white', fontSize: '1.5rem', textAlign: 'center' }}>Loading...</p>
         ) : (
           items.map((item, index) => (
             <div
               key={item.id}
-              className="thing-card"
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onClick={() => handleCardClick(item)}
+              className={`sticky-note ${flippedId === item.id ? 'flipped' : ''}`}
+              style={{
+                '--note-color': colors[index % colors.length],
+                '--note-rotation': `${rotations[index % rotations.length]}deg`,
+                animationDelay: `${index * 0.1}s`
+              }}
+              onClick={() => handleNoteClick(item.id)}
             >
-              <div className="thing-image">
-                <img src={item.image} alt={item.title} />
-                <span className="from-label">From: {item.from}</span>
-              </div>
-              <div className="thing-content">
-                <h3>{item.title}</h3>
-                <p>{item.description.substring(0, 100)}...</p>
+              <div className="note-inner">
+                {/* Front of note */}
+                <div className="note-front">
+                  <div className="note-tape"></div>
+                  <div className="note-content-front">
+                    <h3>{item.title}</h3>
+                    <div className="note-divider"></div>
+                    <p className="note-from">- {item.from}</p>
+                  </div>
+                  <div className="note-corner-fold"></div>
+                  <div className="click-hint">Click to flip!</div>
+                </div>
+
+                {/* Back of note */}
+                <div className="note-back">
+                  <div className="note-tape"></div>
+                  <div className="note-back-content">
+                    <div className="note-image-small">
+                      <img src={item.image} alt={item.title} />
+                    </div>
+                    <p className="note-description">{item.description}</p>
+                    <p className="note-signature">♥ {item.from}</p>
+                  </div>
+                  <div className="click-hint">Click to flip back</div>
+                </div>
               </div>
             </div>
           ))
         )}
       </div>
-
-      {selectedItem && (
-        <div className="modal-overlay" onClick={handleCloseModal}>
-          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={handleCloseModal}>×</button>
-            <div className="modal-img-wrapper">
-              <img src={selectedItem.image} alt={selectedItem.title} />
-            </div>
-            <p className="modal-from-text">From: {selectedItem.from}</p>
-            <h2 className="modal-title-text">{selectedItem.title}</h2>
-            <p className="modal-desc-text">{selectedItem.description}</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

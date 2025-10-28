@@ -1,428 +1,445 @@
-.things-page {
+/* Sticky Notes Page - Fun & Playful Design */
+.sticky-notes-page {
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: var(--gradient-romantic);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #f5deb3 0px,
+      #f5deb3 2px,
+      #f0d9a8 2px,
+      #f0d9a8 4px
+    ),
+    linear-gradient(135deg, #e8d4b0 0%, #d4c5a9 100%);
   position: relative;
   overflow: hidden;
 }
 
-.things-page::before {
+/* Cork board texture effect */
+.sticky-notes-page::before {
   content: '';
   position: absolute;
-  top: -20%;
-  right: -15%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(233, 30, 140, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float 25s ease-in-out infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(139, 90, 43, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 60% 70%, rgba(139, 90, 43, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 80% 10%, rgba(139, 90, 43, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px, 80px 80px, 100px 100px;
   pointer-events: none;
+  opacity: 0.6;
 }
 
 .page-header {
   text-align: center;
-  margin-bottom: 4rem;
-  animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 3rem;
+  animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   position: relative;
   z-index: 2;
 }
 
 .page-title {
-  font-family: var(--font-serif);
-  font-size: 3.8rem;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
-  font-weight: 600;
+  font-family: 'Caveat', 'Patrick Hand', 'Comic Sans MS', cursive;
+  font-size: 4rem;
+  color: #2c1810;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
   display: inline-block;
 }
 
-.page-title::before,
-.page-title::after {
-  content: '💝';
-  position: absolute;
-  top: -10px;
-  font-size: 2rem;
-  animation: float 3s ease-in-out infinite;
-}
-
 .page-title::before {
-  left: -50px;
+  content: '📌';
+  position: absolute;
+  left: -60px;
+  top: -10px;
+  font-size: 2.5rem;
+  animation: swing 2s ease-in-out infinite;
+  transform-origin: top center;
 }
 
 .page-title::after {
-  right: -50px;
-  animation-delay: 1s;
+  content: '📌';
+  position: absolute;
+  right: -60px;
+  top: -10px;
+  font-size: 2.5rem;
+  animation: swing 2s ease-in-out infinite 1s;
+  transform-origin: top center;
 }
 
 .page-subtitle {
-  font-family: var(--font-sans);
-  font-size: 1.2rem;
-  color: var(--text-light);
-  letter-spacing: 0.1em;
+  font-family: 'Caveat', 'Patrick Hand', cursive;
+  font-size: 1.5rem;
+  color: #5d4e37;
+  letter-spacing: 0.05em;
   animation: fadeIn 1.5s ease-out 0.3s both;
 }
 
-.things-grid {
-  max-width: 1400px;
+/* Notes board container */
+.notes-board {
+  max-width: 1600px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
-  padding-bottom: 2rem;
-  position: relative;
-  z-index: 2;
-}
-
-.thing-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(15px);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
-  box-shadow:
-    0 8px 32px rgba(155, 89, 182, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  position: relative;
-}
-
-.thing-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.7s ease;
-  z-index: 1;
-}
-
-.thing-card:hover::before {
-  left: 100%;
-}
-
-.thing-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  border-color: rgba(233, 30, 140, 0.3);
-  box-shadow:
-    0 25px 70px rgba(155, 89, 182, 0.3),
-    0 0 40px rgba(233, 30, 140, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
-  background: rgba(255, 255, 255, 0.95);
-}
-
-.thing-image {
-  position: relative;
-  height: 300px;
-  overflow: hidden;
-}
-
-.thing-image::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.thing-card:hover .thing-image::after {
-  opacity: 0.6;
-}
-
-.thing-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.thing-card:hover .thing-image img {
-  transform: scale(1.1);
-}
-
-.from-label {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  background: rgba(155, 89, 182, 0.3);
-  backdrop-filter: blur(10px);
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 25px;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  z-index: 2;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.thing-card:hover .from-label {
-  background: rgba(233, 30, 140, 0.4);
-  transform: translateY(-3px);
-}
-
-.thing-content {
-  padding: 2rem 1.5rem;
-  position: relative;
-  z-index: 2;
-}
-
-.thing-content h3 {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  transition: transform 0.3s ease;
-}
-
-.thing-card:hover .thing-content h3 {
-  transform: scale(1.05);
-}
-
-.thing-content p {
-  color: var(--text-medium);
-  line-height: 1.7;
-  font-size: 0.95rem;
-}
-
-/* Modal styles with enhanced design */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(155, 89, 182, 0.35);
-  z-index: 999999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3rem 2rem;
   padding: 2rem;
-  backdrop-filter: blur(20px);
-  animation: fadeIn 0.3s ease;
-}
-
-.modal-box {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  border-radius: 25px;
-  max-width: 800px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
   position: relative;
-  animation: modalSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow:
-    0 30px 90px rgba(155, 89, 182, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  z-index: 2;
 }
 
-.modal-close-btn {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(233, 30, 140, 0.3);
-  border-radius: 50%;
-  color: var(--primary-pink);
-  font-size: 2rem;
+/* Individual sticky note */
+.sticky-note {
+  perspective: 1000px;
   cursor: pointer;
-  z-index: 1000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s var(--transition-smooth);
-  line-height: 1;
-  padding: 0;
-  font-weight: 300;
-  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.2);
+  animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+  transition: transform 0.3s ease;
+  height: 320px;
 }
 
-.modal-close-btn:hover {
-  background: var(--primary-pink);
-  color: white;
-  border-color: var(--primary-pink);
-  transform: rotate(90deg) scale(1.1);
-  box-shadow: 0 6px 20px rgba(233, 30, 140, 0.4);
+.sticky-note:hover {
+  transform: rotate(0deg) scale(1.05) !important;
+  z-index: 10;
+  animation: wiggle 0.5s ease-in-out;
 }
 
-.modal-img-wrapper {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  border-radius: 25px 25px 0 0;
+/* 3D flip container */
+.note-inner {
   position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg) rotate(var(--note-rotation, 0deg));
 }
 
-.modal-img-wrapper::after {
+.sticky-note.flipped .note-inner {
+  transform: rotateY(180deg) rotate(0deg);
+}
+
+/* Front and back faces */
+.note-front,
+.note-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: var(--note-color, #FFF9A5);
+  border-radius: 2px;
+  padding: 2rem 1.5rem 1.5rem;
+  box-shadow:
+    5px 5px 15px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+    2px 2px 0 rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.note-back {
+  transform: rotateY(180deg);
+  padding: 2.5rem 1.5rem 1.5rem;
+}
+
+/* Tape effect at top */
+.note-tape {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+  z-index: 5;
+}
+
+.note-tape::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40%;
-  background: linear-gradient(to top, rgba(233, 30, 140, 0.2), transparent);
-  pointer-events: none;
+  top: 50%;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.05);
 }
 
-.modal-img-wrapper img {
+/* Corner fold effect */
+.note-corner-fold {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 30px 30px;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  transition: border-width 0.3s ease;
+}
+
+.sticky-note:hover .note-corner-fold {
+  border-width: 0 0 40px 40px;
+}
+
+/* Front content */
+.note-content-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.note-content-front h3 {
+  font-family: 'Caveat', 'Patrick Hand', cursive;
+  font-size: 2.2rem;
+  color: #2c1810;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.note-divider {
+  width: 60%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #2c1810 0px,
+    #2c1810 10px,
+    transparent 10px,
+    transparent 15px
+  );
+  margin: 1rem 0;
+  opacity: 0.3;
+}
+
+.note-from {
+  font-family: 'Caveat', 'Patrick Hand', cursive;
+  font-size: 1.4rem;
+  color: #5d4e37;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+/* Back content */
+.note-back-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+}
+
+.note-image-small {
+  width: 100%;
+  height: 140px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+.note-image-small img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  animation: imageZoomIn 0.5s ease-out;
 }
 
-@keyframes imageZoomIn {
+.note-description {
+  font-family: 'Caveat', 'Patrick Hand', cursive;
+  font-size: 1.15rem;
+  color: #2c1810;
+  line-height: 1.5;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar for description */
+.note-description::-webkit-scrollbar {
+  width: 6px;
+}
+
+.note-description::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.note-description::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.note-signature {
+  font-family: 'Caveat', 'Patrick Hand', cursive;
+  font-size: 1.3rem;
+  color: #d63384;
+  text-align: right;
+  font-style: italic;
+  margin-top: auto;
+  font-weight: 600;
+}
+
+/* Click hint */
+.click-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Caveat', cursive;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.sticky-note:hover .click-hint {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes popIn {
   from {
-    transform: scale(1.2);
+    opacity: 0;
+    transform: scale(0.3) rotate(var(--note-rotation, 0deg));
   }
   to {
+    opacity: 1;
+    transform: scale(1) rotate(var(--note-rotation, 0deg));
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg) scale(1.05); }
+  25% { transform: rotate(-3deg) scale(1.05); }
+  50% { transform: rotate(0deg) scale(1.05); }
+  75% { transform: rotate(3deg) scale(1.05); }
+}
+
+@keyframes swing {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-50px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
     transform: scale(1);
   }
 }
 
-.modal-from-text {
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  color: var(--primary-purple);
-  margin: 2rem 2.5rem 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-weight: 700;
-  position: relative;
-  display: inline-block;
-  animation: fadeInUp 0.5s ease-out 0.2s both;
-}
-
-.modal-from-text::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background: var(--gradient-purple);
-  border-radius: 2px;
-}
-
-.modal-title-text {
-  font-family: var(--font-serif);
-  font-size: 2.8rem;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0 2.5rem 1.5rem;
-  font-weight: 600;
-  animation: fadeInUp 0.5s ease-out 0.3s both;
-}
-
-.modal-desc-text {
-  font-family: var(--font-sans);
-  color: var(--text-dark);
-  line-height: 1.9;
-  margin: 0 2.5rem 2.5rem;
-  font-size: 1.15rem;
-  font-weight: 400;
-  animation: fadeInUp 0.5s ease-out 0.4s both;
-}
-
-@keyframes modalSlideUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(60px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
   }
 }
 
+/* Responsive design */
 @media screen and (max-width: 768px) {
+  .sticky-notes-page {
+    padding: 3rem 1rem;
+  }
+
   .page-title {
-    font-size: 2.8rem;
+    font-size: 3rem;
   }
 
   .page-title::before,
   .page-title::after {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .page-title::before {
-    left: -35px;
+    left: -45px;
   }
 
   .page-title::after {
-    right: -35px;
+    right: -45px;
   }
 
-  .things-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .page-subtitle {
+    font-size: 1.2rem;
   }
 
-  .modal-overlay {
+  .notes-board {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2rem 1.5rem;
     padding: 1rem;
   }
 
-  .modal-img-wrapper {
-    height: 250px;
+  .sticky-note {
+    height: 280px;
   }
 
-  .modal-from-text,
-  .modal-title-text,
-  .modal-desc-text {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-  }
-
-  .modal-title-text {
-    font-size: 2.2rem;
-  }
-
-  .modal-desc-text {
-    font-size: 1rem;
-  }
-
-  .modal-close-btn {
-    width: 45px;
-    height: 45px;
+  .note-content-front h3 {
     font-size: 1.8rem;
-    top: 1rem;
-    right: 1rem;
+  }
+
+  .note-image-small {
+    height: 120px;
+  }
+
+  .note-description {
+    font-size: 1rem;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+
   .page-title::before,
   .page-title::after {
     display: none;
   }
 
-  .things-grid {
+  .notes-board {
     grid-template-columns: 1fr;
   }
+
+  .sticky-note {
+    height: 300px;
+  }
+}
+
+/* Add hover shadow effect */
+.sticky-note::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  right: 10px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.sticky-note:hover::after {
+  opacity: 1;
+  bottom: -15px;
 }
