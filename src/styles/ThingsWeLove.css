@@ -362,56 +362,84 @@
 /* Responsive design */
 @media screen and (max-width: 768px) {
   .sticky-notes-page {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1.5rem;
   }
 
   .page-title {
-    font-size: 3rem;
+    font-size: 2.8rem;
+    line-height: 1.2;
   }
 
   .page-title::before,
   .page-title::after {
-    font-size: 2rem;
-  }
-
-  .page-title::before {
-    left: -45px;
-  }
-
-  .page-title::after {
-    right: -45px;
-  }
-
-  .page-subtitle {
-    font-size: 1.2rem;
-  }
-
-  .notes-board {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 2rem 1.5rem;
-    padding: 1rem;
-  }
-
-  .sticky-note {
-    height: 280px;
-  }
-
-  .note-content-front h3 {
     font-size: 1.8rem;
   }
 
+  .page-title::before {
+    left: -40px;
+  }
+
+  .page-title::after {
+    right: -40px;
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .notes-board {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem 2rem;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .sticky-note {
+    height: 340px;
+  }
+
+  .note-front,
+  .note-back {
+    padding: 2rem 1.5rem;
+  }
+
+  .note-content-front h3 {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .note-from {
+    font-size: 1.2rem;
+  }
+
   .note-image-small {
-    height: 120px;
+    height: 140px;
   }
 
   .note-description {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .note-signature {
+    font-size: 1.2rem;
+  }
+
+  .note-divider {
+    width: 70%;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .sticky-notes-page {
+    padding: 2rem 1rem;
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
   .page-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .page-title::before,
@@ -419,12 +447,103 @@
     display: none;
   }
 
+  .page-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
   .notes-board {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 1rem 0;
   }
 
   .sticky-note {
-    height: 300px;
+    height: 380px;
+    max-width: 100%;
+  }
+
+  /* Less rotation on mobile for easier reading */
+  .note-inner {
+    transform: rotateY(0deg) rotate(calc(var(--note-rotation, 0deg) * 0.5));
+  }
+
+  .note-front,
+  .note-back {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .note-content-front h3 {
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .note-from {
+    font-size: 1.1rem;
+  }
+
+  .note-image-small {
+    height: 160px;
+    border-radius: 12px;
+  }
+
+  .note-description {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .note-signature {
+    font-size: 1.15rem;
+  }
+
+  .note-divider {
+    width: 80%;
+    margin: 1.2rem 0;
+  }
+
+  .note-corner-fold {
+    border-width: 0 0 25px 25px;
+  }
+
+  .sticky-note:hover .note-corner-fold {
+    border-width: 0 0 30px 30px;
+  }
+
+  /* Reduce wiggle animation on mobile */
+  .sticky-note:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 360px) {
+  .sticky-notes-page {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .notes-board {
+    gap: 2rem;
+  }
+
+  .sticky-note {
+    height: 360px;
+  }
+
+  .note-content-front h3 {
+    font-size: 1.7rem;
+  }
+
+  .note-description {
+    font-size: 1rem;
   }
 }
 
@@ -447,4 +566,29 @@
 .sticky-note:hover::after {
   opacity: 1;
   bottom: -15px;
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Better tap targets on touch devices */
+  .sticky-note {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Show shadow by default on mobile since hover doesn't apply */
+  .sticky-note::after {
+    opacity: 0.6;
+    bottom: -12px;
+  }
+
+  /* Active state for touch feedback */
+  .sticky-note:active {
+    transform: scale(0.98);
+  }
+
+  /* Ensure flipped notes stay readable */
+  .sticky-note.flipped {
+    z-index: 100;
+  }
 }
