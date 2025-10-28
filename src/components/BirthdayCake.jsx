@@ -133,6 +133,9 @@ const BirthdayCake = ({ onComplete }) => {
         ))}
       </div>
 
+      {/* Dimming Overlay */}
+      <div className={`celebration-overlay ${showMessage ? 'active' : ''}`}></div>
+
       <div className="birthday-cake-content">
         <h1 className="cake-title">Make a Wish</h1>
         <p className="cake-instruction">
