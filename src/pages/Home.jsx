@@ -39,6 +39,14 @@ const Home = () => {
       icon: '💝',
       path: '/notes',
       color: '#d4a5d8'
+    },
+    {
+      id: 5,
+      title: 'Music that reminds of you',
+      subtitle: 'Songs that tell our story',
+      icon: '🎵',
+      path: '/music',
+      color: '#e74c3c'
     }
   ];
 
