@@ -126,7 +126,7 @@
 }
 
 .sticky-note.flipped .note-inner {
-  transform: rotateY(180deg) rotate(0deg);
+  transform: rotateY(180deg) rotate(var(--note-rotation, 0deg));
 }
 
 /* Front and back faces */
@@ -488,7 +488,7 @@
   }
 
   .sticky-note.flipped .note-inner {
-    transform: rotateY(180deg) rotate(0deg);
+    transform: rotateY(180deg) rotate(calc(var(--note-rotation, 0deg) * 0.5));
   }
 
   .note-front,
