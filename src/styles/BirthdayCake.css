@@ -420,40 +420,44 @@
   font-family: 'Cormorant Garamond', serif;
   text-align: center;
   width: 100%;
-  font-size: 50px;
+  font-size: 60px;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
   z-index: 3;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   opacity: 0;
-  font-weight: 600;
-  text-shadow:
-    0 0 20px rgba(255, 215, 0, 0.8),
-    0 0 40px rgba(255, 152, 0, 0.6),
-    0 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #e91e8c 50%, #9b59b6 75%, #3498db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6))
+          drop-shadow(0 0 40px rgba(233, 30, 140, 0.4))
+          drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
   pointer-events: none;
+  letter-spacing: 0.05em;
 }
 
 .text.show {
-  top: 115%;
+  top: 120%;
   opacity: 1;
-  animation: textGlow 2s ease-in-out infinite;
+  transform: translate(-50%, -50%) scale(1);
+  animation: textCelebration 2s ease-in-out infinite;
 }
 
-@keyframes textGlow {
+@keyframes textCelebration {
   0%, 100% {
-    text-shadow:
-      0 0 20px rgba(255, 215, 0, 0.8),
-      0 0 40px rgba(255, 152, 0, 0.6),
-      0 2px 4px rgba(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1.05) rotate(1deg);
   }
   50% {
-    text-shadow:
-      0 0 30px rgba(255, 215, 0, 1),
-      0 0 60px rgba(255, 152, 0, 0.9),
-      0 0 80px rgba(255, 87, 34, 0.7),
-      0 2px 4px rgba(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%) scale(1.08) rotate(-1deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(1.05) rotate(1deg);
   }
 }
 
@@ -655,7 +659,7 @@
   }
 
   .text {
-    font-size: 40px;
+    font-size: 45px;
   }
 
   .candles-counter {
@@ -703,7 +707,7 @@
   }
 
   .text {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   .candles-counter {
