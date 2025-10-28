@@ -416,8 +416,8 @@
   width: 100%;
   font-size: 50px;
   left: 50%;
-  top: 90%;
-  transform: translate(-50%, 0);
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 3;
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
@@ -430,7 +430,7 @@
 }
 
 .text.show {
-  top: -15%;
+  top: 115%;
   opacity: 1;
   animation: textGlow 2s ease-in-out infinite;
 }
