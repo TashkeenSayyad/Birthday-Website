@@ -52,7 +52,7 @@ const Home = () => {
           <div className="header-content">
             <h1 className="home-title">Happy Birthday</h1>
             <div className="title-decoration"></div>
-            <p className="home-subtitle">Twenty-four years of grace, beauty, and light</p>
+            <p className="home-subtitle">Twenty-four years of your beautiful life</p>
           </div>
         </header>
 
@@ -82,7 +82,7 @@ const Home = () => {
         </div>
 
         <footer className="home-footer">
-          <p className="footer-text">With all my love, today and always</p>
+          <p className="footer-text">With all our love, today and always</p>
         </footer>
       </div>
     </>

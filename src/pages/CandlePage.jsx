@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import CandleBlow from '../components/CandleBlow';
+import BirthdayCake from '../components/BirthdayCake';
 
 const CandlePage = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const CandlePage = () => {
     navigate('/');
   };
 
-  return <CandleBlow onComplete={handleComplete} />;
+  return <BirthdayCake onComplete={handleComplete} />;
 };
 
 export default CandlePage;
