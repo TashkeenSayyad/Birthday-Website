@@ -18,25 +18,24 @@ const InitialRedirect = () => {
   const location = useLocation();
   const [checking, setChecking] = React.useState(true);
 
+  const base = import.meta.env.BASE_URL;
+
   useEffect(() => {
     const hasBlown = sessionStorage.getItem('candlesBlown');
 
-    // Redirect to /candle if candles haven't been blown
-    if (!hasBlown && location.pathname === '/') {
-      navigate('/candle', { replace: true });
+    if (!hasBlown && location.pathname === base) {
+      navigate(`${base}candle`, { replace: true });
     }
 
-    // Done checking redirect
     setChecking(false);
-  }, [navigate, location]);
+  }, [navigate, location, base]);
 
-  if (checking) return null; // Don't render anything while redirecting
+  if (checking) return null;
 
   const hasBlown = sessionStorage.getItem('candlesBlown');
 
-  // Fallback redirect if useEffect hasn't run yet
-  if (!hasBlown && location.pathname === '/') {
-    return <Navigate to="/candle" replace />;
+  if (!hasBlown && location.pathname === base) {
+    return <Navigate to={`${base}candle`} replace />;
   }
 
   return <Home />;
