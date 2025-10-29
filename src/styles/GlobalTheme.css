@@ -1,13 +1,32 @@
 /* Global color variables and theme */
 :root {
   --primary-purple: #9b59b6;
+  --primary-pink: #e91e8c;
   --light-purple: #d4a5d8;
   --pink: #e91e8c;
+  --magenta: #d946ef;
+  --violet: #8b5cf6;
   --blue: #3498db;
   --text-dark: #2d2d2d;
   --text-medium: #666;
   --text-light: #7d5a8f;
   --bg-gradient: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
+  --gradient-romantic: linear-gradient(135deg,
+    #f8e9f4 0%,
+    #efe5f8 25%,
+    #e5f0fb 50%,
+    #f3e8f5 75%,
+    #fde9f2 100%
+  );
+
+  /* Font families */
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --font-sans: 'Helvetica Neue', Arial, sans-serif;
+  --font-script: 'Brush Script MT', cursive;
+
+  /* Transitions */
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Apply to all pages */
