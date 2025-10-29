@@ -93,92 +93,36 @@
 
 /* Individual sticky note */
 .sticky-note {
-  perspective: 1000px;
   cursor: pointer;
   animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
   transition: transform 0.3s ease;
   height: 320px;
   position: relative;
-  /* Apply playful rotation to the container, not the flip element */
   transform: rotate(var(--note-rotation, 0deg));
 }
 
-.sticky-note:hover:not(.flipped) {
+.sticky-note:hover {
   transform: rotate(var(--note-rotation, 0deg)) scale(1.05);
   z-index: 10;
   animation: wiggle 0.5s ease-in-out;
 }
 
-/* Keep flipped notes stable and above others */
-.sticky-note.flipped {
-  z-index: 15;
-  /* Maintain the rotation even when flipped */
-  transform: rotate(var(--note-rotation, 0deg));
-}
-
-/* 3D flip container - ONLY handles flip, no rotation */
-.note-inner {
-  position: relative;
+/* Sticky note card */
+.note-front {
   width: 100%;
   height: 100%;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
-  transform: rotateY(0deg);
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-.sticky-note.flipped .note-inner {
-  transform: rotateY(180deg);
-}
-
-/* Front and back faces */
-.note-front,
-.note-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
   background: var(--note-color, #FFF9A5);
   border-radius: 2px;
   padding: 2rem 1.5rem 1.5rem;
   box-shadow:
-    5px 5px 15px rgba(0, 0, 0, 0.2),
+    5px 5px 15px rgba(155, 89, 182, 0.25),
     inset 0 0 0 1px rgba(255, 255, 255, 0.3),
     2px 2px 0 rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
-}
-
-.note-back {
-  transform: rotateY(180deg);
-  padding: 2.5rem 1.5rem 1.5rem;
-}
-
-/* Tape effect at top */
-.note-tape {
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 25px;
-  background: rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    inset 0 0 10px rgba(255, 255, 255, 0.3);
-  z-index: 5;
-}
-
-.note-tape::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  width: 80%;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Corner fold effect */
@@ -189,13 +133,14 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 0 30px 30px;
+  border-width: 0 0 35px 35px;
   border-color: transparent transparent rgba(155, 89, 182, 0.15) transparent;
   transition: border-width 0.3s ease;
+  z-index: 2;
 }
 
 .sticky-note:hover .note-corner-fold {
-  border-width: 0 0 40px 40px;
+  border-width: 0 0 45px 45px;
   border-color: transparent transparent rgba(233, 30, 140, 0.2) transparent;
 }
 
@@ -207,7 +152,6 @@
   align-items: center;
   height: 100%;
   text-align: center;
-  box-sizing: border-box;
 }
 
 .note-content-front h3 {
@@ -242,85 +186,149 @@
   margin-top: 1rem;
 }
 
-/* Back content */
-.note-back-content {
+/* Modal Styles with Flip Animation */
+.love-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(155, 89, 182, 0.4);
+  backdrop-filter: blur(20px);
+  z-index: 999999;
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  gap: 1rem;
-  box-sizing: border-box;
-}
-
-.note-image-small {
-  width: 100%;
-  height: 140px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border: 3px solid rgba(255, 255, 255, 0.6);
-}
-
-.note-image-small img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.note-description {
-  font-family: 'Caveat', 'Patrick Hand', cursive;
-  font-size: 1.15rem;
-  color: #6b4678;
-  line-height: 1.5;
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 0.5rem;
-}
-
-/* Custom scrollbar for description */
-.note-description::-webkit-scrollbar {
-  width: 6px;
-}
-
-.note-description::-webkit-scrollbar-track {
-  background: rgba(155, 89, 182, 0.1);
-  border-radius: 3px;
-}
-
-.note-description::-webkit-scrollbar-thumb {
-  background: rgba(233, 30, 140, 0.3);
-  border-radius: 3px;
-}
-
-.note-description::-webkit-scrollbar-thumb:hover {
-  background: rgba(233, 30, 140, 0.5);
-}
-
-.note-signature {
-  font-family: 'Caveat', 'Patrick Hand', cursive;
-  font-size: 1.3rem;
-  color: #d63384;
-  text-align: right;
-  font-style: italic;
-  margin-top: auto;
-  font-weight: 600;
-}
-
-/* Click hint */
-.click-hint {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Caveat', cursive;
-  font-size: 0.9rem;
-  color: rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.love-modal.open {
+  opacity: 1;
+}
+
+.love-modal-content {
+  perspective: 1500px;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+}
+
+.love-modal-card {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 25px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow:
+    0 30px 90px rgba(155, 89, 182, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  animation: flipIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  transform-style: preserve-3d;
+}
+
+@keyframes flipIn {
+  0% {
+    transform: rotateY(-90deg) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: rotateY(-45deg) scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(233, 30, 140, 0.3);
+  border-radius: 50%;
+  color: var(--primary-pink);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  line-height: 1;
+  padding: 0;
+  font-weight: 300;
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.2);
+}
+
+.modal-close:hover {
+  background: var(--primary-pink);
+  color: white;
+  border-color: var(--primary-pink);
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 6px 20px rgba(233, 30, 140, 0.4);
+}
+
+.love-modal-image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 25px 25px 0 0;
+  position: relative;
+}
+
+.love-modal-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(233, 30, 140, 0.2), transparent);
   pointer-events: none;
 }
 
-.sticky-note:hover .click-hint {
-  opacity: 1;
+.love-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.love-modal-details {
+  padding: 2.5rem;
+}
+
+.love-modal-title {
+  font-family: 'Caveat', 'Patrick Hand', cursive;
+  font-size: 2.8rem;
+  color: #9b59b6;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.love-modal-description {
+  font-family: 'Caveat', 'Patrick Hand', cursive;
+  color: #6b4678;
+  line-height: 1.9;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.love-modal-from {
+  font-family: 'Caveat', 'Patrick Hand', cursive;
+  font-size: 1.5rem;
+  color: #e91e8c;
+  text-align: right;
+  font-style: italic;
+  font-weight: 600;
 }
 
 /* Animations */
@@ -336,10 +344,10 @@
 }
 
 @keyframes wiggle {
-  0%, 100% { transform: rotate(0deg) scale(1.05); }
-  25% { transform: rotate(-3deg) scale(1.05); }
-  50% { transform: rotate(0deg) scale(1.05); }
-  75% { transform: rotate(3deg) scale(1.05); }
+  0%, 100% { transform: rotate(var(--note-rotation, 0deg)) scale(1.05); }
+  25% { transform: rotate(calc(var(--note-rotation, 0deg) - 3deg)) scale(1.05); }
+  50% { transform: rotate(var(--note-rotation, 0deg)) scale(1.05); }
+  75% { transform: rotate(calc(var(--note-rotation, 0deg) + 3deg)) scale(1.05); }
 }
 
 @keyframes swing {
@@ -411,39 +419,32 @@
     height: 340px;
   }
 
-  .sticky-note:hover:not(.flipped) {
-    transform: rotate(var(--note-rotation, 0deg)) translateY(-5px) scale(1.02);
-  }
-
-  .note-front,
-  .note-back {
-    padding: 2rem 1.5rem;
-  }
-
   .note-content-front h3 {
     font-size: 2rem;
-    margin-bottom: 1.2rem;
   }
 
   .note-from {
     font-size: 1.2rem;
   }
 
-  .note-image-small {
-    height: 140px;
+  .love-modal-image {
+    height: 300px;
   }
 
-  .note-description {
-    font-size: 1.1rem;
-    line-height: 1.6;
+  .love-modal-details {
+    padding: 2rem 1.5rem;
   }
 
-  .note-signature {
-    font-size: 1.2rem;
+  .love-modal-title {
+    font-size: 2.2rem;
   }
 
-  .note-divider {
-    width: 70%;
+  .love-modal-description {
+    font-size: 1.15rem;
+  }
+
+  .love-modal-from {
+    font-size: 1.3rem;
   }
 }
 
@@ -477,70 +478,53 @@
   }
 
   .sticky-note {
-    height: 380px;
-    max-width: 100%;
-    /* Less rotation on mobile for easier reading */
+    height: 300px;
+    /* Less rotation on mobile */
     transform: rotate(calc(var(--note-rotation, 0deg) * 0.5));
   }
 
-  .sticky-note:hover:not(.flipped) {
-    transform: rotate(calc(var(--note-rotation, 0deg) * 0.5)) translateY(-5px) scale(1.01);
-  }
-
-  .sticky-note.flipped {
-    /* Maintain the reduced rotation even when flipped */
-    transform: rotate(calc(var(--note-rotation, 0deg) * 0.5));
-  }
-
-  /* Flip only - no rotation on inner element */
-  .note-inner {
-    transform: rotateY(0deg);
-  }
-
-  .sticky-note.flipped .note-inner {
-    transform: rotateY(180deg);
-  }
-
-  .note-front,
-  .note-back {
-    padding: 2rem 1.5rem;
-    border-radius: 16px;
+  .sticky-note:hover {
+    transform: rotate(calc(var(--note-rotation, 0deg) * 0.5)) scale(1.03);
   }
 
   .note-content-front h3 {
     font-size: 1.9rem;
-    margin-bottom: 1rem;
   }
 
   .note-from {
     font-size: 1.1rem;
   }
 
-  .note-image-small {
-    height: 160px;
-    border-radius: 12px;
+  .love-modal {
+    padding: 1rem;
   }
 
-  .note-description {
-    font-size: 1.05rem;
-    line-height: 1.65;
+  .love-modal-image {
+    height: 250px;
   }
 
-  .note-signature {
-    font-size: 1.15rem;
+  .love-modal-details {
+    padding: 1.5rem;
   }
 
-  .note-divider {
-    width: 80%;
-    margin: 1.2rem 0;
+  .love-modal-title {
+    font-size: 2rem;
   }
 
-  .note-corner-fold {
-    border-width: 0 0 25px 25px;
+  .love-modal-description {
+    font-size: 1.1rem;
   }
 
-  .sticky-note:hover:not(.flipped) .note-corner-fold {
-    border-width: 0 0 30px 30px;
+  .love-modal-from {
+    font-size: 1.2rem;
+  }
+
+  .modal-close {
+    width: 45px;
+    height: 45px;
+    font-size: 1.8rem;
+    top: 1rem;
+    right: 1rem;
   }
 }
 
@@ -563,15 +547,23 @@
   }
 
   .sticky-note {
-    height: 360px;
+    height: 280px;
   }
 
   .note-content-front h3 {
     font-size: 1.7rem;
   }
+}
 
-  .note-description {
-    font-size: 1rem;
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .sticky-note {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .sticky-note:active {
+    transform: rotate(var(--note-rotation, 0deg)) scale(0.98);
   }
 }
 
@@ -594,29 +586,4 @@
 .sticky-note:hover::after {
   opacity: 1;
   bottom: -15px;
-}
-
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-  /* Better tap targets on touch devices */
-  .sticky-note {
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-  }
-
-  /* Show shadow by default on mobile since hover doesn't apply */
-  .sticky-note::after {
-    opacity: 0.6;
-    bottom: -12px;
-  }
-
-  /* Active state for touch feedback */
-  .sticky-note:active {
-    transform: scale(0.98);
-  }
-
-  /* Ensure flipped notes stay readable */
-  .sticky-note.flipped {
-    z-index: 100;
-  }
 }

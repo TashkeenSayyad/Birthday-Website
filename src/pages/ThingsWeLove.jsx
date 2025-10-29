@@ -4,14 +4,21 @@ import '../styles/ThingsWeLove.css';
 
 const ThingsWeLove = () => {
   const [items, setItems] = useState([]);
-  const [flippedId, setFlippedId] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setItems(thingsWeLoveData);
   }, []);
 
-  const handleNoteClick = (id) => {
-    setFlippedId(flippedId === id ? null : id);
+  const openModal = (item) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedItem(null), 300);
   };
 
   // Array of pink/purple themed colors for sticky notes
@@ -27,13 +34,13 @@ const ThingsWeLove = () => {
   ];
 
   // Array of random rotations for natural sticky note look
-  const rotations = [2, -3, 1, -2, 3, -1, 2, -3, 1, -2];
+  const rotations = [2, -2, 1, -1, 2, -2, 1, -1, 2, -1];
 
   return (
     <div className="sticky-notes-page">
       <div className="page-header">
         <h1 className="page-title">Things We Love About You</h1>
-        <p className="page-subtitle">Pull a note to see why you're amazing!</p>
+        <p className="page-subtitle">Click a note to discover more</p>
       </div>
 
       <div className="notes-board">
@@ -43,44 +50,44 @@ const ThingsWeLove = () => {
           items.map((item, index) => (
             <div
               key={item.id}
-              className={`sticky-note ${flippedId === item.id ? 'flipped' : ''}`}
+              className="sticky-note"
               style={{
                 '--note-color': colors[index % colors.length],
                 '--note-rotation': `${rotations[index % rotations.length]}deg`,
                 animationDelay: `${index * 0.1}s`
               }}
-              onClick={() => handleNoteClick(item.id)}
+              onClick={() => openModal(item)}
             >
-              <div className="note-inner">
-                {/* Front of note */}
-                <div className="note-front">
-                  <div className="note-tape"></div>
-                  <div className="note-content-front">
-                    <h3>{item.title}</h3>
-                    <div className="note-divider"></div>
-                    <p className="note-from">- {item.from}</p>
-                  </div>
-                  <div className="note-corner-fold"></div>
-                  <div className="click-hint">Click to flip!</div>
+              <div className="note-front">
+                <div className="note-content-front">
+                  <h3>{item.title}</h3>
+                  <div className="note-divider"></div>
+                  <p className="note-from">From {item.from}</p>
                 </div>
-
-                {/* Back of note */}
-                <div className="note-back">
-                  <div className="note-tape"></div>
-                  <div className="note-back-content">
-                    <div className="note-image-small">
-                      <img src={item.image} alt={item.title} />
-                    </div>
-                    <p className="note-description">{item.description}</p>
-                    <p className="note-signature">♥ {item.from}</p>
-                  </div>
-                  <div className="click-hint">Click to flip back</div>
-                </div>
+                <div className="note-corner-fold"></div>
               </div>
             </div>
           ))
         )}
       </div>
+
+      {isModalOpen && selectedItem && (
+        <div className={`love-modal ${isModalOpen ? 'open' : ''}`} onClick={closeModal}>
+          <div className="love-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>×</button>
+            <div className="love-modal-card">
+              <div className="love-modal-image">
+                <img src={selectedItem.image} alt={selectedItem.title} />
+              </div>
+              <div className="love-modal-details">
+                <h2 className="love-modal-title">{selectedItem.title}</h2>
+                <p className="love-modal-description">{selectedItem.description}</p>
+                <p className="love-modal-from">♥ {selectedItem.from}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
