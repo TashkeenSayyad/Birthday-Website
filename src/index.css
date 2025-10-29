@@ -1,3 +1,8 @@
+/* Tailwind CSS base layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ============================================
    ENHANCED ROOT STYLES WITH CUSTOM PROPERTIES
    ============================================ */
