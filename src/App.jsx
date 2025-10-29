@@ -17,26 +17,21 @@ import './styles/App.css';
 const InitialRedirect = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [checking, setChecking] = React.useState(true);
-
-  const base = import.meta.env.BASE_URL;
 
   useEffect(() => {
     const hasBlown = sessionStorage.getItem('candlesBlown');
 
-    if (!hasBlown && location.pathname === base) {
-      navigate(`${base}candle`, { replace: true });
+    // If candles haven't been blown and we're on the home page, redirect to candle page
+    if (!hasBlown && location.pathname === '/') {
+      navigate('/candle');
     }
-
-    setChecking(false);
-  }, [navigate, location, base]);
-
-  if (checking) return null;
+  }, [navigate, location]);
 
   const hasBlown = sessionStorage.getItem('candlesBlown');
 
-  if (!hasBlown && location.pathname === base) {
-    return <Navigate to={`${base}candle`} replace />;
+  // If candles haven't been blown, redirect to candle page
+  if (!hasBlown && location.pathname === '/') {
+    return <Navigate to="/candle" replace />;
   }
 
   return <Home />;
@@ -45,19 +40,17 @@ const InitialRedirect = () => {
 function App() {
   const handleBackToCandles = () => {
     sessionStorage.removeItem('candlesBlown');
-    // Use dynamic base path for GitHub Pages and local dev
-    window.location.href = `${import.meta.env.BASE_URL}candle`;
+    window.location.href = '/candle';
   };
 
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router>
       <div className="app">
         <ConstantSparkles />
         <Navigation onBackToCandles={handleBackToCandles} />
         <Routes>
           <Route path="/" element={<InitialRedirect />} />
           <Route path="/candle" element={<CandlePage />} />
-          <Route path="/home" element={<Home />} />
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/things-we-love" element={<ThingsWeLove />} />
           <Route path="/memories" element={<FavoriteMemories />} />
