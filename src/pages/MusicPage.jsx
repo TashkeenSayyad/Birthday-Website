@@ -22,10 +22,10 @@ const MusicPage = () => {
   const songs = [
     {
       id: 1,
-      title: 'Perfect',
-      artist: 'Ed Sheeran',
-      description: 'Your wedding entrance song',
-      spotifyTrackId: '0tgVpDi06FyKpA1z0VMD4v', // Ed Sheeran - Perfect
+      title: 'Test Song',
+      artist: 'Test Artist',
+      description: 'Testing Spotify embed',
+      spotifyTrackId: '4lDmFJg35YoU7GDDRMSHdA', // Using the exact ID from your example
       color: '#ff6b9d',
       lyrics: `[Add your own lyrics here]
 
