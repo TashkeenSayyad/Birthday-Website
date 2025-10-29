@@ -685,6 +685,138 @@
     height: 105px;
   }
 
+  .cake:after {
+    height: 24px;
+    top: 40px;
+  }
+
+  .middle {
+    top: 64px;
+  }
+
+  .middle:before {
+    top: -28px;
+  }
+
+  .top {
+    width: 280px;
+    height: 72px;
+    top: -36px;
+  }
+
+  /* Scale chocolate toppings for 280px wide cake (80% of 350px) */
+  .chocs {
+    width: 44px;
+    height: 40px;
+    box-shadow:
+      39px 16px #e91e8c,
+      78px 20px #e91e8c,
+      118px 24px #e91e8c,
+      157px 20px #e91e8c,
+      196px 16px #e91e8c,
+      236px 0 #e91e8c,
+      0px 3px rgba(255, 255, 255, 0.7),
+      39px 19px rgba(255, 255, 255, 0.7),
+      78px 23px rgba(255, 255, 255, 0.7),
+      118px 27px rgba(255, 255, 255, 0.7),
+      157px 23px rgba(255, 255, 255, 0.7),
+      196px 19px rgba(255, 255, 255, 0.7),
+      236px 3px rgba(255, 255, 255, 0.7);
+  }
+
+  .chocs:before {
+    width: 140px;
+    height: 144px;
+    left: 140px;
+  }
+
+  /* Scale candles for mobile */
+  .candles-group {
+    width: 24px;
+    height: 64px;
+    top: 12%;
+    box-shadow:
+      40px 16px 0 0 #3498db,
+      -40px 16px 0 0 #3498db;
+  }
+
+  .candles-group:before {
+    width: 24px;
+    height: 8px;
+    top: -4px;
+    box-shadow:
+      0 64px 0 0 #2980b9,
+      -40px 16px 0 0 #2980b9,
+      -40px 80px 0 0 #2980b9,
+      40px 16px 0 0 #2980b9,
+      40px 80px 0 0 #2980b9,
+      inset 2px -1px rgba(255, 255, 255, 0.5);
+  }
+
+  .candles-group:after {
+    width: 24px;
+    height: 8px;
+    top: 12px;
+    left: 40px;
+  }
+
+  .shadows {
+    width: 24px;
+    height: 8px;
+    left: -40px;
+    top: 12px;
+  }
+
+  .shadows:before {
+    width: 1.2px;
+    height: 12px;
+    left: 11.5px;
+    top: -8px;
+    box-shadow:
+      40px -16px 0 0 rgba(45, 45, 45, 0.8),
+      80px 0 0 0 rgba(45, 45, 45, 0.8);
+  }
+
+  .shadows:after {
+    width: 12px;
+    height: 72px;
+    left: 12px;
+    box-shadow:
+      40px -16px 0 0 rgba(255, 255, 255, 0.1),
+      80px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Scale flames for mobile */
+  .flame1,
+  .flame2,
+  .flame3 {
+    width: 24px;
+    height: 24px;
+  }
+
+  .flame1 {
+    top: -32px;
+  }
+
+  .flame2 {
+    top: -16px;
+    left: calc(50% - 40px);
+  }
+
+  .flame3 {
+    top: -16px;
+    left: calc(50% + 40px);
+  }
+
+  .flame1:before,
+  .flame2:before,
+  .flame3:before {
+    width: 16px;
+    height: 16px;
+    top: 4px;
+    left: 4px;
+  }
+
   .birthday-text {
     font-size: 45px;
     min-width: 450px;
@@ -732,6 +864,138 @@
 
   .cake {
     height: 90px;
+  }
+
+  .cake:after {
+    height: 20px;
+    top: 35px;
+  }
+
+  .middle {
+    top: 55px;
+  }
+
+  .middle:before {
+    top: -24px;
+  }
+
+  .top {
+    width: 240px;
+    height: 62px;
+    top: -31px;
+  }
+
+  /* Scale chocolate toppings for 240px wide cake (~68.5% of 350px) */
+  .chocs {
+    width: 38px;
+    height: 34px;
+    box-shadow:
+      34px 14px #e91e8c,
+      67px 17px #e91e8c,
+      101px 21px #e91e8c,
+      134px 17px #e91e8c,
+      168px 14px #e91e8c,
+      202px 0 #e91e8c,
+      0px 3px rgba(255, 255, 255, 0.7),
+      34px 17px rgba(255, 255, 255, 0.7),
+      67px 20px rgba(255, 255, 255, 0.7),
+      101px 24px rgba(255, 255, 255, 0.7),
+      134px 20px rgba(255, 255, 255, 0.7),
+      168px 17px rgba(255, 255, 255, 0.7),
+      202px 3px rgba(255, 255, 255, 0.7);
+  }
+
+  .chocs:before {
+    width: 120px;
+    height: 123px;
+    left: 120px;
+  }
+
+  /* Scale candles for mobile */
+  .candles-group {
+    width: 20px;
+    height: 55px;
+    top: 14%;
+    box-shadow:
+      34px 14px 0 0 #3498db,
+      -34px 14px 0 0 #3498db;
+  }
+
+  .candles-group:before {
+    width: 20px;
+    height: 7px;
+    top: -3px;
+    box-shadow:
+      0 55px 0 0 #2980b9,
+      -34px 14px 0 0 #2980b9,
+      -34px 69px 0 0 #2980b9,
+      34px 14px 0 0 #2980b9,
+      34px 69px 0 0 #2980b9,
+      inset 2px -1px rgba(255, 255, 255, 0.5);
+  }
+
+  .candles-group:after {
+    width: 20px;
+    height: 7px;
+    top: 10px;
+    left: 34px;
+  }
+
+  .shadows {
+    width: 20px;
+    height: 7px;
+    left: -34px;
+    top: 10px;
+  }
+
+  .shadows:before {
+    width: 1px;
+    height: 10px;
+    left: 10px;
+    top: -7px;
+    box-shadow:
+      34px -14px 0 0 rgba(45, 45, 45, 0.8),
+      68px 0 0 0 rgba(45, 45, 45, 0.8);
+  }
+
+  .shadows:after {
+    width: 10px;
+    height: 62px;
+    left: 10px;
+    box-shadow:
+      34px -14px 0 0 rgba(255, 255, 255, 0.1),
+      68px 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Scale flames for mobile */
+  .flame1,
+  .flame2,
+  .flame3 {
+    width: 20px;
+    height: 20px;
+  }
+
+  .flame1 {
+    top: -28px;
+  }
+
+  .flame2 {
+    top: -14px;
+    left: calc(50% - 34px);
+  }
+
+  .flame3 {
+    top: -14px;
+    left: calc(50% + 34px);
+  }
+
+  .flame1:before,
+  .flame2:before,
+  .flame3:before {
+    width: 14px;
+    height: 14px;
+    top: 3px;
+    left: 3px;
   }
 
   .birthday-text {
