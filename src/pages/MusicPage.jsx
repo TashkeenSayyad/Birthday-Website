@@ -3,14 +3,17 @@ import FloatingHearts from '../components/FloatingHearts';
 import '../styles/MusicPage.css';
 
 const MusicPage = () => {
+  // Get the base URL from Vite config (e.g., '/Birthday-Website/' or '/')
+  const baseUrl = import.meta.env.BASE_URL;
+
   const [songs] = useState([
     {
       id: 1,
       title: 'Perfect',
       artist: 'Ed Sheeran',
       description: 'Our special song',
-      file: '/music/perfect.mp3',
-      lyricsFile: '/lyrics/perfect.lrc',
+      file: `${baseUrl}music/perfect.mp3`,
+      lyricsFile: `${baseUrl}lyrics/perfect.lrc`,
       color: '#ff6b9d',
     },
     {
@@ -18,8 +21,8 @@ const MusicPage = () => {
       title: 'All of Me',
       artist: 'John Legend',
       description: 'Our first dance',
-      file: '/music/all-of-me.mp3',
-      lyricsFile: '/lyrics/all-of-me.lrc',
+      file: `${baseUrl}music/all-of-me.mp3`,
+      lyricsFile: `${baseUrl}lyrics/all-of-me.lrc`,
       color: '#c44569',
     },
     {
@@ -27,8 +30,8 @@ const MusicPage = () => {
       title: 'Thinking Out Loud',
       artist: 'Ed Sheeran',
       description: 'The song that reminds me of our late-night talks',
-      file: '/music/thinking-out-loud.mp3',
-      lyricsFile: '/lyrics/thinking-out-loud.lrc',
+      file: `${baseUrl}music/thinking-out-loud.mp3`,
+      lyricsFile: `${baseUrl}lyrics/thinking-out-loud.lrc`,
       color: '#f78fb3',
     },
     {
@@ -36,8 +39,8 @@ const MusicPage = () => {
       title: 'A Thousand Years',
       artist: 'Christina Perri',
       description: 'Your favorite romantic song',
-      file: '/music/a-thousand-years.mp3',
-      lyricsFile: '/lyrics/a-thousand-years.lrc',
+      file: `${baseUrl}music/a-thousand-years.mp3`,
+      lyricsFile: `${baseUrl}lyrics/a-thousand-years.lrc`,
       color: '#ea8685',
     },
     {
@@ -45,8 +48,8 @@ const MusicPage = () => {
       title: 'Make You Feel My Love',
       artist: 'Adele',
       description: 'The song I dedicated to you',
-      file: '/music/make-you-feel-my-love.mp3',
-      lyricsFile: '/lyrics/make-you-feel-my-love.lrc',
+      file: `${baseUrl}music/make-you-feel-my-love.mp3`,
+      lyricsFile: `${baseUrl}lyrics/make-you-feel-my-love.lrc`,
       color: '#be5869',
     },
     {
@@ -54,8 +57,8 @@ const MusicPage = () => {
       title: 'Your Song',
       artist: 'Elton John',
       description: 'Our anniversary song',
-      file: '/music/your-song.mp3',
-      lyricsFile: '/lyrics/your-song.lrc',
+      file: `${baseUrl}music/your-song.mp3`,
+      lyricsFile: `${baseUrl}lyrics/your-song.lrc`,
       color: '#ff8fab',
     },
   ]);
@@ -90,19 +93,29 @@ const MusicPage = () => {
     setLyrics([]);
     setCurrentLine(0);
 
+    console.log('Attempting to load lyrics from:', selectedSong.lyricsFile);
+
     fetch(selectedSong.lyricsFile)
       .then((res) => {
-        if (!res.ok) throw new Error('Lyrics not found');
+        console.log('Lyrics fetch response:', res.status, res.statusText);
+        if (!res.ok) throw new Error(`Lyrics not found (${res.status})`);
         return res.text();
       })
       .then((text) => {
+        console.log('Lyrics loaded, length:', text.length);
         const parsedLyrics = parseLRC(text);
+        console.log('Parsed lyrics lines:', parsedLyrics.length);
+        if (parsedLyrics.length === 0) {
+          throw new Error('No valid lyrics found in LRC file');
+        }
         setLyrics(parsedLyrics);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error('Failed to load lyrics:', error);
         setLyrics([
           { time: 0, text: 'Lyrics not available' },
-          { time: 1, text: 'Add your LRC file to /public/lyrics/' },
+          { time: 1, text: `Error: ${error.message}` },
+          { time: 2, text: 'Check browser console for details' },
         ]);
       });
   }, [selectedSong]);
