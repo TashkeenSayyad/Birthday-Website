@@ -218,17 +218,6 @@ const MusicPage = () => {
         <div className="music-note">
           <p>Click on any song to play and see synchronized lyrics</p>
           <p className="sub-note">Each song holds a special memory of us</p>
-          <p className="instruction-note">
-            <strong>To add your own songs:</strong>
-            <br />
-            1. Place MP3 files in <code>/public/music/</code>
-            <br />
-            2. Create LRC lyric files in <code>/public/lyrics/</code>
-            <br />
-            3. Update the songs array in <code>src/pages/MusicPage.jsx</code>
-            <br />
-            See <code>/public/lyrics/example.lrc</code> for LRC format reference
-          </p>
         </div>
       </div>
     </>
