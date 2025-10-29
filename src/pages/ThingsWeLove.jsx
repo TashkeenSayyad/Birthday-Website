@@ -18,7 +18,7 @@ const ThingsWeLove = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setTimeout(() => setSelectedItem(null), 300);
+    setTimeout(() => setSelectedItem(null), 350);
   };
 
   // Array of pink/purple themed colors for sticky notes
