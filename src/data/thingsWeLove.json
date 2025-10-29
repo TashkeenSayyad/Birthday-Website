@@ -5,5 +5,26 @@
     "title": "Your Laugh",
     "description": "The way your laughter lights up the room and makes everyone around you happy.",
     "image": "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 2,
+    "from": "Tashkeen",
+    "title": "Your Kindness",
+    "description": "You always know how to make people feel special and valued. Your compassionate heart is one of the things that makes you truly beautiful.",
+    "image": "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 3,
+    "from": "Tashkeen",
+    "title": "Your Creativity",
+    "description": "The way you see the world through such a unique and creative lens inspires everyone around you to think differently.",
+    "image": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 4,
+    "from": "Tashkeen",
+    "title": "Your Smile",
+    "description": "Your smile has the power to brighten even the darkest days. It's genuine, warm, and absolutely contagious.",
+    "image": "https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=800&h=800&fit=crop"
   }
 ]

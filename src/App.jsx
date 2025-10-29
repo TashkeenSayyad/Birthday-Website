@@ -40,11 +40,11 @@ const InitialRedirect = () => {
 function App() {
   const handleBackToCandles = () => {
     sessionStorage.removeItem('candlesBlown');
-    window.location.href = '/candle';
+    window.location.href = import.meta.env.BASE_URL + 'candle';
   };
 
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className="app">
         <ConstantSparkles />
         <Navigation onBackToCandles={handleBackToCandles} />
