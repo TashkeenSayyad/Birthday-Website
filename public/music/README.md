@@ -1,6 +1,6 @@
 # Music Files Directory
 
-This folder contains the audio files for the music page.
+This folder contains the audio files for the music page with synchronized lyrics.
 
 ## How to Add Your Music Files
 
@@ -15,30 +15,56 @@ This folder contains the audio files for the music page.
 
 3. **Place the files** in this `/public/music/` folder
 
-## Alternative: Use Spotify Embeds
+4. **Create matching LRC files** in `/public/lyrics/` folder:
+   - `perfect.lrc`
+   - `all-of-me.lrc`
+   - etc.
 
-If you prefer to use Spotify instead of local files:
+See `/public/lyrics/README.md` for instructions on creating LRC lyric files.
 
-1. Open `src/pages/MusicPage.jsx`
-2. For each song, uncomment the `spotifyUri` line and add the Spotify track URI
-3. You can get the Spotify URI by:
-   - Right-clicking a song in Spotify
-   - Going to "Share" → "Copy Song Link"
-   - The URI format is: `spotify:track:XXXXXXXXX`
+## Synchronized Lyrics Feature
 
-## Supported Formats
+The music page now supports auto-synchronized lyrics using LRC format!
+
+- **LRC files** contain timestamped lyrics that sync with the music
+- Each song needs a matching `.lrc` file in `/public/lyrics/`
+- Lyrics will highlight in real-time as the song plays
+- See `/public/lyrics/example.lrc` for the format
+
+## Supported Audio Formats
 
 - MP3 (recommended)
 - WAV
 - OGG
+- M4A
 - Other HTML5 audio formats
 
 ## File Size Tips
 
 For better performance:
 - Keep file sizes under 10MB per song
-- Use 192kbps or 256kbps MP3 quality
+- Use 128-192kbps MP3 quality for good balance
 - Consider using online tools to compress files if needed
+
+## Adding New Songs
+
+To add a completely new song (not in the list):
+
+1. Place the MP3 file here: `/public/music/new-song.mp3`
+2. Create an LRC file: `/public/lyrics/new-song.lrc`
+3. Open `src/pages/MusicPage.jsx` and add to the songs array:
+
+```javascript
+{
+  id: 7,
+  title: 'Your Song Title',
+  artist: 'Artist Name',
+  description: 'Why this song is special',
+  file: '/music/new-song.mp3',
+  lyricsFile: '/lyrics/new-song.lrc',
+  color: '#ff6b9d', // Pick from existing color palette
+}
+```
 
 ## Need Help?
 
@@ -47,3 +73,12 @@ If your songs aren't playing:
 2. Ensure files are in MP3 format
 3. Check browser console for any errors
 4. Try with a smaller test file first
+
+If lyrics aren't syncing:
+1. Verify the LRC file exists with matching filename
+2. Check LRC format (see `/public/lyrics/example.lrc`)
+3. Test timestamps are in `[mm:ss.xx]` format
+
+## Copyright Notice
+
+Ensure you have the right to use any music files you add. This is intended for personal use only.

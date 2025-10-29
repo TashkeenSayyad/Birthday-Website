@@ -1,110 +1,162 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import FloatingHearts from '../components/FloatingHearts';
 import '../styles/MusicPage.css';
 
 const MusicPage = () => {
-  const [selectedSong, setSelectedSong] = useState(null);
-  const [showLyrics, setShowLyrics] = useState(false);
+  // Get the base URL from Vite config (e.g., '/Birthday-Website/' or '/')
+  const baseUrl = import.meta.env.BASE_URL;
 
-  // Songs configuration using Spotify embeds
-  // To get Spotify track IDs (choose either method):
-  //
-  // Method 1: Share Link
-  //   - Open Spotify > Right-click song > Share > Copy Song Link
-  //   - Extract ID from URL: https://open.spotify.com/track/[TRACK_ID]
-  //
-  // Method 2: Embed Code (easier!)
-  //   - Open Spotify > Right-click song > Share > Embed track
-  //   - Copy the iframe code, it will look like:
-  //     <iframe src="https://open.spotify.com/embed/track/[TRACK_ID]?utm_source=generator" ...>
-  //   - Just copy the TRACK_ID from the URL (the long string of letters/numbers)
-  //   - Example: 4lDmFJg35YoU7GDDRMSHdA
-  const songs = [
+  const [songs] = useState([
     {
       id: 1,
-      title: 'Test Song',
-      artist: 'Test Artist',
-      description: 'Testing Spotify embed',
-      spotifyTrackId: '4lDmFJg35YoU7GDDRMSHdA', // Using the exact ID from your example
+      title: 'Perfect',
+      artist: 'Ed Sheeran',
+      description: 'Our special song',
+      file: `${baseUrl}music/perfect.mp3`,
+      lyricsFile: `${baseUrl}lyrics/perfect.lrc`,
       color: '#ff6b9d',
-      lyrics: `[Add your own lyrics here]
-
-This is a placeholder where you can add
-the lyrics to this beautiful song.
-
-To add lyrics, edit this section in
-src/pages/MusicPage.jsx`
     },
     {
       id: 2,
       title: 'All of Me',
       artist: 'John Legend',
       description: 'Our first dance',
-      spotifyTrackId: '3U4isOIWM3VvDubwSI3y7a', // John Legend - All of Me
+      file: `${baseUrl}music/all-of-me.mp3`,
+      lyricsFile: `${baseUrl}lyrics/all-of-me.lrc`,
       color: '#c44569',
-      lyrics: `[Add your own lyrics here]
-
-Add the meaningful lyrics that
-remind you of your special moments.`
     },
     {
       id: 3,
       title: 'Thinking Out Loud',
       artist: 'Ed Sheeran',
       description: 'The song that reminds me of our late-night talks',
-      spotifyTrackId: '5MfJQeoFjzDYH0gW71br6r', // Ed Sheeran - Thinking Out Loud
+      file: `${baseUrl}music/thinking-out-loud.mp3`,
+      lyricsFile: `${baseUrl}lyrics/thinking-out-loud.lrc`,
       color: '#f78fb3',
-      lyrics: `[Add your own lyrics here]
-
-Replace this with the lyrics
-that mean the most to you both.`
     },
     {
       id: 4,
       title: 'A Thousand Years',
       artist: 'Christina Perri',
       description: 'Your favorite romantic song',
-      spotifyTrackId: '6U0FIYXCQ3TGrk4tFpLrEA', // Christina Perri - A Thousand Years
+      file: `${baseUrl}music/a-thousand-years.mp3`,
+      lyricsFile: `${baseUrl}lyrics/a-thousand-years.lrc`,
       color: '#ea8685',
-      lyrics: `[Add your own lyrics here]
-
-Add the verses that capture
-your feelings perfectly.`
     },
     {
       id: 5,
       title: 'Make You Feel My Love',
       artist: 'Adele',
       description: 'The song I dedicated to you',
-      spotifyTrackId: '7qEUFOVcxRI19tbT68JcYK', // Adele - Make You Feel My Love
+      file: `${baseUrl}music/make-you-feel-my-love.mp3`,
+      lyricsFile: `${baseUrl}lyrics/make-you-feel-my-love.lrc`,
       color: '#be5869',
-      lyrics: `[Add your own lyrics here]
-
-Customize with the lyrics
-that touch your heart.`
     },
     {
       id: 6,
       title: 'Your Song',
       artist: 'Elton John',
       description: 'Our anniversary song',
-      spotifyTrackId: '3gdewACMIVMEWVbyb8O9sY', // Elton John - Your Song
+      file: `${baseUrl}music/your-song.mp3`,
+      lyricsFile: `${baseUrl}lyrics/your-song.lrc`,
       color: '#ff8fab',
-      lyrics: `[Add your own lyrics here]
+    },
+  ]);
 
-Add your favorite verses
-from this timeless classic.`
-    }
-  ];
+  const [selectedSong, setSelectedSong] = useState(null);
+  const [lyrics, setLyrics] = useState([]);
+  const [currentLine, setCurrentLine] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
 
-  // Handle song selection
-  const handleSongClick = (song) => {
-    setSelectedSong(song);
-    setShowLyrics(true); // Auto-show lyrics when a song is selected
+  // Parse LRC file format
+  // LRC format: [mm:ss.xx]Lyric text
+  const parseLRC = (text) => {
+    return text
+      .split('\n')
+      .map((line) => {
+        const match = line.match(/\[(\d+):(\d+\.\d+)\](.*)/);
+        if (!match) return null;
+        const [, min, sec, lyric] = match;
+        return {
+          time: parseInt(min) * 60 + parseFloat(sec),
+          text: lyric.trim(),
+        };
+      })
+      .filter(Boolean);
   };
 
-  const toggleLyrics = () => {
-    setShowLyrics(!showLyrics);
+  // Load LRC file when song is selected
+  useEffect(() => {
+    if (!selectedSong) return;
+
+    setLyrics([]);
+    setCurrentLine(0);
+
+    console.log('Attempting to load lyrics from:', selectedSong.lyricsFile);
+
+    fetch(selectedSong.lyricsFile)
+      .then((res) => {
+        console.log('Lyrics fetch response:', res.status, res.statusText);
+        if (!res.ok) throw new Error(`Lyrics not found (${res.status})`);
+        return res.text();
+      })
+      .then((text) => {
+        console.log('Lyrics loaded, length:', text.length);
+        const parsedLyrics = parseLRC(text);
+        console.log('Parsed lyrics lines:', parsedLyrics.length);
+        if (parsedLyrics.length === 0) {
+          throw new Error('No valid lyrics found in LRC file');
+        }
+        setLyrics(parsedLyrics);
+      })
+      .catch((error) => {
+        console.error('Failed to load lyrics:', error);
+        setLyrics([
+          { time: 0, text: 'Lyrics not available' },
+          { time: 1, text: `Error: ${error.message}` },
+          { time: 2, text: 'Check browser console for details' },
+        ]);
+      });
+  }, [selectedSong]);
+
+  // Sync lyrics with audio playback
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio || lyrics.length === 0) return;
+
+    const updateLyrics = () => {
+      const currentTime = audio.currentTime;
+      const lineIndex = lyrics.findIndex(
+        (line, i) =>
+          currentTime >= line.time &&
+          (!lyrics[i + 1] || currentTime < lyrics[i + 1].time)
+      );
+
+      if (lineIndex !== -1 && lineIndex !== currentLine) {
+        setCurrentLine(lineIndex);
+      }
+    };
+
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+
+    audio.addEventListener('timeupdate', updateLyrics);
+    audio.addEventListener('play', handlePlay);
+    audio.addEventListener('pause', handlePause);
+
+    return () => {
+      audio.removeEventListener('timeupdate', updateLyrics);
+      audio.removeEventListener('play', handlePlay);
+      audio.removeEventListener('pause', handlePause);
+    };
+  }, [lyrics, currentLine]);
+
+  const handleSelectSong = (song) => {
+    setSelectedSong(song);
+    setCurrentLine(0);
+    setLyrics([]);
+    setIsPlaying(false);
   };
 
   return (
@@ -113,7 +165,7 @@ from this timeless classic.`
       <div className="music-page">
         <div className="music-header">
           <div className="music-header-content">
-            <h1 className="music-title">Music that reminds of you</h1>
+            <h1 className="music-title">Music that reminds me of you</h1>
             <div className="title-decoration"></div>
             <p className="music-subtitle">
               Songs that make me think of you and our special moments together
@@ -122,9 +174,9 @@ from this timeless classic.`
         </div>
 
         <div className="music-content">
-          {/* Spotify Player */}
+          {/* Audio Player */}
           {selectedSong && (
-            <div className="spotify-player-container">
+            <div className="audio-player-container">
               <div className="player-info">
                 <div className="now-playing-label">Now Playing</div>
                 <h3 className="player-song-title">{selectedSong.title}</h3>
@@ -132,27 +184,34 @@ from this timeless classic.`
                 <p className="player-description">"{selectedSong.description}"</p>
               </div>
 
-              <iframe
-                data-testid="embed-iframe"
-                style={{ borderRadius: '12px' }}
-                src={`https://embed.spotify.com/track//${selectedSong.spotifyTrackId}?utm_source=generator`}
-                width="100%"
-                height="352"
-                frameBorder="0"
-                allowFullScreen=""
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-                title={`Spotify player for ${selectedSong.title}`}
-              ></iframe>
+              <audio
+                ref={audioRef}
+                key={selectedSong.file}
+                src={selectedSong.file}
+                controls
+                autoPlay
+                className="audio-player"
+              />
 
-              <div className="player-actions">
-                <button className="lyrics-toggle-btn" onClick={toggleLyrics}>
-                  {showLyrics ? 'Hide Lyrics' : 'Show Lyrics'}
-                </button>
-              </div>
+              {/* Lyrics Display */}
+              {lyrics.length > 0 && (
+                <div className="lyrics-box">
+                  {lyrics.map((line, i) => (
+                    <p
+                      key={i}
+                      className={`lyrics-line ${i === currentLine ? 'active' : ''} ${
+                        i < currentLine ? 'passed' : ''
+                      }`}
+                    >
+                      {line.text}
+                    </p>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
+          {/* Song List */}
           <div className="songs-list">
             {songs.map((song, index) => (
               <div
@@ -160,17 +219,21 @@ from this timeless classic.`
                 className={`song-card ${selectedSong?.id === song.id ? 'active' : ''}`}
                 style={{
                   animationDelay: `${index * 0.1}s`,
-                  borderColor: `${song.color}60`
+                  borderColor: `${song.color}60`,
                 }}
-                onClick={() => handleSongClick(song)}
+                onClick={() => handleSelectSong(song)}
               >
                 <div className="song-card-content">
                   <div className="song-info">
                     <div
                       className="song-icon"
-                      style={{ background: `linear-gradient(135deg, ${song.color}, ${song.color}dd)` }}
+                      style={{
+                        background: `linear-gradient(135deg, ${song.color}, ${song.color}dd)`,
+                      }}
                     >
-                      <span className="play-icon">▶</span>
+                      <span className="play-icon">
+                        {selectedSong?.id === song.id && isPlaying ? '⏸' : '▶'}
+                      </span>
                     </div>
                     <div className="song-details">
                       <h3 className="song-title">{song.title}</h3>
@@ -188,45 +251,28 @@ from this timeless classic.`
 
                 <div
                   className="song-card-glow"
-                  style={{ background: `radial-gradient(circle at center, ${song.color}30, transparent)` }}
+                  style={{
+                    background: `radial-gradient(circle at center, ${song.color}30, transparent)`,
+                  }}
                 ></div>
               </div>
             ))}
           </div>
-
-          {/* Lyrics Popup */}
-          {selectedSong && showLyrics && (
-            <div className="lyrics-popup" onClick={() => setShowLyrics(false)}>
-              <div className="lyrics-content" onClick={(e) => e.stopPropagation()}>
-                <button className="close-btn" onClick={() => setShowLyrics(false)}>
-                  ×
-                </button>
-                <h2 className="lyrics-title">{selectedSong.title}</h2>
-                <p className="lyrics-artist">{selectedSong.artist}</p>
-                <p className="lyrics-description">"{selectedSong.description}"</p>
-                <div className="lyrics-text">
-                  {selectedSong.lyrics.split('\n').map((line, index) => (
-                    <p key={index} className="lyrics-line">
-                      {line}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
         </div>
 
         <div className="music-note">
-          <p>Click on any song to play with Spotify and see lyrics</p>
-          <p className="sub-note">Each song holds a special memory of us ♥</p>
+          <p>Click on any song to play and see synchronized lyrics</p>
+          <p className="sub-note">Each song holds a special memory of us</p>
           <p className="instruction-note">
-            🎵 <strong>To add your own songs:</strong>
+            <strong>To add your own songs:</strong>
             <br />
-            1. Open Spotify → Right-click a song → Share → Embed track
+            1. Place MP3 files in <code>/public/music/</code>
             <br />
-            2. Copy the track ID from the iframe URL (the long code after /track/)
+            2. Create LRC lyric files in <code>/public/lyrics/</code>
             <br />
-            3. Paste it in <code>src/pages/MusicPage.jsx</code> as the <code>spotifyTrackId</code>
+            3. Update the songs array in <code>src/pages/MusicPage.jsx</code>
+            <br />
+            See <code>/public/lyrics/example.lrc</code> for LRC format reference
           </p>
         </div>
       </div>

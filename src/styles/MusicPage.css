@@ -132,8 +132,8 @@
   margin-bottom: 2rem;
 }
 
-/* Spotify Player Styles */
-.spotify-player-container {
+/* Audio Player Styles */
+.audio-player-container {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   border: 2px solid rgba(231, 76, 60, 0.3);
@@ -144,6 +144,18 @@
     0 12px 40px rgba(231, 76, 60, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
   animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.audio-player {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  outline: none;
+}
+
+.audio-player::-webkit-media-controls-panel {
+  background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(255, 107, 157, 0.1));
+  border-radius: 12px;
 }
 
 .player-info {
@@ -612,6 +624,57 @@
 }
 
 /* Responsive Design */
+/* Lyrics Box Styles */
+.lyrics-box {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+  text-align: center;
+  border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.lyrics-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lyrics-box::-webkit-scrollbar-track {
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 10px;
+}
+
+.lyrics-box::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #e74c3c, #ff6b9d);
+  border-radius: 10px;
+}
+
+.lyrics-line {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  line-height: 2;
+  color: var(--text-light);
+  margin: 0.5rem 0;
+  opacity: 0.4;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.95);
+}
+
+.lyrics-line.active {
+  opacity: 1;
+  color: #e74c3c;
+  font-weight: 600;
+  font-size: 1.3rem;
+  transform: scale(1.05);
+  text-shadow: 0 2px 10px rgba(231, 76, 60, 0.3);
+}
+
+.lyrics-line.passed {
+  opacity: 0.25;
+  transform: scale(0.9);
+}
+
 @media screen and (max-width: 768px) {
   .music-title {
     font-size: 2.5rem;
@@ -627,9 +690,22 @@
     padding: 0 1rem;
   }
 
-  .spotify-player-container {
+  .audio-player-container {
     padding: 1.5rem;
     margin: 0 0.5rem 1.5rem 0.5rem;
+  }
+
+  .lyrics-box {
+    padding: 1.5rem;
+    max-height: 300px;
+  }
+
+  .lyrics-line {
+    font-size: 1rem;
+  }
+
+  .lyrics-line.active {
+    font-size: 1.2rem;
   }
 
   .player-song-title {
