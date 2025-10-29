@@ -15,52 +15,7 @@ const MusicPage = () => {
       file: `${baseUrl}music/palpal.mp3`,
       lyricsFile: `${baseUrl}lyrics/palpal.lrc`,
       color: '#ff6b9d',
-    },
-    {
-      id: 2,
-      title: 'All of Me',
-      artist: 'John Legend',
-      description: 'Our first dance',
-      file: `${baseUrl}music/all-of-me.mp3`,
-      lyricsFile: `${baseUrl}lyrics/all-of-me.lrc`,
-      color: '#c44569',
-    },
-    {
-      id: 3,
-      title: 'Thinking Out Loud',
-      artist: 'Ed Sheeran',
-      description: 'The song that reminds me of our late-night talks',
-      file: `${baseUrl}music/thinking-out-loud.mp3`,
-      lyricsFile: `${baseUrl}lyrics/thinking-out-loud.lrc`,
-      color: '#f78fb3',
-    },
-    {
-      id: 4,
-      title: 'A Thousand Years',
-      artist: 'Christina Perri',
-      description: 'Your favorite romantic song',
-      file: `${baseUrl}music/a-thousand-years.mp3`,
-      lyricsFile: `${baseUrl}lyrics/a-thousand-years.lrc`,
-      color: '#ea8685',
-    },
-    {
-      id: 5,
-      title: 'Make You Feel My Love',
-      artist: 'Adele',
-      description: 'The song I dedicated to you',
-      file: `${baseUrl}music/make-you-feel-my-love.mp3`,
-      lyricsFile: `${baseUrl}lyrics/make-you-feel-my-love.lrc`,
-      color: '#be5869',
-    },
-    {
-      id: 6,
-      title: 'Your Song',
-      artist: 'Elton John',
-      description: 'Our anniversary song',
-      file: `${baseUrl}music/your-song.mp3`,
-      lyricsFile: `${baseUrl}lyrics/your-song.lrc`,
-      color: '#ff8fab',
-    },
+    }
   ]);
 
   const [selectedSong, setSelectedSong] = useState(null);
