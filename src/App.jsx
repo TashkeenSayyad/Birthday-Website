@@ -19,16 +19,13 @@ const InitialRedirect = () => {
 
   useEffect(() => {
     const hasBlown = sessionStorage.getItem('candlesBlown');
-
-    // If candles haven't been blown and we're on the home page, redirect to candle page
     if (!hasBlown && location.pathname === '/') {
       navigate('/candle');
     }
   }, [navigate, location]);
 
   const hasBlown = sessionStorage.getItem('candlesBlown');
-
-  // If candles haven't been blown, redirect to candle page
+// If candles haven't been blown, redirect to candle page
   if (!hasBlown && location.pathname === '/') {
     return <Navigate to="/candle" replace />;
   }
@@ -39,11 +36,11 @@ const InitialRedirect = () => {
 function App() {
   const handleBackToCandles = () => {
     sessionStorage.removeItem('candlesBlown');
-    window.location.href = '/candle';
+    window.location.href = `${import.meta.env.BASE_URL}candle`;
   };
 
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}> {/* Add basename for GitHub Pages */}
       <div className="app">
         <ConstantSparkles />
         <Navigation onBackToCandles={handleBackToCandles} />
