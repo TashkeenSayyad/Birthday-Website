@@ -1,26 +1,21 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import FloatingHearts from '../components/FloatingHearts';
 import '../styles/MusicPage.css';
 
 const MusicPage = () => {
   const [selectedSong, setSelectedSong] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [showLyrics, setShowLyrics] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const audioRef = useRef(null);
 
-  // Songs configuration - supports both local audio files and Spotify embeds
+  // Songs configuration using Spotify embeds
+  // To find Spotify track IDs: Open Spotify > Right-click song > Share > Copy Song Link
+  // Extract the ID from the URL: https://open.spotify.com/track/[TRACK_ID]
   const songs = [
     {
       id: 1,
       title: 'Perfect',
       artist: 'Ed Sheeran',
       description: 'Your wedding entrance song',
-      // For local audio: add your MP3 file to /public/music/ folder
-      audioFile: '/music/perfect.mp3',
-      // Alternative: Use Spotify embed (uncomment and add your Spotify URI)
-      // spotifyUri: 'spotify:track:0tgVpDi06FyKpA1z0VMD4v',
+      spotifyTrackId: '0tgVpDi06FyKpA1z0VMD4v', // Ed Sheeran - Perfect
       color: '#ff6b9d',
       lyrics: `[Add your own lyrics here]
 
@@ -35,7 +30,7 @@ src/pages/MusicPage.jsx`
       title: 'All of Me',
       artist: 'John Legend',
       description: 'Our first dance',
-      audioFile: '/music/all-of-me.mp3',
+      spotifyTrackId: '3U4isOIWM3VvDubwSI3y7a', // John Legend - All of Me
       color: '#c44569',
       lyrics: `[Add your own lyrics here]
 
@@ -47,7 +42,7 @@ remind you of your special moments.`
       title: 'Thinking Out Loud',
       artist: 'Ed Sheeran',
       description: 'The song that reminds me of our late-night talks',
-      audioFile: '/music/thinking-out-loud.mp3',
+      spotifyTrackId: '5MfJQeoFjzDYH0gW71br6r', // Ed Sheeran - Thinking Out Loud
       color: '#f78fb3',
       lyrics: `[Add your own lyrics here]
 
@@ -59,7 +54,7 @@ that mean the most to you both.`
       title: 'A Thousand Years',
       artist: 'Christina Perri',
       description: 'Your favorite romantic song',
-      audioFile: '/music/a-thousand-years.mp3',
+      spotifyTrackId: '6U0FIYXCQ3TGrk4tFpLrEA', // Christina Perri - A Thousand Years
       color: '#ea8685',
       lyrics: `[Add your own lyrics here]
 
@@ -71,7 +66,7 @@ your feelings perfectly.`
       title: 'Make You Feel My Love',
       artist: 'Adele',
       description: 'The song I dedicated to you',
-      audioFile: '/music/make-you-feel-my-love.mp3',
+      spotifyTrackId: '7qEUFOVcxRI19tbT68JcYK', // Adele - Make You Feel My Love
       color: '#be5869',
       lyrics: `[Add your own lyrics here]
 
@@ -83,7 +78,7 @@ that touch your heart.`
       title: 'Your Song',
       artist: 'Elton John',
       description: 'Our anniversary song',
-      audioFile: '/music/your-song.mp3',
+      spotifyTrackId: '3gdewACMIVMEWVbyb8O9sY', // Elton John - Your Song
       color: '#ff8fab',
       lyrics: `[Add your own lyrics here]
 
@@ -92,93 +87,15 @@ from this timeless classic.`
     }
   ];
 
-  // Handle song selection and playback
+  // Handle song selection
   const handleSongClick = (song) => {
-    if (selectedSong?.id === song.id) {
-      // If clicking the same song, toggle play/pause
-      if (isPlaying) {
-        audioRef.current?.pause();
-        setIsPlaying(false);
-      } else {
-        audioRef.current?.play();
-        setIsPlaying(true);
-      }
-    } else {
-      // New song selected
-      setSelectedSong(song);
-      setShowLyrics(true); // Auto-show lyrics when a song is selected
-      setIsPlaying(false);
-      setCurrentTime(0);
-
-      // Wait for next render to play
-      setTimeout(() => {
-        if (audioRef.current) {
-          audioRef.current.load();
-          audioRef.current.play().then(() => {
-            setIsPlaying(true);
-          }).catch(err => {
-            console.log('Audio play failed:', err);
-            // If audio file doesn't exist, still show lyrics
-          });
-        }
-      }, 100);
-    }
-  };
-
-  const togglePlayPause = () => {
-    if (isPlaying) {
-      audioRef.current?.pause();
-      setIsPlaying(false);
-    } else {
-      audioRef.current?.play();
-      setIsPlaying(true);
-    }
+    setSelectedSong(song);
+    setShowLyrics(true); // Auto-show lyrics when a song is selected
   };
 
   const toggleLyrics = () => {
     setShowLyrics(!showLyrics);
   };
-
-  const handleTimeUpdate = () => {
-    if (audioRef.current) {
-      setCurrentTime(audioRef.current.currentTime);
-    }
-  };
-
-  const handleLoadedMetadata = () => {
-    if (audioRef.current) {
-      setDuration(audioRef.current.duration);
-    }
-  };
-
-  const handleEnded = () => {
-    setIsPlaying(false);
-    setCurrentTime(0);
-  };
-
-  const handleSeek = (e) => {
-    const seekTime = parseFloat(e.target.value);
-    if (audioRef.current) {
-      audioRef.current.currentTime = seekTime;
-      setCurrentTime(seekTime);
-    }
-  };
-
-  const formatTime = (time) => {
-    if (isNaN(time)) return '0:00';
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-      }
-    };
-  }, []);
 
   return (
     <>
@@ -195,22 +112,9 @@ from this timeless classic.`
         </div>
 
         <div className="music-content">
-          {/* Audio Element */}
+          {/* Spotify Player */}
           {selectedSong && (
-            <audio
-              ref={audioRef}
-              onTimeUpdate={handleTimeUpdate}
-              onLoadedMetadata={handleLoadedMetadata}
-              onEnded={handleEnded}
-            >
-              <source src={selectedSong.audioFile} type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          )}
-
-          {/* Audio Player Controls */}
-          {selectedSong && (
-            <div className="audio-player">
+            <div className="spotify-player-container">
               <div className="player-info">
                 <div className="now-playing-label">Now Playing</div>
                 <h3 className="player-song-title">{selectedSong.title}</h3>
@@ -218,26 +122,21 @@ from this timeless classic.`
                 <p className="player-description">"{selectedSong.description}"</p>
               </div>
 
-              <div className="player-controls">
-                <button className="control-btn" onClick={togglePlayPause}>
-                  {isPlaying ? '⏸' : '▶'}
-                </button>
+              <iframe
+                className="spotify-embed"
+                src={`https://open.spotify.com/embed/track/${selectedSong.spotifyTrackId}?utm_source=generator`}
+                width="100%"
+                height="152"
+                frameBorder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title={`Spotify player for ${selectedSong.title}`}
+              ></iframe>
+
+              <div className="player-actions">
                 <button className="lyrics-toggle-btn" onClick={toggleLyrics}>
                   {showLyrics ? 'Hide Lyrics' : 'Show Lyrics'}
                 </button>
-              </div>
-
-              <div className="player-progress">
-                <span className="time-current">{formatTime(currentTime)}</span>
-                <input
-                  type="range"
-                  min="0"
-                  max={duration || 0}
-                  value={currentTime}
-                  onChange={handleSeek}
-                  className="progress-bar"
-                />
-                <span className="time-duration">{formatTime(duration)}</span>
               </div>
             </div>
           )}
@@ -259,9 +158,7 @@ from this timeless classic.`
                       className="song-icon"
                       style={{ background: `linear-gradient(135deg, ${song.color}, ${song.color}dd)` }}
                     >
-                      <span className="play-icon">
-                        {selectedSong?.id === song.id && isPlaying ? '⏸' : '▶'}
-                      </span>
+                      <span className="play-icon">▶</span>
                     </div>
                     <div className="song-details">
                       <h3 className="song-title">{song.title}</h3>
@@ -271,7 +168,7 @@ from this timeless classic.`
                   </div>
                   <div className="song-actions">
                     <span className="listen-text">
-                      {selectedSong?.id === song.id ? (isPlaying ? 'Playing' : 'Paused') : 'Play'}
+                      {selectedSong?.id === song.id ? 'Now Playing' : 'Play'}
                     </span>
                     <span className="arrow">→</span>
                   </div>
@@ -308,10 +205,10 @@ from this timeless classic.`
         </div>
 
         <div className="music-note">
-          <p>Click on any song to play and see lyrics</p>
+          <p>Click on any song to play with Spotify and see lyrics</p>
           <p className="sub-note">Each song holds a special memory of us ♥</p>
           <p className="instruction-note">
-            📁 To add your music files: Place MP3 files in the <code>/public/music/</code> folder
+            🎵 Powered by Spotify - To change songs: Edit track IDs in <code>src/pages/MusicPage.jsx</code>
           </p>
         </div>
       </div>
