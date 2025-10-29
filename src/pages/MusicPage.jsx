@@ -7,8 +7,18 @@ const MusicPage = () => {
   const [showLyrics, setShowLyrics] = useState(false);
 
   // Songs configuration using Spotify embeds
-  // To find Spotify track IDs: Open Spotify > Right-click song > Share > Copy Song Link
-  // Extract the ID from the URL: https://open.spotify.com/track/[TRACK_ID]
+  // To get Spotify track IDs (choose either method):
+  //
+  // Method 1: Share Link
+  //   - Open Spotify > Right-click song > Share > Copy Song Link
+  //   - Extract ID from URL: https://open.spotify.com/track/[TRACK_ID]
+  //
+  // Method 2: Embed Code (easier!)
+  //   - Open Spotify > Right-click song > Share > Embed track
+  //   - Copy the iframe code, it will look like:
+  //     <iframe src="https://open.spotify.com/embed/track/[TRACK_ID]?utm_source=generator" ...>
+  //   - Just copy the TRACK_ID from the URL (the long string of letters/numbers)
+  //   - Example: 4lDmFJg35YoU7GDDRMSHdA
   const songs = [
     {
       id: 1,
@@ -208,7 +218,13 @@ from this timeless classic.`
           <p>Click on any song to play with Spotify and see lyrics</p>
           <p className="sub-note">Each song holds a special memory of us ♥</p>
           <p className="instruction-note">
-            🎵 Powered by Spotify - To change songs: Edit track IDs in <code>src/pages/MusicPage.jsx</code>
+            🎵 <strong>To add your own songs:</strong>
+            <br />
+            1. Open Spotify → Right-click a song → Share → Embed track
+            <br />
+            2. Copy the track ID from the iframe URL (the long code after /track/)
+            <br />
+            3. Paste it in <code>src/pages/MusicPage.jsx</code> as the <code>spotifyTrackId</code>
           </p>
         </div>
       </div>
