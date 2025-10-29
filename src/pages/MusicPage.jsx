@@ -9,11 +9,11 @@ const MusicPage = () => {
   const [songs] = useState([
     {
       id: 1,
-      title: 'Perfect',
-      artist: 'Ed Sheeran',
-      description: 'Our special song',
-      file: `${baseUrl}music/perfect.mp3`,
-      lyricsFile: `${baseUrl}lyrics/perfect.lrc`,
+      title: 'Pal Pal',
+      artist: 'Afusic prod. by AliSoomroMusic ',
+      description: 'The song that we kept on repeat this whole year.',
+      file: `${baseUrl}music/palpal.mp3`,
+      lyricsFile: `${baseUrl}lyrics/palpal.lrc`,
       color: '#ff6b9d',
     },
     {
