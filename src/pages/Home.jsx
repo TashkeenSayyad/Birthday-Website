@@ -51,72 +51,36 @@ const Home = () => {
         {/* Hero Section */}
         <header className="home-header">
           <div className="header-content">
-            <div className="welcome-badge">Today's the Day!</div>
-            <h1 className="home-title">Happy 24th Birthday</h1>
+            <div className="birthday-balloons">🎈🎈🎈</div>
+            <h1 className="home-title">Happy 24th Birthday!</h1>
             <div className="title-decoration"></div>
-            <p className="home-subtitle">Celebrating the amazing person you are</p>
+            <p className="home-subtitle">This day is all about YOU</p>
             <p className="hero-description">
-              Today we celebrate you—your kindness, your light, and all the beautiful
-              moments you've given us. This special day is all about the incredible journey
-              you've traveled and the wonderful adventures still to come.
+              We've been counting down to this moment! Today, we're celebrating the incredible person
+              you are, the joy you bring to our lives, and all the amazing memories we've shared together.
+              Get ready for some surprises... 💝
             </p>
           </div>
         </header>
 
-        {/* Why Today is Special Section */}
-        <section className="special-section">
-          <div className="section-header">
-            <h2 className="section-title">Why Today is Extra Special</h2>
-            <div className="section-underline"></div>
-          </div>
-          <div className="special-content">
-            <div className="special-card">
-              <span className="special-emoji">🎂</span>
-              <h3>24 Years of Joy</h3>
-              <p>Every year with you has been a gift, filled with laughter, love, and countless precious memories.</p>
-            </div>
-            <div className="special-card">
-              <span className="special-emoji">🌟</span>
-              <h3>Endless Possibilities</h3>
-              <p>This year brings new dreams, new adventures, and new opportunities to shine even brighter.</p>
-            </div>
-            <div className="special-card">
-              <span className="special-emoji">💖</span>
-              <h3>Surrounded by Love</h3>
-              <p>You're cherished by so many, and today we're all here to celebrate the wonderful you.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Stats Section */}
-        <section className="stats-section">
-          <div className="stats-grid">
-            <div className="stat-item">
-              <span className="stat-number">24</span>
-              <span className="stat-label">Amazing Years</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-number">∞</span>
-              <span className="stat-label">Beautiful Memories</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-number">💯</span>
-              <span className="stat-label">Reasons We Love You</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-number">365</span>
-              <span className="stat-label">Days to Celebrate</span>
-            </div>
+        {/* Celebration Message */}
+        <section className="celebration-message">
+          <div className="message-bubble">
+            <p className="bubble-text">
+              You make the world brighter just by being in it. Your laugh is contagious,
+              your heart is pure gold, and your friendship means everything to us.
+              We hope today is filled with as much happiness as you give to everyone around you!
+            </p>
           </div>
         </section>
 
         {/* Menu Grid Section */}
         <section className="explore-section">
           <div className="section-header">
-            <h2 className="section-title">Explore Your Birthday Surprises</h2>
+            <h2 className="section-title">Your Birthday Surprises Await!</h2>
             <div className="section-underline"></div>
             <p className="section-description">
-              We've prepared something special in each section—dive in and discover the love we have for you!
+              We've put together some special things just for you. Click on any card to see what's inside!
             </p>
           </div>
 
@@ -146,22 +110,23 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Inspirational Quote Section */}
-        <section className="quote-section">
-          <div className="quote-container">
-            <div className="quote-mark">"</div>
-            <p className="quote-text">
-              The more you praise and celebrate your life, the more there is in life to celebrate.
+        {/* Birthday Wish */}
+        <section className="wish-section">
+          <div className="wish-container">
+            <div className="cake-emoji">🎂</div>
+            <h3 className="wish-title">Make a Wish!</h3>
+            <p className="wish-text">
+              Here's to another year of adventures, laughter, and making incredible memories together.
+              May all your dreams take flight this year!
             </p>
-            <p className="quote-author">— Oprah Winfrey</p>
           </div>
         </section>
 
         {/* Footer */}
         <footer className="home-footer">
           <div className="footer-content">
-            <p className="footer-text">With all our love, today and always</p>
-            <p className="footer-subtext">May this year bring you endless happiness and dreams come true</p>
+            <p className="footer-text">Happy Birthday! 🎉</p>
+            <p className="footer-subtext">Made with love, just for you ❤️</p>
           </div>
         </footer>
       </div>
