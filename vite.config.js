@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Birthday-Website/', // 👈 This line is the key
+  base: '/Birthday-Website/',
 })
