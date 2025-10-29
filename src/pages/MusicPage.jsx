@@ -135,7 +135,7 @@ from this timeless classic.`
               <iframe
                 data-testid="embed-iframe"
                 style={{ borderRadius: '12px' }}
-                src={`https://open.spotify.com/embed/track/${selectedSong.spotifyTrackId}?utm_source=generator`}
+                src={`https://embed.spotify.com/track//${selectedSong.spotifyTrackId}?utm_source=generator`}
                 width="100%"
                 height="352"
                 frameBorder="0"
