@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
+/* Tailwind utilities only (no base reset) */
+@tailwind components;
+@tailwind utilities;
+
 /* Design System Variables */
 :root {
   /* Romantic Color Palette */
