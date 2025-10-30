@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/Birthday-Website/assets/index-cbuyCOdO.js"></script>
+    <script type="module" crossorigin src="/Birthday-Website/assets/index-B7j2269x.js"></script>
     <link rel="stylesheet" crossorigin href="/Birthday-Website/assets/index-C3O9LiH3.css">
   </head>
   <body>
@@ -24,8 +24,11 @@
         var redirect = sessionStorage.getItem('redirect');
         if (redirect) {
           sessionStorage.removeItem('redirect');
+          // Prepend base URL to the redirect path for GitHub Pages
+          var baseUrl = '/Birthday-Website';
+          var fullPath = baseUrl + redirect;
           // Use history API to update URL without reload
-          history.replaceState(null, null, redirect);
+          history.replaceState(null, null, fullPath);
         }
       })();
     </script>
