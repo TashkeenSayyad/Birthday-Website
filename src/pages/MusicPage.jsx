@@ -11,11 +11,20 @@ const MusicPage = () => {
       id: 1,
       title: 'Pal Pal',
       artist: 'Afusic prod. by AliSoomroMusic ',
-      description: 'The song that we kept on repeat this whole year.',
+      description: 'We kept this song on repeat the whole year.',
       file: `${baseUrl}music/palpal.mp3`,
       lyricsFile: `${baseUrl}lyrics/palpal.lrc`,
       color: '#ff6b9d',
-    }
+    },
+    {
+      id: 2,
+      title: 'Rubaru',
+      artist: 'Vishal Mishra, Asees Kaur',
+      description: 'The song that was played, before you finally became my wife.',
+      file: `${baseUrl}music/rubaru.mp3`,
+      lyricsFile: `${baseUrl}lyrics/rubaru.lrc`,
+      color: '#e490acff',
+    },
   ]);
 
   const [selectedSong, setSelectedSong] = useState(null);
