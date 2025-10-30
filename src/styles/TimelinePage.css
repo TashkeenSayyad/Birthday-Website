@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background: var(--gradient-romantic);
 }
 
 .timeline-loading {
@@ -44,50 +44,55 @@
   position: relative;
   width: 100%;
   height: 500px;
-  background: #000;
-  padding: 15px;
+  background: linear-gradient(135deg, #f9f5f0 0%, #fef8f3 100%);
+  padding: 20px;
   box-shadow:
-    0 0 0 3px #1a1a1a,
-    0 0 0 6px #333,
-    0 20px 60px rgba(0, 0, 0, 0.8);
-  border-radius: 8px;
+    0 0 0 4px #f0e6dc,
+    0 0 0 8px #e8ddd0,
+    0 0 0 12px rgba(155, 89, 182, 0.1),
+    0 20px 60px rgba(155, 89, 182, 0.2);
+  border-radius: 12px;
 }
 
+/* Vintage film perforations on top/bottom */
 .main-picture-frame::before,
 .main-picture-frame::after {
   content: '';
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 15px;
-  background: #000;
+  left: 20px;
+  right: 20px;
+  height: 20px;
   z-index: 1;
 }
 
 .main-picture-frame::before {
   top: 0;
-  background-image: repeating-linear-gradient(
-    90deg,
-    #000 0px,
-    #000 8px,
-    #1a1a1a 8px,
-    #1a1a1a 12px,
-    #000 12px,
-    #000 20px
-  );
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 15px,
+      rgba(155, 89, 182, 0.15) 15px,
+      rgba(155, 89, 182, 0.15) 25px,
+      transparent 25px,
+      transparent 40px
+    ),
+    linear-gradient(180deg, #f0e6dc 0%, transparent 100%);
 }
 
 .main-picture-frame::after {
   bottom: 0;
-  background-image: repeating-linear-gradient(
-    90deg,
-    #000 0px,
-    #000 8px,
-    #1a1a1a 8px,
-    #1a1a1a 12px,
-    #000 12px,
-    #000 20px
-  );
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 15px,
+      rgba(155, 89, 182, 0.15) 15px,
+      rgba(155, 89, 182, 0.15) 25px,
+      transparent 25px,
+      transparent 40px
+    ),
+    linear-gradient(0deg, #f0e6dc 0%, transparent 100%);
 }
 
 .main-picture {
@@ -95,7 +100,9 @@
   height: 100%;
   object-fit: cover;
   animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 2px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.05);
+  filter: sepia(0.05) saturate(1.1);
 }
 
 @keyframes fadeInScale {
@@ -123,13 +130,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
   flex-shrink: 0;
 }
 
 .nav-arrow:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 25px rgba(233, 30, 140, 0.7);
+  box-shadow: 0 6px 25px rgba(233, 30, 140, 0.5);
 }
 
 .nav-arrow:active {
@@ -142,19 +149,19 @@
   padding: 2rem;
   background: linear-gradient(
     135deg,
-    rgba(26, 26, 26, 0.95),
-    rgba(45, 45, 45, 0.95)
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 238, 248, 0.95)
   );
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(155, 89, 182, 0.15);
   animation: fadeInUp 0.8s ease 0.2s both;
-  border: 1px solid rgba(233, 30, 140, 0.3);
+  border: 2px solid rgba(233, 30, 140, 0.1);
 }
 
 .picture-year {
   font-family: var(--font-sans);
   font-size: 0.9rem;
-  color: var(--primary-pink);
+  color: var(--primary-purple);
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 0.75rem;
@@ -164,99 +171,112 @@
 .picture-title {
   font-family: var(--font-serif);
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--primary-pink);
   margin-bottom: 1rem;
   font-weight: 700;
-  text-shadow: 0 2px 10px rgba(233, 30, 140, 0.5);
 }
 
 .picture-description {
   font-family: var(--font-sans);
   font-size: 1.1rem;
-  color: #ddd;
+  color: #666;
   line-height: 1.8;
   max-width: 700px;
   margin: 0 auto;
 }
 
-/* Film Strip Container */
+/* Rustic Film Strip Container */
 .filmstrip-container {
   width: 100%;
   padding: 0;
-  background: #1a1a1a;
-  border-radius: 0;
+  background: linear-gradient(
+    180deg,
+    #f5ebe0 0%,
+    #f9f2ea 50%,
+    #f5ebe0 100%
+  );
+  border-radius: 20px;
   margin-bottom: 2rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  box-shadow:
+    inset 0 4px 10px rgba(155, 89, 182, 0.08),
+    0 10px 40px rgba(155, 89, 182, 0.15);
   position: relative;
   overflow: hidden;
+  border: 3px solid rgba(155, 89, 182, 0.1);
 }
 
-/* Film perforations (sprocket holes) */
+/* Vintage perforated edges */
 .filmstrip-container::before,
 .filmstrip-container::after {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
-  height: 30px;
-  background: #000;
+  height: 35px;
   z-index: 2;
   pointer-events: none;
 }
 
 .filmstrip-container::before {
   top: 0;
-  background-image:
+  background:
     repeating-linear-gradient(
       90deg,
       transparent 0px,
-      transparent 10px,
-      #1a1a1a 10px,
-      #1a1a1a 15px,
-      transparent 15px,
-      transparent 25px
+      transparent 12px,
+      rgba(155, 89, 182, 0.12) 12px,
+      rgba(155, 89, 182, 0.12) 22px,
+      transparent 22px,
+      transparent 34px
     ),
-    linear-gradient(180deg, #000 0%, #1a1a1a 100%);
-  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.5);
+    linear-gradient(180deg, #f0dfc8 0%, transparent 100%);
+  box-shadow: inset 0 -2px 8px rgba(155, 89, 182, 0.08);
 }
 
 .filmstrip-container::after {
   bottom: 0;
-  background-image:
+  background:
     repeating-linear-gradient(
       90deg,
       transparent 0px,
-      transparent 10px,
-      #1a1a1a 10px,
-      #1a1a1a 15px,
-      transparent 15px,
-      transparent 25px
+      transparent 12px,
+      rgba(155, 89, 182, 0.12) 12px,
+      rgba(155, 89, 182, 0.12) 22px,
+      transparent 22px,
+      transparent 34px
     ),
-    linear-gradient(0deg, #000 0%, #1a1a1a 100%);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+    linear-gradient(0deg, #f0dfc8 0%, transparent 100%);
+  box-shadow: inset 0 2px 8px rgba(155, 89, 182, 0.08);
 }
 
 .filmstrip-track {
   display: flex;
-  gap: 12px;
-  padding: 45px 30px;
+  gap: 16px;
+  padding: 50px 35px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  scrollbar-width: none;
-  background: linear-gradient(
-    180deg,
-    #0a0a0a 0%,
-    #1a1a1a 15%,
-    #1a1a1a 85%,
-    #0a0a0a 100%
-  );
+  scrollbar-width: thin;
+  scrollbar-color: rgba(233, 30, 140, 0.3) rgba(155, 89, 182, 0.1);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 238, 248, 0.4), transparent 70%),
+    radial-gradient(circle at 50% 100%, rgba(245, 230, 240, 0.4), transparent 70%);
 }
 
 .filmstrip-track::-webkit-scrollbar {
-  display: none;
+  height: 8px;
 }
 
-/* Film Strip Items */
+.filmstrip-track::-webkit-scrollbar-track {
+  background: rgba(155, 89, 182, 0.05);
+  border-radius: 10px;
+}
+
+.filmstrip-track::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--primary-purple), var(--primary-pink));
+  border-radius: 10px;
+}
+
+/* Vintage Film Frame Items */
 .filmstrip-item {
   flex-shrink: 0;
   width: 180px;
@@ -266,93 +286,104 @@
 }
 
 .filmstrip-item:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
 }
 
 .filmstrip-item.active {
-  transform: translateY(-15px) scale(1.08);
+  transform: translateY(-18px) scale(1.1);
 }
 
-/* Film frame with perforations */
+/* Vintage photo frame with perforations */
 .thumbnail-wrapper {
   position: relative;
   width: 180px;
   height: 120px;
-  background: #000;
-  padding: 8px;
+  background: linear-gradient(135deg, #fdfaf5 0%, #f8f3eb 100%);
+  padding: 10px;
   box-shadow:
-    0 0 0 2px #1a1a1a,
-    0 6px 20px rgba(0, 0, 0, 0.6);
+    0 0 0 3px #ede0d0,
+    0 0 0 6px rgba(155, 89, 182, 0.15),
+    0 8px 25px rgba(155, 89, 182, 0.2);
   transition: all 0.4s ease;
+  border-radius: 4px;
 }
 
-/* Sprocket holes on sides */
+/* Delicate perforations on sides */
 .thumbnail-wrapper::before,
 .thumbnail-wrapper::after {
   content: '';
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 100%;
-  background-image: repeating-linear-gradient(
-    180deg,
-    transparent 0px,
-    transparent 8px,
-    #1a1a1a 8px,
-    #1a1a1a 12px,
-    transparent 12px,
-    transparent 20px
-  );
+  top: 10px;
+  bottom: 10px;
+  width: 10px;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0px,
+      transparent 10px,
+      rgba(155, 89, 182, 0.12) 10px,
+      rgba(155, 89, 182, 0.12) 16px,
+      transparent 16px,
+      transparent 26px
+    );
   z-index: 1;
 }
 
 .thumbnail-wrapper::before {
   left: 0;
+  border-radius: 4px 0 0 4px;
 }
 
 .thumbnail-wrapper::after {
   right: 0;
+  border-radius: 0 4px 4px 0;
 }
 
 .filmstrip-item.active .thumbnail-wrapper {
   box-shadow:
-    0 0 0 2px var(--primary-pink),
-    0 0 20px rgba(233, 30, 140, 0.8),
-    0 8px 30px rgba(0, 0, 0, 0.8);
-  background: #0a0a0a;
+    0 0 0 3px var(--primary-pink),
+    0 0 0 6px rgba(233, 30, 140, 0.2),
+    0 0 30px rgba(233, 30, 140, 0.4),
+    0 12px 35px rgba(155, 89, 182, 0.3);
+  background: linear-gradient(135deg, #fff5fb 0%, #fef8f3 100%);
 }
 
 .thumbnail-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
-  filter: brightness(0.9) contrast(1.1);
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: sepia(0.08) saturate(1.05) brightness(1.02);
+  border-radius: 2px;
 }
 
 .filmstrip-item:hover .thumbnail-image {
   transform: scale(1.05);
-  filter: brightness(1) contrast(1.1);
+  filter: sepia(0.05) saturate(1.1) brightness(1.05);
 }
 
 .filmstrip-item.active .thumbnail-image {
-  filter: brightness(1.1) contrast(1.2);
+  filter: sepia(0.02) saturate(1.15) brightness(1.08);
 }
 
 .thumbnail-overlay {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  background: rgba(0, 0, 0, 0.5);
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(155, 89, 182, 0.3),
+    rgba(233, 30, 140, 0.3)
+  );
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 2;
+  border-radius: 2px;
 }
 
 .filmstrip-item:hover .thumbnail-overlay {
@@ -360,14 +391,18 @@
 }
 
 .thumbnail-overlay.active {
-  background: rgba(233, 30, 140, 0.4);
+  background: linear-gradient(
+    135deg,
+    rgba(233, 30, 140, 0.25),
+    rgba(155, 89, 182, 0.25)
+  );
   opacity: 1;
 }
 
 .thumbnail-play-icon {
   color: white;
   font-size: 2rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 8px rgba(155, 89, 182, 0.6);
   transform: scale(0.8);
   transition: transform 0.3s ease;
 }
@@ -377,39 +412,40 @@
   transform: scale(1.2);
 }
 
-/* Film frame info (like film frame numbers) */
+/* Elegant frame labels */
 .thumbnail-info {
   margin-top: 0.75rem;
   text-align: center;
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-serif);
 }
 
 .thumbnail-date {
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-sans);
   font-size: 0.65rem;
-  color: #888;
+  color: var(--primary-purple);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 0.25rem;
   font-weight: 600;
+  opacity: 0.7;
 }
 
 .thumbnail-label {
-  font-family: 'Courier New', monospace;
-  font-size: 0.85rem;
-  color: #aaa;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: #8b6f5c;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .filmstrip-item.active .thumbnail-date {
   color: var(--primary-pink);
+  opacity: 1;
 }
 
 .filmstrip-item.active .thumbnail-label {
   color: var(--primary-pink);
   font-weight: 700;
-  text-shadow: 0 0 10px rgba(233, 30, 140, 0.5);
 }
 
 /* Controls */
@@ -424,23 +460,22 @@
 .autoplay-button {
   width: 55px;
   height: 55px;
-  border: 2px solid var(--primary-pink);
+  border: 2px solid rgba(233, 30, 140, 0.3);
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(155, 89, 182, 0.9), rgba(233, 30, 140, 0.9));
+  background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
   color: white;
   font-size: 1.3rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
 }
 
 .autoplay-button:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(233, 30, 140, 0.6);
+  box-shadow: 0 6px 20px rgba(233, 30, 140, 0.4);
 }
 
 .autoplay-button:active {
@@ -448,12 +483,11 @@
 }
 
 .control-label {
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-sans);
   font-size: 0.9rem;
-  color: #aaa;
+  color: var(--primary-purple);
   font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Animations */
@@ -498,7 +532,7 @@
 
   .main-picture-frame {
     height: 350px;
-    padding: 12px;
+    padding: 15px;
   }
 
   .picture-details {
@@ -520,12 +554,12 @@
   .thumbnail-wrapper {
     width: 150px;
     height: 100px;
-    padding: 6px;
+    padding: 8px;
   }
 
   .filmstrip-track {
-    padding: 40px 20px;
-    gap: 10px;
+    padding: 45px 25px;
+    gap: 12px;
   }
 }
 
@@ -559,12 +593,14 @@
 
   .main-picture-frame {
     height: 300px;
-    padding: 10px;
+    padding: 12px;
   }
 
   .main-picture-frame::before,
   .main-picture-frame::after {
-    height: 10px;
+    height: 12px;
+    left: 12px;
+    right: 12px;
   }
 
   .picture-title {
@@ -582,19 +618,21 @@
   .thumbnail-wrapper {
     width: 120px;
     height: 80px;
-    padding: 5px;
+    padding: 6px;
   }
 
   .thumbnail-wrapper::before,
   .thumbnail-wrapper::after {
-    width: 6px;
+    width: 8px;
+    top: 6px;
+    bottom: 6px;
   }
 
   .thumbnail-overlay {
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
   }
 
   .thumbnail-date {
@@ -602,17 +640,17 @@
   }
 
   .thumbnail-label {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
   .filmstrip-track {
-    padding: 35px 15px;
-    gap: 8px;
+    padding: 40px 15px;
+    gap: 10px;
   }
 
   .filmstrip-container::before,
   .filmstrip-container::after {
-    height: 25px;
+    height: 30px;
   }
 }
 
@@ -642,11 +680,11 @@
   }
 
   .filmstrip-track {
-    padding: 30px 10px;
+    padding: 35px 12px;
   }
 
   .filmstrip-container::before,
   .filmstrip-container::after {
-    height: 20px;
+    height: 25px;
   }
 }
