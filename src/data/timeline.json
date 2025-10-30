@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "year": "Early Years",
+    "date": "2000-2005",
+    "title": "The Beginning",
+    "description": "Where it all started - the first chapters of an amazing journey",
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 2,
+    "year": "Childhood",
+    "date": "2005-2010",
+    "title": "Growing Up",
+    "description": "Discovering the world with curious eyes and endless wonder",
+    "image": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 3,
+    "year": "School Days",
+    "date": "2010-2015",
+    "title": "Learning & Growing",
+    "description": "Making friends, learning lessons, and creating memories",
+    "image": "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 4,
+    "year": "Teen Years",
+    "date": "2015-2018",
+    "title": "Finding Yourself",
+    "description": "Discovering passions, dreams, and what makes you uniquely you",
+    "image": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 5,
+    "year": "New Beginnings",
+    "date": "2018-2020",
+    "title": "Spreading Wings",
+    "description": "Taking on new challenges and embracing opportunities",
+    "image": "https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 6,
+    "year": "Recent Times",
+    "date": "2020-2023",
+    "title": "Coming Into Your Own",
+    "description": "Building your path and making your mark on the world",
+    "image": "https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 7,
+    "year": "Today",
+    "date": "2023-Present",
+    "title": "The Amazing You",
+    "description": "Celebrating all that you are and all that you're becoming",
+    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 8,
+    "year": "Future",
+    "date": "2024 & Beyond",
+    "title": "What's Next",
+    "description": "The best is yet to come - so many adventures await!",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop"
+  }
+]

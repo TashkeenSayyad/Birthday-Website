@@ -13,6 +13,7 @@ const Navigation = ({ onBackToCandles }) => {
     { path: '/memories', label: 'Our Favorite Memories', icon: '📸' },
     { path: '/notes', label: 'Letters for you', icon: '📝' },
     { path: '/music', label: 'Music', icon: '🎵' },
+    { path: '/timeline', label: 'Journey Through Time', icon: '⏳' },
   ];
 
   const handleBackToCandles = () => {

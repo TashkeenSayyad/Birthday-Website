@@ -47,6 +47,14 @@ const Home = () => {
       icon: '🎵',
       path: '/music',
       color: '#e74c3c'
+    },
+    {
+      id: 6,
+      title: 'Journey Through Time',
+      subtitle: 'A timeline of cherished moments',
+      icon: '⏳',
+      path: '/timeline',
+      color: '#8b5cf6'
     }
   ];
 
