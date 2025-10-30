@@ -8,11 +8,11 @@ const Navigation = ({ onBackToCandles }) => {
 
   const navItems = [
     { path: '/', label: 'Home', icon: '🏠' },
-    { path: '/messages', label: 'Birthday Messages', icon: '💌' },
-    { path: '/things-we-love', label: 'Things We Love', icon: '💜' },
-    { path: '/memories', label: 'Favorite Memories', icon: '📸' },
-    { path: '/notes', label: 'Personal Notes', icon: '📝' },
-    { path: '/music', label: 'Our Music', icon: '🎵' },
+    { path: '/messages', label: 'Special Messages for your Birthday', icon: '💌' },
+    { path: '/things-we-love', label: 'Things We Love About You', icon: '💜' },
+    { path: '/memories', label: 'Our Favorite Memories', icon: '📸' },
+    { path: '/notes', label: 'Letters for you', icon: '📝' },
+    { path: '/music', label: 'Music', icon: '🎵' },
   ];
 
   const handleBackToCandles = () => {
