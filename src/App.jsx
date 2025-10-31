@@ -10,6 +10,7 @@ import FavoriteMemories from './pages/FavoriteMemories';
 import PersonalNotesPage from './pages/PersonalNotesPage';
 import PersonalNote from './components/PersonalNote';
 import MusicPage from './pages/MusicPage';
+import TimelinePage from './pages/TimelinePage';
 import 'bulma/css/bulma.min.css';
 import './styles/App.css';
 
@@ -63,6 +64,7 @@ function App() {
           <Route path="/notes" element={<PersonalNotesPage />} />
           <Route path="/note/:person" element={<PersonalNote />} />
           <Route path="/music" element={<MusicPage />} />
+          <Route path="/timeline" element={<TimelinePage />} />
         </Routes>
       </div>
     </Router>

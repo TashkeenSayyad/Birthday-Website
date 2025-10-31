@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "year": "Early Years",
+    "date": "2001-2005",
+    "title": "Test Data, early days",
+    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&h=800&fit=crop"
+  },
+  {
+    "id": 2,
+    "year": "Future",
+    "date": "2024 & Beyond",
+    "title": "Test Data, future plans",
+    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop"
+  }
+]
