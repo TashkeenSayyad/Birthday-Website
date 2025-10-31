@@ -43,6 +43,12 @@ function App() {
     window.location.href = import.meta.env.BASE_URL + 'candle';
   };
 
+  // Add custom cursor to body on mount
+  useEffect(() => {
+    document.body.classList.add('custom-cursor');
+    return () => document.body.classList.remove('custom-cursor');
+  }, []);
+
   return (
     <Router basename={import.meta.env.BASE_URL}>
       <div className="app">

@@ -33,8 +33,26 @@
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
+  grid-auto-flow: dense; /* Fill gaps intelligently */
+}
+
+/* Asymmetric layout - varying sizes */
+.memory-card:nth-child(3n + 1) {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.memory-card:nth-child(5n) {
+  grid-column: span 2;
+  grid-row: span 1;
+  height: 450px;
+}
+
+.memory-card:nth-child(7n) {
+  grid-row: span 2;
+  height: 750px;
 }
 
 .memory-card {
@@ -43,19 +61,72 @@
   overflow: hidden;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 10px 40px rgba(155, 89, 182, 0.15);
+  box-shadow:
+    0 10px 40px rgba(155, 89, 182, 0.15),
+    0 4px 16px rgba(233, 30, 140, 0.1),
+    0 1px 4px rgba(0, 0, 0, 0.05);
   animation: fadeInUp 0.6s ease-out both;
   height: 600px;
+  transform-style: preserve-3d;
+  border: 15px solid #fff; /* Polaroid-style white border */
+  background: #fff;
+}
+
+/* Staggered animation delays */
+.memory-card:nth-child(1) { animation-delay: 0.1s; }
+.memory-card:nth-child(2) { animation-delay: 0.2s; }
+.memory-card:nth-child(3) { animation-delay: 0.3s; }
+.memory-card:nth-child(4) { animation-delay: 0.4s; }
+.memory-card:nth-child(5) { animation-delay: 0.5s; }
+.memory-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Photo corner mounts */
+.memory-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #FFD700 0%, #B87333 100%);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  z-index: 10;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.memory-card::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #FFD700 0%, #B87333 100%);
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+  z-index: 10;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Paper texture */
+.memory-card {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #ffffff 0%, #fffbf7 100%);
 }
 
 .memory-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(155, 89, 182, 0.3);
+  transform: perspective(1000px) translateY(-12px) rotateX(2deg) rotateY(-2deg);
+  box-shadow:
+    0 20px 60px rgba(155, 89, 182, 0.3),
+    0 10px 30px rgba(233, 30, 140, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .memory-card.active {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 25px 80px rgba(155, 89, 182, 0.4);
+  transform: perspective(1000px) translateY(-12px) scale(1.02) rotateX(1deg);
+  box-shadow:
+    0 25px 80px rgba(155, 89, 182, 0.4),
+    0 12px 40px rgba(233, 30, 140, 0.25),
+    0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .memory-image-main {
