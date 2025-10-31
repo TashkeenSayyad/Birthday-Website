@@ -7,11 +7,15 @@ const MessageCard = ({ name, message, image, relationship, isActive, hasSpecialN
 
   return (
     <div className={`message-card-container ${isActive ? 'active' : ''}`}>
-      <div className="message-card">
+      <div className="message-card card-3d">
         <div className="card-image-side">
           <div className="image-overlay"></div>
           <img src={image} alt={name} className="card-image" />
           <div className="image-gradient"></div>
+          {/* Photo corner mounts */}
+          <div className="corner-tr" style={{top: '8px', right: '8px', clipPath: 'polygon(100% 0, 100% 100%, 0 0)', transform: 'rotate(0deg)'}}></div>
+          <div className="corner-bl" style={{bottom: '8px', left: '8px', clipPath: 'polygon(0 0, 0 100%, 100% 100%)', transform: 'rotate(0deg)'}}></div>
+          <div className="corner-br" style={{bottom: '8px', right: '8px', clipPath: 'polygon(100% 0, 0 100%, 100% 100%)', transform: 'rotate(0deg)'}}></div>
         </div>
         
         <div className="card-content-side">

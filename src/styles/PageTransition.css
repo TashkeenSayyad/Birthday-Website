@@ -1,10 +1,55 @@
 .page-transition {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(20px) scale(0.98);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: curtainReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .page-transition.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+
+/* Curtain reveal animation */
+@keyframes curtainReveal {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 1;
+  }
+}
+
+/* Page curl effect on entry */
+.page-transition::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+    rgba(255, 209, 220, 0.4) 0%,
+    rgba(201, 169, 224, 0.4) 50%,
+    rgba(232, 180, 160, 0.4) 100%
+  );
+  animation: pageCurl 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes pageCurl {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    opacity: 1;
+  }
+  100% {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    opacity: 0;
+  }
 }
