@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FloatingParticles from '../components/FloatingParticles';
 import FloatingHearts from '../components/FloatingHearts';
@@ -6,6 +6,10 @@ import '../styles/Home.css';
 
 const Home = () => {
   const navigate = useNavigate();
+  const [pullDistance, setPullDistance] = useState(0);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [startY, setStartY] = useState(0);
+  const pageRef = useRef(null);
 
   const menuItems = [
     {
@@ -58,12 +62,85 @@ const Home = () => {
     }
   ];
 
+  // Pull-to-refresh handlers
+  const handleTouchStart = (e) => {
+    // Only start if at the top of the page
+    if (window.scrollY === 0) {
+      setStartY(e.touches[0].clientY);
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (window.scrollY === 0 && startY > 0) {
+      const currentY = e.touches[0].clientY;
+      const distance = currentY - startY;
+
+      // Only pull down, with resistance
+      if (distance > 0) {
+        // Add resistance: the further you pull, the harder it gets
+        const resistance = Math.min(distance / 3, 100);
+        setPullDistance(resistance);
+      }
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (pullDistance > 60) {
+      // Trigger refresh
+      setIsRefreshing(true);
+      setPullDistance(80); // Lock at refresh position
+
+      // Simulate refresh with confetti and particle effects
+      setTimeout(() => {
+        // Reset pull distance
+        setPullDistance(0);
+        setIsRefreshing(false);
+        setStartY(0);
+
+        // Add some visual celebration
+        if (navigator.vibrate) {
+          navigator.vibrate([50, 100, 50]);
+        }
+      }, 1500);
+    } else {
+      // Spring back
+      setPullDistance(0);
+      setStartY(0);
+    }
+  };
+
   return (
     <>
       <FloatingParticles />
       <FloatingHearts />
 
-      <div className="home-page">
+      {/* Pull-to-Refresh Indicator */}
+      <div
+        className={`refresh-indicator ${isRefreshing ? 'refreshing' : ''}`}
+        style={{
+          transform: `translateY(${Math.min(pullDistance - 40, 40)}px)`,
+          opacity: Math.min(pullDistance / 60, 1)
+        }}
+      >
+        <div className={`refresh-spinner ${isRefreshing ? 'spinning' : ''}`}>
+          {isRefreshing ? '✨' : '⬇️'}
+        </div>
+        <span className="refresh-text">
+          {isRefreshing ? 'Refreshing...' : pullDistance > 60 ? 'Release to refresh' : 'Pull to refresh'}
+        </span>
+      </div>
+
+      <div
+        ref={pageRef}
+        className="home-page"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        style={{
+          transform: `translateY(${pullDistance}px)`,
+          transition: pullDistance === 0 || isRefreshing ? 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+        }}
+      >
         <header className="home-header">
           <div className="header-content">
             <h1 className="home-title">Happy Birthday</h1>
