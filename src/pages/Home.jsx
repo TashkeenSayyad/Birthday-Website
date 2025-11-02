@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FloatingParticles from '../components/FloatingParticles';
 import FloatingHearts from '../components/FloatingHearts';
@@ -166,8 +166,8 @@ const Home = () => {
                 <p className="menu-subtitle">{item.subtitle}</p>
                 <div className="menu-arrow">→</div>
               </div>
-              <div 
-                className="menu-card-glow" 
+              <div
+                className="menu-card-glow"
                 style={{ background: `radial-gradient(circle at center, ${item.color}20, transparent)` }}
               ></div>
             </div>

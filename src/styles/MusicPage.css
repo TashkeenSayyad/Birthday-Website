@@ -62,7 +62,7 @@
   font-size: 3.5rem;
   font-weight: 600;
   color: #9b59b6;
-  background: linear-gradient(135deg, #e91e8c 0%, #d946ef 50%, #9b59b6 100%);
+  background: linear-gradient(135deg, #9b59b6 0%, #d946ef 50%, #8b4367 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -207,7 +207,7 @@
   padding: 0.8rem 1.5rem;
   background: rgba(155, 89, 182, 0.1);
   color: #9b59b6;
-  border: 2px solid #e74c3c;
+  border: 2px solid #9b59b6;
   border-radius: 25px;
   font-family: var(--font-sans);
   font-size: 0.9rem;
@@ -283,7 +283,7 @@
 .song-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #e91e8c, #d946ef);
+  background: linear-gradient(135deg, #9b59b6, #d946ef);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -416,7 +416,7 @@
 
 .lyrics-btn {
   padding: 0.6rem 1.5rem;
-  background: linear-gradient(135deg, #e91e8c, #d946ef);
+  background: linear-gradient(135deg, #9b59b6, #d946ef);
   color: white;
   border: none;
   border-radius: 25px;
@@ -490,7 +490,7 @@
   right: 1.5rem;
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #e91e8c, #d946ef);
+  background: linear-gradient(135deg, #9b59b6, #d946ef);
   color: white;
   border: none;
   border-radius: 50%;
@@ -599,7 +599,7 @@
 .sub-note {
   font-family: var(--font-script);
   font-size: 1.3rem !important;
-  color: #e74c3c !important;
+  color: #9b59b6 !important;
   margin-top: 1rem !important;
   font-weight: 500;
 }
@@ -646,7 +646,7 @@
 }
 
 .lyrics-box::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #e91e8c, #d946ef);
+  background: linear-gradient(135deg, #9b59b6, #d946ef);
   border-radius: 10px;
 }
 

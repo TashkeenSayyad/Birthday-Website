@@ -87,32 +87,15 @@
   --spacing-lg: 3rem;
   --spacing-xl: 4rem;
 
-  /* Border Radius System - Mobile Optimized */
-  --radius-sm: 12px;
-  --radius-md: 20px;
-  --radius-lg: 28px;
-  --radius-xl: 32px;
-  --radius-full: 50%;
-
-  /* Backdrop Blur System */
-  --blur-light: blur(10px);
-  --blur-medium: blur(20px);
-  --blur-heavy: blur(25px);
-
   /* Shadows - Soft and Layered */
   --shadow-soft: 0 4px 20px rgba(213, 81, 107, 0.12), 0 2px 8px rgba(155, 114, 170, 0.08);
   --shadow-medium: 0 10px 40px rgba(213, 81, 107, 0.15), 0 4px 16px rgba(155, 114, 170, 0.12);
   --shadow-large: 0 20px 60px rgba(213, 81, 107, 0.2), 0 8px 24px rgba(155, 114, 170, 0.15);
-  --shadow-hover: 0 35px 90px rgba(155, 89, 182, 0.32), 0 0 60px rgba(233, 30, 140, 0.22), 0 15px 35px rgba(139, 92, 246, 0.18);
   --shadow-glow: 0 0 30px rgba(255, 154, 139, 0.3), 0 0 60px rgba(201, 169, 224, 0.2);
 
   /* Transitions */
   --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  /* Focus Styles - Mobile-Friendly */
-  --focus-ring: 0 0 0 3px rgba(155, 89, 182, 0.4);
-  --focus-ring-inset: inset 0 0 0 3px rgba(233, 30, 140, 0.5);
 }
 
 /* Apply romantic theme to all pages */
@@ -443,6 +426,28 @@ body.custom-cursor .clickable {
   50% {
     border-color: transparent;
   }
+}
+
+/* Enhanced Design System Tokens */
+:root {
+  /* Border Radius System - Mobile Optimized */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 32px;
+  --radius-full: 50%;
+
+  /* Backdrop Blur System */
+  --blur-light: blur(10px);
+  --blur-medium: blur(20px);
+  --blur-heavy: blur(25px);
+
+  /* Enhanced Shadows */
+  --shadow-hover: 0 35px 90px rgba(155, 89, 182, 0.32), 0 0 60px rgba(233, 30, 140, 0.22), 0 15px 35px rgba(139, 92, 246, 0.18);
+
+  /* Focus Styles - Mobile-Friendly */
+  --focus-ring: 0 0 0 3px rgba(155, 89, 182, 0.4);
+  --focus-ring-inset: inset 0 0 0 3px rgba(233, 30, 140, 0.5);
 }
 
 /* Mobile-Friendly Focus States for Accessibility */
