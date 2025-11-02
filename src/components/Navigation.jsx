@@ -37,18 +37,24 @@ const Navigation = ({ onBackToCandles }) => {
         <div className="nav-content">
           <h3 className="nav-title">Explore</h3>
           <ul className="nav-list">
-            {navItems.map((item) => (
-              <li key={item.path}>
-                <Link
-                  to={item.path}
-                  className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span className="nav-icon">{item.icon}</span>
-                  <span className="nav-label">{item.label}</span>
-                </Link>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              // Don't apply active class to Memories and Timeline
+              const shouldHighlight = item.path !== '/memories' && item.path !== '/timeline';
+              const isActive = shouldHighlight && location.pathname === item.path;
+
+              return (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className={`nav-link ${isActive ? 'active' : ''}`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span className="nav-icon">{item.icon}</span>
+                    <span className="nav-label">{item.label}</span>
+                  </Link>
+                </li>
+              );
+            })}
             
             {/* Divider */}
             <li className="nav-divider"></li>
