@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import memoriesData from '../data/memories.json';
 import '../styles/FavoriteMemories.css';
 
@@ -7,6 +7,10 @@ const FavoriteMemories = () => {
   const [activeMemory, setActiveMemory] = useState(0);
   const [selectedMemory, setSelectedMemory] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const [modalTransform, setModalTransform] = useState(0);
+  const modalRef = useRef(null);
 
   useEffect(() => {
     setMemories(memoriesData);
@@ -15,11 +19,50 @@ const FavoriteMemories = () => {
   const openModal = (memory) => {
     setSelectedMemory(memory);
     setIsModalOpen(true);
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    document.body.style.overflow = ''; // Restore scroll
+    setModalTransform(0);
     setTimeout(() => setSelectedMemory(null), 300);
+  };
+
+  // Touch gesture handlers for swipe-down-to-close
+  const handleTouchStart = (e) => {
+    setTouchStart(e.touches[0].clientY);
+    setTouchEnd(e.touches[0].clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.touches[0].clientY);
+    const distance = e.touches[0].clientY - touchStart;
+
+    // Only allow downward swipe
+    if (distance > 0) {
+      setModalTransform(distance);
+      // Add resistance effect
+      const opacity = Math.max(0.3, 1 - distance / 400);
+      if (modalRef.current) {
+        modalRef.current.style.opacity = opacity;
+      }
+    }
+  };
+
+  const handleTouchEnd = () => {
+    const distance = touchEnd - touchStart;
+
+    // Close modal if swiped down more than 150px
+    if (distance > 150) {
+      closeModal();
+    } else {
+      // Spring back to original position
+      setModalTransform(0);
+      if (modalRef.current) {
+        modalRef.current.style.opacity = 1;
+      }
+    }
   };
 
   return (
@@ -38,7 +81,12 @@ const FavoriteMemories = () => {
             onMouseEnter={() => setActiveMemory(index)}
           >
             <div className="memory-image-main">
-              <img src={memory.image} alt={memory.title} />
+              <img
+                src={memory.image}
+                alt={memory.title}
+                loading="lazy"
+                className="progressive-image"
+              />
               <div className="memory-overlay">
                 <span className="memory-date">{memory.date}</span>
                 <h3 className="memory-title">{memory.title}</h3>
@@ -52,10 +100,29 @@ const FavoriteMemories = () => {
 
       {isModalOpen && selectedMemory && (
         <div className={`memory-modal ${isModalOpen ? 'open' : ''}`} onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div
+            ref={modalRef}
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            style={{
+              transform: `translateY(${modalTransform}px)`,
+              transition: modalTransform === 0 ? 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+            }}
+          >
+            <div className="modal-swipe-indicator">
+              <div className="swipe-bar"></div>
+            </div>
             <button className="modal-close" onClick={closeModal}>×</button>
             <div className="modal-image-container">
-              <img src={selectedMemory.image} alt={selectedMemory.title} />
+              <img
+                src={selectedMemory.image}
+                alt={selectedMemory.title}
+                loading="eager"
+                className="progressive-image"
+              />
             </div>
             <div className="modal-details">
               <span className="modal-date">{selectedMemory.date}</span>
