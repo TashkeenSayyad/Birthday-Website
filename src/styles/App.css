@@ -54,6 +54,7 @@
 body {
   font-family: var(--font-body);
   overflow-x: hidden;
+  overscroll-behavior: none;
   background: var(--color-warm-cream);
   color: var(--text-primary);
   line-height: 1.6;
@@ -75,6 +76,7 @@ body {
     );
   position: relative;
   overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 /* Magical texture overlay */

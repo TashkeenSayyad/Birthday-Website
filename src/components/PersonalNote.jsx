@@ -19,10 +19,6 @@ const PersonalNote = () => {
 
   return (
     <div className="personal-note-page">
-      <button className="back-button" onClick={() => navigate(-1)}>
-        ← Back
-      </button>
-
       <div className="note-container">
         <div className="note-header">
           <img src={note.image} alt={note.name} />
