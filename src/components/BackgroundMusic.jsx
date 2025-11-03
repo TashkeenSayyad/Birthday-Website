@@ -40,18 +40,26 @@ const BackgroundMusic = () => {
         loop
         preload="auto"
       >
-        {/* Using a soft ambient music - you can replace this with your preferred track */}
-        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_2c87ba57ce.mp3" type="audio/mpeg" />
+        {/* Birthday song - soft instrumental version
+
+            To use your own custom birthday song:
+            1. Add your audio file to src/assets/ folder (e.g., birthday-song.mp3)
+            2. Import it at the top: import birthdaySong from '../assets/birthday-song.mp3';
+            3. Replace the src below with: src={birthdaySong}
+
+            Or use a URL to an online audio file as shown below.
+        */}
+        <source src="https://cdn.pixabay.com/audio/2022/08/02/audio_31c2fdb8b3.mp3" type="audio/mpeg" />
       </audio>
 
       <button
         className={`music-toggle ${isPlaying ? 'playing' : ''}`}
         onClick={togglePlay}
-        aria-label={isPlaying ? 'Pause background music' : 'Play background music'}
-        title={isPlaying ? 'Pause music' : 'Play music'}
+        aria-label={isPlaying ? 'Pause birthday music' : 'Play birthday music'}
+        title={isPlaying ? 'Pause birthday music' : 'Play birthday music 🎂'}
       >
         <span className="music-icon">
-          {isPlaying ? '🔊' : '🔇'}
+          {isPlaying ? '🎵' : '🎂'}
         </span>
       </button>
 
