@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import ConstantSparkles from './components/ConstantSparkles';
+import BackgroundMusic from './components/BackgroundMusic';
 import CandlePage from './pages/CandlePage';
 import Home from './pages/Home';
 import MessagesPage from './pages/MessagesPage';
@@ -54,6 +55,7 @@ function App() {
     <Router basename={import.meta.env.BASE_URL}>
       <div className="app">
         <ConstantSparkles />
+        <BackgroundMusic />
         <Navigation onBackToCandles={handleBackToCandles} />
         <Routes>
           <Route path="/" element={<InitialRedirect />} />
