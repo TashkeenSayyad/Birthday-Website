@@ -33,6 +33,9 @@ const BackgroundMusic = () => {
     }
   };
 
+  // Get the base URL for assets (supports both GitHub Pages and local development)
+  const baseUrl = import.meta.env.BASE_URL || '/';
+
   return (
     <div className="background-music-controls">
       <audio
@@ -40,16 +43,11 @@ const BackgroundMusic = () => {
         loop
         preload="auto"
       >
-        {/* Birthday song - soft instrumental version
-
-            To use your own custom birthday song:
-            1. Add your audio file to src/assets/ folder (e.g., birthday-song.mp3)
-            2. Import it at the top: import birthdaySong from '../assets/birthday-song.mp3';
-            3. Replace the src below with: src={birthdaySong}
-
-            Or use a URL to an online audio file as shown below.
+        {/* Background music - using local MP3 file
+            The file is located at: public/music/palpal.mp3
+            To change the song, update the src path below to point to a different MP3 file in public/music/
         */}
-        <source src="https://cdn.pixabay.com/audio/2022/08/02/audio_31c2fdb8b3.mp3" type="audio/mpeg" />
+        <source src={`${baseUrl}music/palpal.mp3`} type="audio/mpeg" />
       </audio>
 
       <button
