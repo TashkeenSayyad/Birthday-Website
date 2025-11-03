@@ -98,11 +98,17 @@
 .main-picture {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 8px;
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.05);
   filter: sepia(0.05) saturate(1.1);
+}
+
+/* Video-specific styling */
+.main-video {
+  filter: none;
+  background: #000;
 }
 
 @keyframes fadeInScale {
@@ -351,7 +357,7 @@
 .thumbnail-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.4s ease, filter 0.4s ease;
   filter: sepia(0.08) saturate(1.05) brightness(1.02);
   border-radius: 2px;
@@ -364,6 +370,25 @@
 
 .filmstrip-item.active .thumbnail-image {
   filter: sepia(0.02) saturate(1.15) brightness(1.08);
+}
+
+/* Video indicator badge */
+.video-indicator {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: linear-gradient(135deg, rgba(233, 30, 140, 0.95), rgba(155, 89, 182, 0.95));
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
 .thumbnail-overlay {

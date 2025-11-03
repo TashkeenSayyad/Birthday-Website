@@ -112,12 +112,27 @@ const TimelinePage = () => {
 
             <div className="main-picture-wrapper">
               <div className="main-picture-frame">
-                <img
-                  key={currentIndex}
-                  src={currentEvent.image}
-                  alt={currentEvent.title}
-                  className="main-picture"
-                />
+                {/* Render image or video based on mediaType */}
+                {currentEvent.mediaType === 'video' ? (
+                  <video
+                    key={currentIndex}
+                    src={currentEvent.media || currentEvent.image}
+                    className="main-picture main-video"
+                    controls
+                    loop
+                    playsInline
+                    poster={currentEvent.thumbnail}
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <img
+                    key={currentIndex}
+                    src={currentEvent.media || currentEvent.image}
+                    alt={currentEvent.title}
+                    className="main-picture"
+                  />
+                )}
               </div>
 
               {/* Picture Details */}
@@ -147,11 +162,22 @@ const TimelinePage = () => {
                   onClick={() => goToSlide(index)}
                 >
                   <div className="thumbnail-wrapper">
-                    <img
-                      src={event.image}
-                      alt={event.title}
-                      className="thumbnail-image"
-                    />
+                    {event.mediaType === 'video' ? (
+                      <>
+                        <img
+                          src={event.thumbnail || event.media || event.image}
+                          alt={event.title}
+                          className="thumbnail-image"
+                        />
+                        <div className="video-indicator">🎬</div>
+                      </>
+                    ) : (
+                      <img
+                        src={event.thumbnail || event.media || event.image}
+                        alt={event.title}
+                        className="thumbnail-image"
+                      />
+                    )}
                     <div className={`thumbnail-overlay ${index === currentIndex ? 'active' : ''}`}>
                       <div className="thumbnail-play-icon">▶</div>
                     </div>

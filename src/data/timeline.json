@@ -2,17 +2,61 @@
   {
     "id": 1,
     "year": "Early Years",
-    "date": "2001-2005",
+    "date": "Babyhood",
     "title": "Test Data, early days",
     "description": "If you see this, ignore these pictures, they are just for testing purposes.",
-    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&h=800&fit=crop"
+    "mediaType": "image",
+    "media": "public/images/young_anusha_bed.jpg",
+    "thumbnail": "public/images/young_anusha_bed.jpg"
   },
   {
     "id": 2,
-    "year": "Future",
-    "date": "2024 & Beyond",
-    "title": "Test Data, future plans",
+    "year": "Early Years",
+    "date": "Babyhood",
+    "title": "Test Data, early days",
     "description": "If you see this, ignore these pictures, they are just for testing purposes.",
-    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop"
+    "mediaType": "image",
+    "media": "public/images/young_anusha_red.jpg",
+    "thumbnail": "public/images/young_anusha_red.jpg"
+  },
+  {
+    "id": 3,
+    "year": "Early Years",
+    "date": "Babyhood",
+    "title": "Test Data, early days",
+    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "mediaType": "image",
+    "media": "public/images/young_anusha_laraib.jpg",
+    "thumbnail": "public/images/young_anusha_laraib.jpg"
+  },
+  {
+    "id": 4,
+    "year": "Early Years",
+    "date": "Babyhood",
+    "title": "Test Data, early days",
+    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "mediaType": "image",
+    "media": "public/images/young_anusha_mama_jani.jpg",
+    "thumbnail": "public/images/young_anusha_mama_jani.jpg"
+  },
+  {
+    "id": 5,
+    "year": "Early Years",
+    "date": "Babyhood",
+    "title": "Test Data, early days",
+    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "mediaType": "image",
+    "media": "public/images/young_anusha_mohsin.jpg",
+    "thumbnail": "public/images/young_anusha_mohsin.jpg"
+  },
+  {
+    "id": 6,
+    "year": "Early Years",
+    "date": "Babyhood",
+    "title": "Test Data, early days",
+    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "mediaType": "image",
+    "media": "public/images/young_anusha.jpg",
+    "thumbnail": "public/images/young_anusha.jpg"
   }
 ]
