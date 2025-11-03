@@ -4,7 +4,7 @@
   left: 2rem;
   width: 50px;
   height: 50px;
-  background: rgba(155, 89, 182, 0.15);
+  background: rgba(255, 255, 255, 0.9);
   border: 2px solid rgba(155, 89, 182, 0.3);
   border-radius: 12px;
   cursor: pointer;
@@ -14,16 +14,27 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
   box-shadow: 0 4px 15px rgba(155, 89, 182, 0.15);
 }
 
 .nav-toggle:hover {
   background: rgba(155, 89, 182, 0.25);
   border-color: #9b59b6;
-  transform: scale(1.05);
+  transform: scale(1.08);
   box-shadow: 0 6px 20px rgba(155, 89, 182, 0.25);
+}
+
+.nav-toggle:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+.nav-toggle:focus-visible {
+  outline: 3px solid rgba(155, 89, 182, 0.5);
+  outline-offset: 3px;
 }
 
 .nav-toggle span {
@@ -172,6 +183,16 @@
   border-color: rgba(155, 89, 182, 0.25);
   transform: translateX(8px);
   box-shadow: 0 4px 12px rgba(155, 89, 182, 0.1);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid rgba(155, 89, 182, 0.6);
+  outline-offset: 2px;
+}
+
+.nav-link:active {
+  transform: translateX(4px) scale(0.98);
+  transition: transform 0.1s ease;
 }
 
 .nav-link-special {
