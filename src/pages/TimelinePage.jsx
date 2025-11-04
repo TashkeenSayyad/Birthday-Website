@@ -11,6 +11,9 @@ const TimelinePage = () => {
   const autoPlayRef = useRef(null);
   const filmstripRef = useRef(null);
 
+  // Get the base URL for assets (supports both GitHub Pages and local development)
+  const baseUrl = import.meta.env.BASE_URL || '/';
+
   useEffect(() => {
     setTimeline(timelineData);
   }, []);
@@ -116,19 +119,19 @@ const TimelinePage = () => {
                 {currentEvent.mediaType === 'video' ? (
                   <video
                     key={currentIndex}
-                    src={currentEvent.media || currentEvent.image}
+                    src={`${baseUrl}${currentEvent.media || currentEvent.image}`}
                     className="main-picture main-video"
                     controls
                     loop
                     playsInline
-                    poster={currentEvent.thumbnail}
+                    poster={`${baseUrl}${currentEvent.thumbnail}`}
                   >
                     Your browser does not support the video tag.
                   </video>
                 ) : (
                   <img
                     key={currentIndex}
-                    src={currentEvent.media || currentEvent.image}
+                    src={`${baseUrl}${currentEvent.media || currentEvent.image}`}
                     alt={currentEvent.title}
                     className="main-picture"
                   />
@@ -165,7 +168,7 @@ const TimelinePage = () => {
                     {event.mediaType === 'video' ? (
                       <>
                         <img
-                          src={event.thumbnail || event.media || event.image}
+                          src={`${baseUrl}${event.thumbnail || event.media || event.image}`}
                           alt={event.title}
                           className="thumbnail-image"
                         />
@@ -173,7 +176,7 @@ const TimelinePage = () => {
                       </>
                     ) : (
                       <img
-                        src={event.thumbnail || event.media || event.image}
+                        src={`${baseUrl}${event.thumbnail || event.media || event.image}`}
                         alt={event.title}
                         className="thumbnail-image"
                       />
