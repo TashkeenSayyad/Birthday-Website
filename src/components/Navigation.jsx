@@ -38,9 +38,7 @@ const Navigation = ({ onBackToCandles }) => {
           <h3 className="nav-title">Explore</h3>
           <ul className="nav-list">
             {navItems.map((item) => {
-              // Don't apply active class to Memories and Timeline
-              const shouldHighlight = item.path !== '/memories' && item.path !== '/timeline';
-              const isActive = shouldHighlight && location.pathname === item.path;
+              const isActive = location.pathname === item.path;
 
               return (
                 <li key={item.path}>
