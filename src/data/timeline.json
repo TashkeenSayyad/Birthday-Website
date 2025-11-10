@@ -6,8 +6,8 @@
     "title": "Test Data, early days",
     "description": "If you see this, ignore these pictures, they are just for testing purposes.",
     "mediaType": "image",
-    "media": "/Birthday-Website/images/young_anusha_bed.jpg",
-    "thumbnail": "/Birthday-Website/images/young_anusha_bed.jpg"
+    "media": "images/timeline/young_anusha_bed.jpg",
+    "thumbnail": "images/timeline/young_anusha_bed.jpg"
   },
   {
     "id": 2,
@@ -16,8 +16,8 @@
     "title": "Test Data, early days",
     "description": "If you see this, ignore these pictures, they are just for testing purposes.",
     "mediaType": "image",
-    "media": "/Birthday-Website/images/young_anusha_red.jpg",
-    "thumbnail": "/Birthday-Website/images/young_anusha_red.jpg"
+    "media": "images/timeline/young_anusha_red.jpg",
+    "thumbnail": "images/timeline/young_anusha_red.jpg"
   },
   {
     "id": 3,
@@ -26,8 +26,8 @@
     "title": "Test Data, early days",
     "description": "If you see this, ignore these pictures, they are just for testing purposes.",
     "mediaType": "image",
-    "media": "/Birthday-Website/images/young_anusha_laraib.jpg",
-    "thumbnail": "/Birthday-Website/images/young_anusha_laraib.jpg"
+    "media": "images/timeline/young_anusha_laraib.jpg",
+    "thumbnail": "images/timeline/young_anusha_laraib.jpg"
   },
   {
     "id": 4,
@@ -36,8 +36,8 @@
     "title": "Test Data, early days",
     "description": "If you see this, ignore these pictures, they are just for testing purposes.",
     "mediaType": "image",
-    "media": "/Birthday-Website/images/young_anusha_mama_jani.jpg",
-    "thumbnail": "/Birthday-Website/images/young_anusha_mama_jani.jpg"
+    "media": "images/timeline/young_anusha_mama_jani.jpg",
+    "thumbnail": "images/timeline/young_anusha_mama_jani.jpg"
   },
   {
     "id": 5,
@@ -46,8 +46,8 @@
     "title": "Test Data, early days",
     "description": "If you see this, ignore these pictures, they are just for testing purposes.",
     "mediaType": "image",
-    "media": "/Birthday-Website/images/young_anusha_mohsin.jpg",
-    "thumbnail": "/Birthday-Website/images/young_anusha_mohsin.jpg"
+    "media": "images/timeline/young_anusha_mohsin.jpg",
+    "thumbnail": "images/timeline/young_anusha_mohsin.jpg"
   },
   {
     "id": 6,
@@ -56,7 +56,7 @@
     "title": "Test Data, early days",
     "description": "If you see this, ignore these pictures, they are just for testing purposes.",
     "mediaType": "image",
-    "media": "/Birthday-Website/images/young_anusha.jpg",
-    "thumbnail": "/Birthday-Website/images/young_anusha.jpg"
+    "media": "images/timeline/young_anusha.jpg",
+    "thumbnail": "images/timeline/young_anusha.jpg"
   }
 ]
