@@ -2,46 +2,22 @@
    ENHANCED ROOT STYLES WITH CUSTOM PROPERTIES
    ============================================ */
 
-/* Import consolidated animations */
-@import './styles/animations.css';
-
 :root {
-  /* Typography - Unified font families */
-  --font-display: 'Playfair Display', 'Georgia', serif;
+  /* Typography */
   --font-serif: 'Playfair Display', 'Cormorant Garamond', serif;
-  --font-body: 'Crimson Text', 'Georgia', serif;
   --font-script: 'Dancing Script', cursive;
-  --font-handwritten: 'Caveat', cursive;
-  --font-fancy: 'Great Vibes', cursive;
   --font-sans: 'Montserrat', sans-serif;
 
-  /* Romantic Color Palette - Unified colors */
-  --color-rose-gold: #E8B4A0;
-  --color-blush: #FFD1DC;
-  --color-lavender: #C9A9E0;
-  --color-mauve: #9B72AA;
-  --color-deep-rose: #D5516B;
-  --color-sunset: #FF9A8B;
-  --color-peach: #FFDAB9;
-  --color-lilac: #DDA0DD;
-  --color-warm-cream: #FFF8E7;
-  --color-soft-pink: #FFE4E1;
-
-  /* Legacy color aliases for backwards compatibility */
+  /* Color Palette */
   --primary-purple: #9b59b6;
   --primary-pink: #e91e8c;
   --accent-violet: #8b5cf6;
   --light-purple: #d4a5d8;
   --soft-pink: #ffc0e3;
   --gold: #ffd700;
-
-  /* Text Colors - Unified */
-  --text-primary: #4A3642;
-  --text-secondary: #6B4E58;
-  --text-accent: #8B4367;
-  --text-light: #A67C89;
   --text-dark: #2d2d2d;
   --text-medium: #666;
+  --text-light: #7d5a8f;
 
   /* Gradients */
   --gradient-romantic: linear-gradient(135deg, #ffeef8 0%, #f5e6f0 25%, #e8d5f2 50%, #dfe6f5 75%, #e6f3ff 100%);
@@ -49,21 +25,11 @@
   --gradient-purple: linear-gradient(135deg, #e91e8c 0%, #9b59b6 50%, #8b5cf6 100%);
   --gradient-text: linear-gradient(135deg, #e91e8c 0%, #9b59b6 50%, #8b5cf6 100%);
 
-  /* Spacing - from App.css */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 3rem;
-  --spacing-xl: 4rem;
-
-  /* Shadows - unified from both files */
+  /* Shadows */
   --shadow-sm: 0 2px 8px rgba(155, 89, 182, 0.1);
   --shadow-md: 0 8px 32px rgba(155, 89, 182, 0.15);
   --shadow-lg: 0 20px 60px rgba(155, 89, 182, 0.25);
   --shadow-glow: 0 0 30px rgba(233, 30, 140, 0.3);
-  --shadow-soft: 0 4px 20px rgba(213, 81, 107, 0.12), 0 2px 8px rgba(155, 114, 170, 0.08);
-  --shadow-medium: 0 10px 40px rgba(213, 81, 107, 0.15), 0 4px 16px rgba(155, 114, 170, 0.12);
-  --shadow-large: 0 20px 60px rgba(213, 81, 107, 0.2), 0 8px 24px rgba(155, 114, 170, 0.15);
 
   /* Transitions */
   --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
@@ -164,6 +130,127 @@ body::before {
 }
 
 /* ============================================
+   GLOBAL ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Performance-optimized will-change for animations */
+.animate-in {
+  will-change: transform, opacity;
+}
+
+.animate-in.complete {
+  will-change: auto;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10%, 30% {
+    transform: scale(0.9);
+  }
+  20%, 40%, 60%, 80% {
+    transform: scale(1.1);
+  }
+  50%, 70% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
    TYPOGRAPHY
    ============================================ */
 
@@ -226,21 +313,6 @@ button {
 button:focus-visible {
   outline: 2px solid var(--primary-purple);
   outline-offset: 2px;
-}
-
-/* ============================================
-   CUSTOM CURSOR
-   ============================================ */
-
-body.custom-cursor {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8' fill='%23e91e8c' opacity='0.3'/%3E%3Ccircle cx='12' cy='12' r='3' fill='%239b59b6'/%3E%3C/svg%3E") 12 12, auto;
-}
-
-body.custom-cursor a,
-body.custom-cursor button,
-body.custom-cursor .menu-card,
-body.custom-cursor [role="button"] {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='12' fill='%23e91e8c' opacity='0.4'/%3E%3Ccircle cx='14' cy='14' r='5' fill='%239b59b6'/%3E%3C/svg%3E") 14 14, pointer;
 }
 
 /* ============================================
