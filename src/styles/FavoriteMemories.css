@@ -599,19 +599,8 @@
 /* Progressive Image Loading */
 .progressive-image {
   position: relative;
-  transition: filter 0.5s ease, transform 0.3s ease;
-  will-change: filter;
+  transition: transform 0.3s ease;
   background: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
-}
-
-.progressive-image[loading] {
-  filter: blur(10px);
-  transform: scale(1.05);
-}
-
-.progressive-image:not([loading]) {
-  filter: blur(0);
-  transform: scale(1);
 }
 
 @media (max-width: 768px) {
