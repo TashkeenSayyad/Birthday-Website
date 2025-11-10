@@ -14,6 +14,128 @@
   padding: 4rem;
 }
 
+/* Timeline Header Styling */
+.timeline-content .app-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 1rem;
+}
+
+.timeline-content .main-title {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg,
+    var(--color-deep-rose) 0%,
+    var(--color-sunset) 30%,
+    var(--color-mauve) 70%,
+    var(--color-lavender) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 12px rgba(213, 81, 107, 0.15);
+  position: relative;
+  animation: gentleFloat 6s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Decorative elements around title */
+.timeline-content .main-title::before,
+.timeline-content .main-title::after {
+  font-family: 'Arial', sans-serif;
+  position: absolute;
+  font-size: 2rem;
+  animation: heartPulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 2px 6px rgba(213, 81, 107, 0.3));
+}
+
+.timeline-content .main-title::before {
+  content: '⏰';
+  left: -60px;
+  top: 10px;
+}
+
+.timeline-content .main-title::after {
+  content: '📸';
+  right: -60px;
+  top: 10px;
+  animation-delay: 1s;
+}
+
+.timeline-content .title-decoration {
+  width: 350px;
+  height: 3px;
+  background: linear-gradient(to right,
+    transparent,
+    var(--color-sunset) 20%,
+    var(--color-deep-rose) 50%,
+    var(--color-mauve) 80%,
+    transparent
+  );
+  margin: 1.5rem auto;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(213, 81, 107, 0.2);
+}
+
+.timeline-content .title-decoration::before,
+.timeline-content .title-decoration::after {
+  content: '✿';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-sunset);
+  font-size: 1.5rem;
+  animation: rotate 4s linear infinite;
+}
+
+.timeline-content .title-decoration::before {
+  left: -30px;
+}
+
+.timeline-content .title-decoration::after {
+  right: -30px;
+}
+
+.timeline-content .subtitle-text {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  color: var(--text-accent);
+  margin-top: 1rem;
+  opacity: 0.9;
+}
+
+/* Animations */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes heartPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
 .timeline-carousel-container {
   width: 100%;
   max-width: 1400px;
@@ -98,7 +220,7 @@
 .main-picture {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 8px;
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.05);
@@ -545,6 +667,25 @@
 }
 
 @media (max-width: 768px) {
+  .timeline-content .main-title {
+    font-size: 3rem;
+  }
+
+  .timeline-content .main-title::before,
+  .timeline-content .main-title::after {
+    font-size: 1.5rem;
+    left: -40px;
+    right: -40px;
+  }
+
+  .timeline-content .subtitle-text {
+    font-size: 1.4rem;
+  }
+
+  .timeline-content .title-decoration {
+    width: 250px;
+  }
+
   .main-picture-container {
     gap: 1rem;
   }
@@ -589,6 +730,25 @@
 }
 
 @media (max-width: 640px) {
+  .timeline-content .main-title {
+    font-size: 2.5rem;
+  }
+
+  .timeline-content .main-title::before,
+  .timeline-content .main-title::after {
+    font-size: 1.3rem;
+    left: -35px;
+    right: -35px;
+  }
+
+  .timeline-content .subtitle-text {
+    font-size: 1.2rem;
+  }
+
+  .timeline-content .title-decoration {
+    width: 200px;
+  }
+
   .timeline-carousel-container {
     padding: 0 0.5rem;
   }
@@ -680,6 +840,23 @@
 }
 
 @media (max-width: 480px) {
+  .timeline-content .main-title {
+    font-size: 2rem;
+  }
+
+  .timeline-content .main-title::before,
+  .timeline-content .main-title::after {
+    display: none;
+  }
+
+  .timeline-content .subtitle-text {
+    font-size: 1.1rem;
+  }
+
+  .timeline-content .title-decoration {
+    width: 150px;
+  }
+
   .main-picture-frame {
     height: 250px;
   }
