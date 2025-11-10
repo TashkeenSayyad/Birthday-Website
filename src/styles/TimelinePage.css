@@ -98,11 +98,12 @@
 .main-picture {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 8px;
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.05);
   filter: sepia(0.05) saturate(1.1);
+  background: radial-gradient(ellipse at center, rgba(253, 250, 245, 0.8), rgba(248, 240, 230, 0.9));
 }
 
 /* Video-specific styling */
@@ -357,10 +358,11 @@
 .thumbnail-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.4s ease, filter 0.4s ease;
   filter: sepia(0.08) saturate(1.05) brightness(1.02);
   border-radius: 2px;
+  background: radial-gradient(ellipse at center, rgba(255, 252, 248, 0.6), rgba(250, 245, 238, 0.8));
 }
 
 .filmstrip-item:hover .thumbnail-image {
@@ -711,5 +713,171 @@
   .filmstrip-container::before,
   .filmstrip-container::after {
     height: 25px;
+  }
+}
+
+/* Enhanced Timeline Header Styling */
+.timeline-content .app-header {
+  position: relative;
+  padding: 3rem 1rem 4rem;
+}
+
+.timeline-content .main-title {
+  font-family: var(--font-display);
+  font-size: 5.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg,
+    #e91e8c 0%,
+    #d946ef 25%,
+    #9b59b6 50%,
+    #8b5cf6 75%,
+    #e91e8c 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 20px rgba(233, 30, 140, 0.25);
+  position: relative;
+  animation: gentleFloat 6s ease-in-out infinite, shimmerGradient 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(155, 89, 182, 0.3));
+}
+
+.timeline-content .title-decoration {
+  width: 300px;
+  height: 4px;
+  background: linear-gradient(to right,
+    transparent,
+    #e91e8c 20%,
+    #d946ef 40%,
+    #9b59b6 60%,
+    #8b5cf6 80%,
+    transparent
+  );
+  margin: 2rem auto;
+  border-radius: 3px;
+  position: relative;
+  animation: expandWidth 2s ease-out, decorationGlow 3s ease-in-out infinite;
+  box-shadow: 0 2px 15px rgba(233, 30, 140, 0.4), 0 0 30px rgba(155, 89, 182, 0.3);
+}
+
+.timeline-content .title-decoration::before,
+.timeline-content .title-decoration::after {
+  content: '♥';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #e91e8c;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(233, 30, 140, 0.6);
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.timeline-content .title-decoration::before {
+  left: -2.5rem;
+}
+
+.timeline-content .title-decoration::after {
+  right: -2.5rem;
+}
+
+.timeline-content .subtitle-text {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  color: var(--primary-purple);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 10px rgba(155, 89, 182, 0.2);
+  animation: fadeInUp 1.5s ease-out 0.3s both;
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmerGradient {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 300px;
+    opacity: 1;
+  }
+}
+
+@keyframes decorationGlow {
+  0%, 100% {
+    box-shadow: 0 2px 15px rgba(233, 30, 140, 0.4), 0 0 30px rgba(155, 89, 182, 0.3);
+  }
+  50% {
+    box-shadow: 0 2px 25px rgba(233, 30, 140, 0.6), 0 0 50px rgba(155, 89, 182, 0.5);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.2);
+  }
+}
+
+/* Responsive adjustments for timeline header */
+@media (max-width: 768px) {
+  .timeline-content .main-title {
+    font-size: 3.5rem;
+  }
+
+  .timeline-content .title-decoration {
+    width: 200px;
+  }
+
+  .timeline-content .subtitle-text {
+    font-size: 1.4rem;
+  }
+
+  .timeline-content .title-decoration::before,
+  .timeline-content .title-decoration::after {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-content .main-title {
+    font-size: 2.5rem;
+  }
+
+  .timeline-content .title-decoration {
+    width: 150px;
+  }
+
+  .timeline-content .subtitle-text {
+    font-size: 1.2rem;
+  }
+
+  .timeline-content .title-decoration::before {
+    left: -2rem;
+  }
+
+  .timeline-content .title-decoration::after {
+    right: -2rem;
   }
 }
