@@ -114,6 +114,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  animation: gentleFloat 6s ease-in-out infinite;
 }
 
 .page-subtitle,

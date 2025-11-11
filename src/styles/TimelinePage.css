@@ -33,7 +33,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  will-change: auto;
+  animation: gentleFloat 6s ease-in-out infinite;
 }
 
 /* Decorative elements around title */
@@ -42,6 +42,7 @@
   font-family: 'Arial', sans-serif;
   position: absolute;
   font-size: 2rem;
+  animation: heartPulse 2s ease-in-out infinite;
 }
 
 .timeline-content .main-title::before {
@@ -81,6 +82,7 @@
   transform: translateY(-50%);
   color: var(--color-sunset);
   font-size: 1.5rem;
+  animation: rotate 4s linear infinite;
 }
 
 .timeline-content .title-decoration::before {
@@ -97,25 +99,6 @@
   color: var(--text-accent);
   margin-top: 1rem;
   opacity: 0.9;
-}
-
-/* Animations */
-@keyframes heartPulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: translateY(-50%) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-50%) rotate(360deg);
-  }
 }
 
 .timeline-carousel-container {
