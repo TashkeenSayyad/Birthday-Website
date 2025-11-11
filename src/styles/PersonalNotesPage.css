@@ -30,14 +30,15 @@
 .personal-notes-page .page-title {
   font-family: var(--font-serif);
   font-size: 3.8rem;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-deep-rose);
   margin-bottom: 1rem;
   font-weight: 600;
   position: relative;
   display: inline-block;
+  animation: gentleFloat 6s ease-in-out infinite;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .title-decoration {
@@ -58,8 +59,7 @@
 
 .heart-icon {
   font-size: 2rem;
-  animation: heartBeat 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 4px 8px rgba(233, 30, 140, 0.3));
+  animation: heartPulse 2s ease-in-out infinite;
 }
 
 .personal-notes-page .page-subtitle {
