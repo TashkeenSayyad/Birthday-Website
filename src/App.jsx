@@ -12,7 +12,6 @@ import PersonalNotesPage from './pages/PersonalNotesPage';
 import PersonalNote from './components/PersonalNote';
 import MusicPage from './pages/MusicPage';
 import TimelinePage from './pages/TimelinePage';
-import 'bulma/css/bulma.min.css';
 import './styles/App.css';
 
 // Component to handle initial redirect to candle page
