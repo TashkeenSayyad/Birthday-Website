@@ -41,7 +41,8 @@
   display: inline-block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  filter: drop-shadow(0 2px 4px rgba(213, 81, 107, 0.1));
+  text-shadow: none !important;
+  filter: none !important;
 }
 
 /* Decorative elements around title */
@@ -113,10 +114,10 @@
 /* Animations */
 @keyframes gentleFloat {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) translateZ(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-10px) translateZ(0);
   }
 }
 
