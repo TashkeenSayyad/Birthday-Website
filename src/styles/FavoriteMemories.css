@@ -339,8 +339,10 @@
 }
 
 .modal-image-container img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
 }
 
@@ -550,18 +552,6 @@
 
 .favorite-toast.show {
   bottom: 30px;
-}
-
-/* Modal Image Container */
-.modal-image-container {
-  overflow: hidden;
-  position: relative;
-}
-
-.modal-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 /* Video-specific styling */
