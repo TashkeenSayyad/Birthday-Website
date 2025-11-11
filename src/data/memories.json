@@ -22,5 +22,15 @@
     "description": "Yet another something something.",
     "image": "images/memories/mehwish-anusha2.jpg",
     "from": "Mehwish"
+  },
+  {
+    "id": 4,
+    "title": "Test Video Memory",
+    "date": "2024",
+    "description": "This is a test video memory to demonstrate video support.",
+    "mediaType": "video",
+    "media": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=600&fit=crop",
+    "from": "Test"
   }
 ]
