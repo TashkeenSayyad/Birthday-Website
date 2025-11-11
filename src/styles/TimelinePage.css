@@ -25,24 +25,15 @@
   font-family: var(--font-display);
   font-size: 4.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg,
-    var(--color-deep-rose) 0%,
-    var(--color-sunset) 30%,
-    var(--color-mauve) 70%,
-    var(--color-lavender) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-deep-rose);
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
   position: relative;
-  animation: gentleFloat 6s ease-in-out infinite;
   display: inline-block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-shadow: none !important;
-  filter: none !important;
+  text-rendering: optimizeLegibility;
+  will-change: auto;
 }
 
 /* Decorative elements around title */
@@ -51,8 +42,6 @@
   font-family: 'Arial', sans-serif;
   position: absolute;
   font-size: 2rem;
-  animation: heartPulse 2s ease-in-out infinite;
-  filter: drop-shadow(0 2px 6px rgba(213, 81, 107, 0.3));
 }
 
 .timeline-content .main-title::before {
@@ -92,7 +81,6 @@
   transform: translateY(-50%);
   color: var(--color-sunset);
   font-size: 1.5rem;
-  animation: rotate 4s linear infinite;
 }
 
 .timeline-content .title-decoration::before {
@@ -112,15 +100,6 @@
 }
 
 /* Animations */
-@keyframes gentleFloat {
-  0%, 100% {
-    transform: translateY(0px) translateZ(0);
-  }
-  50% {
-    transform: translateY(-10px) translateZ(0);
-  }
-}
-
 @keyframes heartPulse {
   0%, 100% {
     transform: scale(1);
