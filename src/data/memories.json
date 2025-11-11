@@ -9,18 +9,42 @@
   },
   {
     "id": 2,
-    "title": "Another Memory",
-    "date": "Winter 2021",
-    "description": "Another something something.",
+    "title": "Mehwish & Anusha Memory",
+    "date": "X",
+    "description": ".",
     "image": "images/memories/mehwish-anusha.jpg",
     "from": "Mehwish"
   },
   {
     "id": 3,
-    "title": "Yet Another Memory",
-    "date": "Spring 2023",
+    "title": "Mehwish & Anusha Memory 2",
+    "date": "X",
     "description": "Yet another something something.",
     "image": "images/memories/mehwish-anusha2.jpg",
     "from": "Mehwish"
+  },
+  {
+    "id": 4,
+    "title": "Aqsa & Anusha Memory",
+    "date": "2023",
+    "description": ".",
+    "image": "images/memories/aqsa-anusha.jpg",
+    "from": "Aqsa"
+  },
+    {
+    "id": 5,
+    "title": "Aqsa & Anusha Memory 2",
+    "date": "2023",
+    "description": ".",
+    "image": "images/memories/aqsa-anusha2.jpg",
+    "from": "Aqsa"
+  },
+  {
+    "id": 6,
+    "title": "Aqsa & Anusha Memory 3",
+    "date": "2023",
+    "description": ".",
+    "image": "images/memories/aqsa-anusha3.jpg",
+    "from": "Aqsa"
   }
 ]
