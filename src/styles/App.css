@@ -106,20 +106,13 @@ body {
   font-family: var(--font-display);
   font-size: 5.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg,
-    var(--color-deep-rose) 0%,
-    var(--color-sunset) 30%,
-    var(--color-mauve) 70%,
-    var(--color-lavender) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-deep-rose);
   letter-spacing: 0.05em;
   margin-bottom: 1.5rem;
-  text-shadow: 0 4px 12px rgba(213, 81, 107, 0.15);
   position: relative;
-  animation: gentleFloat 6s ease-in-out infinite;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Decorative hearts */
@@ -128,8 +121,6 @@ body {
   font-family: 'Arial', sans-serif;
   position: absolute;
   font-size: 2rem;
-  animation: heartPulse 2s ease-in-out infinite;
-  filter: drop-shadow(0 2px 6px rgba(213, 81, 107, 0.3));
 }
 
 .main-title::before {
@@ -171,7 +162,6 @@ body {
   transform: translateY(-50%);
   color: var(--color-sunset);
   font-size: 1.5rem;
-  animation: rotate 4s linear infinite;
 }
 
 .title-decoration::before {
@@ -206,18 +196,13 @@ body {
   font-family: var(--font-fancy);
   font-size: 2.2rem;
   font-weight: 400;
-  background: linear-gradient(135deg,
-    var(--color-deep-rose) 0%,
-    var(--color-sunset) 50%,
-    var(--color-lavender) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-deep-rose);
   letter-spacing: 0.02em;
   position: relative;
   display: inline-block;
-  filter: drop-shadow(0 2px 8px rgba(213, 81, 107, 0.2));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .footer-text::before,
@@ -225,7 +210,6 @@ body {
   content: '✨';
   position: absolute;
   font-size: 1.3rem;
-  animation: sparkle 2s ease-in-out infinite;
 }
 
 .footer-text::before {
