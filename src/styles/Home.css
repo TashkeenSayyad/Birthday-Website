@@ -61,26 +61,14 @@
   font-size: 5.5rem;
   font-weight: 700;
   color: var(--color-deep-rose);
-  background: linear-gradient(135deg,
-    var(--color-deep-rose) 0%,
-    var(--color-sunset) 30%,
-    var(--color-mauve) 70%,
-    var(--color-lavender) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% auto;
   letter-spacing: 0.04em;
   margin-bottom: 1.5rem;
   position: relative;
-  animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
+  animation: gentleFloat 6s ease-in-out infinite;
   line-height: 1.2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: geometricPrecision;
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 .home-title::after {
@@ -367,25 +355,13 @@
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--color-deep-rose);
-  background: linear-gradient(135deg,
-    var(--color-deep-rose) 0%,
-    var(--color-sunset) 30%,
-    var(--color-mauve) 70%,
-    var(--color-lavender) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% auto;
   letter-spacing: 0.04em;
   position: relative;
   display: inline-block;
-  animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
+  animation: gentleFloat 6s ease-in-out infinite;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: geometricPrecision;
-  transform: translateZ(0);
-  will-change: transform;
 }
 
 .home-footer .footer-text::before,
