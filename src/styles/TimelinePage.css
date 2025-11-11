@@ -26,6 +26,16 @@
   font-size: 4.5rem;
   font-weight: 700;
   color: var(--color-deep-rose);
+  background: linear-gradient(135deg,
+    var(--color-deep-rose) 0%,
+    var(--color-sunset) 30%,
+    var(--color-mauve) 70%,
+    var(--color-lavender) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
   position: relative;
@@ -33,7 +43,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  animation: gentleFloat 6s ease-in-out infinite;
+  animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
 }
 
 /* Decorative elements around title */
