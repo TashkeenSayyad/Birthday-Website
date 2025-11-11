@@ -335,7 +335,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #2a1f2e 0%, #1f1a2e 50%, #1a1f2e 100%);
+  background: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
@@ -559,7 +559,7 @@
 /* Video-specific styling */
 .modal-video {
   filter: none;
-  background: #000;
+  background: transparent;
   width: 100%;
   height: auto;
   max-height: 60vh;
