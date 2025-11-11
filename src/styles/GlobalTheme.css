@@ -110,11 +110,21 @@
 /* Global Page Title Styles */
 .page-title {
   font-family: var(--font-display);
-  background: var(--gradient-text);
+  color: var(--color-deep-rose);
+  background: linear-gradient(135deg,
+    var(--color-deep-rose) 0%,
+    var(--color-sunset) 30%,
+    var(--color-mauve) 70%,
+    var(--color-lavender) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 2px 10px rgba(213, 81, 107, 0.15));
+  background-size: 200% auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
 }
 
 .page-subtitle,

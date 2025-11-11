@@ -1,11 +1,49 @@
-/* Additional fonts loaded via @import (consider moving to HTML for better performance) */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Caveat:wght@400;500;600;700&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
 /* Tailwind utilities only (no base reset) */
 @tailwind components;
 @tailwind utilities;
 
-/* All CSS variables are now consolidated in index.css */
+/* Design System Variables */
+:root {
+  /* Romantic Color Palette */
+  --color-rose-gold: #E8B4A0;
+  --color-blush: #FFD1DC;
+  --color-lavender: #C9A9E0;
+  --color-mauve: #9B72AA;
+  --color-deep-rose: #D5516B;
+  --color-sunset: #FF9A8B;
+  --color-peach: #FFDAB9;
+  --color-lilac: #DDA0DD;
+  --color-warm-cream: #FFF8E7;
+  --color-soft-pink: #FFE4E1;
+
+  /* Text Colors */
+  --text-primary: #4A3642;
+  --text-secondary: #6B4E58;
+  --text-accent: #8B4367;
+  --text-light: #A67C89;
+
+  /* Font Families */
+  --font-display: 'Playfair Display', 'Georgia', serif;
+  --font-body: 'Crimson Text', 'Georgia', serif;
+  --font-script: 'Dancing Script', cursive;
+  --font-handwritten: 'Caveat', cursive;
+  --font-fancy: 'Great Vibes', cursive;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px rgba(213, 81, 107, 0.12), 0 2px 8px rgba(155, 114, 170, 0.08);
+  --shadow-medium: 0 10px 40px rgba(213, 81, 107, 0.15), 0 4px 16px rgba(155, 114, 170, 0.12);
+  --shadow-large: 0 20px 60px rgba(213, 81, 107, 0.2), 0 8px 24px rgba(155, 114, 170, 0.15);
+  --shadow-glow: 0 0 30px rgba(255, 154, 139, 0.3), 0 0 60px rgba(201, 169, 224, 0.2);
+}
 
 * {
   margin: 0;
@@ -106,6 +144,7 @@ body {
   font-family: var(--font-display);
   font-size: 5.5rem;
   font-weight: 700;
+  color: var(--color-deep-rose);
   background: linear-gradient(135deg,
     var(--color-deep-rose) 0%,
     var(--color-sunset) 30%,
@@ -115,11 +154,14 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% auto;
   letter-spacing: 0.05em;
   margin-bottom: 1.5rem;
-  text-shadow: 0 4px 12px rgba(213, 81, 107, 0.15);
   position: relative;
-  animation: gentleFloat 6s ease-in-out infinite;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
 }
 
 /* Decorative hearts */
@@ -129,7 +171,6 @@ body {
   position: absolute;
   font-size: 2rem;
   animation: heartPulse 2s ease-in-out infinite;
-  filter: drop-shadow(0 2px 6px rgba(213, 81, 107, 0.3));
 }
 
 .main-title::before {
@@ -145,6 +186,15 @@ body {
   animation-delay: 1s;
 }
 
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
 
 .title-decoration {
   width: 350px;
@@ -183,6 +233,10 @@ body {
   animation-delay: 2s;
 }
 
+@keyframes rotate {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
 
 .subtitle-text {
   font-family: var(--font-script);
@@ -206,18 +260,24 @@ body {
   font-family: var(--font-fancy);
   font-size: 2.2rem;
   font-weight: 400;
+  color: var(--color-deep-rose);
   background: linear-gradient(135deg,
     var(--color-deep-rose) 0%,
-    var(--color-sunset) 50%,
+    var(--color-sunset) 30%,
+    var(--color-mauve) 70%,
     var(--color-lavender) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% auto;
   letter-spacing: 0.02em;
   position: relative;
   display: inline-block;
-  filter: drop-shadow(0 2px 8px rgba(213, 81, 107, 0.2));
+  animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
 }
 
 .footer-text::before,
@@ -239,6 +299,42 @@ body {
   animation-delay: 1s;
 }
 
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.6; transform: scale(0.9) rotate(180deg); }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
