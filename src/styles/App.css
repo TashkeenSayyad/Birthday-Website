@@ -122,7 +122,9 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  text-rendering: geometricPrecision;
+  transform: translateZ(0);
+  will-change: transform;
   animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
 }
 
@@ -226,7 +228,9 @@ body {
   animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  text-rendering: geometricPrecision;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .footer-text::before,
