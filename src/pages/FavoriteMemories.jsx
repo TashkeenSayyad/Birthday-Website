@@ -15,17 +15,7 @@ const FavoriteMemories = () => {
   const [showFavoriteToast, setShowFavoriteToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
 
-  // Pinch-to-zoom state
-  const [zoom, setZoom] = useState(1);
-  const [panX, setPanX] = useState(0);
-  const [panY, setPanY] = useState(0);
-  const [initialDistance, setInitialDistance] = useState(0);
-  const [isPinching, setIsPinching] = useState(false);
-  const [lastPanX, setLastPanX] = useState(0);
-  const [lastPanY, setLastPanY] = useState(0);
-
   const modalRef = useRef(null);
-  const imageRef = useRef(null);
 
   useEffect(() => {
     setMemories(memoriesData);
@@ -40,134 +30,48 @@ const FavoriteMemories = () => {
     setSelectedMemory(memory);
     setIsModalOpen(true);
     document.body.style.overflow = 'hidden';
-    // Reset zoom and pan
-    setZoom(1);
-    setPanX(0);
-    setPanY(0);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     document.body.style.overflow = '';
     setModalTransform(0);
-    setZoom(1);
-    setPanX(0);
-    setPanY(0);
     setTimeout(() => setSelectedMemory(null), 300);
   };
 
   // Touch gesture handlers for swipe-down-to-close
   const handleTouchStart = (e) => {
-    // Only handle swipe if not zoomed in
-    if (zoom <= 1) {
-      setTouchStart(e.touches[0].clientY);
-      setTouchEnd(e.touches[0].clientY);
-    }
+    setTouchStart(e.touches[0].clientY);
+    setTouchEnd(e.touches[0].clientY);
   };
 
   const handleTouchMove = (e) => {
-    // Only handle swipe if not zoomed in
-    if (zoom <= 1) {
-      setTouchEnd(e.touches[0].clientY);
-      const distance = e.touches[0].clientY - touchStart;
+    setTouchEnd(e.touches[0].clientY);
+    const distance = e.touches[0].clientY - touchStart;
 
-      // Only allow downward swipe
-      if (distance > 0) {
-        setModalTransform(distance);
-        // Add resistance effect
-        const opacity = Math.max(0.3, 1 - distance / 400);
-        if (modalRef.current) {
-          modalRef.current.style.opacity = opacity;
-        }
+    // Only allow downward swipe
+    if (distance > 0) {
+      setModalTransform(distance);
+      // Add resistance effect
+      const opacity = Math.max(0.3, 1 - distance / 400);
+      if (modalRef.current) {
+        modalRef.current.style.opacity = opacity;
       }
     }
   };
 
   const handleTouchEnd = () => {
-    if (zoom <= 1) {
-      const distance = touchEnd - touchStart;
+    const distance = touchEnd - touchStart;
 
-      // Close modal if swiped down more than 150px
-      if (distance > 150) {
-        closeModal();
-      } else {
-        // Spring back to original position
-        setModalTransform(0);
-        if (modalRef.current) {
-          modalRef.current.style.opacity = 1;
-        }
-      }
-    }
-  };
-
-  // Pinch-to-zoom handlers
-  const getDistance = (touch1, touch2) => {
-    const dx = touch1.clientX - touch2.clientX;
-    const dy = touch1.clientY - touch2.clientY;
-    return Math.sqrt(dx * dx + dy * dy);
-  };
-
-  const handleImageTouchStart = (e) => {
-    if (e.touches.length === 2) {
-      e.preventDefault();
-      setIsPinching(true);
-      const distance = getDistance(e.touches[0], e.touches[1]);
-      setInitialDistance(distance);
-      setLastPanX(panX);
-      setLastPanY(panY);
-    } else if (e.touches.length === 1 && zoom > 1) {
-      // Single touch for panning when zoomed
-      setLastPanX(e.touches[0].clientX);
-      setLastPanY(e.touches[0].clientY);
-    }
-  };
-
-  const handleImageTouchMove = (e) => {
-    if (e.touches.length === 2 && isPinching) {
-      e.preventDefault();
-      const distance = getDistance(e.touches[0], e.touches[1]);
-      const scale = (distance / initialDistance) * zoom;
-
-      // Limit zoom between 1x and 4x
-      const newZoom = Math.min(Math.max(scale, 1), 4);
-      setZoom(newZoom);
-    } else if (e.touches.length === 1 && zoom > 1) {
-      // Pan when zoomed
-      e.preventDefault();
-      const deltaX = e.touches[0].clientX - lastPanX;
-      const deltaY = e.touches[0].clientY - lastPanY;
-
-      setPanX(panX + deltaX);
-      setPanY(panY + deltaY);
-      setLastPanX(e.touches[0].clientX);
-      setLastPanY(e.touches[0].clientY);
-    }
-  };
-
-  const handleImageTouchEnd = (e) => {
-    if (e.touches.length < 2) {
-      setIsPinching(false);
-      setInitialDistance(0);
-    }
-
-    // Reset zoom and pan if zoomed out completely
-    if (zoom <= 1) {
-      setZoom(1);
-      setPanX(0);
-      setPanY(0);
-    }
-  };
-
-  // Double-tap to zoom
-  const handleDoubleTap = (e) => {
-    if (zoom === 1) {
-      setZoom(2);
-      setPanX(0);
-      setPanY(0);
+    // Close modal if swiped down more than 150px
+    if (distance > 150) {
+      closeModal();
     } else {
-      setZoom(1);
-      setPanX(0);
-      setPanY(0);
+      // Spring back to original position
+      setModalTransform(0);
+      if (modalRef.current) {
+        modalRef.current.style.opacity = 1;
+      }
     }
   };
 
@@ -237,9 +141,12 @@ const FavoriteMemories = () => {
             {isFavorited(memory.id) && (
               <div className="favorite-badge">❤️</div>
             )}
+            {memory.mediaType === 'video' && (
+              <div className="video-indicator">🎬</div>
+            )}
             <div className="memory-image-main">
               <img
-                src={memory.image}
+                src={memory.thumbnail || memory.image}
                 alt={memory.title}
                 loading="lazy"
                 className="progressive-image"
@@ -282,28 +189,26 @@ const FavoriteMemories = () => {
             >
               {isFavorited(selectedMemory.id) ? '❤️' : '🤍'}
             </button>
-            <div
-              className="modal-image-container"
-              ref={imageRef}
-              onTouchStart={handleImageTouchStart}
-              onTouchMove={handleImageTouchMove}
-              onTouchEnd={handleImageTouchEnd}
-              onDoubleClick={handleDoubleTap}
-            >
-              <img
-                src={selectedMemory.image}
-                alt={selectedMemory.title}
-                loading="eager"
-                className="progressive-image"
-                style={{
-                  transform: `scale(${zoom}) translate(${panX / zoom}px, ${panY / zoom}px)`,
-                  transition: isPinching ? 'none' : 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  cursor: zoom > 1 ? 'grab' : 'zoom-in'
-                }}
-                draggable="false"
-              />
-              {zoom === 1 && (
-                <div className="zoom-hint">Pinch to zoom or double-tap</div>
+            <div className="modal-image-container">
+              {selectedMemory.mediaType === 'video' ? (
+                <video
+                  src={selectedMemory.media || selectedMemory.image}
+                  className="progressive-image modal-video"
+                  controls
+                  loop
+                  playsInline
+                  poster={selectedMemory.thumbnail}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img
+                  src={selectedMemory.image}
+                  alt={selectedMemory.title}
+                  loading="eager"
+                  className="progressive-image"
+                  draggable="false"
+                />
               )}
             </div>
             <div className="modal-details">
