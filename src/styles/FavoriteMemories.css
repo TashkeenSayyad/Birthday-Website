@@ -1,32 +1,80 @@
 .memories-page {
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
+  background:
+    radial-gradient(ellipse at top right, rgba(255, 209, 220, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(201, 169, 224, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at center, rgba(168, 200, 228, 0.2) 0%, transparent 45%),
+    radial-gradient(circle at 70% 30%, rgba(232, 180, 160, 0.2) 0%, transparent 35%),
+    linear-gradient(135deg,
+      var(--color-warm-cream) 0%,
+      #f5e6f0 25%,
+      var(--color-soft-pink) 45%,
+      #e8d5f2 65%,
+      #dfe6f5 85%,
+      #EDE5F5 100%
+    );
+  position: relative;
+  overflow: hidden;
 }
 
 .page-header {
   text-align: center;
   margin-bottom: 4rem;
   animation: fadeInDown 1s ease-out;
+  position: relative;
+  z-index: 2;
+  padding: 2rem 1rem;
 }
 
+.page-title,
 .memories-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3.5rem;
-  background: linear-gradient(135deg, #e91e8c 0%, #9b59b6 100%);
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--color-deep-rose);
+  background: linear-gradient(135deg,
+    var(--color-deep-rose) 0%,
+    var(--color-sunset) 30%,
+    var(--color-mauve) 70%,
+    var(--color-lavender) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
+  background-size: 200% auto;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
 }
 
+.page-title::after,
+.memories-title::after {
+  content: '✨';
+  position: absolute;
+  top: -15px;
+  right: -45px;
+  font-size: 2.5rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.page-subtitle,
 .memories-subtitle {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.1rem;
-  color: #7d5a8f;
-  letter-spacing: 0.05em;
+  font-family: var(--font-script);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-accent);
+  letter-spacing: 0.04em;
+  position: relative;
+  animation: fadeIn 1.5s ease-out 0.5s both;
+  text-shadow: 0 1px 3px rgba(139, 67, 103, 0.15);
+  margin-top: 1rem;
 }
 
 .memories-gallery {
@@ -632,5 +680,35 @@
     min-height: 44px;
     width: 48px;
     height: 48px;
+  }
+}
+
+/* Keyframe animations */
+@keyframes gradientFlow {
+  0% {
+    background-position: -100% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
   }
 }
