@@ -145,12 +145,22 @@ const FavoriteMemories = () => {
               <div className="video-indicator">🎬</div>
             )}
             <div className="memory-image-main">
-              <img
-                src={memory.thumbnail || memory.image}
-                alt={memory.title}
-                loading="lazy"
-                className="progressive-image"
-              />
+              {memory.mediaType === 'video' && !memory.thumbnail ? (
+                <video
+                  src={memory.image}
+                  className="progressive-image"
+                  preload="metadata"
+                  muted
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={memory.thumbnail || memory.image}
+                  alt={memory.title}
+                  loading="lazy"
+                  className="progressive-image"
+                />
+              )}
               <div className="memory-overlay">
                 <span className="memory-date">{memory.date}</span>
                 <h3 className="memory-title">{memory.title}</h3>
@@ -195,6 +205,7 @@ const FavoriteMemories = () => {
                   src={selectedMemory.media || selectedMemory.image}
                   className="progressive-image modal-video"
                   controls
+                  autoPlay
                   loop
                   playsInline
                   poster={selectedMemory.thumbnail}
