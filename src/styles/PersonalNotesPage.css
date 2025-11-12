@@ -305,3 +305,22 @@
     font-size: 1.5rem;
   }
 }
+
+/* Keyframe animations */
+@keyframes gradientFlow {
+  0% {
+    background-position: -100% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}

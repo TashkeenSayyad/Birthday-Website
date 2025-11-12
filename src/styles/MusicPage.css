@@ -54,22 +54,33 @@
   animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 2;
-  padding-top: 2rem;
+  padding: 2rem 1rem;
 }
 
 .music-title {
-  font-family: var(--font-serif);
-  font-size: 3.5rem;
-  font-weight: 600;
-  color: #9b59b6;
-  background: linear-gradient(135deg, #9b59b6 0%, #d946ef 50%, #8b4367 100%);
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--color-deep-rose);
+  background: linear-gradient(135deg,
+    var(--color-deep-rose) 0%,
+    var(--color-sunset) 30%,
+    var(--color-mauve) 70%,
+    var(--color-lavender) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: 0.06em;
-  margin-bottom: 1rem;
+  background-size: 200% auto;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
   position: relative;
-  animation: shimmerTitle 3s ease-in-out infinite;
+  display: inline-block;
+  animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
 }
 
 @keyframes shimmerTitle {
@@ -113,15 +124,18 @@
 }
 
 .music-subtitle {
-  font-family: var(--font-sans);
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--text-light);
-  letter-spacing: 0.05em;
+  font-family: var(--font-script);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-accent);
+  letter-spacing: 0.04em;
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
-  animation: fadeIn 1.5s ease-out 0.3s both;
+  position: relative;
+  animation: fadeIn 1.5s ease-out 0.5s both;
+  text-shadow: 0 1px 3px rgba(139, 67, 103, 0.15);
+  margin-top: 1rem;
 }
 
 .music-content {
@@ -825,5 +839,24 @@
     width: 35px;
     height: 35px;
     font-size: 1.5rem;
+  }
+}
+
+/* Keyframe animations */
+@keyframes gradientFlow {
+  0% {
+    background-position: -100% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
   }
 }
