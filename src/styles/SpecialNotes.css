@@ -17,8 +17,10 @@
 
 .note-header img {
   width: 100%;
-  height: 500px;
-  object-fit: cover;
+  max-height: 500px;
+  height: auto;
+  object-fit: contain;
+  background: rgba(155, 89, 182, 0.05);
 }
 
 .note-from {
@@ -63,11 +65,13 @@
 
 .note-gallery img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  max-height: 350px;
+  height: auto;
+  object-fit: contain;
   border-radius: 12px;
   transition: transform 0.3s ease;
   cursor: pointer;
+  background: rgba(155, 89, 182, 0.05);
 }
 
 .note-gallery img:hover {
@@ -83,20 +87,24 @@
   .note-container {
     margin: 2rem auto;
   }
-  
+
   .note-header img {
-    height: 300px;
+    max-height: 300px;
   }
-  
+
+  .note-gallery img {
+    max-height: 280px;
+  }
+
   .note-from, .note-title, .note-content {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-  
+
   .note-title {
     font-size: 2rem;
   }
-  
+
   .note-content p {
     font-size: 1rem;
   }
