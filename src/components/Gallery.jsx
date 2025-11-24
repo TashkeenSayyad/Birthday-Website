@@ -108,8 +108,6 @@ const Gallery = ({ messages }) => {
             image={msg.image}
             relationship={msg.relationship}
             isActive={index === currentIndex}
-            hasSpecialNote={msg.hasSpecialNote}
-            specialNotePath={msg.specialNotePath}
           />
           ))}
         </div>

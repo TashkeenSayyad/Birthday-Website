@@ -4,17 +4,13 @@
     "name": "Laraib",
     "message": "Happy Birthday, this is a Test.",
     "image": "https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=1200&h=1200&fit=crop",
-    "relationship": "Best Friend",
-    "hasSpecialNote": true,
-    "specialNotePath": "/note/laraib"
+    "relationship": "Best Friend"
   },
   {
     "id": 2,
     "name": "Tashkeen",
     "message": "To my beloved, happy birthday...",
     "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&h=1200&fit=crop",
-    "relationship": "Your Love",
-    "hasSpecialNote": true,
-    "specialNotePath": "/note/tashkeen"
+    "relationship": "Your Love"
   }
 ]
