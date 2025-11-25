@@ -14,10 +14,10 @@ const Home = () => {
   const menuItems = [
     {
       id: 1,
-      title: 'Birthday Messages',
-      subtitle: 'From your loved ones',
+      title: 'Special Messages & Letters',
+      subtitle: 'Heartfelt messages and letters written just for you',
       icon: '💌',
-      path: '/messages',
+      path: '/notes',
       color: '#e91e8c'
     },
     {
@@ -38,14 +38,6 @@ const Home = () => {
     },
     {
       id: 4,
-      title: 'Personal Letters',
-      subtitle: 'Private messages just for you',
-      icon: '💝',
-      path: '/notes',
-      color: '#d4a5d8'
-    },
-    {
-      id: 5,
       title: 'Music that reminds of you',
       subtitle: 'Songs that tell our story',
       icon: '🎵',
@@ -53,7 +45,7 @@ const Home = () => {
       color: '#e74c3c'
     },
     {
-      id: 6,
+      id: 5,
       title: 'Journey Through Time',
       subtitle: 'A timeline of cherished moments',
       icon: '⏳',
