@@ -14,8 +14,8 @@ const Home = () => {
   const menuItems = [
     {
       id: 1,
-      title: 'Special Messages & Letters',
-      subtitle: 'Heartfelt messages and letters written just for you',
+      title: 'Personal Letters',
+      subtitle: 'Heartfelt letters written just for you',
       icon: '💌',
       path: '/notes',
       color: '#e91e8c'
