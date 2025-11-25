@@ -8,10 +8,9 @@ const Navigation = ({ onBackToCandles }) => {
 
   const navItems = [
     { path: '/', label: 'Home', icon: '🏠' },
-    { path: '/messages', label: 'Special Messages for your Birthday', icon: '💌' },
+    { path: '/notes', label: 'Special Messages & Letters', icon: '💌' },
     { path: '/things-we-love', label: 'Things We Love About You', icon: '💜' },
     { path: '/memories', label: 'Our Favorite Memories', icon: '📸' },
-    { path: '/notes', label: 'Letters for you', icon: '📝' },
     { path: '/music', label: 'Music', icon: '🎵' },
     { path: '/timeline', label: 'Journey Through Time', icon: '⏳' },
   ];
