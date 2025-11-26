@@ -55,5 +55,32 @@
     "mediaType": "video",
     "image": "videos/aqsa-car-ride.mp4",
     "from": "Aqsa"
+  },
+  {
+    "id": 8,
+    "title": "Laraib & Anusha Memory",
+    "date": "2023",
+    "description": "Kiss the bride? don't mind if I do. - Laraib, 2025, probably ",
+    "mediaType": "image",
+    "image": "images/memories/laraib-anusha.jpg", 
+    "from": "Laraib"
+  },
+  {
+    "id": 9,
+    "title": "Laraib & Anusha Memory 2",
+    "date": "2023",
+    "description": "",
+    "mediaType": "image",
+    "image": "images/memories/laraib-anusha2.jpg",
+    "from": "Laraib"
+  },
+  {
+    "id": 10,
+    "title": "Laraib & Anusha Memory 3",
+    "date": "2023",
+    "description": "dancing in the car, until a khusra interrupted us",
+    "mediaType": "video",
+    "image": "videos/anusha-car-dancing.mp4",
+    "from": "Laraib"
   }
 ]
