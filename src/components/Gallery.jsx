@@ -17,7 +17,7 @@ const Gallery = ({ messages }) => {
 
     const interval = setInterval(() => {
       handleNext();
-    }, 8000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, currentIndex, messages.length]);

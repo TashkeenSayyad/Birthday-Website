@@ -15,17 +15,16 @@ const MessageCard = ({ name, title, image, isActive, letterPath }) => {
           <div className="corner corner-bl"></div>
           <div className="corner corner-br"></div>
 
-          {/* Wax seal */}
-          <div className="wax-seal">
-            <div className="seal-inner">♥</div>
-          </div>
-
           {/* Letter content */}
           <div className="letter-paper">
+            {/* Center heart seal */}
+            <div className="center-heart-seal">
+              <div className="heart-seal-inner">♥</div>
+            </div>
+
             {/* Ornate header */}
             <div className="ornate-header">
               <div className="flourish flourish-left"></div>
-              <div className="letter-monogram">✦</div>
               <div className="flourish flourish-right"></div>
             </div>
 
