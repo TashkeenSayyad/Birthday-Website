@@ -90,7 +90,7 @@
     "description": "Anusha dancing during Azaadi celebrations",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-dancing.jpg",
-    "from": "Tashkeen"
+    "from": "Azaadi"
   },
   {
     "id": 12,
@@ -99,7 +99,7 @@
     "description": "More dancing during Azaadi festivities",
     "mediaType": "image",
     "image": "images/memories/azaadi-anuhsa-dancing2.jpg",
-    "from": "Tashkeen"
+    "from": "Azaadi"
   },
   {
     "id": 13,
@@ -108,7 +108,7 @@
     "description": "Azaadi celebrations",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-.jpg",
-    "from": "Tashkeen"
+    "from": "Azaadi"
   },
   {
     "id": 14,
@@ -117,7 +117,7 @@
     "description": "At the Azaadi function",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-function.jpg",
-    "from": "Tashkeen"
+    "from": "Azaadi"
   },
   {
     "id": 15,
@@ -126,7 +126,7 @@
     "description": "Celebrating Azaadi at home",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-home.jpg",
-    "from": "Tashkeen"
+    "from": "Azaadi"
   },
   {
     "id": 16,
@@ -135,7 +135,7 @@
     "description": "Sweet moment during Azaadi",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-hug.jpg",
-    "from": "Tashkeen"
+    "from": "Azaadi"
   },
   {
     "id": 17,
@@ -144,7 +144,7 @@
     "description": "Dinner at the restaurant on Azaadi",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-restaurant.jpg",
-    "from": "Tashkeen"
+    "from": "Azaadi"
   },
   {
     "id": 18,
@@ -153,7 +153,7 @@
     "description": "More moments from the restaurant",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-restaurant2.jpg",
-    "from": "Tashkeen"
+    "from": "Azaadi"
   },
   {
     "id": 19,
@@ -162,7 +162,7 @@
     "description": "Video from Azaadi celebrations at home",
     "mediaType": "video",
     "image": "videos/azaadi-anusha-home.mp4",
-    "from": "Tashkeen"
+    "from": "Azaadi"
   },
   {
     "id": 20,
@@ -171,6 +171,6 @@
     "description": "Azaadi celebration video",
     "mediaType": "video",
     "image": "videos/azaadi-anusha-video.mp4",
-    "from": "Tashkeen"
+    "from": "Azaadi"
   }
 ]
