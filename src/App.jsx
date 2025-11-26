@@ -5,7 +5,6 @@ import ConstantSparkles from './components/ConstantSparkles';
 import BackgroundMusic from './components/BackgroundMusic';
 import CandlePage from './pages/CandlePage';
 import Home from './pages/Home';
-import MessagesPage from './pages/MessagesPage';
 import ThingsWeLove from './pages/ThingsWeLove';
 import FavoriteMemories from './pages/FavoriteMemories';
 import PersonalNotesPage from './pages/PersonalNotesPage';
@@ -59,7 +58,6 @@ function App() {
         <Routes>
           <Route path="/" element={<InitialRedirect />} />
           <Route path="/candle" element={<CandlePage />} />
-          <Route path="/messages" element={<MessagesPage />} />
           <Route path="/things-we-love" element={<ThingsWeLove />} />
           <Route path="/memories" element={<FavoriteMemories />} />
           <Route path="/notes" element={<PersonalNotesPage />} />
