@@ -21,15 +21,16 @@
 
 .personal-notes-page .page-header {
   text-align: center;
-  margin-bottom: 4rem;
-  animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 3rem;
+  animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   position: relative;
   z-index: 2;
 }
 
 .personal-notes-page .page-title {
-  font-family: var(--font-serif);
-  font-size: 3.8rem;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 700;
   color: var(--color-deep-rose);
   background: linear-gradient(135deg,
     var(--color-deep-rose) 0%,
@@ -41,11 +42,12 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-size: 200% auto;
-  margin-bottom: 1rem;
-  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
   position: relative;
   display: inline-block;
   animation: gentleFloat 6s ease-in-out infinite, gradientFlow 8s linear infinite;
+  line-height: 1.2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: geometricPrecision;
