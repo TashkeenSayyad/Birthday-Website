@@ -10,20 +10,11 @@ const FavoriteMemories = () => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [modalTransform, setModalTransform] = useState(0);
-  const [favorites, setFavorites] = useState([]);
-  const [longPressTimer, setLongPressTimer] = useState(null);
-  const [showFavoriteToast, setShowFavoriteToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
 
   const modalRef = useRef(null);
 
   useEffect(() => {
     setMemories(memoriesData);
-    // Load favorites from localStorage
-    const saved = localStorage.getItem('favoriteMemories');
-    if (saved) {
-      setFavorites(JSON.parse(saved));
-    }
   }, []);
 
   const openModal = (memory) => {
@@ -75,47 +66,6 @@ const FavoriteMemories = () => {
     }
   };
 
-  // Long-press to favorite
-  const handleLongPressStart = (e, memory) => {
-    const timer = setTimeout(() => {
-      toggleFavorite(memory);
-    }, 800); // 800ms long press
-    setLongPressTimer(timer);
-  };
-
-  const handleLongPressEnd = () => {
-    if (longPressTimer) {
-      clearTimeout(longPressTimer);
-      setLongPressTimer(null);
-    }
-  };
-
-  const toggleFavorite = (memory) => {
-    const isFavorited = favorites.includes(memory.id);
-    let newFavorites;
-
-    if (isFavorited) {
-      newFavorites = favorites.filter(id => id !== memory.id);
-      setToastMessage('Removed from favorites');
-    } else {
-      newFavorites = [...favorites, memory.id];
-      setToastMessage('Added to favorites! ❤️');
-    }
-
-    setFavorites(newFavorites);
-    localStorage.setItem('favoriteMemories', JSON.stringify(newFavorites));
-
-    // Show toast
-    setShowFavoriteToast(true);
-    setTimeout(() => setShowFavoriteToast(false), 2000);
-
-    // Haptic feedback simulation
-    if (navigator.vibrate) {
-      navigator.vibrate(50);
-    }
-  };
-
-  const isFavorited = (memoryId) => favorites.includes(memoryId);
 
   return (
     <div className="memories-page">
@@ -128,19 +78,10 @@ const FavoriteMemories = () => {
         {memories.map((memory, index) => (
           <div
             key={memory.id}
-            className={`memory-card ${index === activeMemory ? 'active' : ''} ${isFavorited(memory.id) ? 'favorited' : ''}`}
+            className={`memory-card ${index === activeMemory ? 'active' : ''}`}
             onClick={() => openModal(memory)}
             onMouseEnter={() => setActiveMemory(index)}
-            onTouchStart={(e) => handleLongPressStart(e, memory)}
-            onTouchEnd={handleLongPressEnd}
-            onTouchMove={handleLongPressEnd}
-            onMouseDown={(e) => handleLongPressStart(e, memory)}
-            onMouseUp={handleLongPressEnd}
-            onMouseLeave={handleLongPressEnd}
           >
-            {isFavorited(memory.id) && (
-              <div className="favorite-badge">❤️</div>
-            )}
             {memory.mediaType === 'video' && (
               <div className="video-indicator">🎬</div>
             )}
@@ -190,15 +131,6 @@ const FavoriteMemories = () => {
               <div className="swipe-bar"></div>
             </div>
             <button className="modal-close" onClick={closeModal}>×</button>
-            <button
-              className={`modal-favorite-btn ${isFavorited(selectedMemory.id) ? 'active' : ''}`}
-              onClick={(e) => {
-                e.stopPropagation();
-                toggleFavorite(selectedMemory);
-              }}
-            >
-              {isFavorited(selectedMemory.id) ? '❤️' : '🤍'}
-            </button>
             <div className="modal-image-container">
               {selectedMemory.mediaType === 'video' ? (
                 <video
@@ -231,11 +163,6 @@ const FavoriteMemories = () => {
           </div>
         </div>
       )}
-
-      {/* Favorite Toast Notification */}
-      <div className={`favorite-toast ${showFavoriteToast ? 'show' : ''}`}>
-        {toastMessage}
-      </div>
     </div>
   );
 };
