@@ -1,346 +1,297 @@
-/* Polaroid-style Message Card with Scrapbook Aesthetic */
+/* Letter Envelope Card Design */
 .message-card-container {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   opacity: 0;
-  transform: scale(0.9) rotate(-2deg);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(100%) scale(0.9);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .message-card-container.active {
   opacity: 1;
-  transform: scale(1) rotate(0deg);
-  pointer-events: auto;
-  z-index: 1;
-  animation: cardFloat 6s ease-in-out infinite;
-}
-
-@keyframes cardFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(0.5deg); }
-}
-
-.message-card {
-  width: 100%;
-  height: 100%;
-  background:
-    linear-gradient(135deg,
-      rgba(255, 255, 255, 0.98) 0%,
-      rgba(255, 248, 240, 0.98) 100%
-    );
-  border: 1px solid rgba(232, 180, 160, 0.3);
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  backdrop-filter: blur(20px);
-  box-shadow:
-    0 20px 60px rgba(213, 81, 107, 0.15),
-    0 8px 24px rgba(155, 114, 170, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-/* Paper texture overlay */
-.message-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Washi tape accent at top */
-.message-card::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 20%;
-  width: 150px;
-  height: 35px;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(255, 209, 220, 0.6),
-    rgba(255, 209, 220, 0.6) 12px,
-    rgba(232, 180, 160, 0.6) 12px,
-    rgba(232, 180, 160, 0.6) 24px
-  );
-  border-radius: 3px;
-  box-shadow: 0 3px 10px rgba(213, 81, 107, 0.15);
-  transform: rotate(-3deg);
+  transform: translateX(0) scale(1);
+  pointer-events: all;
   z-index: 10;
+  animation: gentleFloat 6s ease-in-out infinite;
 }
 
-.message-card:hover {
-  transform: translateY(-5px);
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateX(0) scale(1) translateY(0);
+  }
+  50% {
+    transform: translateX(0) scale(1) translateY(-10px);
+  }
+}
+
+/* Letter Card Design */
+.letter-card {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  min-height: 550px;
+  margin: 0 auto;
+  position: relative;
+  animation: floatIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) rotate(-3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Envelope Design */
+.letter-envelope {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg,
+    rgba(255, 250, 250, 0.98) 0%,
+    rgba(255, 245, 240, 0.98) 50%,
+    rgba(255, 248, 245, 0.98) 100%
+  );
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
   box-shadow:
-    0 30px 80px rgba(213, 81, 107, 0.2),
-    0 12px 32px rgba(155, 114, 170, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
+    0 30px 90px rgba(155, 89, 182, 0.28),
+    0 15px 45px rgba(233, 30, 140, 0.18),
+    inset 0 2px 0 rgba(255, 255, 255, 0.95);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
 }
 
-.card-image-side {
+/* Decorative top flap */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: linear-gradient(135deg,
+    rgba(233, 30, 140, 0.08) 0%,
+    rgba(155, 89, 182, 0.05) 100%
+  );
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-bottom: 3px dashed rgba(233, 30, 140, 0.25);
+  z-index: 1;
+}
+
+.envelope-body {
+  position: relative;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2.5rem;
+  z-index: 2;
+}
+
+/* Letter Paper */
+.letter-paper {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 3rem 2.5rem;
+  box-shadow:
+    0 10px 40px rgba(155, 89, 182, 0.15),
+    inset 0 0 60px rgba(233, 30, 140, 0.03);
+  border: 2px solid rgba(233, 30, 140, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
   position: relative;
   overflow: hidden;
-  background: #fff;
-  border-right: 1px dashed rgba(213, 81, 107, 0.1);
 }
 
-/* Polaroid-style frame */
-.card-image-side::before {
+/* Lined paper effect */
+.letter-paper::before {
   content: '';
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-  border: 12px solid #fff;
-  box-shadow:
-    inset 0 0 40px rgba(213, 81, 107, 0.08),
-    0 4px 20px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-  pointer-events: none;
-  background: transparent;
-}
-
-/* Photo corner mounts - top corners */
-.card-image-side::after {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  width: 25px;
-  height: 25px;
-  background: linear-gradient(135deg, #FFD700 0%, #B87333 100%);
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-  z-index: 3;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-/* Additional photo corners using pseudo-element hack */
-.card-image-side {
-  position: relative;
-}
-
-.card-image-side .corner-tr,
-.card-image-side .corner-bl,
-.card-image-side .corner-br {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  background: linear-gradient(135deg, #FFD700 0%, #B87333 100%);
-  z-index: 3;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-.card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: brightness(1.02) contrast(1.05);
-}
-
-.message-card:hover .card-image {
-  transform: scale(1.08);
-}
-
-.image-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 209, 220, 0.15), transparent);
-  z-index: 1;
-}
-
-.image-gradient {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background: linear-gradient(
-    to top,
-    rgba(255, 248, 240, 0.7) 0%,
-    rgba(255, 248, 240, 0.3) 50%,
-    transparent 100%
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 30px,
+    rgba(233, 30, 140, 0.04) 30px,
+    rgba(233, 30, 140, 0.04) 32px
   );
-  z-index: 2;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.card-content-side {
-  flex: 1;
-  padding: 4rem;
+/* Letter Header */
+.letter-header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background:
-    radial-gradient(circle at top right, rgba(255, 209, 220, 0.08) 0%, transparent 60%),
-    linear-gradient(135deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(255, 248, 240, 0.95) 100%
-    );
-  position: relative;
-  z-index: 2;
-}
-
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  height: 100%;
-  justify-content: center;
-}
-
-.message-header {
+  align-items: flex-start;
+  justify-content: space-between;
   margin-bottom: 0.5rem;
   position: relative;
+  z-index: 1;
 }
 
-/* Hand-drawn heart doodle */
-.message-header::before {
-  content: '♡';
-  position: absolute;
-  top: -35px;
-  right: 0;
-  font-size: 2rem;
-  color: var(--color-sunset);
-  opacity: 0.3;
-  transform: rotate(15deg);
-  font-family: 'Arial', sans-serif;
+.letter-stamp {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 5px 12px rgba(233, 30, 140, 0.35));
+  animation: stampBounce 3s ease-in-out infinite;
 }
 
-.sender-name {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  font-weight: 700;
+@keyframes stampBounce {
+  0%, 100% {
+    transform: rotate(-8deg) scale(1);
+  }
+  50% {
+    transform: rotate(-12deg) scale(1.08);
+  }
+}
+
+.letter-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  max-width: 220px;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+.line {
+  height: 3px;
+  background: linear-gradient(to right,
+    transparent,
+    rgba(233, 30, 140, 0.25) 15%,
+    rgba(233, 30, 140, 0.25) 85%,
+    transparent
+  );
+  border-radius: 2px;
+}
+
+/* Letter Content */
+.letter-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1rem;
+}
+
+.letter-title {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  font-weight: 600;
   background: linear-gradient(135deg,
     var(--color-deep-rose) 0%,
-    var(--color-sunset) 50%,
+    var(--color-sunset) 40%,
     var(--color-mauve) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.02em;
-  position: relative;
+  margin: 0;
+  line-height: 1.4;
+  max-width: 90%;
 }
 
-.relationship {
-  font-family: var(--font-script);
-  font-size: 1.1rem;
-  color: var(--text-accent);
-  letter-spacing: 0.03em;
-  font-weight: 500;
-}
-
-.divider {
-  width: 80px;
+.letter-divider {
+  width: 150px;
   height: 3px;
   background: linear-gradient(to right,
-    var(--color-sunset),
-    var(--color-deep-rose),
+    transparent,
+    rgba(233, 30, 140, 0.4) 10%,
+    var(--color-sunset) 50%,
+    rgba(233, 30, 140, 0.4) 90%,
     transparent
   );
+  margin: 0 auto;
   border-radius: 2px;
   position: relative;
 }
 
-/* Small decorative dots */
-.divider::after {
-  content: '⋆';
+.letter-divider::before,
+.letter-divider::after {
+  content: '❤';
   position: absolute;
-  right: -20px;
   top: -8px;
+  font-size: 1.2rem;
   color: var(--color-sunset);
-  font-size: 1rem;
 }
 
-.message-content {
-  flex: 1;
+.letter-divider::before {
+  left: -25px;
+}
+
+.letter-divider::after {
+  right: -25px;
+}
+
+.letter-from {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-style: italic;
+  color: var(--text-dark);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Letter Footer */
+.letter-footer {
   display: flex;
-  align-items: center;
-  overflow-y: auto;
-  max-height: 400px;
-  padding-right: 1.5rem;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* Custom scrollbar */
-.message-content::-webkit-scrollbar {
-  width: 6px;
-}
-
-.message-content::-webkit-scrollbar-track {
-  background: rgba(232, 180, 160, 0.1);
-  border-radius: 10px;
-}
-
-.message-content::-webkit-scrollbar-thumb {
-  background: var(--color-rose-gold);
-  border-radius: 10px;
-}
-
-.message-content::-webkit-scrollbar-thumb:hover {
-  background: var(--color-sunset);
-}
-
-.message-text {
-  font-family: var(--font-body);
+.open-letter-button {
+  font-family: var(--font-sans);
   font-size: 1.15rem;
-  line-height: 1.9;
-  color: var(--text-primary);
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-.message-footer {
-  display: flex;
-  justify-content: space-between;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg,
+    var(--primary-pink) 0%,
+    var(--color-sunset) 50%,
+    var(--primary-purple) 100%
+  );
+  padding: 1.3rem 3rem;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
   gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-.special-note-button {
-  background: linear-gradient(135deg,
-    rgba(255, 209, 220, 0.3) 0%,
-    rgba(232, 180, 160, 0.3) 100%
-  );
-  border: 2px solid var(--color-rose-gold);
-  color: var(--text-accent);
-  padding: 1rem 2rem;
-  border-radius: 30px;
-  font-family: var(--font-script);
-  font-size: 1.1rem;
-  letter-spacing: 0.02em;
-  cursor: pointer;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(213, 81, 107, 0.12);
+  box-shadow:
+    0 12px 35px rgba(233, 30, 140, 0.4),
+    0 5px 15px rgba(155, 89, 182, 0.25);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   position: relative;
   overflow: hidden;
 }
 
-.special-note-button::before {
+.open-letter-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -349,164 +300,145 @@
   height: 100%;
   background: linear-gradient(90deg,
     transparent,
-    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.3),
     transparent
   );
-  transition: left 0.5s ease;
+  transition: left 0.6s ease;
 }
 
-.special-note-button:hover::before {
+.open-letter-button:hover::before {
   left: 100%;
 }
 
-.special-note-button:hover {
-  background: linear-gradient(135deg,
-    var(--color-blush) 0%,
-    var(--color-rose-gold) 100%
-  );
-  border-color: var(--color-deep-rose);
-  color: var(--text-accent);
-  transform: translateX(8px) scale(1.05);
-  box-shadow: 0 6px 25px rgba(213, 81, 107, 0.25);
+.open-letter-button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:
+    0 18px 50px rgba(233, 30, 140, 0.5),
+    0 8px 25px rgba(155, 89, 182, 0.35);
+}
+
+.open-letter-button:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.envelope-icon {
+  font-size: 1.5rem;
+  animation: envelopeFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes envelopeFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-5deg);
+  }
 }
 
 .button-arrow {
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-weight: bold;
 }
 
-.special-note-button:hover .button-arrow {
-  transform: translateX(6px) scale(1.2);
-}
-
-.decorative-element {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.heart-symbol {
-  font-size: 1.8rem;
-  color: var(--color-sunset);
-  opacity: 0.7;
-  animation: gentlePulse 3s ease-in-out infinite;
-  filter: drop-shadow(0 2px 4px rgba(213, 81, 107, 0.2));
-}
-
-@keyframes gentlePulse {
-  0%, 100% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
+.open-letter-button:hover .button-arrow {
+  transform: translateX(8px);
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1024px) {
-  .message-card {
-    flex-direction: column;
-  }
-
-  .card-image-side {
-    height: 350px;
-    border-right: none;
-    border-bottom: 1px dashed rgba(213, 81, 107, 0.1);
-  }
-
-  .card-content-side {
-    padding: 3rem 2rem;
-  }
-
-  .sender-name {
-    font-size: 2.5rem;
-  }
-
-  .message-text {
-    font-size: 1.05rem;
-  }
-
-  .message-footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
 @media screen and (max-width: 768px) {
-  .message-card::after {
-    width: 120px;
-    height: 30px;
-    left: 15%;
+  .letter-card {
+    max-width: 100%;
+    min-height: 480px;
   }
 
-  .card-image-side {
-    height: 280px;
+  .letter-envelope {
+    padding: 2.5rem 2rem;
+    min-height: 480px;
   }
 
-  .card-image-side::before {
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    border-width: 8px;
+  .letter-paper {
+    padding: 2.5rem 2rem;
+    gap: 2rem;
   }
 
-  .card-content-side {
-    padding: 2rem 1.5rem;
+  .letter-stamp {
+    font-size: 3rem;
   }
 
-  .sender-name {
+  .letter-title {
     font-size: 2rem;
   }
 
-  .message-text {
-    font-size: 1rem;
-    line-height: 1.8;
+  .letter-from {
+    font-size: 1.5rem;
   }
 
-  .content-wrapper {
-    gap: 1.5rem;
+  .open-letter-button {
+    padding: 1.1rem 2.5rem;
+    font-size: 1rem;
   }
 
-  .special-note-button {
-    width: 100%;
-    justify-content: center;
-    padding: 0.9rem 1.5rem;
-    font-size: 1rem;
+  .letter-lines {
+    max-width: 180px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .message-card::after {
+  .message-card-container {
+    padding: 1rem;
+  }
+
+  .letter-card {
+    min-height: 420px;
+  }
+
+  .letter-envelope {
+    padding: 2rem 1.5rem;
+    min-height: 420px;
+  }
+
+  .letter-paper {
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .envelope-flap {
+    height: 50px;
+  }
+
+  .letter-stamp {
+    font-size: 2.5rem;
+  }
+
+  .letter-lines {
+    max-width: 140px;
+    gap: 8px;
+  }
+
+  .letter-title {
+    font-size: 1.6rem;
+  }
+
+  .letter-from {
+    font-size: 1.3rem;
+  }
+
+  .letter-divider {
     width: 100px;
-    height: 25px;
-    left: 10%;
   }
 
-  .card-image-side {
-    height: 220px;
-  }
-
-  .card-content-side {
-    padding: 1.5rem 1.2rem;
-  }
-
-  .sender-name {
-    font-size: 1.7rem;
-  }
-
-  .relationship {
+  .open-letter-button {
+    padding: 1rem 2rem;
     font-size: 0.95rem;
+    gap: 0.8rem;
   }
 
-  .message-text {
-    font-size: 0.95rem;
+  .envelope-icon {
+    font-size: 1.3rem;
   }
 
-  .special-note-button {
-    padding: 0.8rem 1.2rem;
-    font-size: 0.95rem;
+  .button-arrow {
+    font-size: 1.1rem;
   }
 }
