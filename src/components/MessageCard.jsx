@@ -8,36 +8,53 @@ const MessageCard = ({ name, title, image, isActive, letterPath }) => {
   return (
     <div className={`message-card-container ${isActive ? 'active' : ''}`}>
       <div className="letter-card">
-        {/* Letter envelope design */}
-        <div className="letter-envelope">
-          <div className="envelope-flap"></div>
-          <div className="envelope-body">
-            <div className="letter-paper">
-              <div className="letter-header">
-                <div className="letter-stamp">💌</div>
-                <div className="letter-lines">
-                  <div className="line"></div>
-                  <div className="line"></div>
-                  <div className="line"></div>
-                </div>
+        <div className="vintage-letter">
+          {/* Decorative corners */}
+          <div className="corner corner-tl"></div>
+          <div className="corner corner-tr"></div>
+          <div className="corner corner-bl"></div>
+          <div className="corner corner-br"></div>
+
+          {/* Wax seal */}
+          <div className="wax-seal">
+            <div className="seal-inner">♥</div>
+          </div>
+
+          {/* Letter content */}
+          <div className="letter-paper">
+            {/* Ornate header */}
+            <div className="ornate-header">
+              <div className="flourish flourish-left"></div>
+              <div className="letter-monogram">✦</div>
+              <div className="flourish flourish-right"></div>
+            </div>
+
+            {/* Letter title and sender */}
+            <div className="letter-body">
+              <h2 className="letter-title">{title}</h2>
+
+              <div className="ornate-divider">
+                <span className="divider-line"></span>
+                <span className="divider-ornament">❧</span>
+                <span className="divider-line"></span>
               </div>
 
-              <div className="letter-content">
-                <h2 className="letter-title">{title}</h2>
-                <div className="letter-divider"></div>
-                <p className="letter-from">From: {name}</p>
-              </div>
+              <p className="letter-from">
+                <span className="from-label">With love from</span>
+                <span className="sender-name">{name}</span>
+              </p>
+            </div>
 
-              <div className="letter-footer">
-                <button
-                  className="open-letter-button"
-                  onClick={() => navigate(letterPath)}
-                >
-                  <span className="envelope-icon">✉️</span>
-                  Open Letter
-                  <span className="button-arrow">→</span>
-                </button>
-              </div>
+            {/* Classic button */}
+            <div className="letter-footer">
+              <button
+                className="unfold-letter-button"
+                onClick={() => navigate(letterPath)}
+              >
+                <span className="button-ornament">✦</span>
+                Unfold & Read
+                <span className="button-ornament">✦</span>
+              </button>
             </div>
           </div>
         </div>
