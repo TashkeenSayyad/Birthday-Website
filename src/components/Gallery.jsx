@@ -104,12 +104,9 @@ const Gallery = ({ messages }) => {
             <MessageCard
             key={msg.id}
             name={msg.name}
-            message={msg.message}
-            image={msg.image}
-            relationship={msg.relationship}
+            title={msg.title}
+            letterPath={msg.letterPath}
             isActive={index === currentIndex}
-            hasSpecialNote={msg.hasSpecialNote}
-            specialNotePath={msg.specialNotePath}
           />
           ))}
         </div>
