@@ -82,5 +82,95 @@
     "mediaType": "video",
     "image": "videos/anusha-car-dancing.mp4",
     "from": "Laraib"
+  },
+  {
+    "id": 11,
+    "title": "Azaadi Anusha Dancing",
+    "date": "Azaadi 2024",
+    "description": "Anusha dancing during Azaadi celebrations",
+    "mediaType": "image",
+    "image": "images/memories/azaadi-anusha-dancing.jpg",
+    "from": "Azaadi"
+  },
+  {
+    "id": 12,
+    "title": "Azaadi Anusha Dancing 2",
+    "date": "Azaadi 2024",
+    "description": "More dancing during Azaadi festivities",
+    "mediaType": "image",
+    "image": "images/memories/azaadi-anuhsa-dancing2.jpg",
+    "from": "Azaadi"
+  },
+  {
+    "id": 13,
+    "title": "Azaadi Anusha",
+    "date": "Azaadi 2024",
+    "description": "Azaadi celebrations",
+    "mediaType": "image",
+    "image": "images/memories/azaadi-anusha-.jpg",
+    "from": "Azaadi"
+  },
+  {
+    "id": 14,
+    "title": "Azaadi Function",
+    "date": "Azaadi 2024",
+    "description": "At the Azaadi function",
+    "mediaType": "image",
+    "image": "images/memories/azaadi-anusha-function.jpg",
+    "from": "Azaadi"
+  },
+  {
+    "id": 15,
+    "title": "Azaadi at Home",
+    "date": "Azaadi 2024",
+    "description": "Celebrating Azaadi at home",
+    "mediaType": "image",
+    "image": "images/memories/azaadi-anusha-home.jpg",
+    "from": "Azaadi"
+  },
+  {
+    "id": 16,
+    "title": "Azaadi Hug",
+    "date": "Azaadi 2024",
+    "description": "Sweet moment during Azaadi",
+    "mediaType": "image",
+    "image": "images/memories/azaadi-anusha-hug.jpg",
+    "from": "Azaadi"
+  },
+  {
+    "id": 17,
+    "title": "Azaadi Restaurant",
+    "date": "Azaadi 2024",
+    "description": "Dinner at the restaurant on Azaadi",
+    "mediaType": "image",
+    "image": "images/memories/azaadi-anusha-restaurant.jpg",
+    "from": "Azaadi"
+  },
+  {
+    "id": 18,
+    "title": "Azaadi Restaurant 2",
+    "date": "Azaadi 2024",
+    "description": "More moments from the restaurant",
+    "mediaType": "image",
+    "image": "images/memories/azaadi-anusha-restaurant2.jpg",
+    "from": "Azaadi"
+  },
+  {
+    "id": 19,
+    "title": "Azaadi Home Video",
+    "date": "Azaadi 2024",
+    "description": "Video from Azaadi celebrations at home",
+    "mediaType": "video",
+    "image": "videos/azaadi-anusha-home.mp4",
+    "from": "Azaadi"
+  },
+  {
+    "id": 20,
+    "title": "Azaadi Celebrations",
+    "date": "Azaadi 2024",
+    "description": "Azaadi celebration video",
+    "mediaType": "video",
+    "image": "videos/azaadi-anusha-video.mp4",
+    "from": "Azaadi"
   }
 ]
