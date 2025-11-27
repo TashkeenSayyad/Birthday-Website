@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FloatingParticles from '../components/FloatingParticles';
 import timelineData from '../data/timeline.json';
+import { getBaseUrl } from '../utils/baseUrl';
+import { ANIMATION_CONSTANTS } from '../constants/animations';
 import '../styles/TimelinePage.css';
 
 const TimelinePage = () => {
@@ -11,8 +13,7 @@ const TimelinePage = () => {
   const autoPlayRef = useRef(null);
   const filmstripRef = useRef(null);
 
-  // Get the base URL for assets (supports both GitHub Pages and local development)
-  const baseUrl = import.meta.env.BASE_URL || '/';
+  const baseUrl = getBaseUrl();
 
   useEffect(() => {
     setTimeline(timelineData);
@@ -23,7 +24,7 @@ const TimelinePage = () => {
     if (isAutoPlaying && timeline.length > 0) {
       autoPlayRef.current = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % timeline.length);
-      }, 4000); // Change slide every 4 seconds
+      }, ANIMATION_CONSTANTS.AUTOPLAY_INTERVAL);
     }
 
     return () => {
@@ -54,15 +55,15 @@ const TimelinePage = () => {
     setCurrentIndex(index);
     setIsAutoPlaying(false);
 
-    // Resume auto-play after 10 seconds
+    // Resume auto-play after user interaction
     setTimeout(() => {
       setIsAutoPlaying(true);
-    }, 10000);
+    }, ANIMATION_CONSTANTS.AUTOPLAY_RESUME_DELAY);
 
     // Reset transition lock
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 800);
+    }, ANIMATION_CONSTANTS.TRANSITION_LOCK_DURATION);
   };
 
   const goToPrevious = () => {
