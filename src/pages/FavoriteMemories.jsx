@@ -14,7 +14,9 @@ const FavoriteMemories = () => {
   const modalRef = useRef(null);
 
   useEffect(() => {
-    setMemories(memoriesData);
+    // Shuffle the memories array randomly
+    const shuffled = [...memoriesData].sort(() => Math.random() - 0.5);
+    setMemories(shuffled);
   }, []);
 
   const openModal = (memory) => {
