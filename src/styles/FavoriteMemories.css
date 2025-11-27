@@ -24,11 +24,11 @@
 
 .page-header {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   animation: fadeInDown 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 2;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   backdrop-filter: blur(5px);
 }
 
@@ -85,8 +85,8 @@
   max-width: 1600px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
   grid-auto-flow: dense;
   padding: 0 1rem;
 }
@@ -380,7 +380,7 @@
   }
 
   .memories-gallery {
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
 
   .memory-card {
