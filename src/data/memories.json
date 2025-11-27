@@ -10,7 +10,7 @@
   {
     "id": 2,
     "title": "Mehwish & Anusha Memory",
-    "date": "X",
+    "date": "",
     "description": ".",
     "image": "images/memories/mehwish-anusha.jpg",
     "from": "Mehwish"
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "title": "Mehwish & Anusha Memory 2",
-    "date": "X",
+    "date": "",
     "description": "Mewish Anusha.",
     "image": "images/memories/mehwish-anusha2.jpg",
     "from": "Mehwish"
