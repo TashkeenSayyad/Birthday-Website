@@ -823,19 +823,10 @@
   }
 }
 
-/* Progressive Image Loading - Enhanced */
 .progressive-image {
   position: relative;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  background: linear-gradient(135deg,
-    #fef3f7 0%,
-    #f5e6f5 25%,
-    #efe5fa 50%,
-    #e8e9fd 75%,
-    #e5f3ff 100%
-  );
-  background-size: 200% 200%;
-  animation: shimmer 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+  background: linear-gradient(135deg, #f5e6f0 0%, #e8d5f2 50%, #dfe6f5 100%);
 }
 
 @keyframes shimmer {
