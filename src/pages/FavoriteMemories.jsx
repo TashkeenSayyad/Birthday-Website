@@ -159,7 +159,17 @@ const FavoriteMemories = () => {
             <div className="modal-details">
               <span className="modal-date">{selectedMemory.date}</span>
               <h2 className="modal-title">{selectedMemory.title}</h2>
-              <p className="modal-description">{selectedMemory.description}</p>
+              <div className="modal-description-container">
+                <p className="modal-description">{selectedMemory.description}</p>
+                <a
+                  href={selectedMemory.media || selectedMemory.image}
+                  download={`memory-${selectedMemory.id}-${selectedMemory.title.replace(/\s+/g, '-')}`}
+                  className="download-button"
+                  title="Download memory"
+                >
+                  ↓
+                </a>
+              </div>
               <p className="modal-from">— {selectedMemory.from}</p>
             </div>
           </div>
