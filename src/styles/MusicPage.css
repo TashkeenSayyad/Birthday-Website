@@ -419,14 +419,7 @@
   animation: fadeIn 0.3s ease-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+/* fadeIn animation imported from shared-animations.css */
 
 .lyrics-btn {
   padding: 0.6rem 1.5rem;
@@ -571,27 +564,7 @@
 .lyrics-line:nth-child(5) { animation-delay: 0.3s; }
 .lyrics-line:nth-child(6) { animation-delay: 0.35s; }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* fadeInUp and fadeInDown animations imported from shared-animations.css */
 
 .music-note {
   text-align: center;
@@ -842,21 +815,4 @@
   }
 }
 
-/* Keyframe animations */
-@keyframes gradientFlow {
-  0% {
-    background-position: -100% center;
-  }
-  100% {
-    background-position: 100% center;
-  }
-}
-
-@keyframes gentleFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
+/* Keyframe animations gradientFlow and gentleFloat imported from shared-animations.css */
