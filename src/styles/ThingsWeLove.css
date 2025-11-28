@@ -40,7 +40,7 @@
 .page-header {
   text-align: center;
   margin-bottom: 3rem;
-  animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   z-index: 2;
 }
@@ -118,17 +118,17 @@
 /* Individual sticky note */
 .sticky-note {
   cursor: pointer;
-  animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
-  transition: transform 0.3s ease;
+  animation: popIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
   height: 320px;
   position: relative;
   transform: rotate(var(--note-rotation, 0deg));
+  will-change: transform;
 }
 
 .sticky-note:hover {
-  transform: rotate(var(--note-rotation, 0deg)) scale(1.05);
+  transform: rotate(var(--note-rotation, 0deg)) scale(1.05) translateY(-8px);
   z-index: 10;
-  animation: wiggle 0.5s ease-in-out;
 }
 
 /* Sticky note card */
@@ -159,7 +159,7 @@
   border-style: solid;
   border-width: 0 0 35px 35px;
   border-color: transparent transparent rgba(155, 89, 182, 0.15) transparent;
-  transition: border-width 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 2;
 }
 
@@ -225,11 +225,11 @@
   justify-content: center;
   padding: 2rem;
   opacity: 0;
-  animation: fadeOut 0.3s ease forwards;
+  animation: fadeOut 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .love-modal.open {
-  animation: fadeIn 0.3s ease forwards;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .love-modal-content {
@@ -253,35 +253,35 @@
 }
 
 .love-modal.open .love-modal-card {
-  animation: flipIn 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: flipIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .love-modal:not(.open) .love-modal-card {
-  animation: flipOut 0.3s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  animation: flipOut 0.35s cubic-bezier(0.4, 0, 0.6, 1) forwards;
 }
 
 @keyframes flipIn {
   0% {
-    transform: rotateY(90deg) scale(0.85);
+    transform: perspective(1500px) rotateY(90deg) scale(0.9);
     opacity: 0;
   }
-  60% {
-    transform: rotateY(-8deg) scale(1);
+  50% {
+    transform: perspective(1500px) rotateY(-5deg) scale(1);
     opacity: 1;
   }
   100% {
-    transform: rotateY(0deg) scale(1);
+    transform: perspective(1500px) rotateY(0deg) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes flipOut {
   0% {
-    transform: rotateY(0deg) scale(1);
+    transform: perspective(1500px) rotateY(0deg) scale(1);
     opacity: 1;
   }
   100% {
-    transform: rotateY(-90deg) scale(0.85);
+    transform: perspective(1500px) rotateY(-90deg) scale(0.9);
     opacity: 0;
   }
 }
@@ -303,7 +303,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   line-height: 1;
   padding: 0;
   font-weight: 300;
@@ -374,63 +374,45 @@
 }
 
 /* Animations */
+/* popIn animation - custom variant with note rotation */
 @keyframes popIn {
-  from {
+  0% {
     opacity: 0;
-    transform: scale(0.3) rotate(var(--note-rotation, 0deg));
+    transform: scale(0.5) rotate(var(--note-rotation, 0deg)) translateY(30px);
   }
-  to {
+  60% {
     opacity: 1;
-    transform: scale(1) rotate(var(--note-rotation, 0deg));
+    transform: scale(1.02) rotate(var(--note-rotation, 0deg)) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(var(--note-rotation, 0deg)) translateY(0);
   }
 }
 
+/* wiggle animation - custom variant with note rotation */
 @keyframes wiggle {
-  0%, 100% { transform: rotate(var(--note-rotation, 0deg)) scale(1.05); }
-  25% { transform: rotate(calc(var(--note-rotation, 0deg) - 3deg)) scale(1.05); }
-  50% { transform: rotate(var(--note-rotation, 0deg)) scale(1.05); }
-  75% { transform: rotate(calc(var(--note-rotation, 0deg) + 3deg)) scale(1.05); }
+  0%, 100% {
+    transform: rotate(var(--note-rotation, 0deg)) scale(1.05);
+  }
+  25% {
+    transform: rotate(calc(var(--note-rotation, 0deg) - 2deg)) scale(1.05);
+  }
+  50% {
+    transform: rotate(var(--note-rotation, 0deg)) scale(1.05);
+  }
+  75% {
+    transform: rotate(calc(var(--note-rotation, 0deg) + 2deg)) scale(1.05);
+  }
 }
 
+/* swing animation - unique to sticky notes */
 @keyframes swing {
   0%, 100% { transform: rotate(-5deg); }
   50% { transform: rotate(5deg); }
 }
 
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3) translateY(-50px);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  70% {
-    transform: scale(0.95);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
+/* bounceIn, fadeIn, fadeOut imported from shared-animations.css */
 
 /* Responsive design */
 @media screen and (max-width: 768px) {
@@ -630,7 +612,7 @@
   border-radius: 50%;
   filter: blur(8px);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: -1;
 }
 
@@ -639,32 +621,4 @@
   bottom: -15px;
 }
 
-/* Keyframe animations */
-@keyframes gradientFlow {
-  0% {
-    background-position: -100% center;
-  }
-  100% {
-    background-position: 100% center;
-  }
-}
-
-@keyframes gentleFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes sparkle {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.8);
-  }
-}
+/* Keyframe animations gradientFlow, gentleFloat, and sparkle imported from shared-animations.css */

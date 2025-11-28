@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import FloatingHearts from '../components/FloatingHearts';
+import { getBaseUrl } from '../utils/baseUrl';
+import { loadLyrics, getCurrentLyricIndex } from '../utils/lyricsParser';
+import { ANIMATION_CONSTANTS } from '../constants/animations';
 import '../styles/MusicPage.css';
 
 const MusicPage = () => {
-  // Get the base URL from Vite config (e.g., '/Birthday-Website/' or '/')
-  const baseUrl = import.meta.env.BASE_URL;
+  const baseUrl = getBaseUrl();
 
   const [songs] = useState([
     {
@@ -33,23 +35,6 @@ const MusicPage = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
-  // Parse LRC file format
-  // LRC format: [mm:ss.xx]Lyric text
-  const parseLRC = (text) => {
-    return text
-      .split('\n')
-      .map((line) => {
-        const match = line.match(/\[(\d+):(\d+\.\d+)\](.*)/);
-        if (!match) return null;
-        const [, min, sec, lyric] = match;
-        return {
-          time: parseInt(min) * 60 + parseFloat(sec),
-          text: lyric.trim(),
-        };
-      })
-      .filter(Boolean);
-  };
-
   // Load LRC file when song is selected
   useEffect(() => {
     if (!selectedSong) return;
@@ -57,31 +42,9 @@ const MusicPage = () => {
     setLyrics([]);
     setCurrentLine(0);
 
-    console.log('Attempting to load lyrics from:', selectedSong.lyricsFile);
-
-    fetch(selectedSong.lyricsFile)
-      .then((res) => {
-        console.log('Lyrics fetch response:', res.status, res.statusText);
-        if (!res.ok) throw new Error(`Lyrics not found (${res.status})`);
-        return res.text();
-      })
-      .then((text) => {
-        console.log('Lyrics loaded, length:', text.length);
-        const parsedLyrics = parseLRC(text);
-        console.log('Parsed lyrics lines:', parsedLyrics.length);
-        if (parsedLyrics.length === 0) {
-          throw new Error('No valid lyrics found in LRC file');
-        }
-        setLyrics(parsedLyrics);
-      })
-      .catch((error) => {
-        console.error('Failed to load lyrics:', error);
-        setLyrics([
-          { time: 0, text: 'Lyrics not available' },
-          { time: 1, text: `Error: ${error.message}` },
-          { time: 2, text: 'Check browser console for details' },
-        ]);
-      });
+    loadLyrics(selectedSong.lyricsFile).then((parsedLyrics) => {
+      setLyrics(parsedLyrics);
+    });
   }, [selectedSong]);
 
   // Sync lyrics with audio playback
@@ -91,11 +54,7 @@ const MusicPage = () => {
 
     const updateLyrics = () => {
       const currentTime = audio.currentTime;
-      const lineIndex = lyrics.findIndex(
-        (line, i) =>
-          currentTime >= line.time &&
-          (!lyrics[i + 1] || currentTime < lyrics[i + 1].time)
-      );
+      const lineIndex = getCurrentLyricIndex(lyrics, currentTime);
 
       if (lineIndex !== -1 && lineIndex !== currentLine) {
         setCurrentLine(lineIndex);
@@ -182,7 +141,7 @@ const MusicPage = () => {
                 key={song.id}
                 className={`song-card ${selectedSong?.id === song.id ? 'active' : ''}`}
                 style={{
-                  animationDelay: `${index * 0.1}s`,
+                  animationDelay: `${index * ANIMATION_CONSTANTS.CARD_STAGGER_DELAY}ms`,
                   borderColor: `${song.color}60`,
                 }}
                 onClick={() => handleSelectSong(song)}

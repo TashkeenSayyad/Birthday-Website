@@ -1,25 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import thingsWeLoveData from '../data/thingsWeLove.json';
+import { useModal } from '../hooks/useModal';
+import { ANIMATION_CONSTANTS } from '../constants/animations';
 import '../styles/ThingsWeLove.css';
 
 const ThingsWeLove = () => {
   const [items, setItems] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { selectedItem, isOpen: isModalOpen, openModal, closeModal } = useModal(350);
 
   useEffect(() => {
     setItems(thingsWeLoveData);
   }, []);
-
-  const openModal = (item) => {
-    setSelectedItem(item);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setTimeout(() => setSelectedItem(null), 350);
-  };
 
   // Array of pink/purple themed colors for sticky notes
   const colors = [
@@ -54,7 +46,7 @@ const ThingsWeLove = () => {
               style={{
                 '--note-color': colors[index % colors.length],
                 '--note-rotation': `${rotations[index % rotations.length]}deg`,
-                animationDelay: `${index * 0.1}s`
+                animationDelay: `${index * ANIMATION_CONSTANTS.CARD_STAGGER_DELAY}ms`,
               }}
               onClick={() => openModal(item)}
             >

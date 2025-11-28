@@ -1,19 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useAudioDetection } from '../hooks/useAudioDetection';
+import { AUDIO_CONSTANTS } from '../constants/audio';
 import '../styles/CandleBlow.css';
 import cakeImage from '../assets/cake.png';
 
 const CandleBlow = ({ onComplete }) => {
   const [blownCandles, setBlownCandles] = useState([]);
-  const [isListening, setIsListening] = useState(false);
-  const [micError, setMicError] = useState(false);
-  const audioContextRef = useRef(null);
-  const analyserRef = useRef(null);
-  const micStreamRef = useRef(null);
-  const lastBlowTimeRef = useRef(0);
 
-  const totalCandles = 24;
-  const BLOW_COOLDOWN = 200;
-  const BLOW_THRESHOLD = 40;
+  const blowCandle = () => {
+    setBlownCandles((prev) => {
+      if (prev.length >= AUDIO_CONSTANTS.TOTAL_CANDLES) return prev;
+      const newBlown = [...prev, prev.length];
+
+      if (newBlown.length === AUDIO_CONSTANTS.TOTAL_CANDLES) {
+        setTimeout(() => {
+          sessionStorage.setItem('candlesBlown', 'true');
+          stopMicrophone();
+          onComplete();
+        }, AUDIO_CONSTANTS.COMPLETION_DELAY);
+      }
+      return newBlown;
+    });
+  };
+
+  const { isListening, hasError, startMicrophone, stopMicrophone, lastDetectionTime } =
+    useAudioDetection(blowCandle);
 
   useEffect(() => {
     const hasBlown = sessionStorage.getItem('candlesBlown');
@@ -23,87 +34,13 @@ const CandleBlow = ({ onComplete }) => {
     }
     startMicrophone();
     return () => stopMicrophone();
-  }, [onComplete]);
-
-  const startMicrophone = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      micStreamRef.current = stream;
-
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      audioContextRef.current = audioContext;
-
-      const analyser = audioContext.createAnalyser();
-      analyser.fftSize = 512;
-      analyser.smoothingTimeConstant = 0.8;
-      analyserRef.current = analyser;
-
-      const microphone = audioContext.createMediaStreamSource(stream);
-      microphone.connect(analyser);
-
-      setIsListening(true);
-      detectBlow();
-    } catch (error) {
-      console.error('Microphone access denied:', error);
-      setMicError(true);
-    }
-  };
-
-  const stopMicrophone = () => {
-    if (micStreamRef.current) {
-      micStreamRef.current.getTracks().forEach(track => track.stop());
-    }
-    if (audioContextRef.current) {
-      audioContextRef.current.close();
-    }
-  };
-
-  const detectBlow = () => {
-    if (!analyserRef.current) return;
-
-    const bufferLength = analyserRef.current.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-
-    const checkAudio = () => {
-      if (!analyserRef.current) return;
-
-      analyserRef.current.getByteFrequencyData(dataArray);
-      const lowFreqData = dataArray.slice(0, 50);
-      const average = lowFreqData.reduce((sum, v) => sum + v, 0) / lowFreqData.length;
-      const now = Date.now();
-
-      if (average > BLOW_THRESHOLD && now - lastBlowTimeRef.current > BLOW_COOLDOWN) {
-        lastBlowTimeRef.current = now;
-        blowCandle();
-      }
-
-      if (blownCandles.length < totalCandles) requestAnimationFrame(checkAudio);
-    };
-
-    checkAudio();
-  };
-
-  const blowCandle = () => {
-    setBlownCandles(prev => {
-      if (prev.length >= totalCandles) return prev;
-      const newBlown = [...prev, prev.length];
-
-      if (newBlown.length === totalCandles) {
-        setTimeout(() => {
-          sessionStorage.setItem('candlesBlown', 'true');
-          stopMicrophone();
-          onComplete();
-        }, 2000);
-      }
-      return newBlown;
-    });
-  };
+  }, [onComplete, startMicrophone, stopMicrophone]);
 
   const handleManualBlow = () => {
-    if (micError) {
+    if (hasError) {
       const now = Date.now();
-      if (now - lastBlowTimeRef.current > BLOW_COOLDOWN) {
-        lastBlowTimeRef.current = now;
+      if (now - lastDetectionTime.current > AUDIO_CONSTANTS.BLOW_COOLDOWN) {
+        lastDetectionTime.current = now;
         blowCandle();
       }
     }
@@ -111,8 +48,8 @@ const CandleBlow = ({ onComplete }) => {
 
   const getCandlePositions = () => {
     const positions = [];
-    const count = 24;
-    const baseRadius = 34
+    const count = AUDIO_CONSTANTS.TOTAL_CANDLES;
+    const baseRadius = 34;
     const offsetY = -7; // Move candles UP slightly
     
     for (let i = 0; i < count; i++) {
@@ -163,12 +100,12 @@ const CandleBlow = ({ onComplete }) => {
       <div className="candle-content">
         <h1 className="candle-title">Make a Wish</h1>
         <p className="candle-instruction">
-          {micError
+          {hasError
             ? 'Click to blow out the candles (microphone not available)'
             : blownCandles.length === 0
             ? 'Blow into your microphone to blow out the candles 🎤'
-            : blownCandles.length < totalCandles
-            ? `Keep blowing! ${totalCandles - blownCandles.length} left 💨`
+            : blownCandles.length < AUDIO_CONSTANTS.TOTAL_CANDLES
+            ? `Keep blowing! ${AUDIO_CONSTANTS.TOTAL_CANDLES - blownCandles.length} left 💨`
             : 'Happy Birthday! 🎉'}
         </p>
 
@@ -199,10 +136,10 @@ const CandleBlow = ({ onComplete }) => {
         </div>
 
         <div className="candles-counter">
-          {blownCandles.length} / {totalCandles} candles blown
+          {blownCandles.length} / {AUDIO_CONSTANTS.TOTAL_CANDLES} candles blown
         </div>
 
-        {isListening && !micError && (
+        {isListening && !hasError && (
           <div className="mic-indicator">
             <div className="mic-wave"></div>
             <span>🎤 Listening... (Blow steadily)</span>

@@ -1,27 +1,21 @@
 [
   {
-    "id": 1,
-    "title": "Example Memory",
-    "date": "Summer 2022",
-    "description": "Something something.",
-    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=800&fit=crop",
-    "from": "Tashkeen"
-  },
-  {
     "id": 2,
     "title": "Mehwish & Anusha Memory",
-    "date": "X",
+    "date": "",
     "description": ".",
     "image": "images/memories/mehwish-anusha.jpg",
-    "from": "Mehwish"
+    "from": "Mehwish",
+    "size": "tall"
   },
   {
     "id": 3,
     "title": "Mehwish & Anusha Memory 2",
-    "date": "X",
+    "date": "",
     "description": "Mewish Anusha.",
     "image": "images/memories/mehwish-anusha2.jpg",
-    "from": "Mehwish"
+    "from": "Mehwish",
+    "size": "tall"
   },
   {
     "id": 4,
@@ -29,15 +23,17 @@
     "date": "2023",
     "description": ".",
     "image": "images/memories/aqsa-anusha.jpg",
-    "from": "Aqsa"
+    "from": "Aqsa",
+    "size": "medium"
   },
-    {
+  {
     "id": 5,
     "title": "Aqsa & Anusha Memory 2",
     "date": "2023",
     "description": ".",
     "image": "images/memories/aqsa-anusha2.jpg",
-    "from": "Aqsa"
+    "from": "Aqsa",
+    "size": "wide"
   },
   {
     "id": 6,
@@ -45,7 +41,8 @@
     "date": "2023",
     "description": ".",
     "image": "images/memories/aqsa-anusha3.jpg",
-    "from": "Aqsa"
+    "from": "Aqsa",
+    "size": "large"
   },
   {
     "id": 7,
@@ -54,7 +51,8 @@
     "description": ".",
     "mediaType": "video",
     "image": "videos/aqsa-car-ride.mp4",
-    "from": "Aqsa"
+    "from": "Aqsa",
+    "size": "small"
   },
   {
     "id": 8,
@@ -62,8 +60,9 @@
     "date": "2023",
     "description": "Kiss the bride? don't mind if I do. - Laraib, 2025, probably ",
     "mediaType": "image",
-    "image": "images/memories/laraib-anusha.jpg", 
-    "from": "Laraib"
+    "image": "images/memories/laraib-anusha.jpg",
+    "from": "Laraib",
+    "size": "large"
   },
   {
     "id": 9,
@@ -72,7 +71,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/laraib-anusha2.jpg",
-    "from": "Laraib"
+    "from": "Laraib",
+    "size": "wide"
   },
   {
     "id": 10,
@@ -81,7 +81,8 @@
     "description": "dancing in the car, until a khusra interrupted us",
     "mediaType": "video",
     "image": "videos/anusha-car-dancing.mp4",
-    "from": "Laraib"
+    "from": "Laraib",
+    "size": "tall"
   },
   {
     "id": 11,
@@ -90,7 +91,8 @@
     "description": "Anusha dancing during Azaadi celebrations",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-dancing.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "large"
   },
   {
     "id": 12,
@@ -99,7 +101,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anuhsa-dancing2.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 13,
@@ -108,7 +111,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 14,
@@ -117,7 +121,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-function.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 15,
@@ -126,7 +131,8 @@
     "description": "Anusha celebrating Azaadi at home",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-home.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "wide"
   },
   {
     "id": 16,
@@ -135,7 +141,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-hug.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 17,
@@ -144,7 +151,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-restaurant.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 18,
@@ -153,7 +161,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-restaurant2.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "large"
   },
   {
     "id": 19,
@@ -162,7 +171,8 @@
     "description": "",
     "mediaType": "video",
     "image": "videos/azaadi-anusha-home.mp4",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "wide"
   },
   {
     "id": 20,
@@ -171,6 +181,7 @@
     "description": "",
     "mediaType": "video",
     "image": "videos/azaadi-anusha-video.mp4",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "tall"
   }
 ]

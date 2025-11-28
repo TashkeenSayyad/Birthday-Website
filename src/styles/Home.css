@@ -452,14 +452,7 @@
   animation-delay: 1s;
 }
 
-@keyframes gentleFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
+/* gentleFloat animation imported from shared-animations.css */
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
@@ -607,72 +600,7 @@
   }
 }
 
-/* Additional Animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-@keyframes sparkle {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.8);
-  }
-}
-
-@keyframes heartBeat {
-  0%, 100% {
-    transform: translateY(-50%) scale(1);
-  }
-  25% {
-    transform: translateY(-50%) scale(1.1);
-  }
-  50% {
-    transform: translateY(-50%) scale(1);
-  }
-  75% {
-    transform: translateY(-50%) scale(1.05);
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Additional Animations (float, sparkle, heartBeat, fadeInDown, fadeIn, fadeInUp) imported from shared-animations.css */
 
 /* Pull-to-Refresh Indicator */
 .refresh-indicator {

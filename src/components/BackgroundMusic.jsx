@@ -3,7 +3,7 @@ import '../styles/BackgroundMusic.css';
 
 const BackgroundMusic = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.3);
+  const [volume, setVolume] = useState(0.5);
   const audioRef = useRef(null);
 
   useEffect(() => {

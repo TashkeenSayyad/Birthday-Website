@@ -1,72 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import memoriesData from '../data/memories.json';
+import { useModal } from '../hooks/useModal';
+import { useSwipeToClose } from '../hooks/useSwipeToClose';
+import { ANIMATION_CONSTANTS } from '../constants/animations';
 import '../styles/FavoriteMemories.css';
 
 const FavoriteMemories = () => {
   const [memories, setMemories] = useState([]);
   const [activeMemory, setActiveMemory] = useState(0);
-  const [selectedMemory, setSelectedMemory] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
-  const [modalTransform, setModalTransform] = useState(0);
 
-  const modalRef = useRef(null);
+  const { selectedItem: selectedMemory, isOpen: isModalOpen, openModal, closeModal } = useModal(
+    ANIMATION_CONSTANTS.MODAL_CLOSE_DELAY
+  );
+
+  const {
+    elementRef: modalRef,
+    transform: modalTransform,
+    handlers: swipeHandlers,
+  } = useSwipeToClose(closeModal, ANIMATION_CONSTANTS.SWIPE_THRESHOLD);
 
   useEffect(() => {
-    // Shuffle the memories array randomly
-    const shuffled = [...memoriesData].sort(() => Math.random() - 0.5);
-    setMemories(shuffled);
+    // Load memories in the order defined in JSON
+    setMemories(memoriesData);
   }, []);
-
-  const openModal = (memory) => {
-    setSelectedMemory(memory);
-    setIsModalOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    document.body.style.overflow = '';
-    setModalTransform(0);
-    setTimeout(() => setSelectedMemory(null), 300);
-  };
-
-  // Touch gesture handlers for swipe-down-to-close
-  const handleTouchStart = (e) => {
-    setTouchStart(e.touches[0].clientY);
-    setTouchEnd(e.touches[0].clientY);
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.touches[0].clientY);
-    const distance = e.touches[0].clientY - touchStart;
-
-    // Only allow downward swipe
-    if (distance > 0) {
-      setModalTransform(distance);
-      // Add resistance effect
-      const opacity = Math.max(0.3, 1 - distance / 400);
-      if (modalRef.current) {
-        modalRef.current.style.opacity = opacity;
-      }
-    }
-  };
-
-  const handleTouchEnd = () => {
-    const distance = touchEnd - touchStart;
-
-    // Close modal if swiped down more than 150px
-    if (distance > 150) {
-      closeModal();
-    } else {
-      // Spring back to original position
-      setModalTransform(0);
-      if (modalRef.current) {
-        modalRef.current.style.opacity = 1;
-      }
-    }
-  };
 
 
   return (
@@ -80,7 +36,7 @@ const FavoriteMemories = () => {
         {memories.map((memory, index) => (
           <div
             key={memory.id}
-            className={`memory-card ${index === activeMemory ? 'active' : ''}`}
+            className={`memory-card ${memory.size ? `size-${memory.size}` : 'size-medium'} ${index === activeMemory ? 'active' : ''}`}
             onClick={() => openModal(memory)}
             onMouseEnter={() => setActiveMemory(index)}
           >
@@ -121,12 +77,13 @@ const FavoriteMemories = () => {
             ref={modalRef}
             className="modal-content"
             onClick={(e) => e.stopPropagation()}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
+            {...swipeHandlers}
             style={{
               transform: `translateY(${modalTransform}px)`,
-              transition: modalTransform === 0 ? 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+              transition:
+                modalTransform === 0
+                  ? `transform ${ANIMATION_CONSTANTS.MODAL_TRANSITION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`
+                  : 'none',
             }}
           >
             <div className="modal-swipe-indicator">
