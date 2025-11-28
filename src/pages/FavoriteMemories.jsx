@@ -20,9 +20,8 @@ const FavoriteMemories = () => {
   } = useSwipeToClose(closeModal, ANIMATION_CONSTANTS.SWIPE_THRESHOLD);
 
   useEffect(() => {
-    // Shuffle the memories array randomly
-    const shuffled = [...memoriesData].sort(() => Math.random() - 0.5);
-    setMemories(shuffled);
+    // Load memories in the order defined in JSON
+    setMemories(memoriesData);
   }, []);
 
 
