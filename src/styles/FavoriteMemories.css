@@ -336,38 +336,138 @@
 /* Animations fadeInDown and fadeInUp imported from shared-animations.css */
 
 @media (max-width: 1024px) {
-  .memories-gallery {
-    grid-template-columns: 1fr;
+  .memories-page {
+    padding: 3rem 1.5rem;
   }
 
-  .memory-card {
+  .memories-gallery {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  /* Override all size variants to work with single-column layout */
+  .memory-card,
+  .memory-card.size-small,
+  .memory-card.size-medium,
+  .memory-card.size-wide,
+  .memory-card.size-tall,
+  .memory-card.size-large {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
     height: 500px;
+    border-width: 12px;
   }
 }
 
 @media (max-width: 768px) {
+  .memories-page {
+    padding: 2rem 1rem;
+  }
+
+  .page-title,
   .memories-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
+  }
+
+  .page-subtitle,
+  .memories-subtitle {
+    font-size: 1.4rem;
   }
 
   .memories-gallery {
-    gap: 1.2rem;
+    gap: 1rem;
   }
 
-  .memory-card {
-    height: 450px;
+  /* All cards uniform on mobile */
+  .memory-card,
+  .memory-card.size-small,
+  .memory-card.size-medium,
+  .memory-card.size-wide,
+  .memory-card.size-tall,
+  .memory-card.size-large {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    height: 420px;
+    border-width: 10px;
+    border-radius: 18px;
   }
 
   .memory-title {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   .memory-description {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .memory-overlay {
-    padding: 2rem 1.5rem 1.5rem;
+    padding: 1.2rem 1rem 1rem;
+  }
+
+  .memory-date {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.7rem;
+  }
+
+  .memory-from {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .memories-page {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .page-title,
+  .memories-title {
+    font-size: 2.2rem;
+  }
+
+  .page-subtitle,
+  .memories-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .memories-gallery {
+    gap: 0.875rem;
+  }
+
+  /* Compact cards for very small screens */
+  .memory-card,
+  .memory-card.size-small,
+  .memory-card.size-medium,
+  .memory-card.size-wide,
+  .memory-card.size-tall,
+  .memory-card.size-large {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    height: 380px;
+    border-width: 8px;
+    border-radius: 16px;
+  }
+
+  .memory-title {
+    font-size: 1.25rem;
+  }
+
+  .memory-description {
+    font-size: 0.8rem;
+  }
+
+  .memory-overlay {
+    padding: 1rem 0.875rem 0.875rem;
+  }
+
+  .memory-date {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+  }
+
+  .memory-from {
+    font-size: 0.8rem;
   }
 }
 
