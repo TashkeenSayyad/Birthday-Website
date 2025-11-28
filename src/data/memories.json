@@ -6,7 +6,7 @@
     "description": ".",
     "image": "images/memories/mehwish-anusha.jpg",
     "from": "Mehwish",
-    "size": "small"
+    "size": "tall"
   },
   {
     "id": 3,
@@ -23,16 +23,17 @@
     "date": "2023",
     "description": ".",
     "image": "images/memories/aqsa-anusha.jpg",
-    "from": "Aqsa"
+    "from": "Aqsa",
+    "size": "medium"
   },
-    {
+  {
     "id": 5,
     "title": "Aqsa & Anusha Memory 2",
     "date": "2023",
     "description": ".",
     "image": "images/memories/aqsa-anusha2.jpg",
     "from": "Aqsa",
-    "size": "large"
+    "size": "wide"
   },
   {
     "id": 6,
@@ -40,7 +41,8 @@
     "date": "2023",
     "description": ".",
     "image": "images/memories/aqsa-anusha3.jpg",
-    "from": "Aqsa"
+    "from": "Aqsa",
+    "size": "medium"
   },
   {
     "id": 7,
@@ -60,7 +62,7 @@
     "mediaType": "image",
     "image": "images/memories/laraib-anusha.jpg",
     "from": "Laraib",
-    "size": "small"
+    "size": "wide"
   },
   {
     "id": 9,
@@ -69,7 +71,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/laraib-anusha2.jpg",
-    "from": "Laraib"
+    "from": "Laraib",
+    "size": "wide"
   },
   {
     "id": 10,
@@ -88,7 +91,8 @@
     "description": "Anusha dancing during Azaadi celebrations",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-dancing.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 12,
@@ -97,7 +101,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anuhsa-dancing2.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 13,
@@ -106,7 +111,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 14,
@@ -115,7 +121,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-function.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 15,
@@ -124,7 +131,8 @@
     "description": "Anusha celebrating Azaadi at home",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-home.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 16,
@@ -133,7 +141,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-hug.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 17,
@@ -142,7 +151,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-restaurant.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 18,
@@ -151,7 +161,8 @@
     "description": "",
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-restaurant2.jpg",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 19,
@@ -160,7 +171,8 @@
     "description": "",
     "mediaType": "video",
     "image": "videos/azaadi-anusha-home.mp4",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   },
   {
     "id": 20,
@@ -169,6 +181,7 @@
     "description": "",
     "mediaType": "video",
     "image": "videos/azaadi-anusha-video.mp4",
-    "from": "Azaadi"
+    "from": "Azaadi",
+    "size": "medium"
   }
 ]
