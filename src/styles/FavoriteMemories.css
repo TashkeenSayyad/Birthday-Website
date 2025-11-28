@@ -91,23 +91,7 @@
   padding: 0 1rem;
 }
 
-/* Asymmetric layout - varying sizes */
-.memory-card:nth-child(3n + 1) {
-  grid-column: span 1;
-  grid-row: span 1;
-}
-
-.memory-card:nth-child(5n) {
-  grid-column: span 2;
-  grid-row: span 1;
-  height: 450px;
-}
-
-.memory-card:nth-child(7n) {
-  grid-row: span 2;
-  height: 750px;
-}
-
+/* Memory card base styles */
 .memory-card {
   position: relative;
   border-radius: 24px;
@@ -120,11 +104,50 @@
     0 3px 10px rgba(0, 0, 0, 0.08),
     inset 0 0 0 1px rgba(255, 255, 255, 0.5);
   animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
-  height: 600px;
   transform-style: preserve-3d;
   border: 18px solid #ffffff;
   background: linear-gradient(135deg, #ffffff 0%, #fefefe 50%, #fcfcfc 100%);
   will-change: transform;
+  /* Default size: medium */
+  grid-column: span 1;
+  grid-row: span 1;
+  height: 600px;
+}
+
+/* Size variants - easily controlled per memory */
+/* Small: compact single cell */
+.memory-card.size-small {
+  grid-column: span 1;
+  grid-row: span 1;
+  height: 400px;
+}
+
+/* Medium: default - already defined above */
+.memory-card.size-medium {
+  grid-column: span 1;
+  grid-row: span 1;
+  height: 600px;
+}
+
+/* Wide: spans 2 columns horizontally */
+.memory-card.size-wide {
+  grid-column: span 2;
+  grid-row: span 1;
+  height: 450px;
+}
+
+/* Tall: spans 2 rows vertically */
+.memory-card.size-tall {
+  grid-column: span 1;
+  grid-row: span 2;
+  height: 750px;
+}
+
+/* Large: spans both 2 columns and 2 rows */
+.memory-card.size-large {
+  grid-column: span 2;
+  grid-row: span 2;
+  height: 750px;
 }
 
 /* Staggered animation delays */

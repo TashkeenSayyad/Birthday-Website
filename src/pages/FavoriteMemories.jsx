@@ -37,7 +37,7 @@ const FavoriteMemories = () => {
         {memories.map((memory, index) => (
           <div
             key={memory.id}
-            className={`memory-card ${index === activeMemory ? 'active' : ''}`}
+            className={`memory-card ${memory.size ? `size-${memory.size}` : 'size-medium'} ${index === activeMemory ? 'active' : ''}`}
             onClick={() => openModal(memory)}
             onMouseEnter={() => setActiveMemory(index)}
           >

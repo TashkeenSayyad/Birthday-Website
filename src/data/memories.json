@@ -5,7 +5,8 @@
     "date": "",
     "description": ".",
     "image": "images/memories/mehwish-anusha.jpg",
-    "from": "Mehwish"
+    "from": "Mehwish",
+    "size": "small"
   },
   {
     "id": 3,
@@ -13,7 +14,8 @@
     "date": "",
     "description": "Mewish Anusha.",
     "image": "images/memories/mehwish-anusha2.jpg",
-    "from": "Mehwish"
+    "from": "Mehwish",
+    "size": "tall"
   },
   {
     "id": 4,
@@ -29,7 +31,8 @@
     "date": "2023",
     "description": ".",
     "image": "images/memories/aqsa-anusha2.jpg",
-    "from": "Aqsa"
+    "from": "Aqsa",
+    "size": "large"
   },
   {
     "id": 6,
@@ -46,7 +49,8 @@
     "description": ".",
     "mediaType": "video",
     "image": "videos/aqsa-car-ride.mp4",
-    "from": "Aqsa"
+    "from": "Aqsa",
+    "size": "wide"
   },
   {
     "id": 8,
@@ -54,8 +58,9 @@
     "date": "2023",
     "description": "Kiss the bride? don't mind if I do. - Laraib, 2025, probably ",
     "mediaType": "image",
-    "image": "images/memories/laraib-anusha.jpg", 
-    "from": "Laraib"
+    "image": "images/memories/laraib-anusha.jpg",
+    "from": "Laraib",
+    "size": "small"
   },
   {
     "id": 9,
@@ -73,7 +78,8 @@
     "description": "dancing in the car, until a khusra interrupted us",
     "mediaType": "video",
     "image": "videos/anusha-car-dancing.mp4",
-    "from": "Laraib"
+    "from": "Laraib",
+    "size": "tall"
   },
   {
     "id": 11,
