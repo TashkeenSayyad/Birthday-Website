@@ -42,7 +42,7 @@
     "description": ".",
     "image": "images/memories/aqsa-anusha3.jpg",
     "from": "Aqsa",
-    "size": "medium"
+    "size": "large"
   },
   {
     "id": 7,
@@ -52,7 +52,7 @@
     "mediaType": "video",
     "image": "videos/aqsa-car-ride.mp4",
     "from": "Aqsa",
-    "size": "wide"
+    "size": "small"
   },
   {
     "id": 8,
@@ -62,7 +62,7 @@
     "mediaType": "image",
     "image": "images/memories/laraib-anusha.jpg",
     "from": "Laraib",
-    "size": "wide"
+    "size": "large"
   },
   {
     "id": 9,
@@ -92,7 +92,7 @@
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-dancing.jpg",
     "from": "Azaadi",
-    "size": "medium"
+    "size": "large"
   },
   {
     "id": 12,
@@ -132,7 +132,7 @@
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-home.jpg",
     "from": "Azaadi",
-    "size": "medium"
+    "size": "wide"
   },
   {
     "id": 16,
@@ -162,7 +162,7 @@
     "mediaType": "image",
     "image": "images/memories/azaadi-anusha-restaurant2.jpg",
     "from": "Azaadi",
-    "size": "medium"
+    "size": "large"
   },
   {
     "id": 19,
@@ -172,7 +172,7 @@
     "mediaType": "video",
     "image": "videos/azaadi-anusha-home.mp4",
     "from": "Azaadi",
-    "size": "medium"
+    "size": "wide"
   },
   {
     "id": 20,
