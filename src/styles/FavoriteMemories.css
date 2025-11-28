@@ -84,9 +84,10 @@
   max-width: 1600px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
   grid-auto-flow: dense;
+  grid-auto-rows: minmax(400px, auto);
   padding: 0 1rem;
 }
 
