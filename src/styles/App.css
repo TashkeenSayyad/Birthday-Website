@@ -63,22 +63,24 @@ body {
 .app {
   min-height: 100vh;
   background:
-    radial-gradient(ellipse 120% 80% at 10% 20%, rgba(255, 209, 220, 0.4) 0%, transparent 50%),
-    radial-gradient(ellipse 100% 100% at 90% 15%, rgba(201, 169, 224, 0.35) 0%, transparent 50%),
-    radial-gradient(ellipse 150% 120% at 50% 100%, rgba(255, 218, 185, 0.35) 0%, transparent 60%),
-    radial-gradient(circle at 75% 50%, rgba(232, 180, 160, 0.2) 0%, transparent 40%),
+    radial-gradient(ellipse 140% 90% at 8% 18%, rgba(255, 209, 220, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 110% 110% at 92% 12%, rgba(201, 169, 224, 0.12) 0%, transparent 52%),
+    radial-gradient(ellipse 160% 130% at 50% 95%, rgba(255, 218, 185, 0.13) 0%, transparent 58%),
+    radial-gradient(circle at 78% 48%, rgba(232, 180, 160, 0.08) 0%, transparent 38%),
+    radial-gradient(circle at 25% 65%, rgba(255, 154, 139, 0.06) 0%, transparent 35%),
     linear-gradient(135deg,
-      #FFF8F5 0%,
-      #FFEEF5 15%,
-      #FFE9ED 30%,
-      #F5E6F2 45%,
-      #EDE5F7 60%,
-      #E8E0F8 75%,
-      #EDE8F5 90%,
-      #F2EBF7 100%
+      #FFFCFA 0%,
+      #FFF8F5 12%,
+      #FFF4F2 25%,
+      #FFEEF5 38%,
+      #F8F0F5 50%,
+      #F5EDF7 62%,
+      #F0EAF8 75%,
+      #F5F0FA 88%,
+      #FAF5FC 100%
     );
   background-size: 100% 100%;
-  animation: gradientShift 20s ease-in-out infinite alternate;
+  animation: gradientShift 30s ease-in-out infinite alternate;
   position: relative;
   overflow-x: hidden;
   overscroll-behavior: none;
@@ -87,16 +89,19 @@ body {
 @keyframes gradientShift {
   0% {
     background-position: 0% 0%;
+    filter: brightness(1);
   }
   50% {
     background-position: 100% 100%;
+    filter: brightness(1.02);
   }
   100% {
     background-position: 0% 0%;
+    filter: brightness(1);
   }
 }
 
-/* Magical texture overlay with floating orbs */
+/* Delicate filigree lace pattern overlay */
 .app::before {
   content: '';
   position: fixed;
@@ -105,28 +110,43 @@ body {
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(circle at 20% 30%, rgba(232, 180, 160, 0.08) 2px, transparent 2px),
-    radial-gradient(circle at 80% 70%, rgba(201, 169, 224, 0.08) 2px, transparent 2px),
-    radial-gradient(circle at 40% 80%, rgba(255, 154, 139, 0.08) 2px, transparent 2px),
-    radial-gradient(circle at 60% 40%, rgba(255, 209, 220, 0.06) 1px, transparent 1px);
-  background-size: 50px 50px, 70px 70px, 90px 90px, 30px 30px;
-  background-position: 0 0, 25px 25px, 45px 45px, 15px 15px;
-  animation: textureFloat 30s linear infinite;
+    /* Fine mesh pattern */
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(201, 169, 224, 0.015) 1px, rgba(201, 169, 224, 0.015) 2px),
+    repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(255, 209, 220, 0.015) 1px, rgba(255, 209, 220, 0.015) 2px),
+    /* Delicate dots */
+    radial-gradient(circle at 15% 25%, rgba(232, 180, 160, 0.04) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 85% 75%, rgba(201, 169, 224, 0.04) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 45% 85%, rgba(255, 154, 139, 0.04) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 65% 35%, rgba(255, 209, 220, 0.03) 0.5px, transparent 0.5px),
+    /* Ornate circles */
+    radial-gradient(circle at 30% 50%, transparent 20px, rgba(232, 180, 160, 0.02) 20px, rgba(232, 180, 160, 0.02) 21px, transparent 21px),
+    radial-gradient(circle at 70% 60%, transparent 25px, rgba(201, 169, 224, 0.02) 25px, rgba(201, 169, 224, 0.02) 26px, transparent 26px);
+  background-size:
+    40px 40px,
+    40px 40px,
+    60px 60px,
+    80px 80px,
+    100px 100px,
+    35px 35px,
+    120px 120px,
+    150px 150px;
+  background-position: 0 0, 0 0, 10px 10px, 30px 30px, 50px 50px, 20px 20px, 0 0, 75px 75px;
+  animation: filigreeFloat 40s linear infinite;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.5;
   z-index: 1;
 }
 
-@keyframes textureFloat {
+@keyframes filigreeFloat {
   0% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) rotate(0deg);
   }
   100% {
-    transform: translate(50px, 50px);
+    transform: translate(40px, 40px) rotate(0.5deg);
   }
 }
 
-/* Ethereal floating orbs */
+/* Delicate veiled luminescence */
 .app::after {
   content: '';
   position: fixed;
@@ -135,31 +155,40 @@ body {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(ellipse 600px 400px at 20% 40%, rgba(255, 209, 220, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 500px 500px at 80% 60%, rgba(201, 169, 224, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 400px 600px at 50% 80%, rgba(232, 180, 160, 0.12) 0%, transparent 50%);
-  animation: orbFloat 25s ease-in-out infinite alternate;
+    /* Soft glowing halos */
+    radial-gradient(ellipse 700px 450px at 18% 38%, rgba(255, 209, 220, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 550px 550px at 82% 58%, rgba(201, 169, 224, 0.06) 0%, transparent 52%),
+    radial-gradient(ellipse 450px 650px at 48% 82%, rgba(232, 180, 160, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 400px 400px at 65% 25%, rgba(255, 218, 185, 0.04) 0%, transparent 48%),
+    /* Subtle starbursts */
+    radial-gradient(circle at 35% 45%, transparent 0%, rgba(255, 154, 139, 0.02) 30%, transparent 50%),
+    radial-gradient(circle at 75% 70%, transparent 0%, rgba(201, 169, 224, 0.02) 30%, transparent 50%);
+  animation: veilFloat 35s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
-@keyframes orbFloat {
+@keyframes veilFloat {
   0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.8;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 0.6;
   }
-  33% {
-    transform: translate(30px, -20px) scale(1.05);
-    opacity: 0.9;
+  25% {
+    transform: translate(15px, -12px) scale(1.02) rotate(0.3deg);
+    opacity: 0.65;
   }
-  66% {
-    transform: translate(-20px, 30px) scale(0.95);
-    opacity: 0.85;
+  50% {
+    transform: translate(25px, 8px) scale(0.98) rotate(0.5deg);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translate(-10px, 18px) scale(1.01) rotate(0.2deg);
+    opacity: 0.62;
   }
   100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.8;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 0.6;
   }
 }
 

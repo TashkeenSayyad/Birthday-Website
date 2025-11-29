@@ -68,18 +68,19 @@ body {
   min-height: 100vh;
   font-family: var(--font-sans);
   background:
-    radial-gradient(ellipse 120% 80% at 10% 20%, rgba(255, 209, 220, 0.4) 0%, transparent 50%),
-    radial-gradient(ellipse 100% 100% at 90% 15%, rgba(201, 169, 224, 0.35) 0%, transparent 50%),
-    radial-gradient(ellipse 150% 120% at 50% 100%, rgba(255, 218, 185, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 140% 90% at 8% 18%, rgba(255, 209, 220, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 110% 110% at 92% 12%, rgba(201, 169, 224, 0.12) 0%, transparent 52%),
+    radial-gradient(ellipse 160% 130% at 50% 95%, rgba(255, 218, 185, 0.13) 0%, transparent 58%),
     linear-gradient(135deg,
-      #FFF8F5 0%,
-      #FFEEF5 15%,
-      #FFE9ED 30%,
-      #F5E6F2 45%,
-      #EDE5F7 60%,
-      #E8E0F8 75%,
-      #EDE8F5 90%,
-      #F2EBF7 100%
+      #FFFCFA 0%,
+      #FFF8F5 12%,
+      #FFF4F2 25%,
+      #FFEEF5 38%,
+      #F8F0F5 50%,
+      #F5EDF7 62%,
+      #F0EAF8 75%,
+      #F5F0FA 88%,
+      #FAF5FC 100%
     );
   background-attachment: fixed;
   overflow-x: hidden;
@@ -100,26 +101,26 @@ body::before {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(ellipse 600px 400px at 20% 40%, rgba(255, 209, 220, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse 500px 500px at 80% 60%, rgba(201, 169, 224, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse 400px 600px at 50% 80%, rgba(232, 180, 160, 0.1) 0%, transparent 50%);
-  animation: backgroundPulse 20s ease-in-out infinite alternate;
+    radial-gradient(ellipse 700px 450px at 18% 38%, rgba(255, 209, 220, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 550px 550px at 82% 58%, rgba(201, 169, 224, 0.05) 0%, transparent 52%),
+    radial-gradient(ellipse 450px 650px at 48% 82%, rgba(232, 180, 160, 0.04) 0%, transparent 50%);
+  animation: backgroundPulse 35s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 0;
 }
 
 @keyframes backgroundPulse {
   0% {
-    opacity: 0.8;
-    transform: scale(1);
+    opacity: 0.6;
+    transform: scale(1) rotate(0deg);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.05);
+    opacity: 0.7;
+    transform: scale(1.02) rotate(0.2deg);
   }
   100% {
-    opacity: 0.8;
-    transform: scale(1);
+    opacity: 0.6;
+    transform: scale(1) rotate(0deg);
   }
 }
 
