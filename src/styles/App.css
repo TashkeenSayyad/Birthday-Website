@@ -101,7 +101,7 @@ body {
   }
 }
 
-/* Delicate filigree lace pattern overlay */
+/* Ornate filigree pattern overlay */
 .app::before {
   content: '';
   position: fixed;
@@ -110,43 +110,45 @@ body {
   width: 100%;
   height: 100%;
   background-image:
-    /* Fine mesh pattern */
-    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(201, 169, 224, 0.015) 1px, rgba(201, 169, 224, 0.015) 2px),
-    repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(255, 209, 220, 0.015) 1px, rgba(255, 209, 220, 0.015) 2px),
-    /* Delicate dots */
-    radial-gradient(circle at 15% 25%, rgba(232, 180, 160, 0.04) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 85% 75%, rgba(201, 169, 224, 0.04) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 45% 85%, rgba(255, 154, 139, 0.04) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 65% 35%, rgba(255, 209, 220, 0.03) 0.5px, transparent 0.5px),
-    /* Ornate circles */
-    radial-gradient(circle at 30% 50%, transparent 20px, rgba(232, 180, 160, 0.02) 20px, rgba(232, 180, 160, 0.02) 21px, transparent 21px),
-    radial-gradient(circle at 70% 60%, transparent 25px, rgba(201, 169, 224, 0.02) 25px, rgba(201, 169, 224, 0.02) 26px, transparent 26px);
+    /* Intricate lace mesh */
+    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(201, 169, 224, 0.08) 35px, rgba(201, 169, 224, 0.08) 36px),
+    repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255, 209, 220, 0.08) 35px, rgba(255, 209, 220, 0.08) 36px),
+    /* Diamond pattern */
+    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(232, 180, 160, 0.06) 20px, rgba(232, 180, 160, 0.06) 21px),
+    repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(201, 169, 224, 0.06) 20px, rgba(201, 169, 224, 0.06) 21px),
+    /* Decorative dots */
+    radial-gradient(circle at 10px 10px, rgba(255, 209, 220, 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 30px 30px, rgba(201, 169, 224, 0.1) 1px, transparent 1px),
+    /* Ornate medallions */
+    radial-gradient(circle at 50% 50%, transparent 18px, rgba(232, 180, 160, 0.08) 18px, transparent 19px, transparent 22px, rgba(201, 169, 224, 0.06) 22px, transparent 23px),
+    /* Fine filigree spirals */
+    radial-gradient(ellipse 40px 20px at 50% 50%, transparent 8px, rgba(255, 154, 139, 0.07) 8px, transparent 9px);
   background-size:
+    70px 70px,
+    70px 70px,
+    40px 40px,
     40px 40px,
     40px 40px,
     60px 60px,
-    80px 80px,
     100px 100px,
-    35px 35px,
-    120px 120px,
-    150px 150px;
-  background-position: 0 0, 0 0, 10px 10px, 30px 30px, 50px 50px, 20px 20px, 0 0, 75px 75px;
-  animation: filigreeFloat 40s linear infinite;
+    80px 80px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 10px 10px, 0 0, 15px 25px;
+  animation: filigreeFloat 50s linear infinite;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.85;
   z-index: 1;
 }
 
 @keyframes filigreeFloat {
   0% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0);
   }
   100% {
-    transform: translate(40px, 40px) rotate(0.5deg);
+    transform: translate(70px, 70px);
   }
 }
 
-/* Delicate veiled luminescence */
+/* Decorative flourish layer */
 .app::after {
   content: '';
   position: fixed;
@@ -155,40 +157,31 @@ body {
   width: 100%;
   height: 100%;
   background:
-    /* Soft glowing halos */
-    radial-gradient(ellipse 700px 450px at 18% 38%, rgba(255, 209, 220, 0.06) 0%, transparent 55%),
-    radial-gradient(ellipse 550px 550px at 82% 58%, rgba(201, 169, 224, 0.06) 0%, transparent 52%),
-    radial-gradient(ellipse 450px 650px at 48% 82%, rgba(232, 180, 160, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse 400px 400px at 65% 25%, rgba(255, 218, 185, 0.04) 0%, transparent 48%),
-    /* Subtle starbursts */
-    radial-gradient(circle at 35% 45%, transparent 0%, rgba(255, 154, 139, 0.02) 30%, transparent 50%),
-    radial-gradient(circle at 75% 70%, transparent 0%, rgba(201, 169, 224, 0.02) 30%, transparent 50%);
-  animation: veilFloat 35s ease-in-out infinite alternate;
+    /* Corner flourishes */
+    radial-gradient(ellipse 300px 300px at 0% 0%, rgba(201, 169, 224, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 300px 300px at 100% 0%, rgba(255, 209, 220, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 300px 300px at 0% 100%, rgba(232, 180, 160, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 300px 300px at 100% 100%, rgba(255, 218, 185, 0.15) 0%, transparent 50%),
+    /* Central ornament */
+    radial-gradient(ellipse 500px 500px at 50% 50%, transparent 100px, rgba(201, 169, 224, 0.05) 200px, transparent 350px);
+  animation: flourishFloat 40s ease-in-out infinite alternate;
   pointer-events: none;
-  z-index: 1;
-  opacity: 0.6;
+  z-index: 0;
+  opacity: 1;
 }
 
-@keyframes veilFloat {
+@keyframes flourishFloat {
   0% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 0.6;
-  }
-  25% {
-    transform: translate(15px, -12px) scale(1.02) rotate(0.3deg);
-    opacity: 0.65;
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
   }
   50% {
-    transform: translate(25px, 8px) scale(0.98) rotate(0.5deg);
-    opacity: 0.7;
-  }
-  75% {
-    transform: translate(-10px, 18px) scale(1.01) rotate(0.2deg);
-    opacity: 0.62;
+    transform: scale(1.05) rotate(1deg);
+    opacity: 0.9;
   }
   100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 0.6;
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
   }
 }
 
