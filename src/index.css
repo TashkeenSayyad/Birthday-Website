@@ -67,7 +67,21 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: var(--font-sans);
-  background: var(--gradient-romantic);
+  background:
+    radial-gradient(ellipse 120% 80% at 10% 20%, rgba(255, 209, 220, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 90% 15%, rgba(201, 169, 224, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 150% 120% at 50% 100%, rgba(255, 218, 185, 0.35) 0%, transparent 60%),
+    linear-gradient(135deg,
+      #FFF8F5 0%,
+      #FFEEF5 15%,
+      #FFE9ED 30%,
+      #F5E6F2 45%,
+      #EDE5F7 60%,
+      #E8E0F8 75%,
+      #EDE8F5 90%,
+      #F2EBF7 100%
+    );
+  background-attachment: fixed;
   overflow-x: hidden;
   overscroll-behavior: none;
   position: relative;
@@ -86,17 +100,27 @@ body::before {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 20% 50%, rgba(233, 30, 140, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(155, 89, 182, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 40% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
-  animation: backgroundPulse 20s ease-in-out infinite;
+    radial-gradient(ellipse 600px 400px at 20% 40%, rgba(255, 209, 220, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 500px 500px at 80% 60%, rgba(201, 169, 224, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 400px 600px at 50% 80%, rgba(232, 180, 160, 0.1) 0%, transparent 50%);
+  animation: backgroundPulse 20s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 0;
 }
 
 @keyframes backgroundPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
 }
 
 /* ============================================

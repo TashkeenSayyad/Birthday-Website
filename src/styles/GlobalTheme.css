@@ -44,16 +44,19 @@
     #F0E8F5 100%
   );
 
-  --gradient-romantic: radial-gradient(ellipse at top left, rgba(255, 209, 220, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at top right, rgba(201, 169, 224, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom, rgba(255, 218, 185, 0.3) 0%, transparent 50%),
+  --gradient-romantic: radial-gradient(ellipse 120% 80% at 10% 20%, rgba(255, 209, 220, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 90% 15%, rgba(201, 169, 224, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 150% 120% at 50% 100%, rgba(255, 218, 185, 0.35) 0%, transparent 60%),
+    radial-gradient(circle at 75% 50%, rgba(232, 180, 160, 0.2) 0%, transparent 40%),
     linear-gradient(135deg,
-      #FFF8F0 0%,
-      #FFE9E9 20%,
-      #F5E6F0 40%,
-      #EDE5F5 60%,
-      #E8E0F5 80%,
-      #F0E8F5 100%
+      #FFF8F5 0%,
+      #FFEEF5 15%,
+      #FFE9ED 30%,
+      #F5E6F2 45%,
+      #EDE5F7 60%,
+      #E8E0F8 75%,
+      #EDE8F5 90%,
+      #F2EBF7 100%
     );
 
   --gradient-text: linear-gradient(135deg,

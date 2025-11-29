@@ -63,23 +63,40 @@ body {
 .app {
   min-height: 100vh;
   background:
-    radial-gradient(ellipse at top left, rgba(255, 209, 220, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at top right, rgba(201, 169, 224, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom, rgba(255, 218, 185, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse 120% 80% at 10% 20%, rgba(255, 209, 220, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 90% 15%, rgba(201, 169, 224, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 150% 120% at 50% 100%, rgba(255, 218, 185, 0.35) 0%, transparent 60%),
+    radial-gradient(circle at 75% 50%, rgba(232, 180, 160, 0.2) 0%, transparent 40%),
     linear-gradient(135deg,
-      #FFF8F0 0%,
-      #FFE9E9 20%,
-      #F5E6F0 40%,
-      #EDE5F5 60%,
-      #E8E0F5 80%,
-      #F0E8F5 100%
+      #FFF8F5 0%,
+      #FFEEF5 15%,
+      #FFE9ED 30%,
+      #F5E6F2 45%,
+      #EDE5F7 60%,
+      #E8E0F8 75%,
+      #EDE8F5 90%,
+      #F2EBF7 100%
     );
+  background-size: 100% 100%;
+  animation: gradientShift 20s ease-in-out infinite alternate;
   position: relative;
   overflow-x: hidden;
   overscroll-behavior: none;
 }
 
-/* Magical texture overlay */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Magical texture overlay with floating orbs */
 .app::before {
   content: '';
   position: fixed;
@@ -88,13 +105,62 @@ body {
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(circle at 20% 30%, rgba(232, 180, 160, 0.05) 1px, transparent 1px),
-    radial-gradient(circle at 80% 70%, rgba(201, 169, 224, 0.05) 1px, transparent 1px),
-    radial-gradient(circle at 40% 80%, rgba(255, 154, 139, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px, 60px 60px, 80px 80px;
+    radial-gradient(circle at 20% 30%, rgba(232, 180, 160, 0.08) 2px, transparent 2px),
+    radial-gradient(circle at 80% 70%, rgba(201, 169, 224, 0.08) 2px, transparent 2px),
+    radial-gradient(circle at 40% 80%, rgba(255, 154, 139, 0.08) 2px, transparent 2px),
+    radial-gradient(circle at 60% 40%, rgba(255, 209, 220, 0.06) 1px, transparent 1px);
+  background-size: 50px 50px, 70px 70px, 90px 90px, 30px 30px;
+  background-position: 0 0, 25px 25px, 45px 45px, 15px 15px;
+  animation: textureFloat 30s linear infinite;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.7;
   z-index: 1;
+}
+
+@keyframes textureFloat {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* Ethereal floating orbs */
+.app::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse 600px 400px at 20% 40%, rgba(255, 209, 220, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 500px 500px at 80% 60%, rgba(201, 169, 224, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 400px 600px at 50% 80%, rgba(232, 180, 160, 0.12) 0%, transparent 50%);
+  animation: orbFloat 25s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.8;
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+    opacity: 0.9;
+  }
+  66% {
+    transform: translate(-20px, 30px) scale(0.95);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.8;
+  }
 }
 
 .app-content {
