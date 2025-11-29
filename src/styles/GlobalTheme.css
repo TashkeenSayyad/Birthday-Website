@@ -3,9 +3,12 @@
   /* Primary Colors - Warm and Romantic */
   --primary-purple: #9B72AA;
   --primary-pink: #D5516B;
+  --accent-violet: #8b5cf6;
   --light-purple: #C9A9E0;
   --pink: #FFD1DC;
   --blue: #A8C8E4;
+  --gold: #FFD700;
+  --soft-pink: #FFE4E1;
 
   /* Extended Romantic Palette */
   --color-rose-gold: #E8B4A0;
@@ -62,6 +65,9 @@
     var(--color-mauve) 100%
   );
 
+  --gradient-sunset: linear-gradient(120deg, #ff9a9e 0%, #fad0c4 50%, #ffecd2 100%);
+  --gradient-purple: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-purple) 50%, var(--accent-violet) 100%);
+
   /* Font Families */
   --font-display: 'Playfair Display', 'Georgia', serif;
   --font-body: 'Crimson Text', 'Georgia', serif;
@@ -96,6 +102,13 @@
   /* Transitions */
   --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-elastic: cubic-bezier(0.68, -0.25, 0.265, 1.25);
+  --transition-slow: cubic-bezier(0.33, 1, 0.68, 1);
+
+  /* Additional Shadows */
+  --shadow-sm: 0 2px 8px rgba(155, 89, 182, 0.1);
+  --shadow-md: 0 8px 32px rgba(155, 89, 182, 0.15);
+  --shadow-lg: 0 20px 60px rgba(155, 89, 182, 0.25);
 }
 
 /* Apply romantic theme to all pages */

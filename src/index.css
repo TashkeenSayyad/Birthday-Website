@@ -1,6 +1,7 @@
 /* ============================================
    SHARED STYLES IMPORTS
    ============================================ */
+@import './styles/GlobalTheme.css';
 @import './styles/shared-animations.css';
 @import './styles/shared-components.css';
 
@@ -9,40 +10,6 @@
    ============================================ */
 
 :root {
-  /* Typography */
-  --font-serif: 'Playfair Display', 'Cormorant Garamond', serif;
-  --font-script: 'Dancing Script', cursive;
-  --font-sans: 'Montserrat', sans-serif;
-
-  /* Color Palette */
-  --primary-purple: #9b59b6;
-  --primary-pink: #e91e8c;
-  --accent-violet: #8b5cf6;
-  --light-purple: #d4a5d8;
-  --soft-pink: #ffc0e3;
-  --gold: #ffd700;
-  --text-dark: #2d2d2d;
-  --text-medium: #666;
-  --text-light: #7d5a8f;
-
-  /* Gradients */
-  --gradient-romantic: linear-gradient(135deg, #ffeef8 0%, #f5e6f0 25%, #e8d5f2 50%, #dfe6f5 75%, #e6f3ff 100%);
-  --gradient-sunset: linear-gradient(120deg, #ff9a9e 0%, #fad0c4 50%, #ffecd2 100%);
-  --gradient-purple: linear-gradient(135deg, #e91e8c 0%, #9b59b6 50%, #8b5cf6 100%);
-  --gradient-text: linear-gradient(135deg, #e91e8c 0%, #9b59b6 50%, #8b5cf6 100%);
-
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(155, 89, 182, 0.1);
-  --shadow-md: 0 8px 32px rgba(155, 89, 182, 0.15);
-  --shadow-lg: 0 20px 60px rgba(155, 89, 182, 0.25);
-  --shadow-glow: 0 0 30px rgba(233, 30, 140, 0.3);
-
-  /* Transitions */
-  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  --transition-elastic: cubic-bezier(0.68, -0.25, 0.265, 1.25);
-  --transition-slow: cubic-bezier(0.33, 1, 0.68, 1);
-
   /* Text Rendering */
   font-synthesis: none;
   text-rendering: optimizeLegibility;

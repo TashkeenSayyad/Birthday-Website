@@ -135,6 +135,7 @@ const TimelinePage = () => {
                     src={`${baseUrl}${currentEvent.media || currentEvent.image}`}
                     alt={currentEvent.title}
                     className="main-picture"
+                    loading="eager"
                   />
                 )}
               </div>
@@ -172,6 +173,7 @@ const TimelinePage = () => {
                           src={`${baseUrl}${event.thumbnail || event.media || event.image}`}
                           alt={event.title}
                           className="thumbnail-image"
+                          loading="lazy"
                         />
                         <div className="video-indicator">🎬</div>
                       </>
@@ -180,6 +182,7 @@ const TimelinePage = () => {
                         src={`${baseUrl}${event.thumbnail || event.media || event.image}`}
                         alt={event.title}
                         className="thumbnail-image"
+                        loading="lazy"
                       />
                     )}
                     <div className={`thumbnail-overlay ${index === currentIndex ? 'active' : ''}`}>

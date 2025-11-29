@@ -111,7 +111,7 @@ const CandleBlow = ({ onComplete }) => {
 
         <div className="cake-container">
           <div className="cake-image-wrapper">
-            <img src={cakeImage} alt="Birthday Cake" className="cake-image" />
+            <img src={cakeImage} alt="Birthday Cake" className="cake-image" loading="eager" />
             <div className="candles-overlay">
               {candlePositions.map((pos) => (
               <div
