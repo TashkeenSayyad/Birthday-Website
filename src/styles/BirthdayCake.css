@@ -685,6 +685,12 @@
     height: 105px;
   }
 
+  .cake:before,
+  .middle,
+  .middle:before {
+    height: 40px;
+  }
+
   .cake:after {
     height: 24px;
     top: 40px;
@@ -864,6 +870,12 @@
 
   .cake {
     height: 90px;
+  }
+
+  .cake:before,
+  .middle,
+  .middle:before {
+    height: 34px;
   }
 
   .cake:after {
