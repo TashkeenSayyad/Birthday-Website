@@ -24,7 +24,7 @@
     "year": "Early Years",
     "date": "Babyhood",
     "title": "Sofa Sisters",
-    "description": "Anu and Laru waiting for food, as usual",
+    "description": "Anu and Laraib waiting for food, as usual",
     "mediaType": "image",
     "media": "images/timeline/young_anusha_laraib.jpg",
     "thumbnail": "images/timeline/young_anusha_laraib.jpg"
@@ -72,11 +72,101 @@
   {
     "id": 8,
     "year": "Getting Older",
-    "date": "Babyhood",
-    "title": "The OG Trio",
-    "description": "Just chilling on the couch like a boss",
+    "date": "Childhood",
+    "title": "Sibling Moments",
+    "description": "Hanging out with Mohsin",
     "mediaType": "image",
-    "media": "images/timeline/young_anusha_couch.jpg",
-    "thumbnail": "images/timeline/young_anusha_couch.jpg"
+    "media": "images/timeline/young_anusha_mohsin2.jpg",
+    "thumbnail": "images/timeline/young_anusha_mohsin2.jpg"
+  },
+  {
+    "id": 9,
+    "year": "Getting Older",
+    "date": "Childhood",
+    "title": "The OG Trio",
+    "description": "Squad goals",
+    "mediaType": "image",
+    "media": "images/timeline/the_og_trio.jpg",
+    "thumbnail": "images/timeline/the_og_trio.jpg"
+  },
+  {
+    "id": 10,
+    "year": "Getting Older",
+    "date": "Childhood",
+    "title": "Ishu & Anu",
+    "description": "Sweet candid with Ishu",
+    "mediaType": "image",
+    "media": "images/timeline/ishu_anu.jpg",
+    "thumbnail": "images/timeline/ishu_anu.jpg"
+  },
+  {
+    "id": 11,
+    "year": "Getting Older",
+    "date": "Childhood",
+    "title": "Ishaal & Anu",
+    "description": "Another lovely moment with Ishaal",
+    "mediaType": "image",
+    "media": "images/timeline/ishaal_anu.jpg",
+    "thumbnail": "images/timeline/ishaal_anu.jpg"
+  },
+  {
+    "id": 12,
+    "year": "Getting Older",
+    "date": "Childhood",
+    "title": "Sofa Sisters 2",
+    "description": "Anu and Laraib, take two",
+    "mediaType": "image",
+    "media": "images/timeline/young_anusha_laraib2.jpg",
+    "thumbnail": "images/timeline/young_anusha_laraib2.jpg"
+  },
+  {
+    "id": 13,
+    "year": "Getting Older",
+    "date": "Childhood",
+    "title": "Anu & Tash 2",
+    "description": "More duo memories with Tash",
+    "mediaType": "image",
+    "media": "images/timeline/anu_tash2.jpg",
+    "thumbnail": "images/timeline/anu_tash2.jpg"
+  },
+  {
+    "id": 14,
+    "year": "Getting Older",
+    "date": "Childhood",
+    "title": "Anu & Tash",
+    "description": "Throwback with Tash",
+    "mediaType": "image",
+    "media": "images/timeline/anu_tash.jpg",
+    "thumbnail": "images/timeline/anu_tash.jpg"
+  },
+  {
+    "id": 15,
+    "year": "Getting Older",
+    "date": "Childhood",
+    "title": "Anu & Suhab",
+    "description": "Together with Suhab",
+    "mediaType": "image",
+    "media": "images/timeline/anu_suhab.jpg",
+    "thumbnail": "images/timeline/anu_suhab.jpg"
+  },
+  {
+    "id": 16,
+    "year": "Getting Older",
+    "date": "Childhood",
+    "title": "Mustache Girl",
+    "description": "Funny face with a mustache",
+    "mediaType": "image",
+    "media": "images/timeline/mustache_girl.jpg",
+    "thumbnail": "images/timeline/mustache_girl.jpg"
+  },
+  {
+    "id": 17,
+    "year": "Getting Older",
+    "date": "Childhood",
+    "title": "The OG Trio 2",
+    "description": "Round two of the trio",
+    "mediaType": "image",
+    "media": "images/timeline/the_og_trio2.jpg",
+    "thumbnail": "images/timeline/the_og_trio2.jpg"
   }
 ]
