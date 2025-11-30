@@ -3,28 +3,28 @@
     "id": 1,
     "year": "Early Years",
     "date": "Babyhood",
-    "title": "Test Data, early days",
-    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "title": "Cuddle Time",
+    "description": "Sitting on Mama Jani's lap",
     "mediaType": "image",
-    "media": "images/timeline/young_anusha_bed.jpg",
-    "thumbnail": "images/timeline/young_anusha_bed.jpg"
+    "media": "images/timeline/young_anusha_mama_jani.jpg",
+    "thumbnail": "images/timeline/young_anusha_mama_jani.jpg"
   },
   {
     "id": 2,
     "year": "Early Years",
     "date": "Babyhood",
-    "title": "Test Data, early days",
-    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "title": "Lil Model",
+    "description": "Laying on the bed, knowing that you will be a model in the future",
     "mediaType": "image",
-    "media": "images/timeline/young_anusha_red.jpg",
-    "thumbnail": "images/timeline/young_anusha_red.jpg"
+    "media": "images/timeline/young_anusha_bed.jpg",
+    "thumbnail": "images/timeline/young_anusha_bed.jpg"
   },
   {
     "id": 3,
     "year": "Early Years",
     "date": "Babyhood",
-    "title": "Test Data, early days",
-    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "title": "Sofa Sisters",
+    "description": "Anu and Laru waiting for food, as usual",
     "mediaType": "image",
     "media": "images/timeline/young_anusha_laraib.jpg",
     "thumbnail": "images/timeline/young_anusha_laraib.jpg"
@@ -33,30 +33,30 @@
     "id": 4,
     "year": "Early Years",
     "date": "Babyhood",
-    "title": "Test Data, early days",
-    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "title": "The Annoyed Baby",
+    "description": "Baby Anu getting annoyed",
     "mediaType": "image",
-    "media": "images/timeline/young_anusha_mama_jani.jpg",
-    "thumbnail": "images/timeline/young_anusha_mama_jani.jpg"
+    "media": "images/timeline/young_anusha_red.jpg",
+    "thumbnail": "images/timeline/young_anusha_red.jpg"
   },
   {
     "id": 5,
     "year": "Early Years",
     "date": "Babyhood",
-    "title": "Test Data, early days",
-    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "title": "Fashion Show Prep",
+    "description": "POV: patiently waiting for your fashion show",
     "mediaType": "image",
-    "media": "images/timeline/young_anusha_mohsin.jpg",
-    "thumbnail": "images/timeline/young_anusha_mohsin.jpg"
+    "media": "images/timeline/young_anusha.jpg",
+    "thumbnail": "images/timeline/young_anusha.jpg"
   },
   {
     "id": 6,
     "year": "Early Years",
     "date": "Babyhood",
-    "title": "Test Data, early days",
-    "description": "If you see this, ignore these pictures, they are just for testing purposes.",
+    "title": "Sibling Love",
+    "description": "Annoying lil bro since day 1",
     "mediaType": "image",
-    "media": "images/timeline/young_anusha.jpg",
-    "thumbnail": "images/timeline/young_anusha.jpg"
+    "media": "images/timeline/young_anusha_mohsin.jpg",
+    "thumbnail": "images/timeline/young_anusha_mohsin.jpg"
   }
 ]
