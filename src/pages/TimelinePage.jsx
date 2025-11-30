@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FloatingParticles from '../components/FloatingParticles';
 import timelineData from '../data/timeline.json';
+import memoriesData from '../data/memories.json';
 import { getBaseUrl } from '../utils/baseUrl';
 import '../styles/TimelinePage.css';
 
@@ -10,6 +11,14 @@ const TimelinePage = () => {
   const [visibleCards, setVisibleCards] = useState(new Set());
   const cardRefs = useRef([]);
   const baseUrl = getBaseUrl();
+
+  // Randomly selected memories - one from each sender
+  const bonusMemories = [
+    memoriesData.find(m => m.id === 3),  // Mehwish
+    memoriesData.find(m => m.id === 5),  // Aqsa
+    memoriesData.find(m => m.id === 9),  // Laraib
+    memoriesData.find(m => m.id === 14), // Azaadi
+  ].filter(Boolean);
 
   useEffect(() => {
     setTimeline(timelineData);
@@ -199,6 +208,89 @@ const TimelinePage = () => {
               <div className="end-heart">♥</div>
             </div>
             <p className="end-message">More memories to come...</p>
+          </div>
+
+          {/* Bonus Memories Section */}
+          <div className="bonus-memories-section">
+            <h2 className="bonus-memories-title">Special Memories from Friends</h2>
+            <p className="bonus-memories-subtitle">Beautiful moments shared by those who love you</p>
+
+            <div className="bonus-memories-grid">
+              {bonusMemories.map((memory, index) => (
+                <div
+                  key={memory.id}
+                  className="bonus-memory-card polaroid-card"
+                  onClick={() => openModal({
+                    ...memory,
+                    year: memory.date || 'Special Memory',
+                    date: '',
+                    title: memory.title,
+                    description: memory.description,
+                    media: memory.image,
+                    mediaType: memory.mediaType || 'image'
+                  })}
+                  role="button"
+                  tabIndex={0}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') openModal({
+                      ...memory,
+                      year: memory.date || 'Special Memory',
+                      date: '',
+                      title: memory.title,
+                      description: memory.description,
+                      media: memory.image,
+                      mediaType: memory.mediaType || 'image'
+                    });
+                  }}
+                >
+                  <div className="card-inner">
+                    {/* Decorative Tape */}
+                    <div className="washi-tape"></div>
+
+                    {/* Image Container */}
+                    <div className="card-image-container">
+                      {memory.mediaType === 'video' ? (
+                        <div className="video-preview">
+                          <img
+                            src={`${baseUrl}${memory.image}`}
+                            alt={memory.title}
+                            className="card-image"
+                          />
+                          <div className="video-play-overlay">
+                            <div className="play-icon">▶</div>
+                          </div>
+                        </div>
+                      ) : (
+                        <img
+                          src={`${baseUrl}${memory.image}`}
+                          alt={memory.title}
+                          className="card-image"
+                        />
+                      )}
+                    </div>
+
+                    {/* Polaroid Caption */}
+                    <div className="card-caption">
+                      <h3 className="card-title">{memory.title}</h3>
+                      <p className="card-from">From: {memory.from}</p>
+                      {memory.description && (
+                        <p className="card-description">{memory.description}</p>
+                      )}
+                    </div>
+
+                    {/* Corner Decoration */}
+                    <div className="corner-decoration">
+                      {index % 3 === 0 && <span className="corner-emoji">✨</span>}
+                      {index % 3 === 1 && <span className="corner-emoji">💫</span>}
+                      {index % 3 === 2 && <span className="corner-emoji">🌸</span>}
+                    </div>
+                  </div>
+
+                  {/* Hover Shine Effect */}
+                  <div className="card-shine"></div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
