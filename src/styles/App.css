@@ -136,7 +136,7 @@ body {
   animation: filigreeFloat 50s linear infinite;
   pointer-events: none;
   opacity: 0.85;
-  z-index: 1;
+  z-index: -1;
 }
 
 @keyframes filigreeFloat {
@@ -166,7 +166,7 @@ body {
     radial-gradient(ellipse 500px 500px at 50% 50%, transparent 100px, rgba(201, 169, 224, 0.05) 200px, transparent 350px);
   animation: flourishFloat 40s ease-in-out infinite alternate;
   pointer-events: none;
-  z-index: 0;
+  z-index: -2;
   opacity: 1;
 }
 
@@ -187,7 +187,7 @@ body {
 
 .app-content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   padding: var(--spacing-xl) var(--spacing-md);
   max-width: 1600px;
   margin: 0 auto;
