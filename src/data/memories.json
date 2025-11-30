@@ -33,9 +33,9 @@
     "id": 4,
     "title": "Tashkeen & Anusha: A Candid moment ",
     "date": "",
-    "description": "A random picture taken randomly.",
+    "description": "A picture taken randomly.",
     "mediaType": "image",
-    "image": "images/memories/Tash-Anusha_random.jpg",
+    "image": "images/memories/Tash-Anusha_candid.jpg",
     "from": "Tashkeen",
     "size": "wide"
   },
@@ -65,7 +65,7 @@
     "date": "2024",
     "description": "You leaning on me in a random picture in a restaurant.",
     "mediaType": "image",
-    "image": "images/memories/Tash-Anusha_restaurant.jpg",
+    "image": "images/memories/Tash_Anusha_restaurant.jpg",
     "from": "Tashkeen",
     "size": "medium"
   },
