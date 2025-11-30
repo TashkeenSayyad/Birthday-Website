@@ -32,7 +32,7 @@
   {
     "id": 4,
     "title": "Tashkeen & Anusha: A Candid moment ",
-    "date": "",
+    "date": "2025-04",
     "description": "A picture taken randomly.",
     "mediaType": "image",
     "image": "images/memories/Tash_Anusha_candid.jpg",
@@ -42,7 +42,7 @@
   {
     "id": 5,
     "title": "Tashkeen & Anusha: Nikah",
-    "date": "2024",
+    "date": "2025-04-18",
     "description": "The day we finally got married.",
     "mediaType": "image",
     "image": "images/memories/Tash_Anusha_Nikah.jpg",
@@ -51,7 +51,7 @@
   },
   {
     "id": 6,
-    "title": "Tashkeen & Anusha: Stealing you",
+    "title": "Tashkeen & Anusha & Laraib: Stealing you",
     "date": "2025-04-22",
     "description": "Me stealing you from Laraib.",
     "mediaType": "image",
@@ -236,52 +236,52 @@
   },
   {
     "id": 24,
-    "title": "Suhab & Anusha Memory 1",
+    "title": "Suhab & Anusha: After some good food",
     "date": "2025",
-    "description": "College courtyard hangout.",
+    "description": "Obligatory to take pictures after eating out",
     "mediaType": "image",
-    "image": "images/memories/suhab-anusha1.jpg",
+    "image": "images/memories/Suhab_Anusha.jpg",
     "from": "Suhab",
     "size": "medium"
   },
   {
     "id": 25,
-    "title": "Suhab & Anusha Memory 2",
-    "date": "2021",
-    "description": "Road trip sing-along.",
-    "mediaType": "video",
-    "image": "videos/suhab-car-trip.mp4",
+    "title": "Suhab & Anusha Memory: Mir's Mini Forest",
+    "date": "2025-04",
+    "description": "Exploring Mir's Mini Forest together.",
+    "mediaType": "image",
+    "image": "images/memories/Suhab_Anusha2.jpg",
     "from": "Suhab",
     "size": "tall"
   },
   {
     "id": 26,
-    "title": "Suhab & Anusha Memory 3",
-    "date": "2020",
-    "description": "Festival fun with colorful lights.",
+    "title": "Suhab & Anusha: Momo's Birthday",
+    "date": "2025",
+    "description": "Making the country unsafe in Sarees.",
     "mediaType": "image",
-    "image": "images/memories/suhab-anusha3.jpg",
+    "image": "images/memories/Suhab_Anusha3.jpg",
     "from": "Suhab",
-    "size": "large"
+    "size": "medium"
   },
   {
     "id": 27,
-    "title": "Suhab & Anusha Memory 4",
-    "date": "",
-    "description": "Candid laugh behind the scenes.",
+    "title": "Suhab & Anusha & Ishaal",
+    "date": "2025-04",
+    "description": "The 3 Musketeers, or so.",
     "mediaType": "image",
-    "image": "images/memories/suhab-anusha4.jpg",
+    "image": "images/memories/Suhab_Anusha_Ishaal.jpg",
     "from": "Suhab",
     "size": "wide"
   },
   {
     "id": 28,
-    "title": "Suhab & Anusha Memory 5",
-    "date": "2024",
-    "description": "Prank captured on a quick clip.",
-    "mediaType": "video",
-    "image": "videos/suhab-prank.mp4",
+    "title": "Suhab & Anusha & Tashkeen",
+    "date": "",
+    "description": "None of these people knew they would be in-laws soon",
+    "mediaType": "image",
+    "image": "images/memories/Suhab_Anusha_Tash.jpg",
     "from": "Suhab",
-    "size": "small"
+    "size": "large"
   }
 ]
