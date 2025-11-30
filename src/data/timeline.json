@@ -43,6 +43,16 @@
     "id": 5,
     "year": "Early Years",
     "date": "Babyhood",
+    "title": "Wave Like a Pro",
+    "description": "Anu waving at the camera like a pro from day 1",
+    "mediaType": "image",
+    "media": "images/timeline/young_anusha_wave.jpg.jpg",
+    "thumbnail": "images/timeline/young_anusha_wave.jpg.jpg"
+  },
+  {
+    "id": 6,
+    "year": "Early Years",
+    "date": "Babyhood",
     "title": "Fashion Show Prep",
     "description": "POV: patiently waiting for your fashion show",
     "mediaType": "image",
@@ -50,7 +60,7 @@
     "thumbnail": "images/timeline/young_anusha.jpg"
   },
   {
-    "id": 6,
+    "id": 7,
     "year": "Early Years",
     "date": "Babyhood",
     "title": "Sibling Love",
@@ -58,5 +68,15 @@
     "mediaType": "image",
     "media": "images/timeline/young_anusha_mohsin.jpg",
     "thumbnail": "images/timeline/young_anusha_mohsin.jpg"
+  },
+  {
+    "id": 8,
+    "year": "Getting Older",
+    "date": "Babyhood",
+    "title": "The OG Trio",
+    "description": "Just chilling on the couch like a boss",
+    "mediaType": "image",
+    "media": "images/timeline/young_anusha_couch.jpg",
+    "thumbnail": "images/timeline/young_anusha_couch.jpg"
   }
 ]
