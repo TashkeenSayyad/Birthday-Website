@@ -64,10 +64,20 @@
     "title": "Tashkeen & Anusha: Eating Out",
     "date": "2024",
     "description": "You leaning on me in a random picture in a restaurant.",
-    "mediaType": "video",
-    "image": "videos/Tash-Anusha_restaurant.mp4",
+    "mediaType": "image",
+    "image": "images/Tash-Anusha_restaurant.mp4",
     "from": "Tashkeen",
-    "size": "small"
+    "size": "medium"
+  },
+  {
+    "id": 88,
+    "title": "Tashkeen & Anusha: Dancing agains",
+    "date": "04--2025",
+    "description": "I really wasn't a fan of dancing until I met you",
+    "mediaType": "video",
+    "image": "video/Tash-Anusha_dance2.mp4",
+    "from": "Tashkeen",
+    "size": "medium"
   },
   {
     "id": 8,
