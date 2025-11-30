@@ -2,83 +2,71 @@ import React, { useState, useEffect, useRef } from 'react';
 import FloatingParticles from '../components/FloatingParticles';
 import timelineData from '../data/timeline.json';
 import { getBaseUrl } from '../utils/baseUrl';
-import { ANIMATION_CONSTANTS } from '../constants/animations';
 import '../styles/TimelinePage.css';
 
 const TimelinePage = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [timeline, setTimeline] = useState([]);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const autoPlayRef = useRef(null);
-  const filmstripRef = useRef(null);
-
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [visibleCards, setVisibleCards] = useState(new Set());
+  const cardRefs = useRef([]);
   const baseUrl = getBaseUrl();
 
   useEffect(() => {
     setTimeline(timelineData);
   }, []);
 
-  // Auto-play functionality
+  // Intersection Observer for scroll animations
   useEffect(() => {
-    if (isAutoPlaying && timeline.length > 0) {
-      autoPlayRef.current = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % timeline.length);
-      }, ANIMATION_CONSTANTS.AUTOPLAY_INTERVAL);
-    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = entry.target.dataset.index;
+            setVisibleCards((prev) => new Set([...prev, parseInt(index)]));
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px',
+      }
+    );
 
-    return () => {
-      if (autoPlayRef.current) {
-        clearInterval(autoPlayRef.current);
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, [timeline]);
+
+  // Group timeline by sections
+  const groupedTimeline = timeline.reduce((acc, event) => {
+    const section = event.year;
+    if (!acc[section]) acc[section] = [];
+    acc[section].push(event);
+    return acc;
+  }, {});
+
+  const openModal = (event) => {
+    setSelectedEvent(event);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setSelectedEvent(null);
+    document.body.style.overflow = 'auto';
+  };
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'Escape' && selectedEvent) {
+        closeModal();
       }
     };
-  }, [isAutoPlaying, timeline.length]);
-
-  // Scroll filmstrip to keep current thumbnail visible
-  useEffect(() => {
-    if (filmstripRef.current) {
-      const thumbnail = filmstripRef.current.children[currentIndex];
-      if (thumbnail) {
-        thumbnail.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
-        });
-      }
-    }
-  }, [currentIndex]);
-
-  const goToSlide = (index) => {
-    if (isTransitioning || index === currentIndex) return;
-
-    setIsTransitioning(true);
-    setCurrentIndex(index);
-    setIsAutoPlaying(false);
-
-    // Resume auto-play after user interaction
-    setTimeout(() => {
-      setIsAutoPlaying(true);
-    }, ANIMATION_CONSTANTS.AUTOPLAY_RESUME_DELAY);
-
-    // Reset transition lock
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, ANIMATION_CONSTANTS.TRANSITION_LOCK_DURATION);
-  };
-
-  const goToPrevious = () => {
-    const newIndex = currentIndex === 0 ? timeline.length - 1 : currentIndex - 1;
-    goToSlide(newIndex);
-  };
-
-  const goToNext = () => {
-    const newIndex = (currentIndex + 1) % timeline.length;
-    goToSlide(newIndex);
-  };
-
-  const toggleAutoPlay = () => {
-    setIsAutoPlaying(!isAutoPlaying);
-  };
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [selectedEvent]);
 
   if (timeline.length === 0) {
     return (
@@ -91,125 +79,172 @@ const TimelinePage = () => {
     );
   }
 
-  const currentEvent = timeline[currentIndex];
-
   return (
     <>
       <FloatingParticles />
       <div className="app-content timeline-content">
-        <header className="app-header">
-          <h1 className="main-title">Journey Through Time</h1>
-          <div className="title-decoration"></div>
-          <p className="subtitle-text">A beautiful timeline of cherished moments</p>
+        <header className="app-header timeline-header">
+          <h1 className="main-title timeline-main-title">Journey Through Time</h1>
+          <div className="title-decoration">
+            <span className="decoration-heart">♥</span>
+            <span className="decoration-line"></span>
+            <span className="decoration-star">✦</span>
+            <span className="decoration-line"></span>
+            <span className="decoration-heart">♥</span>
+          </div>
+          <p className="subtitle-text">A beautiful collection of cherished memories</p>
         </header>
 
-        <div className="timeline-carousel-container">
-          {/* Main Picture Display */}
-          <div className="main-picture-container">
-            <button
-              className="nav-arrow nav-arrow-left"
-              onClick={goToPrevious}
-              aria-label="Previous"
-            >
-              ‹
-            </button>
+        <div className="timeline-wrapper">
+          <div className="timeline-line"></div>
 
-            <div className="main-picture-wrapper">
-              <div className="main-picture-frame">
-                {/* Render image or video based on mediaType */}
-                {currentEvent.mediaType === 'video' ? (
-                  <video
-                    key={currentIndex}
-                    src={`${baseUrl}${currentEvent.media || currentEvent.image}`}
-                    className="main-picture main-video"
-                    controls
-                    loop
-                    playsInline
-                    poster={`${baseUrl}${currentEvent.thumbnail}`}
+          {Object.keys(groupedTimeline).map((section, sectionIndex) => (
+            <div key={section} className="timeline-section">
+              {/* Section Header */}
+              <div className="section-header-container">
+                <div className="timeline-dot timeline-dot-section"></div>
+                <div className="section-header">
+                  <h2 className="section-title">{section}</h2>
+                  <div className="section-subtitle">{groupedTimeline[section][0].date}</div>
+                </div>
+              </div>
+
+              {/* Timeline Cards */}
+              {groupedTimeline[section].map((event, index) => {
+                const globalIndex = timeline.indexOf(event);
+                const isLeft = globalIndex % 2 === 0;
+                const isVisible = visibleCards.has(globalIndex);
+
+                return (
+                  <div
+                    key={event.id}
+                    ref={(el) => (cardRefs.current[globalIndex] = el)}
+                    data-index={globalIndex}
+                    className={`timeline-item ${isLeft ? 'left' : 'right'} ${
+                      isVisible ? 'visible' : ''
+                    }`}
                   >
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <img
-                    key={currentIndex}
-                    src={`${baseUrl}${currentEvent.media || currentEvent.image}`}
-                    alt={currentEvent.title}
-                    className="main-picture"
-                  />
-                )}
-              </div>
+                    {/* Connector Line */}
+                    <div className="timeline-connector"></div>
 
-              {/* Picture Details */}
-              <div className="picture-details">
-                <div className="picture-year">{currentEvent.year}</div>
-                <h2 className="picture-title">{currentEvent.title}</h2>
-                <p className="picture-description">{currentEvent.description}</p>
-              </div>
-            </div>
+                    {/* Timeline Dot */}
+                    <div className="timeline-dot">
+                      <div className="dot-inner"></div>
+                      <div className="dot-ring"></div>
+                    </div>
 
-            <button
-              className="nav-arrow nav-arrow-right"
-              onClick={goToNext}
-              aria-label="Next"
-            >
-              ›
-            </button>
-          </div>
+                    {/* Polaroid Card */}
+                    <div
+                      className="timeline-card polaroid-card"
+                      onClick={() => openModal(event)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') openModal(event);
+                      }}
+                    >
+                      <div className="card-inner">
+                        {/* Decorative Tape */}
+                        <div className="washi-tape"></div>
 
-          {/* Filmstrip Thumbnails */}
-          <div className="filmstrip-container">
-            <div className="filmstrip-track" ref={filmstripRef}>
-              {timeline.map((event, index) => (
-                <div
-                  key={event.id}
-                  className={`filmstrip-item ${index === currentIndex ? 'active' : ''}`}
-                  onClick={() => goToSlide(index)}
-                >
-                  <div className="thumbnail-wrapper">
-                    {event.mediaType === 'video' ? (
-                      <>
-                        <img
-                          src={`${baseUrl}${event.thumbnail || event.media || event.image}`}
-                          alt={event.title}
-                          className="thumbnail-image"
-                        />
-                        <div className="video-indicator">🎬</div>
-                      </>
-                    ) : (
-                      <img
-                        src={`${baseUrl}${event.thumbnail || event.media || event.image}`}
-                        alt={event.title}
-                        className="thumbnail-image"
-                      />
-                    )}
-                    <div className={`thumbnail-overlay ${index === currentIndex ? 'active' : ''}`}>
-                      <div className="thumbnail-play-icon">▶</div>
+                        {/* Image Container */}
+                        <div className="card-image-container">
+                          {event.mediaType === 'video' ? (
+                            <div className="video-preview">
+                              <img
+                                src={`${baseUrl}${event.thumbnail || event.media}`}
+                                alt={event.title}
+                                className="card-image"
+                              />
+                              <div className="video-play-overlay">
+                                <div className="play-icon">▶</div>
+                              </div>
+                            </div>
+                          ) : (
+                            <img
+                              src={`${baseUrl}${event.media || event.image}`}
+                              alt={event.title}
+                              className="card-image"
+                            />
+                          )}
+                        </div>
+
+                        {/* Polaroid Caption */}
+                        <div className="card-caption">
+                          <h3 className="card-title">{event.title}</h3>
+                          <p className="card-description">{event.description}</p>
+                        </div>
+
+                        {/* Corner Decoration */}
+                        <div className="corner-decoration">
+                          {index % 3 === 0 && <span className="corner-emoji">✨</span>}
+                          {index % 3 === 1 && <span className="corner-emoji">💫</span>}
+                          {index % 3 === 2 && <span className="corner-emoji">🌸</span>}
+                        </div>
+                      </div>
+
+                      {/* Hover Shine Effect */}
+                      <div className="card-shine"></div>
                     </div>
                   </div>
-                  <div className="thumbnail-info">
-                    <div className="thumbnail-date">{event.date}</div>
-                    <div className="thumbnail-label">{event.year}</div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
-          </div>
+          ))}
 
-          {/* Controls */}
-          <div className="timeline-controls">
-            <button
-              className={`autoplay-button ${isAutoPlaying ? 'playing' : 'paused'}`}
-              onClick={toggleAutoPlay}
-              aria-label={isAutoPlaying ? 'Pause' : 'Play'}
-              title={isAutoPlaying ? 'Pause slideshow' : 'Play slideshow'}
-            >
-              {isAutoPlaying ? '⏸' : '▶'}
-            </button>
-            <span className="control-label">
-              {isAutoPlaying ? 'Auto-playing' : 'Paused'}
-            </span>
+          {/* End of Timeline */}
+          <div className="timeline-end">
+            <div className="timeline-dot timeline-dot-end">
+              <div className="dot-inner"></div>
+              <div className="end-heart">♥</div>
+            </div>
+            <p className="end-message">More memories to come...</p>
           </div>
         </div>
+
+        {/* Modal for Full-Size View */}
+        {selectedEvent && (
+          <div className="timeline-modal" onClick={closeModal}>
+            <div className="modal-overlay"></div>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closeModal} aria-label="Close">
+                ✕
+              </button>
+
+              <div className="modal-card">
+                <div className="modal-image-container">
+                  {selectedEvent.mediaType === 'video' ? (
+                    <video
+                      src={`${baseUrl}${selectedEvent.media || selectedEvent.image}`}
+                      className="modal-media"
+                      controls
+                      autoPlay
+                      loop
+                      playsInline
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <img
+                      src={`${baseUrl}${selectedEvent.media || selectedEvent.image}`}
+                      alt={selectedEvent.title}
+                      className="modal-media"
+                    />
+                  )}
+                </div>
+
+                <div className="modal-details">
+                  <div className="modal-header">
+                    <span className="modal-year">{selectedEvent.year}</span>
+                    <span className="modal-date">{selectedEvent.date}</span>
+                  </div>
+                  <h2 className="modal-title">{selectedEvent.title}</h2>
+                  <p className="modal-description">{selectedEvent.description}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
