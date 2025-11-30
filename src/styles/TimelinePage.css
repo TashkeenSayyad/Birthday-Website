@@ -804,44 +804,49 @@
   }
 }
 
-/* Mobile - Stack Vertically */
+/* Mobile - Keep Alternating */
 @media (max-width: 768px) {
-  .timeline-line {
-    left: 2rem;
+  .timeline-wrapper {
+    padding: 2rem 0.5rem;
   }
 
   .timeline-item.left,
   .timeline-item.right {
-    justify-content: flex-start;
-    padding: 0 0 0 4rem;
+    margin-bottom: 3rem;
   }
 
-  .timeline-item.left .timeline-card,
+  .timeline-item.left {
+    padding-right: 50%;
+    padding-left: 0.5rem;
+  }
+
+  .timeline-item.right {
+    padding-left: 50%;
+    padding-right: 0.5rem;
+  }
+
+  .timeline-item.left .timeline-card {
+    margin-right: 1.5rem;
+  }
+
   .timeline-item.right .timeline-card {
-    margin: 0;
-    transform-origin: left center;
-  }
-
-  .timeline-item.left:not(.visible) .timeline-card,
-  .timeline-item.right:not(.visible) .timeline-card {
-    transform: translateX(50px) rotate(0);
-  }
-
-  .timeline-dot {
-    left: 2rem;
+    margin-left: 1.5rem;
   }
 
   .timeline-connector {
-    display: none;
+    width: 1.5rem;
   }
 
-  .section-header-container {
-    justify-content: flex-start;
-    padding-left: 4rem;
+  .timeline-item.left .timeline-connector {
+    margin-right: 12px;
+  }
+
+  .timeline-item.right .timeline-connector {
+    margin-left: 12px;
   }
 
   .section-header {
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
   }
 
   .section-title {
@@ -856,19 +861,17 @@
     max-width: 100%;
   }
 
-  .timeline-end {
-    padding-left: 4rem;
-    align-items: flex-start;
+  .card-title {
+    font-size: 1.3rem;
   }
 
-  .timeline-dot-end {
-    position: absolute;
-    left: 2rem;
-    transform: translateX(-50%);
+  .card-description {
+    font-size: 0.9rem;
   }
 
-  .end-message {
-    margin-left: 2rem;
+  .card-caption {
+    min-height: 100px;
+    padding: 1rem 0.25rem 0.75rem;
   }
 
   .modal-card {
@@ -904,27 +907,48 @@
     font-size: 1.2rem;
   }
 
-  .timeline-line {
-    left: 1.5rem;
+  .timeline-wrapper {
+    padding: 1.5rem 0.25rem;
   }
 
-  .timeline-item.left,
+  .timeline-item {
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-item.left {
+    padding-right: 50%;
+    padding-left: 0.25rem;
+  }
+
   .timeline-item.right {
-    padding-left: 3rem;
+    padding-left: 50%;
+    padding-right: 0.25rem;
+  }
+
+  .timeline-item.left .timeline-card {
+    margin-right: 1rem;
+  }
+
+  .timeline-item.right .timeline-card {
+    margin-left: 1rem;
+  }
+
+  .timeline-connector {
+    width: 1rem;
   }
 
   .timeline-dot {
-    left: 1.5rem;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
-  .section-header-container {
-    padding-left: 3rem;
+  .timeline-dot-section {
+    width: 32px;
+    height: 32px;
   }
 
   .section-header {
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1.25rem;
   }
 
   .section-title {
@@ -936,11 +960,21 @@
   }
 
   .card-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .card-description {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .card-caption {
+    min-height: 90px;
+    padding: 0.9rem 0.2rem 0.6rem;
+  }
+
+  .washi-tape {
+    width: 100px;
+    height: 25px;
   }
 
   .modal-content {
@@ -966,19 +1000,13 @@
     font-size: 1rem;
   }
 
-  .timeline-end {
-    padding-left: 3rem;
-  }
-
   .timeline-dot-end {
-    left: 1.5rem;
     width: 48px;
     height: 48px;
   }
 
   .end-message {
-    font-size: 1.5rem;
-    margin-left: 1rem;
+    font-size: 1.4rem;
   }
 }
 
