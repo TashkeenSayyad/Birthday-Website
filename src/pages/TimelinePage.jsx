@@ -12,8 +12,16 @@ const TimelinePage = () => {
   const cardRefs = useRef([]);
   const baseUrl = getBaseUrl();
 
-  // All memories from all senders
-  const bonusMemories = memoriesData;
+  // One memory from each sender
+  const bonusMemories = React.useMemo(() => {
+    const senderMap = new Map();
+    memoriesData.forEach(memory => {
+      if (memory.from && !senderMap.has(memory.from)) {
+        senderMap.set(memory.from, memory);
+      }
+    });
+    return Array.from(senderMap.values());
+  }, []);
 
   useEffect(() => {
     setTimeline(timelineData);
