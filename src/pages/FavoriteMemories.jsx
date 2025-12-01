@@ -98,74 +98,71 @@ const FavoriteMemories = () => {
 
       {/* Controls Section */}
       <div className="memories-controls">
-        <div className="controls-row">
-          {/* Filters */}
-          <div className="filters-container">
-            <select
-              className="filter-select"
-              value={selectedSender}
-              onChange={(e) => setSelectedSender(e.target.value)}
-            >
-              <option value="all">All Contributors</option>
-              {senders.map(sender => (
-                <option key={sender} value={sender}>{sender}</option>
-              ))}
-            </select>
-
-            <select
-              className="filter-select"
-              value={selectedMediaType}
-              onChange={(e) => setSelectedMediaType(e.target.value)}
-            >
-              <option value="all">All Types</option>
-              <option value="image">Photos Only</option>
-              <option value="video">Videos Only</option>
-            </select>
-          </div>
-
-          {/* View Mode Toggle */}
-          <div className="view-mode-toggle">
-            <button
-              className={`view-btn ${viewMode === 'masonry' ? 'active' : ''}`}
-              onClick={() => setViewMode('masonry')}
-              title="Masonry View"
-            >
-              ⊞
-            </button>
-            <button
-              className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
-              onClick={() => setViewMode('grid')}
-              title="Grid View"
-            >
-              ▦
-            </button>
-          </div>
+        {/* View Mode Toggle */}
+        <div className="view-mode-section">
+          <button
+            className={`view-mode-btn ${viewMode === 'masonry' ? 'active' : ''}`}
+            onClick={() => setViewMode('masonry')}
+          >
+            <span className="view-icon">⊞</span>
+            <span className="view-label">Masonry</span>
+          </button>
+          <button
+            className={`view-mode-btn ${viewMode === 'grid' ? 'active' : ''}`}
+            onClick={() => setViewMode('grid')}
+          >
+            <span className="view-icon">▦</span>
+            <span className="view-label">Grid</span>
+          </button>
         </div>
 
-        {/* Active Filters Display */}
-        {(selectedSender !== 'all' || selectedMediaType !== 'all') && (
-          <div className="active-filters">
-            <span className="filter-label">Active filters:</span>
-            {selectedSender !== 'all' && (
-              <span className="filter-tag">
-                Contributor: {selectedSender}
-                <button onClick={() => setSelectedSender('all')}>×</button>
-              </span>
-            )}
-            {selectedMediaType !== 'all' && (
-              <span className="filter-tag">
-                Type: {selectedMediaType === 'image' ? 'Photos' : 'Videos'}
-                <button onClick={() => setSelectedMediaType('all')}>×</button>
-              </span>
-            )}
-            <button className="clear-all-filters" onClick={() => {
-              setSelectedSender('all');
-              setSelectedMediaType('all');
-            }}>
-              Clear All
-            </button>
+        {/* Filter Chips Section */}
+        <div className="filter-chips-section">
+          <div className="filter-group">
+            <span className="filter-group-label">👤</span>
+            <div className="filter-chips">
+              <button
+                className={`filter-chip ${selectedSender === 'all' ? 'active' : ''}`}
+                onClick={() => setSelectedSender('all')}
+              >
+                All
+              </button>
+              {senders.map(sender => (
+                <button
+                  key={sender}
+                  className={`filter-chip ${selectedSender === sender ? 'active' : ''}`}
+                  onClick={() => setSelectedSender(sender)}
+                >
+                  {sender}
+                </button>
+              ))}
+            </div>
           </div>
-        )}
+
+          <div className="filter-group">
+            <span className="filter-group-label">📁</span>
+            <div className="filter-chips">
+              <button
+                className={`filter-chip ${selectedMediaType === 'all' ? 'active' : ''}`}
+                onClick={() => setSelectedMediaType('all')}
+              >
+                All
+              </button>
+              <button
+                className={`filter-chip ${selectedMediaType === 'image' ? 'active' : ''}`}
+                onClick={() => setSelectedMediaType('image')}
+              >
+                📸 Photos
+              </button>
+              <button
+                className={`filter-chip ${selectedMediaType === 'video' ? 'active' : ''}`}
+                onClick={() => setSelectedMediaType('video')}
+              >
+                🎬 Videos
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Memories Gallery */}
