@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import memoriesData from '../data/memories.json';
 import { useModal } from '../hooks/useModal';
 import { useSwipeToClose } from '../hooks/useSwipeToClose';
@@ -12,7 +12,8 @@ const FavoriteMemories = () => {
   const [selectedSender, setSelectedSender] = useState('all');
   const [selectedMediaType, setSelectedMediaType] = useState('all');
   const [viewMode, setViewMode] = useState('masonry'); // masonry, grid, list
-  const [sortBy, setSortBy] = useState('default'); // default, date-desc, date-asc, sender, title
+  const [sortBy, setSortBy] = useState('default'); // default, date-desc, date-asc, sender, title, random
+  const [randomSeed, setRandomSeed] = useState(0); // Used to trigger re-randomization
 
   const { selectedItem: selectedMemory, isOpen: isModalOpen, openModal, closeModal } = useModal(
     ANIMATION_CONSTANTS.MODAL_CLOSE_DELAY
@@ -27,6 +28,16 @@ const FavoriteMemories = () => {
   useEffect(() => {
     // Load memories in the order defined in JSON
     setMemories(memoriesData);
+  }, []);
+
+  // Fisher-Yates shuffle algorithm for randomizing array
+  const shuffleArray = useCallback((array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
   }, []);
 
   // Get unique senders for filter dropdown
@@ -83,13 +94,16 @@ const FavoriteMemories = () => {
       case 'title':
         result.sort((a, b) => a.title.localeCompare(b.title));
         break;
+      case 'random':
+        result = shuffleArray(result);
+        break;
       default:
         // Keep original order
         break;
     }
 
     return result;
-  }, [memories, searchQuery, selectedSender, selectedMediaType, sortBy]);
+  }, [memories, searchQuery, selectedSender, selectedMediaType, sortBy, randomSeed, shuffleArray]);
 
   // Statistics
   const stats = useMemo(() => ({
@@ -206,14 +220,33 @@ const FavoriteMemories = () => {
             <select
               className="filter-select"
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+              onChange={(e) => {
+                const newSort = e.target.value;
+                setSortBy(newSort);
+                // If selecting random, trigger a new randomization
+                if (newSort === 'random') {
+                  setRandomSeed(prev => prev + 1);
+                }
+              }}
             >
               <option value="default">Default Order</option>
               <option value="date-desc">Newest First</option>
               <option value="date-asc">Oldest First</option>
               <option value="sender">By Contributor</option>
               <option value="title">By Title</option>
+              <option value="random">🎲 Random</option>
             </select>
+
+            {/* Shuffle Button - shown when in random mode */}
+            {sortBy === 'random' && (
+              <button
+                className="shuffle-button"
+                onClick={() => setRandomSeed(prev => prev + 1)}
+                title="Shuffle again"
+              >
+                🔀 Shuffle
+              </button>
+            )}
           </div>
 
           {/* View Mode Toggle */}
