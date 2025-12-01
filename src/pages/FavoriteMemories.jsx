@@ -8,7 +8,6 @@ import '../styles/FavoriteMemories.css';
 const FavoriteMemories = () => {
   const [memories, setMemories] = useState([]);
   const [activeMemory, setActiveMemory] = useState(0);
-  const [searchQuery, setSearchQuery] = useState('');
   const [selectedSender, setSelectedSender] = useState('all');
   const [selectedMediaType, setSelectedMediaType] = useState('all');
   const [viewMode, setViewMode] = useState('masonry'); // masonry, grid
@@ -34,18 +33,9 @@ const FavoriteMemories = () => {
     return uniqueSenders.sort();
   }, []);
 
-  // Filter and sort memories
+  // Filter memories
   const filteredAndSortedMemories = useMemo(() => {
     let result = [...memories];
-
-    // Apply search filter
-    if (searchQuery) {
-      result = result.filter(memory =>
-        memory.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        memory.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        memory.from.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
 
     // Apply sender filter
     if (selectedSender !== 'all') {
@@ -61,21 +51,12 @@ const FavoriteMemories = () => {
     }
 
     return result;
-  }, [memories, searchQuery, selectedSender, selectedMediaType]);
-
-  // Statistics
-  const stats = useMemo(() => ({
-    total: memories.length,
-    images: memories.filter(m => (m.mediaType || 'image') === 'image').length,
-    videos: memories.filter(m => m.mediaType === 'video').length,
-    senders: new Set(memories.map(m => m.from)).size,
-    filtered: filteredAndSortedMemories.length
-  }), [memories, filteredAndSortedMemories]);
+  }, [memories, selectedSender, selectedMediaType]);
 
   // Reset active memory when filters change
   useEffect(() => {
     setActiveMemory(0);
-  }, [searchQuery, selectedSender, selectedMediaType, viewMode]);
+  }, [selectedSender, selectedMediaType, viewMode]);
 
   // Keyboard navigation for modal
   useEffect(() => {
@@ -113,45 +94,11 @@ const FavoriteMemories = () => {
       <div className="page-header">
         <h1 className="page-title">Our Favorite Memories</h1>
         <p className="page-subtitle">Moments captured in time</p>
-
-        {/* Statistics Section */}
-        <div className="memories-stats">
-          <div className="stat-item">
-            <span className="stat-number">{stats.total}</span>
-            <span className="stat-label">Total</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">{stats.images}</span>
-            <span className="stat-label">Photos</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">{stats.videos}</span>
-            <span className="stat-label">Videos</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">{stats.senders}</span>
-            <span className="stat-label">Contributors</span>
-          </div>
-        </div>
       </div>
 
       {/* Controls Section */}
       <div className="memories-controls">
         <div className="controls-row">
-          {/* Search Bar */}
-          <div className="search-container">
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search memories..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            {searchQuery && (
-              <button className="clear-search" onClick={() => setSearchQuery('')}>×</button>
-            )}
-          </div>
-
           {/* Filters */}
           <div className="filters-container">
             <select
@@ -196,15 +143,9 @@ const FavoriteMemories = () => {
         </div>
 
         {/* Active Filters Display */}
-        {(searchQuery || selectedSender !== 'all' || selectedMediaType !== 'all') && (
+        {(selectedSender !== 'all' || selectedMediaType !== 'all') && (
           <div className="active-filters">
             <span className="filter-label">Active filters:</span>
-            {searchQuery && (
-              <span className="filter-tag">
-                Search: "{searchQuery}"
-                <button onClick={() => setSearchQuery('')}>×</button>
-              </span>
-            )}
             {selectedSender !== 'all' && (
               <span className="filter-tag">
                 Contributor: {selectedSender}
@@ -218,7 +159,6 @@ const FavoriteMemories = () => {
               </span>
             )}
             <button className="clear-all-filters" onClick={() => {
-              setSearchQuery('');
               setSelectedSender('all');
               setSelectedMediaType('all');
             }}>
@@ -226,11 +166,6 @@ const FavoriteMemories = () => {
             </button>
           </div>
         )}
-
-        {/* Results Count */}
-        <div className="results-count">
-          Showing {stats.filtered} of {stats.total} memories
-        </div>
       </div>
 
       {/* Memories Gallery */}
