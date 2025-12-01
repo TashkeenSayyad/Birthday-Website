@@ -1,4 +1,21 @@
 {
+  "tashkeen": {
+    "name": "Tashkeen",
+    "title": "Happy Birthday my beloved wife.",
+    "image": "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=1200&h=1200&fit=crop",
+    "content": [
+      "Happy birthday, my princess.", 
+      "Today is your twenty fourth, and I've been thinking about this day for months. Since the end of September, it has been in the back of my mind, and the closer it got, the more I wanted to make sure it felt special for you, because you deserve to feel celebrated for everything you are.",
+      "This past year, I've seen how much heart you put into everything and everyone around you. You care for people and animals with the same gentle patience, even when you're tired or stressed, and you somehow make everything feel lighter just by being there. You notice the little things and know when something isn't right.",
+      "Two weeks before your birthday, I realized I couldn't let the day pass without being there in person. I bought the ticket on a whim, just to see your smile, to share this day with you, and to make sure you could feel celebrated fully, not through a screen but in real life, even if it is only for a few days. Especially with Hasan Raheem's concert coming up and you telling me how much you wished you could go, I knew I wanted to be there, with you, so you can experience that, with me beside you. So we can laugh, walk together and make your birthday feel truly special.",
+      "I pray for a safe and healthy year for you, that you can be with me in Germany soon, and that you won't have to go through any hardship on the way or in the future.",
+      "You are the kindest, most genuine person I know, and you deserve all the happiness in the world. I love you more than I can express, and I'm so grateful to have you in my life. Thank you for being my wife and being you.",
+      "Happy birthday, my love."
+    ],
+    "additionalImages": [
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=600&fit=crop"
+    ]
+  },
   "laraib": {
     "name": "Laraib",
     "title": "To My Dearest Friend on Your 24th Birthday",
@@ -51,6 +68,22 @@
     ],
     "additionalImages": [
       "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=600&fit=crop"
+    ]
+  },
+  "suhab": {
+    "name": "Suhab",
+    "title": "Happy Birthday Anusha!",
+    "image": "https://plus.unsplash.com/premium_photo-1663839412026-51a44cfadfb8?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&h=600&fit=crop",
+    "content": [
+      "Happy 24th Birthday! To my cousin, my friend, and now also my sister-in-law - you carry so many beautiful roles in my life, and each one makes our bond even more special.",
+      "This birthday is extra meaningful, because soon you'll be leaving Pakistan for the very first time to start a whole new chapter here in Germany. I'm so excited to finally have you close, to make new memories and not just talk through messages and calls.",
+      "When I think back to our childhood, I smile at everything we did together - the endless sleepovers, talking about everything and nothing, playing silly games in the dark, and hyping each other up during truth or dare. Our singing sessions on long drives, the trips to Karachi, and those iconic 4am chai runs. And finally, the first Nikkah in our little cousins group - yours and Tashi's - a day I'll always remember. At the same time, eagerly waiting to see you walking down in a red dress.",
+      "Looking back at everything we've shared makes me even happier about everything that's waiting ahead for you. So here's to a future full of barakah, happiness, and ease. May Allah guide your path, protect your new beginnings, and bless you with everything your heart hopes for.",
+      "Happy Birthday once again, bhabi. Have an incredible day, and I can't wait to see you finally here!!! Sending you so much love.",
+      "P.S. Ignore Ishaal's note - obviously, I'm the cooler nand."
+    ],
+    "additionalImages": [
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=600&fit=crop" 
     ]
   }
 }
