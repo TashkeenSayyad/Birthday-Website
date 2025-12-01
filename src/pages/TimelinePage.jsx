@@ -210,7 +210,7 @@ const TimelinePage = () => {
               <div className="dot-inner"></div>
               <div className="end-heart">♥</div>
             </div>
-            <p className="end-message">More memories to come...</p>
+            <p className="end-message">We loved to see you grow into who you are, and we will always stand behind you. </p>
           </div>
 
           {/* Bonus Memories Section */}
