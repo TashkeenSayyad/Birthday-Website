@@ -12,13 +12,8 @@ const TimelinePage = () => {
   const cardRefs = useRef([]);
   const baseUrl = getBaseUrl();
 
-  // Randomly selected memories - one from each sender
-  const bonusMemories = [
-    memoriesData.find(m => m.id === 3),  // Mehwish
-    memoriesData.find(m => m.id === 5),  // Aqsa
-    memoriesData.find(m => m.id === 9),  // Laraib
-    memoriesData.find(m => m.id === 14), // Azaadi
-  ].filter(Boolean);
+  // All memories from all senders
+  const bonusMemories = memoriesData;
 
   useEffect(() => {
     setTimeline(timelineData);
