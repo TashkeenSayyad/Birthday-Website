@@ -413,7 +413,7 @@
 .card-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.5s ease;
   filter: sepia(0.05) saturate(1.1);
