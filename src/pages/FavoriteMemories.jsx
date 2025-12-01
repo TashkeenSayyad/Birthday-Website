@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import memoriesData from '../data/memories.json';
 import { useModal } from '../hooks/useModal';
 import { useSwipeToClose } from '../hooks/useSwipeToClose';
@@ -8,6 +8,9 @@ import '../styles/FavoriteMemories.css';
 const FavoriteMemories = () => {
   const [memories, setMemories] = useState([]);
   const [activeMemory, setActiveMemory] = useState(0);
+  const [selectedSender, setSelectedSender] = useState('all');
+  const [selectedMediaType, setSelectedMediaType] = useState('all');
+  const [viewMode, setViewMode] = useState('masonry'); // masonry, grid
 
   const { selectedItem: selectedMemory, isOpen: isModalOpen, openModal, closeModal } = useModal(
     ANIMATION_CONSTANTS.MODAL_CLOSE_DELAY
@@ -24,6 +27,67 @@ const FavoriteMemories = () => {
     setMemories(memoriesData);
   }, []);
 
+  // Get unique senders for filter dropdown
+  const senders = useMemo(() => {
+    const uniqueSenders = [...new Set(memoriesData.map(m => m.from))];
+    return uniqueSenders.sort();
+  }, []);
+
+  // Filter memories
+  const filteredAndSortedMemories = useMemo(() => {
+    let result = [...memories];
+
+    // Apply sender filter
+    if (selectedSender !== 'all') {
+      result = result.filter(memory => memory.from === selectedSender);
+    }
+
+    // Apply media type filter
+    if (selectedMediaType !== 'all') {
+      result = result.filter(memory => {
+        const type = memory.mediaType || 'image';
+        return type === selectedMediaType;
+      });
+    }
+
+    return result;
+  }, [memories, selectedSender, selectedMediaType]);
+
+  // Reset active memory when filters change
+  useEffect(() => {
+    setActiveMemory(0);
+  }, [selectedSender, selectedMediaType, viewMode]);
+
+  // Keyboard navigation for modal
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const handleKeyDown = (e) => {
+      const currentIndex = filteredAndSortedMemories.findIndex(m => m.id === selectedMemory.id);
+
+      switch (e.key) {
+        case 'ArrowLeft':
+          if (currentIndex > 0) {
+            openModal(filteredAndSortedMemories[currentIndex - 1]);
+          }
+          break;
+        case 'ArrowRight':
+          if (currentIndex < filteredAndSortedMemories.length - 1) {
+            openModal(filteredAndSortedMemories[currentIndex + 1]);
+          }
+          break;
+        case 'Escape':
+          closeModal();
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isModalOpen, selectedMemory, filteredAndSortedMemories, openModal, closeModal]);
+
 
   return (
     <div className="memories-page">
@@ -32,8 +96,85 @@ const FavoriteMemories = () => {
         <p className="page-subtitle">Moments captured in time</p>
       </div>
 
-      <div className="memories-gallery">
-        {memories.map((memory, index) => (
+      {/* Controls Section */}
+      <div className="memories-controls">
+        {/* View Mode Toggle */}
+        <div className="view-mode-section">
+          <button
+            className={`view-mode-btn ${viewMode === 'masonry' ? 'active' : ''}`}
+            onClick={() => setViewMode('masonry')}
+          >
+            <span className="view-icon">⊞</span>
+            <span className="view-label">Masonry</span>
+          </button>
+          <button
+            className={`view-mode-btn ${viewMode === 'grid' ? 'active' : ''}`}
+            onClick={() => setViewMode('grid')}
+          >
+            <span className="view-icon">▦</span>
+            <span className="view-label">Grid</span>
+          </button>
+        </div>
+
+        {/* Filter Chips Section */}
+        <div className="filter-chips-section">
+          <div className="filter-group">
+            <span className="filter-group-label">👤</span>
+            <div className="filter-chips">
+              <button
+                className={`filter-chip ${selectedSender === 'all' ? 'active' : ''}`}
+                onClick={() => setSelectedSender('all')}
+              >
+                All
+              </button>
+              {senders.map(sender => (
+                <button
+                  key={sender}
+                  className={`filter-chip ${selectedSender === sender ? 'active' : ''}`}
+                  onClick={() => setSelectedSender(sender)}
+                >
+                  {sender}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="filter-group">
+            <span className="filter-group-label">📁</span>
+            <div className="filter-chips">
+              <button
+                className={`filter-chip ${selectedMediaType === 'all' ? 'active' : ''}`}
+                onClick={() => setSelectedMediaType('all')}
+              >
+                All
+              </button>
+              <button
+                className={`filter-chip ${selectedMediaType === 'image' ? 'active' : ''}`}
+                onClick={() => setSelectedMediaType('image')}
+              >
+                📸 Photos
+              </button>
+              <button
+                className={`filter-chip ${selectedMediaType === 'video' ? 'active' : ''}`}
+                onClick={() => setSelectedMediaType('video')}
+              >
+                🎬 Videos
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Memories Gallery */}
+      <div className={`memories-gallery view-${viewMode}`}>
+        {filteredAndSortedMemories.length === 0 ? (
+          <div className="no-results">
+            <p className="no-results-icon">🔍</p>
+            <p className="no-results-text">No memories found</p>
+            <p className="no-results-hint">Try adjusting your filters or search query</p>
+          </div>
+        ) : (
+          filteredAndSortedMemories.map((memory, index) => (
           <div
             key={memory.id}
             className={`memory-card ${memory.size ? `size-${memory.size}` : 'size-medium'} ${index === activeMemory ? 'active' : ''}`}
@@ -68,7 +209,8 @@ const FavoriteMemories = () => {
               </div>
             </div>
           </div>
-        ))}
+        ))
+        )}
       </div>
 
       {isModalOpen && selectedMemory && (
@@ -90,6 +232,42 @@ const FavoriteMemories = () => {
               <div className="swipe-bar"></div>
             </div>
             <button className="modal-close" onClick={closeModal}>×</button>
+
+            {/* Navigation Arrows */}
+            {(() => {
+              const currentIndex = filteredAndSortedMemories.findIndex(m => m.id === selectedMemory.id);
+              const hasPrev = currentIndex > 0;
+              const hasNext = currentIndex < filteredAndSortedMemories.length - 1;
+
+              return (
+                <>
+                  {hasPrev && (
+                    <button
+                      className="modal-nav modal-nav-prev"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(filteredAndSortedMemories[currentIndex - 1]);
+                      }}
+                      title="Previous memory"
+                    >
+                      ‹
+                    </button>
+                  )}
+                  {hasNext && (
+                    <button
+                      className="modal-nav modal-nav-next"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(filteredAndSortedMemories[currentIndex + 1]);
+                      }}
+                      title="Next memory"
+                    >
+                      ›
+                    </button>
+                  )}
+                </>
+              );
+            })()}
             <div className="modal-image-container">
               {selectedMemory.mediaType === 'video' ? (
                 <video
