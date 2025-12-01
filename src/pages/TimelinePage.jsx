@@ -12,13 +12,16 @@ const TimelinePage = () => {
   const cardRefs = useRef([]);
   const baseUrl = getBaseUrl();
 
-  // Randomly selected memories - one from each sender
-  const bonusMemories = [
-    memoriesData.find(m => m.id === 3),  // Mehwish
-    memoriesData.find(m => m.id === 5),  // Aqsa
-    memoriesData.find(m => m.id === 9),  // Laraib
-    memoriesData.find(m => m.id === 14), // Azaadi
-  ].filter(Boolean);
+  // One picture (not video) from each sender
+  const bonusMemories = React.useMemo(() => {
+    const senderMap = new Map();
+    memoriesData.forEach(memory => {
+      if (memory.from && !senderMap.has(memory.from) && memory.mediaType !== 'video') {
+        senderMap.set(memory.from, memory);
+      }
+    });
+    return Array.from(senderMap.values());
+  }, []);
 
   useEffect(() => {
     setTimeline(timelineData);
