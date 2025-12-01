@@ -12,11 +12,11 @@ const TimelinePage = () => {
   const cardRefs = useRef([]);
   const baseUrl = getBaseUrl();
 
-  // One memory from each sender
+  // One picture (not video) from each sender
   const bonusMemories = React.useMemo(() => {
     const senderMap = new Map();
     memoriesData.forEach(memory => {
-      if (memory.from && !senderMap.has(memory.from)) {
+      if (memory.from && !senderMap.has(memory.from) && memory.mediaType !== 'video') {
         senderMap.set(memory.from, memory);
       }
     });
