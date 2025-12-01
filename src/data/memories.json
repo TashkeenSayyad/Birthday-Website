@@ -16,6 +16,7 @@
     "description": "One of my fave videos, just sitting in a car with you and enjoying the moment",
     "mediaType": "video",
     "image": "videos/Tash_Anusha_car.mp4",
+    "thumbnail": "images/thumbnails/Tash_Anusha_car.jpg",
     "from": "Tashkeen",
     "size": "medium"
   },
@@ -36,6 +37,7 @@
     "description": "dancing in the car, until a khusra interrupted us",
     "mediaType": "video",
     "image": "videos/anusha-car-dancing.mp4",
+    "thumbnail": "images/thumbnails/anusha-car-dancing.jpg",
     "from": "Laraib",
     "size": "tall"
   },
@@ -65,6 +67,7 @@
     "description": "",
     "mediaType": "video",
     "image": "videos/azadi-anusha-home.mp4",
+    "thumbnail": "images/thumbnails/azadi-anusha-home.jpg",
     "from": "Azadi",
     "size": "wide"
   },
@@ -124,6 +127,7 @@
     "description": "A candid video of us dancing, that was edited by your Chachi",
     "mediaType": "video",
     "image": "videos/Tash_Anusha_dance.mp4",
+    "thumbnail": "images/thumbnails/Tash_Anusha_dance.jpg",
     "from": "Tashkeen",
     "size": "tall"
   },
@@ -231,6 +235,7 @@
     "description": "I really wasn't a fan of dancing until I met you",
     "mediaType": "video",
     "image": "videos/Tash_Anusha_dance2.mp4",
+    "thumbnail": "images/thumbnails/Tash_Anusha_dance2.jpg",
     "from": "Tashkeen",
     "size": "medium"
   },
@@ -251,6 +256,7 @@
     "description": ".",
     "mediaType": "video",
     "image": "videos/aqsa-car-ride.mp4",
+    "thumbnail": "images/thumbnails/aqsa-car-ride.jpg",
     "from": "Aqsa",
     "size": "small"
   },
@@ -281,6 +287,7 @@
     "description": "",
     "mediaType": "video",
     "image": "videos/azadi-anusha-video.mp4",
+    "thumbnail": "images/thumbnails/azadi-anusha-video.jpg",
     "from": "Azadi",
     "size": "tall"
   }
