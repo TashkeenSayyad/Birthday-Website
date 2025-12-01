@@ -651,6 +651,10 @@
   object-fit: contain;
 }
 
+.bonus-memory-card .card-image-container {
+  background: #000;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
