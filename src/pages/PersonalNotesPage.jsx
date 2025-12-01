@@ -1,7 +1,9 @@
 import React from 'react';
 import FloatingParticles from '../components/FloatingParticles';
 import FloatingHearts from '../components/FloatingHearts';
+import HeartFlowField from '../components/HeartFlowField';
 import Gallery from '../components/Gallery';
+import { ArtisticHeader } from '../components/DecorativeElements';
 import specialNotesData from '../data/specialNotes.json';
 import '../styles/PersonalNotesPage.css';
 
@@ -17,17 +19,15 @@ const PersonalNotesPage = () => {
 
   return (
     <>
+      <HeartFlowField seed={54321} particleCount={400} />
       <FloatingParticles />
       <FloatingHearts />
 
       <div className="personal-notes-page">
-        <header className="page-header">
-          <h1 className="page-title">Personal Letters</h1>
-          <div className="title-decoration">
-            <span className="heart-icon">💌</span>
-          </div>
-          <p className="page-subtitle">Heartfelt letters written just for you</p>
-        </header>
+        <ArtisticHeader
+          title="Personal Letters 💌"
+          subtitle="Heartfelt letters written just for you"
+        />
 
         {letters.length === 0 ? (
           <div className="no-notes">

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FloatingParticles from '../components/FloatingParticles';
+import AlgorithmicBackground from '../components/AlgorithmicBackground';
+import { FloralDivider } from '../components/DecorativeElements';
 import timelineData from '../data/timeline.json';
 import memoriesData from '../data/memories.json';
 import { getBaseUrl } from '../utils/baseUrl';
@@ -83,6 +85,7 @@ const TimelinePage = () => {
   if (timeline.length === 0) {
     return (
       <>
+        <AlgorithmicBackground seed={33333} intensity={0.5} />
         <FloatingParticles />
         <div className="app-content">
           <div className="timeline-loading">Loading timeline...</div>
@@ -93,10 +96,12 @@ const TimelinePage = () => {
 
   return (
     <>
+      <AlgorithmicBackground seed={33333} intensity={0.5} />
       <FloatingParticles />
       <div className="app-content timeline-content">
         <header className="app-header timeline-header">
-          <h1 className="main-title timeline-main-title">Journey Through Time</h1>
+          <h1 className="main-title timeline-main-title gradient-text">Journey Through Time ⏳</h1>
+          <FloralDivider />
           <div className="title-decoration">
             <span className="decoration-heart">♥</span>
             <span className="decoration-line"></span>

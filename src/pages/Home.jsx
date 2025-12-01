@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FloatingParticles from '../components/FloatingParticles';
 import FloatingHearts from '../components/FloatingHearts';
+import AlgorithmicBackground from '../components/AlgorithmicBackground';
+import { FloralDivider, CornerDecoration } from '../components/DecorativeElements';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -103,6 +105,7 @@ const Home = () => {
 
   return (
     <>
+      <AlgorithmicBackground seed={12345} intensity={0.6} />
       <FloatingParticles />
       <FloatingHearts />
 
@@ -134,9 +137,11 @@ const Home = () => {
         }}
       >
         <header className="home-header">
+          <CornerDecoration position="top-left" size={120} />
+          <CornerDecoration position="top-right" size={120} />
           <div className="header-content">
-            <h1 className="home-title">Happy Birthday</h1>
-            <div className="title-decoration"></div>
+            <h1 className="home-title gradient-text">Happy Birthday</h1>
+            <FloralDivider />
             <p className="home-subtitle">Twenty-four years of your beautiful life</p>
           </div>
         </header>

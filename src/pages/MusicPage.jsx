@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import FloatingHearts from '../components/FloatingHearts';
+import SpiralGalaxy from '../components/SpiralGalaxy';
+import { ArtisticHeader } from '../components/DecorativeElements';
 import { getBaseUrl } from '../utils/baseUrl';
 import { loadLyrics, getCurrentLyricIndex } from '../utils/lyricsParser';
 import { ANIMATION_CONSTANTS } from '../constants/animations';
@@ -84,6 +86,7 @@ const MusicPage = () => {
 
   return (
     <>
+      <SpiralGalaxy seed={77777} interactive={true} />
       <FloatingHearts />
       <div className="music-page">
         <div className="music-header">
