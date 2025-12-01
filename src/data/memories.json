@@ -292,36 +292,36 @@
     "mediaType": "image",
     "image": "images/memories/ishu_group.jpg",
     "from": "Ishu",
-    "size": "large"
+    "size": "wide"
   },
   {
     "id": 31,
+    "title": "Ishu & Anusha Memory: Another One",
+    "date": "2025-04",
+    "description": "Ishu, Suhab and Anusha",
+    "mediaType": "image",
+    "image": "images/memories/ishu_sis_group2.jpg",
+    "from": "Ishu",
+    "size": "medium"
+  },
+  {
+    "id": 32,
     "title": "Ishu & Anusha Memory: The Fantastic Four",
     "date": "2025-04",
     "description": "Suhab, Anusha, Laraib and Ishaal together",
     "mediaType": "image",
     "image": "images/memories/ishu_sis_group.jpg",
     "from": "Ishu",
-    "size": "large"
+    "size": "wide"
   },
-  {
-    "id": 32,
+{
+    "id": 33,
     "title": "Ishu & Anusha Memory: Group Hug",
     "date": "2025-04",
     "description": "GROUP HUG!!",
     "mediaType": "image",
     "image": "images/memories/ishu_group_hug.jpg",
     "from": "Ishu",
-    "size": "tall"
-  },
-  {
-    "id": 33,
-    "title": "Ishu & Anusha Memory: Another One",
-    "date": "2025-04",
-    "description": "Ishu, Suhab and Anusha",
-    "mediaType": "image",
-    "image": "images/memories/ishu_anusha_sis_group2.jpg",
-    "from": "Ishu",
-    "size": "medium"
+    "size": "large"
   }
 ]
