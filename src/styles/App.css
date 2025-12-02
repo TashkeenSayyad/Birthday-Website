@@ -63,20 +63,39 @@ body {
 .app {
   min-height: 100vh;
   background:
-    radial-gradient(ellipse at top left, rgba(255, 209, 220, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at top right, rgba(201, 169, 224, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom, rgba(255, 218, 185, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 15% 20%, rgba(255, 154, 139, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.22) 0%, transparent 45%),
+    radial-gradient(ellipse at top left, rgba(255, 209, 220, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at top right, rgba(201, 169, 224, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom center, rgba(217, 70, 239, 0.18) 0%, transparent 55%),
     linear-gradient(135deg,
       #FFF8F0 0%,
-      #FFE9E9 20%,
-      #F5E6F0 40%,
-      #EDE5F5 60%,
-      #E8E0F5 80%,
+      #FFE9E9 12%,
+      #FFE4F0 25%,
+      #F5E6F0 38%,
+      #F0E3F5 50%,
+      #EDE5F5 62%,
+      #E8E0F8 75%,
+      #EDE8FA 88%,
       #F0E8F5 100%
     );
   position: relative;
   overflow-x: hidden;
   overscroll-behavior: none;
+  background-size: 100% 100%;
+  animation: appBackgroundShift 25s ease-in-out infinite alternate;
+}
+
+@keyframes appBackgroundShift {
+  0% {
+    background-position: 0% 0%, 100% 100%, 0% 0%, 100% 0%, 50% 100%, 0% 0%;
+  }
+  50% {
+    background-position: 10% 10%, 90% 90%, 5% 5%, 95% 5%, 50% 95%, 0% 0%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 100%, 0% 0%, 100% 0%, 50% 100%, 0% 0%;
+  }
 }
 
 /* Magical texture overlay */
