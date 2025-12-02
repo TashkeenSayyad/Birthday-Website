@@ -1,0 +1,117 @@
+/* Animated Backgrounds Base Styling */
+
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.animated-background svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Floating Petals */
+.floating-petals {
+  opacity: 0.8;
+}
+
+/* Geometric Waves */
+.geometric-waves {
+  opacity: 0.9;
+}
+
+/* Sparkle Constellation */
+.sparkle-constellation {
+  background: radial-gradient(ellipse at center, rgba(255, 248, 231, 0.3) 0%, transparent 70%);
+  opacity: 0.7;
+}
+
+/* Heart Burst */
+.heart-burst {
+  opacity: 0.6;
+}
+
+/* Gradient Mesh */
+.gradient-mesh {
+  opacity: 1;
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE9E9 20%, #F5E6F0 40%, #EDE5F5 60%, #E8E0F5 80%, #F0E8F5 100%);
+}
+
+/* Aurora Waves */
+.aurora-waves {
+  opacity: 0.8;
+  background: linear-gradient(to bottom, #FFF8F0 0%, #F5E6F0 50%, #EDE5F5 100%);
+}
+
+/* Layering utilities */
+.background-layer-1 {
+  z-index: 0;
+}
+
+.background-layer-2 {
+  z-index: 1;
+}
+
+.background-layer-3 {
+  z-index: 2;
+}
+
+/* Allow stacking multiple backgrounds */
+.animated-background.overlay {
+  background: transparent;
+  mix-blend-mode: multiply;
+}
+
+.animated-background.lighten {
+  mix-blend-mode: lighten;
+}
+
+.animated-background.soft-light {
+  mix-blend-mode: soft-light;
+}
+
+/* Performance optimizations */
+.animated-background svg {
+  will-change: transform;
+}
+
+.animated-background svg * {
+  will-change: transform, opacity;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animated-background {
+    opacity: 0.7;
+  }
+}
+
+/* Accessibility - Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animated-background svg animate,
+  .animated-background svg animateTransform {
+    animation-duration: 0.01s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Fade in animation for backgrounds */
+@keyframes background-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animated-background {
+  animation: background-fade-in 2s ease-out;
+}

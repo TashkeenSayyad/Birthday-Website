@@ -1,0 +1,170 @@
+/* Elegant Frames Styling */
+
+/* Ornate Frame */
+.ornate-frame-container {
+  position: relative;
+  padding: 40px;
+  margin: 20px auto;
+}
+
+.ornate-frame-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ornate-frame-content {
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+}
+
+/* Floral Circle Frame */
+.floral-circle-frame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.floral-circle-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floral-circle-content {
+  position: relative;
+  z-index: 2;
+  max-width: 70%;
+  max-height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Art Deco Frame */
+.art-deco-frame {
+  position: relative;
+  padding: 50px 40px;
+  margin: 20px auto;
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE9E9 100%);
+}
+
+.art-deco-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.art-deco-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+/* Vintage Photo Frame */
+.vintage-photo-frame {
+  position: relative;
+  padding: 0;
+  margin: 20px auto;
+  background: #8B7355;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.vintage-frame-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.vintage-frame-content {
+  position: relative;
+  z-index: 2;
+  margin: 40px;
+  background: white;
+  overflow: hidden;
+}
+
+/* Whimsical Border */
+.whimsical-border {
+  position: relative;
+  padding: 40px;
+  margin: 20px auto;
+  background: linear-gradient(135deg, #FFF8F0 0%, #F5E6F0 50%, #EDE5F5 100%);
+}
+
+.whimsical-border-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.whimsical-border-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+/* Hover effects */
+.ornate-frame-container:hover .ornate-frame-svg {
+  filter: drop-shadow(0 8px 20px rgba(155, 114, 170, 0.3));
+}
+
+.floral-circle-frame:hover .floral-circle-svg {
+  filter: drop-shadow(0 8px 20px rgba(232, 180, 160, 0.3));
+}
+
+.art-deco-frame:hover .art-deco-svg {
+  filter: drop-shadow(0 6px 16px rgba(155, 114, 170, 0.25));
+}
+
+.vintage-photo-frame:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.whimsical-border:hover .whimsical-border-svg {
+  filter: drop-shadow(0 6px 16px rgba(255, 209, 220, 0.4));
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ornate-frame-container,
+  .art-deco-frame,
+  .whimsical-border {
+    padding: 30px 20px;
+  }
+
+  .ornate-frame-content,
+  .art-deco-content,
+  .whimsical-border-content {
+    padding: 15px;
+  }
+
+  .floral-circle-content {
+    max-width: 80%;
+    max-height: 80%;
+  }
+}

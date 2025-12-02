@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FloatingParticles from '../components/FloatingParticles';
 import FloatingHearts from '../components/FloatingHearts';
+import { FloralOrnament, DecorativeHeart, CornerOrnament, SparkleBurst } from '../components/DecorativeElements';
+import { AuroraWaves } from '../components/AnimatedBackgrounds';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -103,8 +105,17 @@ const Home = () => {
 
   return (
     <>
+      <AuroraWaves />
       <FloatingParticles />
       <FloatingHearts />
+
+      {/* Decorative corner ornaments */}
+      <div style={{ position: 'fixed', top: '20px', left: '20px', zIndex: 1, opacity: 0.7 }}>
+        <CornerOrnament size={100} color="#9B72AA" />
+      </div>
+      <div style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 1, opacity: 0.7 }}>
+        <CornerOrnament size={100} flip={true} color="#D5516B" />
+      </div>
 
       {/* Pull-to-Refresh Indicator */}
       <div
@@ -135,9 +146,23 @@ const Home = () => {
       >
         <header className="home-header">
           <div className="header-content">
+            {/* Decorative hearts above title */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '20px' }}>
+              <DecorativeHeart size={40} />
+              <FloralOrnament size={60} color="#D5516B" />
+              <DecorativeHeart size={40} primaryColor="#C9A9E0" accentColor="#9B72AA" />
+            </div>
+
             <h1 className="home-title">Happy Birthday</h1>
             <div className="title-decoration"></div>
             <p className="home-subtitle">Twenty-four years of your beautiful life</p>
+
+            {/* Sparkle decoration */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginTop: '15px' }}>
+              <SparkleBurst size={30} />
+              <SparkleBurst size={30} />
+              <SparkleBurst size={30} />
+            </div>
           </div>
         </header>
 
