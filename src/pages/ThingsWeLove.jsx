@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import thingsWeLoveData from '../data/thingsWeLove.json';
 import { useModal } from '../hooks/useModal';
 import { ANIMATION_CONSTANTS } from '../constants/animations';
+import GentleSparklesCanvas from '../components/GentleSparklesCanvas';
 import '../styles/ThingsWeLove.css';
 
 const ThingsWeLove = () => {
@@ -29,34 +30,47 @@ const ThingsWeLove = () => {
   const rotations = [2, -2, 1, -1, 2, -2, 1, -1, 2, -1];
 
   return (
-    <div className="sticky-notes-page">
+    <div className="things-we-love-page">
+      <GentleSparklesCanvas />
+
       <div className="page-header">
         <h1 className="page-title">Things We Love About You</h1>
-        <p className="page-subtitle">Click a note to discover more</p>
+        <div className="title-decoration">
+          <div className="decoration-line"></div>
+          <span className="decoration-heart">♥</span>
+          <div className="decoration-line"></div>
+          <span className="decoration-star">✨</span>
+          <div className="decoration-line"></div>
+        </div>
+        <p className="page-subtitle">Click a card to discover more</p>
       </div>
 
-      <div className="notes-board">
+      <div className="things-grid">
         {items.length === 0 ? (
-          <p style={{ color: 'white', fontSize: '1.5rem', textAlign: 'center' }}>Loading...</p>
+          <p className="loading-text">Loading...</p>
         ) : (
           items.map((item, index) => (
             <div
               key={item.id}
-              className="sticky-note"
+              className="polaroid-card"
               style={{
-                '--note-color': colors[index % colors.length],
-                '--note-rotation': `${rotations[index % rotations.length]}deg`,
                 animationDelay: `${index * ANIMATION_CONSTANTS.CARD_STAGGER_DELAY}ms`,
               }}
               onClick={() => openModal(item)}
             >
-              <div className="note-front">
-                <div className="note-content-front">
-                  <h3>{item.title}</h3>
-                  <div className="note-divider"></div>
-                  <p className="note-from">From {item.from}</p>
+              <div className="card-inner">
+                <div className="washi-tape"></div>
+                <div className="card-shine"></div>
+                <div className="card-image-container">
+                  <img src={item.image} alt={item.title} className="card-image" />
                 </div>
-                <div className="note-corner-fold"></div>
+                <div className="card-caption">
+                  <h3 className="card-title">{item.title}</h3>
+                  <p className="card-from">From {item.from}</p>
+                </div>
+                <div className="corner-decoration">
+                  <span className="corner-emoji">✨</span>
+                </div>
               </div>
             </div>
           ))

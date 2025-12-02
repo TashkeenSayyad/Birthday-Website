@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import ConstantSparkles from './components/ConstantSparkles';
 import BackgroundMusic from './components/BackgroundMusic';
+import CanvasBackground from './components/CanvasBackground';
+import AnimatedGradientWaves from './components/AnimatedGradientWaves';
 import CandlePage from './pages/CandlePage';
 import Home from './pages/Home';
 import ThingsWeLove from './pages/ThingsWeLove';
@@ -52,7 +53,8 @@ function App() {
   return (
     <Router basename={import.meta.env.BASE_URL}>
       <div className="app">
-        <ConstantSparkles />
+        <AnimatedGradientWaves />
+        <CanvasBackground />
         <BackgroundMusic />
         <Navigation onBackToCandles={handleBackToCandles} />
         <Routes>

@@ -3,6 +3,8 @@ import memoriesData from '../data/memories.json';
 import { useModal } from '../hooks/useModal';
 import { useSwipeToClose } from '../hooks/useSwipeToClose';
 import { ANIMATION_CONSTANTS } from '../constants/animations';
+import LightRaysCanvas from '../components/LightRaysCanvas';
+import CursorTrailCanvas from '../components/CursorTrailCanvas';
 import '../styles/FavoriteMemories.css';
 
 const FavoriteMemories = () => {
@@ -91,6 +93,9 @@ const FavoriteMemories = () => {
 
   return (
     <div className="memories-page">
+      <LightRaysCanvas />
+      <CursorTrailCanvas />
+
       <div className="page-header">
         <h1 className="page-title">Our Favorite Memories</h1>
         <p className="page-subtitle">Moments captured in time</p>
@@ -177,35 +182,46 @@ const FavoriteMemories = () => {
           filteredAndSortedMemories.map((memory, index) => (
           <div
             key={memory.id}
-            className={`memory-card ${memory.size ? `size-${memory.size}` : 'size-medium'} ${index === activeMemory ? 'active' : ''}`}
+            className={`polaroid-card memory-card ${memory.size ? `size-${memory.size}` : 'size-medium'} ${index === activeMemory ? 'active' : ''}`}
             onClick={() => openModal(memory)}
             onMouseEnter={() => setActiveMemory(index)}
+            style={{
+              animationDelay: `${index * 0.1}s`,
+            }}
           >
-            {memory.mediaType === 'video' && (
-              <div className="video-indicator">🎬</div>
-            )}
-            <div className="memory-image-main">
-              {memory.mediaType === 'video' && !memory.thumbnail ? (
-                <video
-                  src={memory.image}
-                  className="progressive-image"
-                  preload="metadata"
-                  muted
-                  playsInline
-                />
-              ) : (
-                <img
-                  src={memory.thumbnail || memory.image}
-                  alt={memory.title}
-                  loading="lazy"
-                  className="progressive-image"
-                />
+            <div className="card-inner">
+              <div className="washi-tape"></div>
+              <div className="card-shine"></div>
+              {memory.mediaType === 'video' && (
+                <div className="video-play-overlay">
+                  <div className="play-icon">▶</div>
+                </div>
               )}
-              <div className="memory-overlay">
-                <span className="memory-date">{memory.date}</span>
-                <h3 className="memory-title">{memory.title}</h3>
-                <p className="memory-description">{memory.description}</p>
-                <p className="memory-from">— {memory.from}</p>
+              <div className="card-image-container">
+                {memory.mediaType === 'video' && !memory.thumbnail ? (
+                  <video
+                    src={memory.image}
+                    className="card-image"
+                    preload="metadata"
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={memory.thumbnail || memory.image}
+                    alt={memory.title}
+                    loading="lazy"
+                    className="card-image"
+                  />
+                )}
+              </div>
+              <div className="card-caption">
+                <span className="card-date">{memory.date}</span>
+                <h3 className="card-title">{memory.title}</h3>
+                <p className="card-from">— {memory.from}</p>
+              </div>
+              <div className="corner-decoration">
+                <span className="corner-emoji">📸</span>
               </div>
             </div>
           </div>

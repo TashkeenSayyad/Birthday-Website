@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FloatingParticles from '../components/FloatingParticles';
 import FloatingHearts from '../components/FloatingHearts';
+import FloatingHeartsCanvas from '../components/FloatingHeartsCanvas';
+import CursorTrailCanvas from '../components/CursorTrailCanvas';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -105,6 +107,8 @@ const Home = () => {
     <>
       <FloatingParticles />
       <FloatingHearts />
+      <FloatingHeartsCanvas />
+      <CursorTrailCanvas />
 
       {/* Pull-to-Refresh Indicator */}
       <div
@@ -136,7 +140,13 @@ const Home = () => {
         <header className="home-header">
           <div className="header-content">
             <h1 className="home-title">Happy Birthday</h1>
-            <div className="title-decoration"></div>
+            <div className="title-decoration">
+              <div className="decoration-line"></div>
+              <span className="decoration-heart">♥</span>
+              <div className="decoration-line"></div>
+              <span className="decoration-star">✨</span>
+              <div className="decoration-line"></div>
+            </div>
             <p className="home-subtitle">Twenty-four years of your beautiful life</p>
           </div>
         </header>
@@ -145,23 +155,26 @@ const Home = () => {
           {menuItems.map((item, index) => (
             <div
               key={item.id}
-              className="menu-card"
+              className="polaroid-card menu-card"
               onClick={() => navigate(item.path)}
               style={{
                 animationDelay: `${index * 0.15}s`,
-                borderColor: `${item.color}40`
               }}
             >
-              <div className="menu-card-content">
-                <span className="menu-icon">{item.icon}</span>
-                <h2 className="menu-title">{item.title}</h2>
-                <p className="menu-subtitle">{item.subtitle}</p>
-                <div className="menu-arrow">→</div>
+              <div className="card-inner">
+                <div className="washi-tape"></div>
+                <div className="card-shine"></div>
+                <div className="card-icon-container">
+                  <span className="menu-icon">{item.icon}</span>
+                </div>
+                <div className="card-caption">
+                  <h2 className="card-title">{item.title}</h2>
+                  <p className="card-description">{item.subtitle}</p>
+                </div>
+                <div className="corner-decoration">
+                  <span className="corner-emoji">✨</span>
+                </div>
               </div>
-              <div
-                className="menu-card-glow"
-                style={{ background: `radial-gradient(circle at center, ${item.color}20, transparent)` }}
-              ></div>
             </div>
           ))}
         </div>
