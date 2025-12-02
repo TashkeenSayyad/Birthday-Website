@@ -168,5 +168,85 @@
     "mediaType": "image",
     "media": "images/timeline/the_og_trio2.jpg",
     "thumbnail": "images/timeline/the_og_trio2.jpg"
+  },
+  {
+    "id": 18,
+    "year": "You as an Adult",
+    "date": "Adulthood",
+    "title": "",
+    "description": "Round two of the trio",
+    "mediaType": "image",
+    "media": "images/timeline/the_og_trio2.jpg",
+    "thumbnail": "images/timeline/the_og_trio2.jpg"
+  },
+  {
+    "id": 19,
+    "year": "You as an Adult",
+    "date": "Adulthood",
+    "title": "",
+    "description": "Round two of the trio",
+    "mediaType": "image",
+    "media": "images/timeline/anusha-adult.jpg",
+    "thumbnail": "images/timeline/anusha-adult.jpg"
+  },
+  {
+    "id": 20,
+    "year": "You as an Adult",
+    "date": "Adulthood",
+    "title": "",
+    "description": "",
+    "mediaType": "image",
+    "media": "images/timeline/anusha-adult2.jpg",
+    "thumbnail": "images/timeline/anusha-adult2.jpg"
+  },
+  {
+    "id": 21,
+    "year": "You as an Adult",
+    "date": "Adulthood",
+    "title": "Your 23rd Birthday",
+    "description": "The day you turned 23",
+    "mediaType": "image",
+    "media": "images/timeline/anusha-adult-bday-2024.jpg",
+    "thumbnail": "images/timeline/anusha-adult-bday-2024.jpg"
+  },
+  {
+    "id": 22,
+    "year": "You as an Adult",
+    "date": "Baat Pakki",
+    "title": "Your Baat Pakki Event",
+    "description": "The day you promised to marry me",
+    "mediaType": "video",
+    "media": "images/timeline/baat-pakki.mp4",
+    "thumbnail": "images/timeline/baat-pakki2.jpg"
+  },
+  {
+    "id": 23,
+    "year": "You as an Adult",
+    "date": "Valentines Day 2024",
+    "title": "Your first Valentines Day as my Fiancée",
+    "description": "Celebrating our first Valentines Day in 2024",
+    "mediaType": "video",
+    "media": "images/timeline/valentines.mp4",
+    "thumbnail": "images/timeline/valentines2.jpg"
+  },
+  {
+    "id": 24,
+    "year": "You as an Adult",
+    "date": "Dholki Night",
+    "title": "Our Engagement Day",
+    "description": "The day we got engaged and celebrated with family",
+    "mediaType": "image",
+    "media": "images/timeline/dholki.jpg",
+    "thumbnail": "images/timeline/dholki.jpg"
+  },
+  {
+    "id": 25,
+    "year": "You as an Adult",
+    "date": "Nikah",
+    "title": "Wedding Celebration",
+    "description": "The day we got married.",
+    "mediaType": "image",
+    "media": "images/timeline/nikah.jpg",
+    "thumbnail": "images/timeline/nikah.jpg"
   }
 ]
