@@ -11,7 +11,6 @@ import PersonalNotesPage from './pages/PersonalNotesPage';
 import PersonalNote from './components/PersonalNote';
 import MusicPage from './pages/MusicPage';
 import TimelinePage from './pages/TimelinePage';
-import DesignShowcase from './pages/DesignShowcase';
 import './styles/App.css';
 
 // Component to handle initial redirect to candle page
@@ -65,7 +64,6 @@ function App() {
           <Route path="/note/:person" element={<PersonalNote />} />
           <Route path="/music" element={<MusicPage />} />
           <Route path="/timeline" element={<TimelinePage />} />
-          <Route path="/design-showcase" element={<DesignShowcase />} />
         </Routes>
       </div>
     </Router>
