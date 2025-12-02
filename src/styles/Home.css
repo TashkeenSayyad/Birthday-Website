@@ -6,16 +6,31 @@
   justify-content: center;
   align-items: center;
   background:
-    radial-gradient(ellipse at top right, rgba(255, 209, 220, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 20% 20%, rgba(255, 182, 193, 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(221, 160, 221, 0.35) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 209, 220, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at top right, rgba(255, 192, 203, 0.3) 0%, transparent 50%),
     radial-gradient(ellipse at bottom left, rgba(201, 169, 224, 0.3) 0%, transparent 50%),
     linear-gradient(135deg,
-      var(--color-warm-cream) 0%,
-      var(--color-soft-pink) 30%,
+      #FFF8F0 0%,
+      #FFE9F0 20%,
+      var(--color-soft-pink) 40%,
       #F5E6F0 60%,
-      #EDE5F5 100%
+      #EDE5F5 80%,
+      #E8E0F8 100%
     );
   position: relative;
   overflow: hidden;
+  animation: backgroundPulse 15s ease-in-out infinite;
+}
+
+@keyframes backgroundPulse {
+  0%, 100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.05) saturate(1.1);
+  }
 }
 
 /* Paper texture overlay */
@@ -32,19 +47,41 @@
   z-index: 1;
 }
 
-/* Floating decorative elements */
+/* Floating decorative gradient orbs */
 .home-page::after {
   content: '';
   position: absolute;
-  bottom: -20%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(232, 180, 160, 0.2) 0%, rgba(255, 154, 139, 0.1) 50%, transparent 70%);
-  border-radius: 50%;
-  animation: float 20s ease-in-out infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(255, 182, 193, 0.25) 0%, transparent 35%),
+    radial-gradient(circle at 85% 75%, rgba(221, 160, 221, 0.2) 0%, transparent 35%),
+    radial-gradient(circle at 70% 15%, rgba(255, 209, 220, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 30% 85%, rgba(232, 180, 160, 0.18) 0%, transparent 30%);
+  animation: floatOrbs 30s ease-in-out infinite;
   pointer-events: none;
   z-index: 1;
+}
+
+@keyframes floatOrbs {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(5%, -3%) scale(1.05);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-3%, 5%) scale(1.1);
+    opacity: 0.95;
+  }
+  75% {
+    transform: translate(3%, 2%) scale(1.05);
+    opacity: 0.9;
+  }
 }
 
 .home-header {

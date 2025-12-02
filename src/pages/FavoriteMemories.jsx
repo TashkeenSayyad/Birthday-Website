@@ -3,6 +3,8 @@ import memoriesData from '../data/memories.json';
 import { useModal } from '../hooks/useModal';
 import { useSwipeToClose } from '../hooks/useSwipeToClose';
 import { ANIMATION_CONSTANTS } from '../constants/animations';
+import LightRaysCanvas from '../components/LightRaysCanvas';
+import CursorTrailCanvas from '../components/CursorTrailCanvas';
 import '../styles/FavoriteMemories.css';
 
 const FavoriteMemories = () => {
@@ -91,6 +93,9 @@ const FavoriteMemories = () => {
 
   return (
     <div className="memories-page">
+      <LightRaysCanvas />
+      <CursorTrailCanvas />
+
       <div className="page-header">
         <h1 className="page-title">Our Favorite Memories</h1>
         <p className="page-subtitle">Moments captured in time</p>

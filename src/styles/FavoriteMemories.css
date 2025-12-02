@@ -2,22 +2,32 @@
   min-height: 100vh;
   padding: 4rem 2rem;
   background:
-    radial-gradient(ellipse at top right, rgba(255, 182, 193, 0.4) 0%, transparent 60%),
-    radial-gradient(ellipse at bottom left, rgba(221, 160, 221, 0.35) 0%, transparent 55%),
-    radial-gradient(circle at center, rgba(176, 224, 230, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 192, 203, 0.25) 0%, transparent 40%),
-    radial-gradient(circle at 20% 80%, rgba(230, 190, 255, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 25% 30%, rgba(255, 182, 193, 0.45) 0%, transparent 50%),
+    radial-gradient(circle at 75% 70%, rgba(221, 160, 221, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at top right, rgba(255, 192, 203, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(176, 224, 230, 0.3) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(230, 190, 255, 0.25) 0%, transparent 60%),
     linear-gradient(135deg,
-      #fef3f7 0%,
-      #f8e8f5 20%,
-      #f0e6fa 40%,
-      #e8e9fd 60%,
-      #e5f3ff 80%,
+      #FFF8FA 0%,
+      #fef3f7 15%,
+      #f8e8f5 30%,
+      #f0e6fa 50%,
+      #e8e9fd 70%,
+      #e5f3ff 85%,
       #f2e9f9 100%
     );
   position: relative;
   overflow: hidden;
-  animation: backgroundShift 20s ease infinite;
+  animation: backgroundShift 25s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+  0%, 100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.08) saturate(1.15);
+  }
 }
 
 /* Animation imported from shared-animations.css */

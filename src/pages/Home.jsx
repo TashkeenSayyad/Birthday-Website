@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FloatingParticles from '../components/FloatingParticles';
 import FloatingHearts from '../components/FloatingHearts';
+import FloatingHeartsCanvas from '../components/FloatingHeartsCanvas';
+import CursorTrailCanvas from '../components/CursorTrailCanvas';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -105,6 +107,8 @@ const Home = () => {
     <>
       <FloatingParticles />
       <FloatingHearts />
+      <FloatingHeartsCanvas />
+      <CursorTrailCanvas />
 
       {/* Pull-to-Refresh Indicator */}
       <div
