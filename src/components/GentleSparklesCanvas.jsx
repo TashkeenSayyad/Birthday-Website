@@ -32,17 +32,19 @@ const GentleSparklesCanvas = () => {
       reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 2 + 1;
+        this.size = Math.random() * 4 + 2;
         this.life = Math.random() * 200 + 100;
         this.maxLife = this.life;
-        this.twinkleSpeed = Math.random() * 0.02 + 0.01;
+        this.twinkleSpeed = Math.random() * 0.03 + 0.015;
         this.phase = Math.random() * Math.PI * 2;
 
-        // Soft pastel colors
+        // Elegant pastel colors with more visibility
         const colors = [
-          { r: 255, g: 240, b: 245 }, // Very light pink
-          { r: 255, g: 250, b: 240 }, // Cream
-          { r: 245, g: 240, b: 255 }, // Very light lavender
+          { r: 255, g: 220, b: 235 }, // Soft pink
+          { r: 255, g: 235, b: 220 }, // Warm cream
+          { r: 235, g: 220, b: 255 }, // Soft lavender
+          { r: 255, g: 210, b: 240 }, // Rose
+          { r: 240, g: 220, b: 255 }, // Light purple
         ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
@@ -59,16 +61,16 @@ const GentleSparklesCanvas = () => {
       draw(ctx) {
         const lifeRatio = this.life / this.maxLife;
         const twinkle = (Math.sin(this.phase) + 1) / 2; // 0 to 1
-        const opacity = lifeRatio * twinkle * 0.3;
+        const opacity = lifeRatio * twinkle * 0.7;
 
         ctx.fillStyle = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${opacity})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Subtle glow
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${opacity * 0.5})`;
+        // Elegant glow
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = `rgba(${this.color.r}, ${this.color.g}, ${this.color.b}, ${opacity * 0.8})`;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
@@ -77,7 +79,7 @@ const GentleSparklesCanvas = () => {
     // Initialize sparkles
     const initSparkles = () => {
       sparklesRef.current = [];
-      const sparkleCount = Math.floor((width * height) / 50000) + 10;
+      const sparkleCount = Math.floor((width * height) / 30000) + 20;
 
       for (let i = 0; i < sparkleCount; i++) {
         sparklesRef.current.push(new GentleSparkle());

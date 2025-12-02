@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import ConstantSparkles from './components/ConstantSparkles';
 import BackgroundMusic from './components/BackgroundMusic';
 import CanvasBackground from './components/CanvasBackground';
 import AnimatedGradientWaves from './components/AnimatedGradientWaves';
-import CanvasSparkles from './components/CanvasSparkles';
 import CandlePage from './pages/CandlePage';
 import Home from './pages/Home';
 import ThingsWeLove from './pages/ThingsWeLove';
@@ -57,7 +55,6 @@ function App() {
       <div className="app">
         <AnimatedGradientWaves />
         <CanvasBackground />
-        <ConstantSparkles />
         <BackgroundMusic />
         <Navigation onBackToCandles={handleBackToCandles} />
         <Routes>
