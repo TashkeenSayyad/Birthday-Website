@@ -57,7 +57,6 @@ function App() {
       <div className="app">
         <AnimatedGradientWaves />
         <CanvasBackground />
-        <CanvasSparkles />
         <ConstantSparkles />
         <BackgroundMusic />
         <Navigation onBackToCandles={handleBackToCandles} />

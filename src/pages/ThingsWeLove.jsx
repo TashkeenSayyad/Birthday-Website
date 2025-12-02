@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import thingsWeLoveData from '../data/thingsWeLove.json';
 import { useModal } from '../hooks/useModal';
 import { ANIMATION_CONSTANTS } from '../constants/animations';
+import GentleSparklesCanvas from '../components/GentleSparklesCanvas';
 import '../styles/ThingsWeLove.css';
 
 const ThingsWeLove = () => {
@@ -30,6 +31,8 @@ const ThingsWeLove = () => {
 
   return (
     <div className="sticky-notes-page">
+      <GentleSparklesCanvas />
+
       <div className="page-header">
         <h1 className="page-title">Things We Love About You</h1>
         <p className="page-subtitle">Click a note to discover more</p>
