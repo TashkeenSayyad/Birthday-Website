@@ -1,0 +1,192 @@
+/* Design Showcase Styling */
+
+.design-showcase {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.showcase-content {
+  position: relative;
+  z-index: 5;
+  padding: 80px 20px 60px;
+}
+
+.showcase-section {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  position: relative;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #4A3642;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #D5516B, transparent);
+}
+
+/* Card Showcase Grid */
+.card-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  margin-top: 40px;
+}
+
+/* Frame Showcase */
+.frame-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Artwork Showcase */
+.artwork-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Color Palette */
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.color-swatch {
+  aspect-ratio: 1;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.color-swatch:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.color-swatch::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+  z-index: 1;
+}
+
+.color-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  position: relative;
+}
+
+.color-hex {
+  font-family: 'Montserrat', monospace;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  position: relative;
+}
+
+/* Animations */
+@keyframes showcase-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.showcase-section {
+  animation: showcase-fade-in 0.8s ease-out;
+}
+
+.showcase-section:nth-child(1) { animation-delay: 0s; }
+.showcase-section:nth-child(2) { animation-delay: 0.1s; }
+.showcase-section:nth-child(3) { animation-delay: 0.2s; }
+.showcase-section:nth-child(4) { animation-delay: 0.3s; }
+.showcase-section:nth-child(5) { animation-delay: 0.4s; }
+.showcase-section:nth-child(6) { animation-delay: 0.5s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .showcase-content {
+    padding: 60px 15px 40px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .card-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .color-palette {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .color-swatch {
+    border-radius: 15px;
+  }
+
+  .color-name {
+    font-size: 1rem;
+  }
+
+  .color-hex {
+    font-size: 0.8rem;
+  }
+}
+
+/* Scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(213, 81, 107, 0.3);
+  color: #4A3642;
+}
