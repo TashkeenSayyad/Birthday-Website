@@ -1,16 +1,49 @@
-# React + Vite
+# Birthday Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite birthday website project.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Node.js Version:** This project requires Node.js **20.19.0+** or **22.12.0+**
 
-## React Compiler
+### Checking Your Node.js Version
+```bash
+node --version
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Upgrading Node.js
 
-## Expanding the ESLint configuration
+If your Node.js version is too old, you can upgrade using one of these methods:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Using NVM (Recommended):**
+```bash
+# Install/use the correct version
+nvm install 20.19.0
+nvm use 20.19.0
+```
+
+**Or download directly from:**
+- [Node.js Official Website](https://nodejs.org/)
+
+## Setup
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Run the development server:
+```bash
+npm run dev
+```
+
+3. Build for production:
+```bash
+npm run build
+```
+
+## Troubleshooting
+
+### Error: "crypto.hash is not a function"
+
+This error occurs when using an outdated Node.js version. Vite requires Node.js 20.19+ or 22.12+. Please upgrade your Node.js version using the instructions above.
