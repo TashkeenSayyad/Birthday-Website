@@ -6,7 +6,6 @@ import CanvasBackground from './components/CanvasBackground';
 import AnimatedGradientWaves from './components/AnimatedGradientWaves';
 import CandlePage from './pages/CandlePage';
 import Home from './pages/Home';
-import ThingsWeLove from './pages/ThingsWeLove';
 import FavoriteMemories from './pages/FavoriteMemories';
 import PersonalNotesPage from './pages/PersonalNotesPage';
 import PersonalNote from './components/PersonalNote';
@@ -60,7 +59,6 @@ function App() {
         <Routes>
           <Route path="/" element={<InitialRedirect />} />
           <Route path="/candle" element={<CandlePage />} />
-          <Route path="/things-we-love" element={<ThingsWeLove />} />
           <Route path="/memories" element={<FavoriteMemories />} />
           <Route path="/notes" element={<PersonalNotesPage />} />
           <Route path="/note/:person" element={<PersonalNote />} />

@@ -5,6 +5,7 @@ import { useSwipeToClose } from '../hooks/useSwipeToClose';
 import { ANIMATION_CONSTANTS } from '../constants/animations';
 import LightRaysCanvas from '../components/LightRaysCanvas';
 import CursorTrailCanvas from '../components/CursorTrailCanvas';
+import FloatingHeartsCanvas from '../components/FloatingHeartsCanvas';
 import '../styles/FavoriteMemories.css';
 
 const FavoriteMemories = () => {
@@ -95,6 +96,7 @@ const FavoriteMemories = () => {
     <div className="memories-page">
       <LightRaysCanvas />
       <CursorTrailCanvas />
+      <FloatingHeartsCanvas />
 
       <div className="page-header">
         <h1 className="page-title">Our Favorite Memories</h1>
@@ -219,9 +221,6 @@ const FavoriteMemories = () => {
                 <span className="card-date">{memory.date}</span>
                 <h3 className="card-title">{memory.title}</h3>
                 <p className="card-from">— {memory.from}</p>
-              </div>
-              <div className="corner-decoration">
-                <span className="corner-emoji">📸</span>
               </div>
             </div>
           </div>

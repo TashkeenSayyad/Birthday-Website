@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FloatingParticles from '../components/FloatingParticles';
+import FloatingHeartsCanvas from '../components/FloatingHeartsCanvas';
 import timelineData from '../data/timeline.json';
 import memoriesData from '../data/memories.json';
 import { getBaseUrl } from '../utils/baseUrl';
@@ -94,6 +95,7 @@ const TimelinePage = () => {
   return (
     <>
       <FloatingParticles />
+      <FloatingHeartsCanvas />
       <div className="app-content timeline-content">
         <header className="app-header timeline-header">
           <h1 className="main-title timeline-main-title">Journey Through Time</h1>
@@ -186,13 +188,6 @@ const TimelinePage = () => {
                           <h3 className="card-title">{event.title}</h3>
                           <p className="card-description">{event.description}</p>
                         </div>
-
-                        {/* Corner Decoration */}
-                        <div className="corner-decoration">
-                          {index % 3 === 0 && <span className="corner-emoji">✨</span>}
-                          {index % 3 === 1 && <span className="corner-emoji">💫</span>}
-                          {index % 3 === 2 && <span className="corner-emoji">🌸</span>}
-                        </div>
                       </div>
 
                       {/* Hover Shine Effect */}
@@ -277,13 +272,6 @@ const TimelinePage = () => {
                       {memory.description && (
                         <p className="card-description">{memory.description}</p>
                       )}
-                    </div>
-
-                    {/* Corner Decoration */}
-                    <div className="corner-decoration">
-                      {index % 3 === 0 && <span className="corner-emoji">✨</span>}
-                      {index % 3 === 1 && <span className="corner-emoji">💫</span>}
-                      {index % 3 === 2 && <span className="corner-emoji">🌸</span>}
                     </div>
                   </div>
 

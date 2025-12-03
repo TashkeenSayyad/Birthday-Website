@@ -24,14 +24,6 @@ const Home = () => {
     },
     {
       id: 2,
-      title: 'Things We Love About You',
-      subtitle: 'Everything that makes you, you',
-      icon: '✨',
-      path: '/things-we-love',
-      color: '#9b59b6'
-    },
-    {
-      id: 3,
       title: 'Favorite Memories',
       subtitle: 'Pictures worth a thousand words',
       icon: '📸',
@@ -39,7 +31,7 @@ const Home = () => {
       color: '#3498db'
     },
     {
-      id: 4,
+      id: 3,
       title: 'Music that reminds of you',
       subtitle: 'Songs that tell our story',
       icon: '🎵',
@@ -47,7 +39,7 @@ const Home = () => {
       color: '#e74c3c'
     },
     {
-      id: 5,
+      id: 4,
       title: 'Journey Through Time',
       subtitle: 'A timeline of cherished moments',
       icon: '⏳',
@@ -170,9 +162,6 @@ const Home = () => {
                 <div className="card-caption">
                   <h2 className="card-title">{item.title}</h2>
                   <p className="card-description">{item.subtitle}</p>
-                </div>
-                <div className="corner-decoration">
-                  <span className="corner-emoji">✨</span>
                 </div>
               </div>
             </div>
