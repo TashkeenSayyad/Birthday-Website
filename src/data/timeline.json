@@ -170,21 +170,11 @@
     "thumbnail": "images/timeline/the_og_trio2.jpg"
   },
   {
-    "id": 18,
-    "year": "You as an Adult",
-    "date": "Adulthood",
-    "title": "",
-    "description": "Round two of the trio",
-    "mediaType": "image",
-    "media": "images/timeline/the_og_trio2.jpg",
-    "thumbnail": "images/timeline/the_og_trio2.jpg"
-  },
-  {
     "id": 19,
     "year": "You as an Adult",
     "date": "Adulthood",
-    "title": "",
-    "description": "Round two of the trio",
+    "title": "Becoming an adult",
+    "description": "Slaying in Purple",
     "mediaType": "image",
     "media": "images/timeline/anusha-adult.jpg",
     "thumbnail": "images/timeline/anusha-adult.jpg"
@@ -193,8 +183,8 @@
     "id": 20,
     "year": "You as an Adult",
     "date": "Adulthood",
-    "title": "",
-    "description": "",
+    "title": "Outshining the bride",
+    "description": "Outshining the bride without trying to, as always",
     "mediaType": "image",
     "media": "images/timeline/anusha-adult2.jpg",
     "thumbnail": "images/timeline/anusha-adult2.jpg"

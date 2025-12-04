@@ -43,11 +43,7 @@ const BackgroundMusic = () => {
         loop
         preload="auto"
       >
-        {/* Background music - using local MP3 file
-            The file is located at: public/music/palpal.mp3
-            To change the song, update the src path below to point to a different MP3 file in public/music/
-        */}
-        <source src={`${baseUrl}music/palpal.mp3`} type="audio/mpeg" />
+        <source src={`${baseUrl}music/happybirthday.mp3`} type="audio/mpeg" />
       </audio>
 
       <button
