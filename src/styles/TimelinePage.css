@@ -694,6 +694,7 @@
   max-width: 900px;
   width: 100%;
   max-height: 90vh;
+  background: transparent;
   animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -756,6 +757,7 @@
   padding: 2rem;
   overflow-y: auto;
   flex-shrink: 1;
+  background: #fff;
 }
 
 .modal-header {
@@ -968,10 +970,12 @@
 
   .modal-card {
     flex-direction: column;
+    background: #fff !important;
   }
 
   .modal-details {
     padding: 1.5rem;
+    background: #fff !important;
   }
 
   .modal-title {
@@ -1083,8 +1087,18 @@
     height: 25px;
   }
 
-  .modal-content {
+  .timeline-modal {
     padding: 1rem;
+  }
+
+  .modal-content {
+    padding: 0;
+    max-height: 95vh;
+  }
+
+  .modal-card {
+    background: #fff !important;
+    max-height: 95vh;
   }
 
   .modal-close {
@@ -1096,6 +1110,7 @@
 
   .modal-details {
     padding: 1rem;
+    background: #fff !important;
   }
 
   .modal-title {
@@ -1104,6 +1119,10 @@
 
   .modal-description {
     font-size: 1rem;
+  }
+
+  .modal-image-container {
+    max-height: 50vh;
   }
 
   .timeline-dot-end {

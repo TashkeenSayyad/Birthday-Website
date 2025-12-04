@@ -470,7 +470,13 @@
   max-width: 900px;
   width: 100%;
   max-height: 90vh;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
   animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-swipe-indicator {
@@ -550,16 +556,6 @@
   right: -60px;
 }
 
-.modal-card {
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
-  display: flex;
-  flex-direction: column;
-  max-height: 90vh;
-}
-
 .modal-image-container {
   flex-shrink: 0;
   max-height: 60vh;
@@ -589,6 +585,7 @@
   padding: 2rem;
   overflow-y: auto;
   flex-shrink: 1;
+  background: #fff;
 }
 
 .modal-date {
@@ -796,6 +793,10 @@
     padding: 1rem 0.25rem 0.75rem;
   }
 
+  .modal-content {
+    background: #fff !important;
+  }
+
   .modal-nav-prev {
     left: -50px;
   }
@@ -806,6 +807,7 @@
 
   .modal-details {
     padding: 1.5rem;
+    background: #fff !important;
   }
 
   .modal-title {
@@ -846,6 +848,15 @@
     height: 25px;
   }
 
+  .memory-modal {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    max-height: 95vh;
+    background: #fff !important;
+  }
+
   .modal-close {
     top: -2.5rem;
     width: 40px;
@@ -879,6 +890,7 @@
 
   .modal-details {
     padding: 1rem;
+    background: #fff !important;
   }
 
   .modal-title {
@@ -887,5 +899,9 @@
 
   .modal-description {
     font-size: 1rem;
+  }
+
+  .modal-image-container {
+    max-height: 50vh;
   }
 }
